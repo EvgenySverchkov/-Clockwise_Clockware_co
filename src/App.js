@@ -1,12 +1,11 @@
 import React from 'react';
 import {BrowserRouter, Route, NavLink} from "react-router-dom";
-import ClientScreen from "./screens/ClientScreen";
-import AdminScreen from "./screens/AdminScreen";
+import ClientScreen from "./components/ClientScreen";
+import AdminScreen from "./components/AdminScreen";
 import './App.css';
 
 function App() {
   return (
-
     <BrowserRouter>
       <div className="App">
         <header>
