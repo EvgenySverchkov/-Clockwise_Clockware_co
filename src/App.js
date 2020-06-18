@@ -12,12 +12,26 @@ import FirstScreen from "./components/FirstScreen";
 import './App.css';
 
 const initialState = {
-  // clients: [],
+  client_reduser:{
+    clients: [
+      {id: 1,
+       name: "Valery",
+       email:"some@mail.com",
+       clockSize: "middle",
+       town: "Dnipro",
+       time:"01-01-2021 15:00"}
+     ],
+     isShowClientsList: false
+  },
   master_reducer: {
     masters:[],
     towns:["Dnipro", "Uzhorod"],
     isAddMaster: false,
     isMasterList: false
+  },
+  town_reduser:{
+    towns:["Dnipro", "Uzhorod"],
+    isShowAddTownForm: false
   }
 };
 const store = createStore(
