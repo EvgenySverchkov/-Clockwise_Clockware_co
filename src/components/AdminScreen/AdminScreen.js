@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from "react-redux";
 import {addNewMaster, toggleAddMasterForm, toggleShowMasterList} from "../../store/actions";
 
@@ -6,7 +6,6 @@ import Sidebar from "./Sidebar";
 import MastersList from "./MastersList"
 
 function AdminSrcreen(props){
-	const [state, setState] = useState();
 	function createUniqueId(){
 		if(props.mastersArr.length === 0){
 			return 1;
@@ -49,7 +48,6 @@ function AdminSrcreen(props){
 			}
 	}
 	function toggleShowMasterList(){
-		console.log(props.isMasterList)
 		if(props.isMasterList){
 			console.log(props.mastersArr)
 			return <MastersList mastersArr = {props.mastersArr} />

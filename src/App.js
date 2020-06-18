@@ -14,7 +14,7 @@ import './App.css';
 const initialState = {
   // clients: [],
   master_reducer: {
-    masters:[{name:"Alex",rating:"1",id:1}],
+    masters:[],
     towns:["Dnipro", "Uzhorod"],
     isAddMaster: false,
     isMasterList: false
@@ -24,7 +24,6 @@ const store = createStore(reducers, initialState, window.__REDUX_DEVTOOLS_EXTENS
 
 function App() {
   return (
-
     <Provider store = {store}>
       <BrowserRouter>
         <div className="App">
@@ -34,7 +33,6 @@ function App() {
         </div>
       </BrowserRouter>
     </Provider>
-
   );
 }
 
