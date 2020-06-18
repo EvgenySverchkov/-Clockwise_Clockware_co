@@ -10,6 +10,11 @@ export default function master_reducer(state={}, action){
         ...state,
         isAddMaster: action.payload
       }
+    case "TOGGLE_ADD_MASTER_LIST":
+      return {
+        ...state,
+        isMasterList: action.payload
+      }
     default:
       return state;
   }
