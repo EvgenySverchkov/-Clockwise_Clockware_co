@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {toggleAddMasterForm, toggleShowMasterList, toggleShowClientsList, toogleAddTownForm} from "../../../store/adminPanel/actions";
+import {toggleAddMasterForm, toggleShowMasterList, toggleShowClientsList, toogleAddTownForm, toggleShowTownList} from "../../../store/adminPanel/actions";
 
 function Sidebar(props){
   function showClients(){
@@ -8,16 +8,19 @@ function Sidebar(props){
     props.toggleAddMasterForm(false);
     props.toggleShowMasterList(false);
     props.toogleAddTownForm(false);
+    props.toggleShowTownList(false);
   }
   function showMasters(){
-    props.toggleAddMasterForm(false);
     props.toggleShowMasterList(true);
+    props.toggleAddMasterForm(false);
     props.toggleShowClientsList(false);
     props.toogleAddTownForm(false);
+    props.toggleShowTownList(false);
   }
   function addNewMaster(e){
     props.toggleShowClientsList(false);
     props.toogleAddTownForm(false);
+    props.toggleShowTownList(false);
     e.stopPropagation();
     if(props.isAddMasterForm){
       props.toggleAddMasterForm(false);
@@ -28,10 +31,19 @@ function Sidebar(props){
     }
   }
   function addNewTown(e){
+    e.stopPropagation();
+    props.toogleAddTownForm(true);
     props.toggleShowClientsList(false);
     props.toggleAddMasterForm(false);
     props.toggleShowMasterList(false);
-    props.toogleAddTownForm(true);
+    props.toggleShowTownList(false);
+  }
+  function showTownsList(){
+    props.toggleShowTownList(true);
+    props.toggleShowClientsList(false);
+    props.toggleAddMasterForm(false);
+    props.toggleShowMasterList(false);
+    props.toogleAddTownForm(false);
   }
   return (
     <div className="sidebar">
@@ -43,7 +55,7 @@ function Sidebar(props){
           Masters
           <button onClick={addNewMaster}>Add master</button>
         </li>
-        <li>
+        <li onClick={showTownsList}>
           Towns
           <button onClick={addNewTown}>Add town</button>
         </li>
@@ -63,6 +75,7 @@ const actions = {
   toggleAddMasterForm,
   toggleShowMasterList,
   toggleShowClientsList,
-  toogleAddTownForm
+  toogleAddTownForm,
+  toggleShowTownList
 }
 export default connect(mapStateToProps, actions)(Sidebar);

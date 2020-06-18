@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {addNewMaster, toggleAddMasterForm, toggleShowMasterList, toogleAddTownForm, addNewTown} from "../../store/adminPanel/actions";
+import {addNewMaster, toggleAddMasterForm, toggleShowMasterList, toogleAddTownForm, addNewTown, toggleShowTownList} from "../../store/adminPanel/actions";
 
 import Sidebar from "./Sidebar";
 import Content from "./Content";
@@ -81,6 +81,11 @@ function AdminSrcreen(props){
 			}
 		}
 	}
+	function toggleShowTownList(Component){
+		if(props.isTownList){
+			return <Component townsArr = {props.townsArr}/>
+		}
+	}
 
 	return(
 		<div style={style}>
@@ -88,7 +93,8 @@ function AdminSrcreen(props){
 			<Content toggleAddMasterForm={toggleAddMasterForm}
 							 toggleShowMasterList={toggleShowMasterList}
 							 toggleShowClientsList={toggleShowClientsList}
-							 toogleAddTownForm={toogleAddTownForm}/>
+							 toogleAddTownForm={toogleAddTownForm}
+							 toggleShowTownList={toggleShowTownList}/>
 		</div>
 	);
 }
@@ -104,7 +110,16 @@ function mapStateToProps(state){
 		isMasterList: state.master_reducer.isMasterList,
 		isShowClientsList: state.client_reduser.isShowClientsList,
 		clientsArr: state.client_reduser.clients,
-		isShowAddTownForm: state.town_reduser.isShowAddTownForm
+		isShowAddTownForm: state.town_reduser.isShowAddTownForm,
+		isTownList: state.town_reduser.isTownList
 	}
 }
-export default connect(mapStateToProps, {addNewMaster, toggleAddMasterForm, toggleShowMasterList, toogleAddTownForm, addNewTown})(AdminSrcreen);
+let actions = {
+	addNewMaster,
+	toggleAddMasterForm,
+	toggleShowMasterList,
+	toogleAddTownForm,
+	addNewTown,
+	toggleShowTownList
+}
+export default connect(mapStateToProps, actions)(AdminSrcreen);

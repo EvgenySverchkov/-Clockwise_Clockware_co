@@ -6,3 +6,4 @@ export const toggleShowClientsList = (info) => ({type: "TOGGLE_SHOW_CLIENTS_LIST
 
 export const addNewTown = (townName) => ({type: "ADD_NEW_TOWN", payload: townName});
 export const toogleAddTownForm = (info) => ({type: "TOGGLE_ADD_NEW_TOWN_FORM", payload: info});
+export const toggleShowTownList = (info) => ({type: "TOOGLE_SHOW_TOWNS_LIST", payload: info});

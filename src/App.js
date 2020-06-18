@@ -31,7 +31,8 @@ const initialState = {
   },
   town_reduser:{
     towns:["Dnipro", "Uzhorod"],
-    isShowAddTownForm: false
+    isShowAddTownForm: false,
+    isTownList: false
   }
 };
 const store = createStore(

@@ -10,6 +10,11 @@ export default function town_reduser(state={}, action){
         ...state,
         isShowAddTownForm: action.payload
       }
+    case "TOOGLE_SHOW_TOWNS_LIST":
+      return {
+        ...state,
+        isTownList: action.payload
+      }
     default:
       return state;
   }
