@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {addNewMaster, toggleAddMasterForm, toggleShowMasterList} from "../../store/adminPanel/actions";
+import {addNewMaster, toggleAddMasterForm, toggleShowMasterList, toogleAddTownForm, addNewTown} from "../../store/adminPanel/actions";
 
 import Sidebar from "./Sidebar";
 import Content from "./Content";
@@ -56,12 +56,39 @@ function AdminSrcreen(props){
 			return <Component mastersArr = {props.mastersArr} />
 		}
 	}
+	function toggleShowClientsList(Component){
+		if(props.isShowClientsList){
+			return <Component clientsArr = {props.clientsArr} />
+		}
+	}
+	function toogleAddTownForm(Component){
+		if(props.isShowAddTownForm){
+			return <Component handler={submitHandler}/>;
+		}
+		function submitHandler(e){
+			e.preventDefault();
+			let townName = e.target.town.value;
+			if(townName){
+				if(props.townsArr.includes(townName)){
+					alert("The name of this town is already on the list! \nPlease enter another town name!");
+				}else{
+					props.addNewTown(townName);
+					alert("You added new town");
+					e.target.town.value = "";
+				}
+			}else{
+				alert("Please, filling the gap")
+			}
+		}
+	}
 
 	return(
 		<div style={style}>
 			<Sidebar />
 			<Content toggleAddMasterForm={toggleAddMasterForm}
-							 toggleShowMasterList={toggleShowMasterList}/>
+							 toggleShowMasterList={toggleShowMasterList}
+							 toggleShowClientsList={toggleShowClientsList}
+							 toogleAddTownForm={toogleAddTownForm}/>
 		</div>
 	);
 }
@@ -73,8 +100,11 @@ function mapStateToProps(state){
 	return {
 		mastersArr: state.master_reducer.masters,
 		isAddMasterForm: state.master_reducer.isAddMaster,
-		townsArr:state.master_reducer.towns,
-		isMasterList: state.master_reducer.isMasterList
+		townsArr:state.town_reduser.towns,
+		isMasterList: state.master_reducer.isMasterList,
+		isShowClientsList: state.client_reduser.isShowClientsList,
+		clientsArr: state.client_reduser.clients,
+		isShowAddTownForm: state.town_reduser.isShowAddTownForm
 	}
 }
-export default connect(mapStateToProps, {addNewMaster, toggleAddMasterForm, toggleShowMasterList})(AdminSrcreen);
+export default connect(mapStateToProps, {addNewMaster, toggleAddMasterForm, toggleShowMasterList, toogleAddTownForm, addNewTown})(AdminSrcreen);
