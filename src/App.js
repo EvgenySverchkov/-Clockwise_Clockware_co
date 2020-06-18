@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {BrowserRouter, Route} from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -7,6 +8,7 @@ import reducers from "./services/reducers/index";
 import ClientScreen from "./components/ClientScreen";
 import AdminScreen from "./components/AdminScreen";
 import FirstScreen from "./components/FirstScreen";
+
 import './App.css';
 
 const initialState = {
@@ -21,6 +23,7 @@ const store = createStore(reducers, initialState, window.__REDUX_DEVTOOLS_EXTENS
 
 function App() {
   return (
+
     <Provider store = {store}>
       <BrowserRouter>
         <div className="App">
@@ -30,6 +33,7 @@ function App() {
         </div>
       </BrowserRouter>
     </Provider>
+
   );
 }
 
