@@ -1,16 +1,14 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {addNewMaster, toggleAddMasterForm, toggleShowMasterList} from "../../store/actions";
+import {addNewMaster, toggleAddMasterForm, toggleShowMasterList} from "../../store/adminPanel/actions";
 
 import Sidebar from "./Sidebar";
-import MastersList from "./MastersList";
 import Content from "./Content";
-import AddMasterForm from "./AddMasterForm";
 
 function AdminSrcreen(props){
-	function toggleAddMasterForm(){
+	function toggleAddMasterForm(Component){
 			if(props.isAddMasterForm){
-				return <AddMasterForm handler={submitHandler} townsArr={props.townsArr}/>;
+				return <Component handler={submitHandler} townsArr={props.townsArr}/>;
 			}
 			function submitHandler(e){
 				e.preventDefault();
@@ -53,9 +51,9 @@ function AdminSrcreen(props){
 				return towns;
 			}
 	}
-	function toggleShowMasterList(){
+	function toggleShowMasterList(Component){
 		if(props.isMasterList){
-			return <MastersList mastersArr = {props.mastersArr} />
+			return <Component mastersArr = {props.mastersArr} />
 		}
 	}
 

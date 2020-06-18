@@ -3,7 +3,7 @@ import React from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import reducers from "./store/reducers/index";
+import reducers from "./store/adminPanel/reducers";
 
 import ClientScreen from "./components/ClientScreen";
 import AdminScreen from "./components/AdminScreen";
@@ -20,7 +20,11 @@ const initialState = {
     isMasterList: false
   }
 };
-const store = createStore(reducers, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(
+  reducers,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 function App() {
   return (

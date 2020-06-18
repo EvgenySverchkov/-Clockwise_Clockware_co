@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {toggleAddMasterForm, toggleShowMasterList} from "../../../store/actions";
+import {toggleAddMasterForm, toggleShowMasterList} from "../../../store/adminPanel/actions";
 
 function Sidebar(props){
   function showMasters(){
