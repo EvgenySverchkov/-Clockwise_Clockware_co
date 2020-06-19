@@ -1,12 +1,17 @@
 import React from 'react';
 import MasterItem from "./MasterItem";
+import {connect} from "react-redux";
+import {deleteMaster} from "../../../store/adminPanel/actions";
+import withDeleteBtn from "../../../hocs/withDeleteBtn";
 
 function MastersList(props){
+  let MasterItemWithDelete = withDeleteBtn(MasterItem, props.deleteMaster);
   return (
     <ul style={{listStyle: "none"}}>{
-      props.mastersArr.map((item)=><MasterItem key={item.id+1} masterObj = {item}/>)
+      props.mastersArr.map((item)=><MasterItemWithDelete key={item.id+1} masterObj = {item} by={item.id}/>)
     }</ul>
   );
 }
 
-export default MastersList;
+export default connect(null, {deleteMaster})(MastersList);
+// <MasterItem key={item.id+1} masterObj = {item}/>
