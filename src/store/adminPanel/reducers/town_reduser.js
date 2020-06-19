@@ -15,6 +15,11 @@ export default function town_reduser(state={}, action){
         ...state,
         isTownList: action.payload
       }
+    case "DELETE_TOWN":
+      return {
+        ...state,
+        towns: state.towns.filter((item)=>(item!==action.payload)?true:false)
+      }
     default:
       return state;
   }
