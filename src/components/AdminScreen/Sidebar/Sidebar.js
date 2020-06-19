@@ -52,11 +52,13 @@ function Sidebar(props){
           Clients
         </li>
         <li onClick={showMasters}>
-          Masters<br/>
+          Masters
+          <br/>
           <button onClick={addNewMaster}>Add master</button>
         </li>
         <li onClick={showTownsList}>
-          Towns<br/>
+          Towns
+          <br/>
           <button onClick={addNewTown}>Add town</button>
         </li>
       </ul>
