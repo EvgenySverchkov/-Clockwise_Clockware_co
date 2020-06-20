@@ -4,7 +4,7 @@ export const toggleShowMasterList = (info) => ({type: "TOGGLE_SHOW_MASTER_LIST",
 export const deleteMaster = (id) => ({type: "DELETE_MASTER", payload: id})
 
 export const toggleShowClientsList = (info) => ({type: "TOGGLE_SHOW_CLIENTS_LIST", payload: info});
-export const deleteClient = (id) => ({type: "DELETE_CLIENT", payload: id})
+export const deleteClient = (by) => ({type: "DELETE_CLIENT", payload: by})
 
 export const addNewTown = (townName) => ({type: "ADD_NEW_TOWN", payload: townName});
 export const toogleAddTownForm = (info) => ({type: "TOGGLE_ADD_NEW_TOWN_FORM", payload: info});
