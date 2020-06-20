@@ -1,6 +1,5 @@
 import React from 'react';
-
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducers from "./store/adminPanel/reducers";
@@ -21,18 +20,13 @@ const initialState = {
        town: "Dnipro",
        time:"01-01-2021 15:00"}
      ],
-     isShowClientsList: false
   },
   master_reducer: {
     masters:[],
     towns:["Dnipro", "Uzhorod"],
-    isAddMaster: false,
-    isMasterList: false
   },
   town_reduser:{
     towns:["Dnipro", "Uzhorod"],
-    isShowAddTownForm: false,
-    isTownList: false
   }
 };
 const store = createStore(
@@ -44,13 +38,13 @@ const store = createStore(
 function App() {
   return (
     <Provider store = {store}>
-      <BrowserRouter>
-        <div className="App">
+      <div className="App">
+        <Switch>
           <Route exact path="/" component={FirstScreen}/>
           <Route path="/client" component={ClientScreen} />
           <Route path="/admin" component={AdminScreen}/>
-        </div>
-      </BrowserRouter>
+        </Switch>
+      </div>
     </Provider>
   );
 }

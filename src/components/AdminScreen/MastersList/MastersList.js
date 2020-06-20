@@ -14,4 +14,3 @@ function MastersList(props){
 }
 
 export default connect(null, {deleteMaster})(MastersList);
-// <MasterItem key={item.id+1} masterObj = {item}/>
