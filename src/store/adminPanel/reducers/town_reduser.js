@@ -5,16 +5,6 @@ export default function town_reduser(state={}, action){
         ...state,
         towns: [...state.towns, action.payload]
       }
-    case "TOGGLE_ADD_NEW_TOWN_FORM":
-      return {
-        ...state,
-        isShowAddTownForm: action.payload
-      }
-    case "TOOGLE_SHOW_TOWNS_LIST":
-      return {
-        ...state,
-        isTownList: action.payload
-      }
     case "DELETE_TOWN":
       return {
         ...state,
