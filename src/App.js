@@ -23,10 +23,9 @@ const initialState = {
   },
   master_reducer: {
     masters:[],
-    towns:["Dnipro", "Uzhorod"],
   },
   town_reduser:{
-    towns:["Dnipro", "Uzhorod"],
+    towns:[],
   }
 };
 const store = createStore(

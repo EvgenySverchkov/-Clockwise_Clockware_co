@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
-import {addNewMaster, addNewTown, initMasters} from "../../store/adminPanel/actions";
+import {addNewMaster, addNewTown, initMasters, townsInit} from "../../store/adminPanel/actions";
 import "./adminScreen.css";
 
 import Sidebar from "./Sidebar";
@@ -15,13 +15,18 @@ function AdminSrcreen(props){
 	useEffect(function(){
 		fetch("https://clockwiseserver.herokuapp.com/get_masters")
 		.then(data=>data.json())
-		.then(data=>props.initMasters(data))
+		.then(data=>props.initMasters(data));
+
+		fetch("https://clockwiseserver.herokuapp.com/get_towns")
+		.then(json=>json.json())
+		.then(data=>props.townsInit(data))
 	}, []);
 	function addNewMasterHandler(e){
 			e.preventDefault();
 			let masterName = e.target.name.value;
 			let masterRating = e.target.rating.value;
 			let townsArr = selectCheckedTowns(e.target.elements);
+			console.log(townsArr)
 			if(masterName&&masterRating&&townsArr.length!==0){
 				let infoObj = {
 					id: createUniqueId(),
@@ -38,10 +43,11 @@ function AdminSrcreen(props){
 					body: strObj,
 				})
 				.then(json=>json.json())
-				.then(data=>props.addNewMaster(data));
-
-				alert("You added new master");
-				props.history.push('/admin/mastersList');
+				.then(data=>props.addNewMaster(data))
+				.then(()=>{
+					alert("You added new master");
+					props.history.push('/admin/mastersList');
+				});
 			}else{
 				alert("Please, feeling all gaps")
 			}
@@ -71,15 +77,38 @@ function AdminSrcreen(props){
 		e.preventDefault();
 		let townName = e.target.town.value;
 		if(townName){
-			if(props.townsArr.includes(townName)){
+			if(props.townsArr.find((item)=>item.name.toLowerCase()===townName.toLowerCase())){
 				alert("The name of this town is already on the list! \nPlease enter another town name!");
+				e.target.town.value = '';
 			}else{
-				props.addNewTown(townName);
-				alert("You added new town");
-				props.history.push('/admin/townsList');
+				let infoObj = {
+					id: createUniqueId(),
+					name: townName
+				};
+				const str = JSON.stringify(infoObj);
+				fetch("https://clockwiseserver.herokuapp.com/post_town", {
+					method: "POST",
+					headers: {
+						'Content-Type': 'application/json;charset=utf-8'
+					},
+					body: str,
+				}).then(json=>json.json())
+				.then(data=>props.addNewTown(data))
+				.then(()=>{
+					alert("You added new town");
+					props.history.push('/admin/townsList');});
 			}
 		}else{
 			alert("Please, filling the gap")
+		}
+		function createUniqueId(){
+			if(props.townsArr.length === 0){
+				return 1;
+			}else{
+				let copyArr = [...props.townsArr];
+				let sortArr = copyArr.sort((firstItem,secondItem)=>firstItem.id - secondItem.id);
+				return sortArr[sortArr.length-1].id + 1;
+			}
 		}
 }
 return(
@@ -113,6 +142,7 @@ function mapStateToProps(state){
 let actions = {
 	addNewMaster,
 	addNewTown,
-	initMasters
+	initMasters,
+	townsInit
 }
 export default connect(mapStateToProps, actions)(AdminSrcreen);

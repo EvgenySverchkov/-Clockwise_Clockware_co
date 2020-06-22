@@ -1,4 +1,9 @@
 import React from 'react';
-export default ({item})=>{
-  return <th scope="row" id={item}>{item}</th>
+export default ({name, id})=>{
+  return (
+    <>
+      <th scope="row">{id}</th>
+      <td>{name}</td>
+    </>
+  )
 }

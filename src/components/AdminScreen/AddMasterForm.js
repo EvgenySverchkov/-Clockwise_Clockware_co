@@ -18,10 +18,10 @@ function AddMasterForm({handler, townsArr}){
       <div className="form-group">
         <div className="mb-2">Choose town</div>
         {townsArr.map((item)=>(
-          <div key={item} className="form-check-inline">
-            <label className="form-check-label" htmlFor={item}>
-              <input type="checkbox" className="form-check-input towns" id={item} value={item}/>
-              {item}
+          <div key={item.id+1} className="form-check-inline">
+            <label className="form-check-label" htmlFor={item.name}>
+              <input type="checkbox" className="form-check-input towns" id={item.name} value={item.name}/>
+              {item.name}
             </label>
           </div>
         ))}

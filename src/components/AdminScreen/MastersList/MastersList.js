@@ -6,13 +6,13 @@ import {deleteMaster} from "../../../store/adminPanel/actions";
 import withDeleteBtn from "../../../hocs/withDeleteBtn";
 
 function MastersList(props){
-  function deleteHandler(masterId){
-    fetch(`https://clockwiseserver.herokuapp.com/delete/${masterId}`, {
+  function deleteMasterById(masterId){
+    fetch(`https://clockwiseserver.herokuapp.com/delete_master/${masterId}`, {
       method: "delete"
     }).then(data=>data.json())
     .then(data=>props.deleteMaster(data))
   }
-  let MasterItemWithDelete = withDeleteBtn(MasterItem, deleteHandler);
+  let MasterItemWithDelete = withDeleteBtn(MasterItem, deleteMasterById);
   return (
     <table className="table table-dark" style={{width: '70%', margin: '0 auto', tableLayout: 'fixed'}}>
       <thead>
