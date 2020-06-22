@@ -5,7 +5,7 @@ export default ({masterObj})=>{
     <li>
       <div>Name: {masterObj.name}</div>
       <div>Rating: {masterObj.rating}</div>
-      <div>Towns: {masterObj.towns.join(",")}</div>
+      <div>Towns: {masterObj.towns}</div>
       <div>Id: {masterObj.id}</div>
     </li>
   );
