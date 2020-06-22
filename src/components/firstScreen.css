@@ -1,0 +1,28 @@
+.screenRefWrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.screenRefWrapper>a{
+  text-decoration: none;
+}
+.screenRef{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 50px;
+  font-weight: 900;
+}
+#clientRef{
+  background-color: rgb(224,31,114);
+}
+#adminRef{
+  background-color: rgb(87,37,110);
+}
+
+#clientRef:hover{
+  color: rgb(87,37,110)
+}
+#adminRef:hover{
+  color: rgb(224,31,114)
+}

@@ -2,13 +2,13 @@ import React from 'react';
 
 export default ({clientObj})=>{
   return (
-    <li>
-      <div>Name: {clientObj.name}</div>
-      <div>email: {clientObj.email}</div>
-      <div>clockSize: {clientObj.clockSize}</div>
-      <div>Town: {clientObj.town}</div>
-      <div>Time: {clientObj.time}</div>
-      <div>Id: {clientObj.id}</div>
-    </li>
+    <>
+      <th scope="row">{clientObj.id}</th>
+      <td>{clientObj.name}</td>
+      <td>{clientObj.email}</td>
+      <td>{clientObj.clockSize}</td>
+      <td style={{wordWrap:'break-word'}}>{clientObj.town}</td>
+      <td>{clientObj.time}</td>
+    </>
   );
 }

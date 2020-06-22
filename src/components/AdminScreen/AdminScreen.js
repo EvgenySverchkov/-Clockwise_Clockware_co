@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import {addNewMaster, addNewTown, initMasters} from "../../store/adminPanel/actions";
+import "./adminScreen.css";
 
 import Sidebar from "./Sidebar";
 import ClientsList from "./ClientsList";
@@ -20,7 +21,7 @@ function AdminSrcreen(props){
 			e.preventDefault();
 			let masterName = e.target.name.value;
 			let masterRating = e.target.rating.value;
-			let townsArr = selectCheckedTowns(e.target.elements)
+			let townsArr = selectCheckedTowns(e.target.elements);
 			if(masterName&&masterRating&&townsArr.length!==0){
 				let infoObj = {
 					id: createUniqueId(),
@@ -57,7 +58,7 @@ function AdminSrcreen(props){
 				let newArr = Array.from(elements);
 				let towns = [];
 				newArr.forEach((item)=>{
-					if(item.className==='towns'){
+					if(item.className.match(/\btowns\b/)){
 						if(item.checked){
 							towns.push(item.value)
 						}
@@ -82,8 +83,9 @@ function AdminSrcreen(props){
 		}
 }
 return(
-	<div style={style}>
-		<Sidebar />
+	<div className="container">
+		<Sidebar/>
+		<div className="content">
 			<Switch>
 				<Route path="/admin/clientsList"
 							 render={()=><ClientsList clientsArr={props.clientsArr}/>}/>
@@ -97,12 +99,10 @@ return(
 			 			 	 render={()=><AddNewTownForm handler={addNewTownHandler}/>}/>
 			</Switch>
 		</div>
+	</div>
 	);
 }
-const style={
-	display: "grid",
-	gridTemplateColumns: "25% 75%"
-}
+
 function mapStateToProps(state){
 	return {
 		mastersArr: state.master_reducer.masters,

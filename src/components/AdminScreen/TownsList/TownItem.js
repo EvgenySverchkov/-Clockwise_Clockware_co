@@ -1,4 +1,4 @@
 import React from 'react';
 export default ({item})=>{
-  return <li id={item}>{item}</li>
+  return <th scope="row" id={item}>{item}</th>
 }
