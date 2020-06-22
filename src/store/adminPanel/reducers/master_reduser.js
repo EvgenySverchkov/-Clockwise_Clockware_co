@@ -1,5 +1,10 @@
 export default function master_reducer(state={}, action){
   switch(action.type){
+    case "INIT_MASTERS":
+      return {
+        ...state,
+        masters: action.payload
+      }
     case "ADD_NEW_MASTER":
       return {
         ...state,
