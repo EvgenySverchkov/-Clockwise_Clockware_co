@@ -1,6 +1,6 @@
 import React from 'react';
 export default (Component, action)=>{
-  return class Hoc extends React.Component{
+  return class WithDeleteBtn extends React.Component{
     constructor(props){
       super(props);
       this.handler = this.handler.bind(this);

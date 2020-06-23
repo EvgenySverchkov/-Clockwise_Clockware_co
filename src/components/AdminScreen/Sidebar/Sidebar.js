@@ -7,7 +7,7 @@ function Sidebar(props){
     <div className="nav-menu-wrapp mb-5 mt-3">
       <div className="btn-group nav-menu">
         <div className="dropdown mr-1">
-          <button className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button className="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Clients
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">

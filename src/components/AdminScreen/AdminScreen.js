@@ -6,6 +6,7 @@ import "./adminScreen.css";
 
 import Sidebar from "./Sidebar";
 import ClientsList from "./ClientsList";
+
 import MastersList from "./MastersList";
 import TownsList from "./TownsList";
 import AddNewTownForm from "./AddNewTownForm";
@@ -26,7 +27,6 @@ function AdminSrcreen(props){
 			let masterName = e.target.name.value;
 			let masterRating = e.target.rating.value;
 			let townsArr = selectCheckedTowns(e.target.elements);
-			console.log(townsArr)
 			if(masterName&&masterRating&&townsArr.length!==0){
 				let infoObj = {
 					id: createUniqueId(),
@@ -93,7 +93,9 @@ function AdminSrcreen(props){
 					},
 					body: str,
 				}).then(json=>json.json())
-				.then(data=>props.addNewTown(data))
+				.then(data=>{
+					props.addNewTown(data)
+				})
 				.then(()=>{
 					alert("You added new town");
 					props.history.push('/admin/townsList');});
@@ -110,6 +112,7 @@ function AdminSrcreen(props){
 				return sortArr[sortArr.length-1].id + 1;
 			}
 		}
+
 }
 return(
 	<div className="container">
