@@ -19,7 +19,7 @@ export default function EditForm({id, handler, arrFromState}){
                 <label htmlFor={item} className="col-sm-5 col-form-label">Enter {item}</label>
                 <div className="col-sm-7">
                   {
-                    typeof stateObj[item] == "number" ?
+                    typeof obj[item] == "number" ?
                     <input id={item}
                            className="form-control"
                            type="number" min="0" max="5" value={stateObj[item]||''}
