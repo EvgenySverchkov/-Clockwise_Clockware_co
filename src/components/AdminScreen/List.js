@@ -36,7 +36,7 @@ export default function CreateList({ListItem, dataArr, style}){
         {
           dataArr.map((item)=>(
             <tr key={item.id+1}>
-              <ListItem infoObj = {item} by={item.id}/>
+              <ListItem infoObj = {item}/>
             </tr>
           ))
         }

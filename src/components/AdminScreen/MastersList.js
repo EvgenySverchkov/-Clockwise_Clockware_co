@@ -5,17 +5,20 @@ import List from "./List";
 import ListItem from "./ListItem";
 
 import {deleteMaster} from "../../store/adminPanel/actions";
-import withDeleteBtn from "../../hocs/withDeleteBtn";
+import withOptions from "../../hocs/withOptions";
+
+import {serverDomain} from "../../services/serverUrls";
 
 function MastersList(props){
   function deleteMasterById(masterId){
-    fetch(`https://clockwiseserver.herokuapp.com/delete_master/${masterId}`, {
+    fetch(`${serverDomain}/delete_master/${masterId}`, {
       method: "delete"
     }).then(data=>data.json())
     .then(data=>props.deleteMaster(data))
   }
-  let ListItemWithDelete = withDeleteBtn(ListItem, deleteMasterById);
-  return <List ListItem = {ListItemWithDelete}
+  ListItem.displayName = "MasterItem";
+  let ListItemWithOptions = withOptions(ListItem, deleteMasterById);
+  return <List ListItem = {ListItemWithOptions}
                dataArr={props.mastersArr}
                style = {style}/>
 }

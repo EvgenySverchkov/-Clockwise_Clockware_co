@@ -5,18 +5,21 @@ import List from "./List";
 import ListItem from "./ListItem";
 
 import {deleteTown} from "../../store/adminPanel/actions";
-import deleteBtnHoc from "../../hocs/withDeleteBtn";
+import withOptions from "../../hocs/withOptions";
 
-function TownsList({townsArr, deleteTown}){
+import {serverDomain} from "../../services/serverUrls";
+
+function TownsList(props){
   function deleteTownById(townId){
-    fetch(`https://clockwiseserver.herokuapp.com/delete_town/${townId}`, {
+    fetch(`${serverDomain}/delete_town/${townId}`, {
       method: "delete"
     }).then(data=>data.json())
-    .then(data=>deleteTown(data))
+    .then(data=>props.deleteTown(data))
   }
-  let ListItemWithDelete = deleteBtnHoc(ListItem, deleteTownById);
-  return <List ListItem = {ListItemWithDelete}
-               dataArr={townsArr}
+  ListItem.displayName = "TownItem";
+  let ListItemWithOptions = withOptions(ListItem, deleteTownById);
+  return <List ListItem = {ListItemWithOptions}
+               dataArr={props.townsArr}
                style = {style}/>
 }
 let style = {

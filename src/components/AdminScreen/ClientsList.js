@@ -5,11 +5,11 @@ import List from "./List";
 import ListItem from "./ListItem";
 
 import {deleteClient} from "../../store/adminPanel/actions";
-import withDeleteBtn from "../../hocs/withDeleteBtn";
+import withOptions from "../../hocs/withOptions";
 
 function ClientsList(props){
-  let ListItemWithDelete = withDeleteBtn(ListItem, props.deleteClient);
-  return <List ListItem = {ListItemWithDelete}
+  let ListItemWithOptions = withOptions(ListItem, props.deleteClient);
+  return <List ListItem = {ListItemWithOptions}
                dataArr={props.clientsArr}
                style = {style}/>
 }
