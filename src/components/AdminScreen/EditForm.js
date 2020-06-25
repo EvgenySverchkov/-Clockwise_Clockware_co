@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 export default function EditForm({id, handler, arrFromState}){
-  let obj = arrFromState.find(item=>item.id == id);
+  let obj = arrFromState.find(item=>item.id === id);
   let [stateObj, setStateObj] = useState(obj);
   let keyArr = Object.keys(stateObj||{});
 
@@ -13,7 +13,7 @@ export default function EditForm({id, handler, arrFromState}){
       {
         keyArr.map(item=>{
           if(item === 'id'){
-            return;
+            return null;
           }else{
             return (<div key={item} className="form-group row">
                 <label htmlFor={item} className="col-sm-5 col-form-label">Enter {item}</label>

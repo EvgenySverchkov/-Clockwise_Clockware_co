@@ -1,27 +1,26 @@
 import React, {useEffect} from 'react';
 import {Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
-import {addNewMaster, addNewTown, initMasters, townsInit, updateMaster, updateTown} from "../../store/adminPanel/actions";
+import {addNewMaster, addNewTown, initMasters,
+	      townsInit, updateMaster, updateTown,
+				deleteMaster, deleteTown, deleteClient} from "../../store/adminPanel/actions";
 import "./adminScreen.css";
 
 import Sidebar from "./Sidebar";
-import ClientsList from "./ClientsList";
-
-import MastersList from "./MastersList";
-import TownsList from "./TownsList";
 import AddNewTownForm from "./AddNewTownForm";
 import AddMasterForm from "./AddMasterForm";
 import EditForm from "./EditForm";
+import List from "./List";
 
 import {serverDomain} from "../../services/serverUrls";
 
 function AdminSrcreen(props){
 	useEffect(function(){
-		fetch("https://clockwiseserver.herokuapp.com/get_masters")
+		fetch(`${serverDomain}/get_masters`)
 			.then(data=>data.json())
 			.then(data=>props.initMasters(data));
 
-		fetch("https://clockwiseserver.herokuapp.com/get_towns")
+		fetch(`${serverDomain}/get_towns`)
 			.then(json=>json.json())
 			.then(data=>props.townsInit(data));
 	}, []);
@@ -80,7 +79,7 @@ function AdminSrcreen(props){
 					id: createUniqueId(props.townsArr),
 					name: townName
 				};
-				postData("${serverDomain}/post_town", infoObj)
+				postData(`${serverDomain}/post_town`, infoObj)
 					.then(data=>{
 						props.addNewTown(data)
 					})
@@ -131,30 +130,53 @@ function AdminSrcreen(props){
 		}
 	}
 
+	function deleteDataFromServer(url, id){
+		return fetch(url, {
+			method: "delete"
+		}).then(data=>data.json())
+	}
+	function deleteMasterById(masterId){
+		deleteDataFromServer(`${serverDomain}/delete_master/${masterId}`, masterId)
+		.then(data=>props.deleteMaster(data))
+	}
+	function deleteTownById(townId){
+		deleteDataFromServer(`${serverDomain}/delete_town/${townId}`, townId)
+		.then(data=>props.deleteTown(data))
+	}
+	function deleteClientById(clientId){
+		props.deleteClient(clientId)
+	}
+	
 	return(
 		<div className="container">
 			<Sidebar/>
 			<div className="content">
 				<Switch>
 					<Route path="/admin/clientsList"
-								 render={()=><ClientsList clientsArr={props.clientsArr}/>}/>
+								 render={()=><List dataArr={props.clientsArr}
+							                		 style = {{width: '100%', tableLayout: 'fixed'}}
+							                     deleteAction = {deleteClientById}/>}/>
 					<Route path="/admin/mastersList"
-								 render={()=><MastersList mastersArr={props.mastersArr}/>}/>
+								 render={()=><List dataArr={props.mastersArr}
+							                		 style = {{width: '70%',margin: '0 auto',tableLayout: 'fixed'}}
+							                     deleteAction = {deleteMasterById}/>}/>
 					<Route path="/admin/addMasterForm"
 						     render={()=><AddMasterForm townsArr={props.townsArr} handler={addNewMasterHandler}/>}/>
 					<Route path="/admin/townsList"
-				 				 render={()=><TownsList townsArr={props.townsArr}/>}/>
+				 				 render={()=><List dataArr={props.townsArr}
+							                style = {{width: '20%', margin: '0 auto'}}
+							                deleteAction = {deleteTownById}/>}/>
 					<Route path="/admin/addTownForms"
 				 			 	 render={()=><AddNewTownForm handler={addNewTownHandler}/>}/>
 					<Route path="/admin/editMaster/:id"
 								 render={(matchProps)=> (
-									 <EditForm id = {matchProps.match.params.id}
+									 <EditForm id = {+matchProps.match.params.id}
 									 					 handler={editMasterHandler}
 														 arrFromState={props.mastersArr}/>
 								 )}/>
-				  <Route path="/admin/editTowns/:id"
+				  <Route path="/admin/editTown/:id"
 								 render={(matchProps)=> (
-									 <EditForm id = {matchProps.match.params.id}
+									 <EditForm id = {+matchProps.match.params.id}
 														 handler={editTownHandler}
 														 arrFromState={props.townsArr}/>
 								 )}/>
@@ -171,12 +193,15 @@ function mapStateToProps(state){
 		clientsArr: state.client_reduser.clients,
 	}
 }
-let actions = {
+const actions = {
 	addNewMaster,
 	addNewTown,
 	initMasters,
 	townsInit,
 	updateMaster,
-	updateTown
+	updateTown,
+	deleteMaster,
+	deleteTown,
+	deleteClient
 }
 export default connect(mapStateToProps, actions)(AdminSrcreen);

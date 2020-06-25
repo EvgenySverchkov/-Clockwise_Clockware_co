@@ -1,10 +1,4 @@
 export default function town_reduser(state={}, action){
-  function replace(id, obj, arr){
-    let copyArr = [...arr];
-    let idx = arr.findIndex(item=>item.id === id);
-    copyArr.splice(idx, 1, obj)
-    return copyArr
-  }
   switch(action.type){
     case "INIT_NEW_TOWNS":
       return {
