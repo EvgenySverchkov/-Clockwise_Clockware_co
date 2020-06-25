@@ -2,7 +2,6 @@ import React from 'react';
 
 export default function ListHeader({templObj}){
   let keysArr = Object.keys(templObj||{});
-
   if(keysArr.length===0){
     return (<tr><th>List is empty</th></tr>)
   }
