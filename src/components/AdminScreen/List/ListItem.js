@@ -5,7 +5,9 @@ export default ({infoObj})=>{
   return (
     <>
       {
-        keysArr.map((item)=><td key={item}>{infoObj[item]}</td>)
+        keysArr.map((item)=><td className="text-center"
+                                style={{wordWrap: "break-word"}}
+                                key={item}>{infoObj[item]}</td>)
       }
     </>
   );

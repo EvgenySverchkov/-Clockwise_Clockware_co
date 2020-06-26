@@ -1,1 +1,1 @@
-export const serverDomain = "https://clockwiseserver.herokuapp.com";
+export const SERVERDOMAIN = "https://clockwiseserver.herokuapp.com";

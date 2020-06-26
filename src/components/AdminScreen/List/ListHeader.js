@@ -19,7 +19,7 @@ export default function ListHeader({templObj}){
             }
             value = strCopy[0].toUpperCase() + strCopy.slice(1);
           }
-          return (<th key={item}>{value}</th>);
+          return (<th key={item} className="text-center" style={{wordWrap: "break-word"}}>{value}</th>);
         })
       }
       <th></th>

@@ -13,7 +13,7 @@ export default function town_reduser(state={}, action){
     case "ADD_NEW_TOWN":
       return {
         ...state,
-        towns: [...state.towns, action.payload]
+        towns: [...state.towns, action.payload].sort((a,b)=>a.id-b.id)
       }
     case "DELETE_TOWN":
       return {

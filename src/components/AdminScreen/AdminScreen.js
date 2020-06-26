@@ -6,21 +6,22 @@ import {addNewMaster, addNewTown, initMasters,
 				deleteMaster, deleteTown, deleteClient} from "../../store/adminPanel/actions";
 import "./adminScreen.css";
 
-import Sidebar from "./Sidebar";
+import NavMenu from "./NavMenu";
 import AddNewTownForm from "./AddNewTownForm";
 import AddMasterForm from "./AddMasterForm";
 import EditForm from "./EditForm";
 import List from "./List";
 
-import {serverDomain} from "../../services/serverUrls";
+import {SERVERDOMAIN} from "../../services/serverUrls";
+
 
 function AdminSrcreen(props){
 	useEffect(function(){
-		fetch(`${serverDomain}/get_masters`)
+		fetch(`${SERVERDOMAIN}/get_masters`)
 			.then(data=>data.json())
 			.then(data=>props.initMasters(data));
 
-		fetch(`${serverDomain}/get_towns`)
+		fetch(`${SERVERDOMAIN}/get_towns`)
 			.then(json=>json.json())
 			.then(data=>props.townsInit(data));
 	}, []);
@@ -31,7 +32,13 @@ function AdminSrcreen(props){
 				'Content-Type': 'application/json;charset=utf-8'
 			},
 			body: JSON.stringify(newObj),
-		}).then(json=>json.json());
+		})
+		.then(json=>json.json())
+		.catch((err)=>{
+			alert("Internal Server Error! Try again");
+			console.log(err)
+			throw err;
+		});
 	}
 	function addNewMasterHandler(e){
 			e.preventDefault();
@@ -39,18 +46,24 @@ function AdminSrcreen(props){
 			let masterRating = e.target.rating.value;
 			let townsArr = selectCheckedTowns(e.target.elements);
 			if(masterName&&masterRating&&townsArr.length!==0){
-				let infoObj = {
-					id: createUniqueId(props.mastersArr),
-					name: masterName,
-					rating: masterRating,
-					towns: townsArr.join(",")
-				};
-				postData(`${serverDomain}/post_master`, infoObj)
-					.then(data=>props.addNewMaster(data))
-					.then(()=>{
-						alert("You added new master");
-						props.history.push('/admin/mastersList');
-					});
+				if(masterName.match(/\d/)){
+					alert("The string name must not contain numbers!!!!")
+				}else{
+					masterName = masterName.charAt(0).toUpperCase() + masterName.slice(1).toLowerCase();
+					let infoObj = {
+						id: createUniqueId(props.mastersArr),
+						rating: masterRating,
+						towns: townsArr.join(","),
+						name: masterName,
+					};
+					postData(`${SERVERDOMAIN}/post_master`, infoObj)
+						.then(data=>props.addNewMaster(data))
+						.then(()=>{
+							alert("You added new master");
+							props.history.push('/admin/mastersList');
+						})
+						.catch((err)=>alert(err));
+				}
 			}else{
 				alert("Please, feeling all gaps")
 			}
@@ -75,18 +88,20 @@ function AdminSrcreen(props){
 				alert("The name of this town is already on the list! \nPlease enter another town name!");
 				e.target.town.value = '';
 			}else{
+				townName = townName.charAt(0).toUpperCase() + townName.slice(1).toLowerCase();
 				let infoObj = {
+					name: townName,
 					id: createUniqueId(props.townsArr),
-					name: townName
 				};
-				postData(`${serverDomain}/post_town`, infoObj)
+				postData(`${SERVERDOMAIN}/post_town`, infoObj)
 					.then(data=>{
 						props.addNewTown(data)
 					})
 					.then(()=>{
 						alert("You added new town");
 						props.history.push('/admin/townsList');
-					});
+					})
+					.catch((err)=>alert(err));
 				}
 			}else{
 				alert("Please, filling the gap")
@@ -101,55 +116,90 @@ function AdminSrcreen(props){
 			},
 			body: JSON.stringify(newObj)
 		})
-		.then(json=>json.json());
+		.then(json=>json.json())
+		.catch((err)=>{
+			alert("Internal Server Error! Try again");
+			console.log(err)
+			throw err;
+		});
 	}
 	function editMasterHandler(e, newMasterObj){
 		e.preventDefault();
-		putDataToServer(`${serverDomain}/put_master/${newMasterObj.id}`, newMasterObj)
+		for(let key in newMasterObj){
+			if(!newMasterObj[key]){
+				alert("Please filling all gaps");
+				return null;
+			}
+		}
+		putDataToServer(`${SERVERDOMAIN}/put_master/${newMasterObj.id}`, newMasterObj)
 			.then(data=>{
 				props.updateMaster(data);
 				props.history.push('/admin/mastersList');
-			});
+			}).catch((err)=>alert(err));
 	}
 	function editTownHandler(e, newTownObj){
 		e.preventDefault();
-		putDataToServer(`${serverDomain}/put_town/${newTownObj.id}`, newTownObj)
-			.then(data=>{
-				props.updateTown(data);
-				props.history.push('/admin/townsList');
-			});
+		for(let key in newTownObj){
+			if(!newTownObj[key]){
+				alert("Please filling all gaps");
+				return null;
+			}
+		}
+		if(props.townsArr.find((item)=>item.name.toLowerCase()===newTownObj.name.toLowerCase())){
+			alert("The name of this town is already on the list! \nPlease enter another town name!");
+		}else{
+			putDataToServer(`${SERVERDOMAIN}/put_town/${newTownObj.id}`, newTownObj)
+				.then(data=>{
+					props.updateTown(data);
+					props.history.push('/admin/townsList');
+				}).catch((err)=>alert(err));
+		}
 	}
 
-	function createUniqueId(arr){
-		if(arr.length === 0){
+	function createUniqueId(objectsArr){
+		if(objectsArr.length === 0){
 			return 1;
-		}else{
-			let copyArr = [...arr];
-			let sortArr = copyArr.sort((firstItem,secondItem)=>firstItem.id - secondItem.id);
-			return sortArr[sortArr.length-1].id + 1;
 		}
+		let idxsArr = objectsArr.map(item=>item.id);
+		idxsArr.sort((a, b)=> a - b);
+	  if(idxsArr.length === idxsArr[idxsArr.length - 1]){
+	    return idxsArr.length + 1;
+	  }else{
+	    let resultLength = idxsArr[idxsArr.length - 1] + 1;
+	    for (let i = 1; i < resultLength; i++){
+	      if (idxsArr.indexOf(i) === -1){
+	        return i;
+	      }
+	    }
+	  }
 	}
 
 	function deleteDataFromServer(url, id){
 		return fetch(url, {
 			method: "delete"
-		}).then(data=>data.json())
+		})
+		.then(data=>data.json())
+		.catch((err)=>{
+			alert("Internal Server Error! Try again");
+			console.log(err)
+			throw err;
+		});
 	}
 	function deleteMasterById(masterId){
-		deleteDataFromServer(`${serverDomain}/delete_master/${masterId}`, masterId)
-		.then(data=>props.deleteMaster(data))
+		deleteDataFromServer(`${SERVERDOMAIN}/delete_master/${masterId}`, masterId)
+		.then(data=>props.deleteMaster(data)).catch((err)=>alert(err));
 	}
 	function deleteTownById(townId){
-		deleteDataFromServer(`${serverDomain}/delete_town/${townId}`, townId)
-		.then(data=>props.deleteTown(data))
+		deleteDataFromServer(`${SERVERDOMAIN}/delete_town/${townId}`, townId)
+		.then(data=>props.deleteTown(data)).catch((err)=>alert(err));
 	}
 	function deleteClientById(clientId){
 		props.deleteClient(clientId)
 	}
-	
+
 	return(
 		<div className="container">
-			<Sidebar/>
+			<NavMenu/>
 			<div className="content">
 				<Switch>
 					<Route path="/admin/clientsList"
@@ -158,14 +208,14 @@ function AdminSrcreen(props){
 							                     deleteAction = {deleteClientById}/>}/>
 					<Route path="/admin/mastersList"
 								 render={()=><List dataArr={props.mastersArr}
-							                		 style = {{width: '70%',margin: '0 auto',tableLayout: 'fixed'}}
+							                		 style = {{width: '70%',margin: '0 auto', tableLayout: 'fixed'}}
 							                     deleteAction = {deleteMasterById}/>}/>
+					<Route path="/admin/townsList"
+								 render={()=><List dataArr={props.townsArr}
+								 									 style = {{width: '40%', margin: '0 auto', tableLayout: 'fixed'}}
+								 									 deleteAction = {deleteTownById}/>}/>
 					<Route path="/admin/addMasterForm"
 						     render={()=><AddMasterForm townsArr={props.townsArr} handler={addNewMasterHandler}/>}/>
-					<Route path="/admin/townsList"
-				 				 render={()=><List dataArr={props.townsArr}
-							                style = {{width: '20%', margin: '0 auto'}}
-							                deleteAction = {deleteTownById}/>}/>
 					<Route path="/admin/addTownForms"
 				 			 	 render={()=><AddNewTownForm handler={addNewTownHandler}/>}/>
 					<Route path="/admin/editMaster/:id"

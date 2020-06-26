@@ -8,7 +8,7 @@ export default function master_reducer(state={}, action){
     case "ADD_NEW_MASTER":
       return {
         ...state,
-        masters: [...state.masters, action.payload]
+        masters: [...state.masters, action.payload].sort((a, b)=>a.id - b.id)
       }
     case "UPDATE_MASTER":
       return {

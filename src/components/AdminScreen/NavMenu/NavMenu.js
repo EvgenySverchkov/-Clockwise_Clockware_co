@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import "./sidebar.css"
 
-function Sidebar(props){
+function NavMenu(props){
   return (
     <div className="nav-menu-wrapp mb-5 mt-3">
       <div className="btn-group nav-menu">
@@ -47,4 +47,4 @@ function Sidebar(props){
   );
 }
 
-export default Sidebar;
+export default NavMenu;
