@@ -6,16 +6,16 @@ import {addCurrentOrderToState, addSuitableMasters, addOrdersToState} from '../.
 import OrderForm from "./OrderForm";
 import MastersList from "./MastersList";
 
-import {LOCALDOMAIN} from "../../services/serverUrls"
+import {SERVERDOMAIN} from "../../services/serverUrls"
 
 function ClientSrcreen(props){
 	let [townsArr, setTownsArr] = useState([]);
 	useEffect(()=>{
-		fetch(`${LOCALDOMAIN}/get_towns`)
+		fetch(`${SERVERDOMAIN}/get_towns`)
 			.then(json=>{console.log(json)
 				return json.json()})
 			.then(data=>setTownsArr(data));
-		fetch(`${LOCALDOMAIN}/get_orders`)
+		fetch(`${SERVERDOMAIN}/get_orders`)
 			.then(json=>json.json())
 			.then(data=>props.addOrdersToState(data))
 	}, []);
@@ -44,7 +44,7 @@ function ClientSrcreen(props){
 			return false;
 		}
 		let newObj = {...props.currentOrder, masterId: masterId};
-		fetch("http://localhost:9000/post_order", {
+		fetch(`${SERVERDOMAIN}/post_order`, {
 			method: "POST",
 			headers:{
 				'Content-Type': 'application/json;charset=utf-8'
@@ -59,7 +59,7 @@ function ClientSrcreen(props){
 			.catch((err)=>alert(err));
 	}
 	function getMastersFromServer(clientTown){
-		fetch("http://localhost:9000/get_masters")
+		fetch(`${SERVERDOMAIN}/get_masters`)
 			.then(json=>json.json())
 			.then(data=>{
 				let newarr = data.filter(item=>{
