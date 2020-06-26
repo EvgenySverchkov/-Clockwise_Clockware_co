@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import {Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import {addNewMaster, addNewTown, initMasters,
-	      townsInit, updateMaster, updateTown,
-				deleteMaster, deleteTown, deleteClient} from "../../store/adminPanel/actions";
+	      townsInit, updateMasterInState, updateTownInState,
+				deleteMasterFromState, deleteTownFromState, initOrders, deleteOrderFromState, updateOrderInState} from "../../store/adminPanel/actions";
 import "./adminScreen.css";
 
 import NavMenu from "./NavMenu";
@@ -14,7 +14,6 @@ import List from "./List";
 
 import {SERVERDOMAIN} from "../../services/serverUrls";
 
-
 function AdminSrcreen(props){
 	useEffect(function(){
 		fetch(`${SERVERDOMAIN}/get_masters`)
@@ -24,6 +23,10 @@ function AdminSrcreen(props){
 		fetch(`${SERVERDOMAIN}/get_towns`)
 			.then(json=>json.json())
 			.then(data=>props.townsInit(data));
+
+		fetch(`${SERVERDOMAIN}/get_orders`)
+			.then(json=>json.json())
+			.then(data=>props.initOrders(data));
 	}, []);
 	function postData(url, newObj){
 		return fetch(url, {
@@ -128,12 +131,12 @@ function AdminSrcreen(props){
 		for(let key in newMasterObj){
 			if(!newMasterObj[key]){
 				alert("Please filling all gaps");
-				return null;
+				return false;
 			}
 		}
 		putDataToServer(`${SERVERDOMAIN}/put_master/${newMasterObj.id}`, newMasterObj)
 			.then(data=>{
-				props.updateMaster(data);
+				props.updateMasterInState(data);
 				props.history.push('/admin/mastersList');
 			}).catch((err)=>alert(err));
 	}
@@ -142,7 +145,7 @@ function AdminSrcreen(props){
 		for(let key in newTownObj){
 			if(!newTownObj[key]){
 				alert("Please filling all gaps");
-				return null;
+				return false;
 			}
 		}
 		if(props.townsArr.find((item)=>item.name.toLowerCase()===newTownObj.name.toLowerCase())){
@@ -150,10 +153,24 @@ function AdminSrcreen(props){
 		}else{
 			putDataToServer(`${SERVERDOMAIN}/put_town/${newTownObj.id}`, newTownObj)
 				.then(data=>{
-					props.updateTown(data);
+					props.updateTownInState(data);
 					props.history.push('/admin/townsList');
 				}).catch((err)=>alert(err));
 		}
+	}
+	function editOrderHandler(e, newOrderObj){
+		e.preventDefault();
+		for(let key in newOrderObj){
+			if(!newOrderObj[key]){
+				alert("Please filling all gaps");
+				return false;
+			}
+		}
+		putDataToServer(`${SERVERDOMAIN}/put_order/${newOrderObj.id}`, newOrderObj)
+			.then(data=>{
+				props.updateOrderInState(data);
+				props.history.push('/admin/ordersList')
+			}).catch((err)=>alert(err));
 	}
 
 	function createUniqueId(objectsArr){
@@ -174,7 +191,7 @@ function AdminSrcreen(props){
 	  }
 	}
 
-	function deleteDataFromServer(url, id){
+	function deleteDataFromServer(url){
 		return fetch(url, {
 			method: "delete"
 		})
@@ -186,15 +203,16 @@ function AdminSrcreen(props){
 		});
 	}
 	function deleteMasterById(masterId){
-		deleteDataFromServer(`${SERVERDOMAIN}/delete_master/${masterId}`, masterId)
-		.then(data=>props.deleteMaster(data)).catch((err)=>alert(err));
+		deleteDataFromServer(`${SERVERDOMAIN}/delete_master/${masterId}`)
+		.then(data=>props.deleteMasterFromState(data)).catch((err)=>alert(err));
 	}
 	function deleteTownById(townId){
-		deleteDataFromServer(`${SERVERDOMAIN}/delete_town/${townId}`, townId)
-		.then(data=>props.deleteTown(data)).catch((err)=>alert(err));
+		deleteDataFromServer(`${SERVERDOMAIN}/delete_town/${townId}`)
+		.then(data=>props.deleteTownFromState(data)).catch((err)=>alert(err));
 	}
-	function deleteClientById(clientId){
-		props.deleteClient(clientId)
+	function deleteOrderById(orderId){
+		deleteDataFromServer(`${SERVERDOMAIN}/delete_order/${orderId}`)
+		.then(data=>props.deleteOrderFromState(data)).catch((err)=>alert(err));
 	}
 
 	return(
@@ -202,10 +220,10 @@ function AdminSrcreen(props){
 			<NavMenu/>
 			<div className="content">
 				<Switch>
-					<Route path="/admin/clientsList"
-								 render={()=><List dataArr={props.clientsArr}
+					<Route path="/admin/ordersList"
+								 render={()=><List dataArr={props.ordersArr}
 							                		 style = {{width: '100%', tableLayout: 'fixed'}}
-							                     deleteAction = {deleteClientById}/>}/>
+							                     deleteAction = {deleteOrderById}/>}/>
 					<Route path="/admin/mastersList"
 								 render={()=><List dataArr={props.mastersArr}
 							                		 style = {{width: '70%',margin: '0 auto', tableLayout: 'fixed'}}
@@ -230,6 +248,12 @@ function AdminSrcreen(props){
 														 handler={editTownHandler}
 														 arrFromState={props.townsArr}/>
 								 )}/>
+							 <Route path="/admin/editOrder/:id"
+								 render={(matchProps)=> (
+			 							<EditForm id = {+matchProps.match.params.id}
+			 												handler={editOrderHandler}
+			 												arrFromState={props.ordersArr}/>
+			 					 )}/>
 				</Switch>
 			</div>
 		</div>
@@ -240,7 +264,7 @@ function mapStateToProps(state){
 	return {
 		mastersArr: state.master_reducer.masters,
 		townsArr: state.town_reduser.towns,
-		clientsArr: state.client_reduser.clients,
+		ordersArr: state.orders_reducer.ordersArr,
 	}
 }
 const actions = {
@@ -248,10 +272,12 @@ const actions = {
 	addNewTown,
 	initMasters,
 	townsInit,
-	updateMaster,
-	updateTown,
-	deleteMaster,
-	deleteTown,
-	deleteClient
+	updateMasterInState,
+	updateTownInState,
+	deleteMasterFromState,
+	deleteTownFromState,
+	initOrders,
+	deleteOrderFromState,
+	updateOrderInState
 }
 export default connect(mapStateToProps, actions)(AdminSrcreen);
