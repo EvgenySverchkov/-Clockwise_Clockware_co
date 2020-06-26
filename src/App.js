@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import reducers from "./store/adminPanel/reducers";
+import reducers from "./store/allReducers.js";
 
 import ClientScreen from "./components/ClientScreen";
 import AdminScreen from "./components/AdminScreen";
@@ -11,21 +11,19 @@ import FirstScreen from "./components/FirstScreen";
 import './App.css';
 
 const initialState = {
-  client_reduser:{
-    clients: [
-      {id: 1,
-       name: "Valery",
-       email:"some@mail.com",
-       clockSize: "middle",
-       town: "Dnipro",
-       time:"01-01-2021 15:00"}
-     ],
+  orders_reducer:{
+    ordersArr: []
   },
   master_reducer: {
     masters:[],
   },
   town_reduser:{
     towns:[],
+  },
+  client_order_reduser:{
+    currentOrder: {},
+    suitableMasters: [],
+    ordersArr: []
   }
 };
 const store = createStore(

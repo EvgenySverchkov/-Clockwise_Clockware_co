@@ -13,6 +13,8 @@ export default function LinkToEditForm(props){
         return "/admin/editMaster/";
       case "townsList":
         return "/admin/editTown/";
+      case "ordersList":
+        return "/admin/editOrder/";
       default:
         return currentPath;
     }

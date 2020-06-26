@@ -8,11 +8,11 @@ function NavMenu(props){
       <div className="btn-group nav-menu">
         <div className="dropdown mr-1">
           <button className="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Clients
+            Orders
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <Link to="/admin/clientsList" className="dropdown-item">
-              Show clients
+            <Link to="/admin/ordersList" className="dropdown-item">
+              Show orders
             </Link>
           </div>
         </div>
