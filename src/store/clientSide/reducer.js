@@ -15,6 +15,11 @@ export default function client_order_reduser(state={}, action){
         ...state,
         ordersArr: action.payload
       }
+    case "ADD_NEW_ORDER":
+      return {
+        ...state,
+        ordersArr: [...state.ordersArr, action.payload].sort((a, b)=>a.id - b.id)
+      }
     default:
       return state;
   }

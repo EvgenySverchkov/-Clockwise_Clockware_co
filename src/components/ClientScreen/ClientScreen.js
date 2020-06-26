@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
 import {Switch, Route} from 'react-router-dom';
-import {addCurrentOrderToState, addSuitableMasters, addOrdersToState} from '../../store/clientSide/actions'
+import {addCurrentOrderToState, addSuitableMasters, addOrdersToState, addNewOrderToState} from '../../store/clientSide/actions'
 
 import OrderForm from "./OrderForm";
 import MastersList from "./MastersList";
@@ -12,20 +12,26 @@ function ClientSrcreen(props){
 	let [townsArr, setTownsArr] = useState([]);
 	useEffect(()=>{
 		fetch(`${SERVERDOMAIN}/get_towns`)
-			.then(json=>{console.log(json)
-				return json.json()})
+			.then(json=>json.json())
 			.then(data=>setTownsArr(data));
+		getOrdersArrFromServer(SERVERDOMAIN);
+	}, []);
+
+	function getOrdersArrFromServer(url){
 		fetch(`${SERVERDOMAIN}/get_orders`)
 			.then(json=>json.json())
 			.then(data=>props.addOrdersToState(data))
-	}, []);
+	}
+
 	function createUniqueId(objectsArr){
 		if(objectsArr.length === 0){
 			return 1;
 		}
 		let idxsArr = objectsArr.map(item=>item.id);
 		idxsArr.sort((a, b)=> a - b);
+
 		if(idxsArr.length === idxsArr[idxsArr.length - 1]){
+			console.log(idxsArr.length + 1)
 			return idxsArr.length + 1;
 		}else{
 			let resultLength = idxsArr[idxsArr.length - 1] + 1;
@@ -52,9 +58,11 @@ function ClientSrcreen(props){
 			body: JSON.stringify(newObj)
 		})
 			.catch((err)=>{throw err})
-			.then(()=>{
+			.then(json=>json.json())
+			.then(data=>{
 				alert("Congratulations, you have booked a master!!!");
-				props.history.push("/client")
+				props.history.push("/client");
+				getOrdersArrFromServer(SERVERDOMAIN);
 			})
 			.catch((err)=>alert(err));
 	}
@@ -114,6 +122,7 @@ function mapStateToProps(state){
 let actions = {
 	addOrdersToState,
 	addCurrentOrderToState,
-	addSuitableMasters
+	addSuitableMasters,
+	addNewOrderToState
 }
 export default connect(mapStateToProps, actions)(ClientSrcreen);
