@@ -8,7 +8,6 @@ import OrderForm from "./OrderForm";
 import MastersList from "./MastersList";
 
 import {SERVERDOMAIN} from "../../services/serverUrls";
-import {LOCALDOMAIN} from "../../services/serverUrls";
 
 function ClientSrcreen(props){
 	let [townsArr, setTownsArr] = useState([]);
@@ -51,7 +50,7 @@ function ClientSrcreen(props){
 			return false;
 		}
 		let newObj = {...props.currentOrder, masterId: masterId, id: createUniqueId(props.ordersArr)};
-		fetch(`${LOCALDOMAIN}/post_order`, {
+		fetch(`${SERVERDOMAIN}/post_order`, {
 			method: "POST",
 			headers:{
 				'Content-Type': 'application/json;charset=utf-8'
