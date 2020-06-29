@@ -6,7 +6,8 @@ import {addCurrentOrderToState, addSuitableMasters, addOrdersToState, addNewOrde
 import OrderForm from "./OrderForm";
 import MastersList from "./MastersList";
 
-import {SERVERDOMAIN} from "../../services/serverUrls"
+import {SERVERDOMAIN} from "../../services/serverUrls";
+
 
 function ClientSrcreen(props){
 	let [townsArr, setTownsArr] = useState([]);
@@ -18,9 +19,8 @@ function ClientSrcreen(props){
 	}, []);
 
 	function getOrdersArrFromServer(url){
-		fetch(`${SERVERDOMAIN}/get_orders`)
+		return fetch(`${SERVERDOMAIN}/get_orders`)
 			.then(json=>json.json())
-			.then(data=>props.addOrdersToState(data))
 	}
 
 	function createUniqueId(objectsArr){
@@ -49,7 +49,7 @@ function ClientSrcreen(props){
 			alert("Please, choose one!!!");
 			return false;
 		}
-		let newObj = {...props.currentOrder, masterId: masterId};
+		let newObj = {...props.currentOrder, masterId: masterId, id: createUniqueId(props.ordersArr)};
 		fetch(`${SERVERDOMAIN}/post_order`, {
 			method: "POST",
 			headers:{
@@ -62,7 +62,8 @@ function ClientSrcreen(props){
 			.then(data=>{
 				alert("Congratulations, you have booked a master!!!");
 				props.history.push("/client");
-				getOrdersArrFromServer(SERVERDOMAIN);
+				getOrdersArrFromServer(SERVERDOMAIN).then(data=>props.addOrdersToState(data));
+				props.addCurrentOrderToState({});
 			})
 			.catch((err)=>alert(err));
 	}
@@ -84,21 +85,11 @@ function ClientSrcreen(props){
 	function submitOrderFormHandler(e){
 		e.preventDefault();
 		let trgElem = e.target;
-		if(!trgElem.towns.value || !trgElem.clockSize.value){
+		if(!trgElem.town.value || !trgElem.size.value){
 			alert("Pleade, filling all gaps!!!");
 			return false;
 		}
-		let newObj = {
-			id: createUniqueId(props.ordersArr),
-			name: trgElem.name.value,
-			email: trgElem.email.value,
-			clockSize: trgElem.clockSize.value,
-			town: trgElem.towns.value,
-			time: trgElem.time.value,
-			date: trgElem.date.value
-		}
-		props.addCurrentOrderToState(newObj);
-		getMastersFromServer(newObj.town);
+		getMastersFromServer(e.target.town.value);
 		props.history.push("/client/masters");
 	}
 
@@ -106,7 +97,7 @@ function ClientSrcreen(props){
 	return (
 		<div style={{width: "70%", margin: "0 auto"}} className="mt-4">
 			<Switch>
-				<Route exact path="/client" render={()=><OrderForm currentOrder={props.currentOrder} townsArr={townsArr} submitHandler = {submitOrderFormHandler}/>}/>
+				<Route exact path="/client" render={()=><OrderForm townsArr={townsArr} submitHandler = {submitOrderFormHandler}/>}/>
 				<Route path="/client/masters" render={()=><MastersList submitHandler = {submitHandlerInListMasters}/>}/>
 			</Switch>
 		</div>

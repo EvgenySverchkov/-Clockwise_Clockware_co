@@ -1,6 +1,13 @@
 import React from 'react';
+import {connect} from "react-redux";
+import {addCurrentOrderToState} from '../../store/clientSide/actions'
 
-function OrderForm({submitHandler, townsArr, currentOrder}){
+
+function OrderForm({submitHandler, townsArr, currentOrder, addCurrentOrderToState}){
+  function handler(e){
+    let idx = e.target.name;
+    addCurrentOrderToState({...currentOrder, [idx]: e.target.value})
+  }
   return(
     <>
       <div className="text-center display-4 mb-1">You are welcomed by <span className="font-italic">Clockwise company</span>
@@ -10,28 +17,31 @@ function OrderForm({submitHandler, townsArr, currentOrder}){
         <div className="form-group row">
           <label htmlFor="town" className="col-sm-5 col-form-label font-weight-bold">Enter your name</label>
           <div className="col-sm-7">
-            <input id="name" type="text" className="form-control" required/>
+            <input id="name" type="text" name="name" className="form-control"
+                   onChange={handler}
+                   value={currentOrder.name || ''} required/>
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="email" className="col-sm-5 col-form-label font-weight-bold">Enter your e-mail</label>
           <div className="col-sm-7">
-            <input id="email" type="email" className="form-control" required/>
+            <input id="email" type="email" name="email" className="form-control"
+                   onChange={handler} value={currentOrder.email||''} required/>
           </div>
         </div>
         <div className="form-group">
           <div className="mb-2 font-weight-bold">Choose size of clock</div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="radio" name="clockSize" id="smallSize" value="small"/>
-            <label className="form-check-label" htmlFor="smallSize">Small</label>
+            <input className="form-check-input" type="radio" onChange={handler} name="size" id="smallSize" value="small"/>
+            <label className="form-check-label" htmlFor="size">Small</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="radio" name="clockSize" id="middleSize" value="middle"/>
-            <label className="form-check-label" htmlFor="middleSize">Middle</label>
+            <input className="form-check-input" type="radio" onChange={handler} name="size" id="middleSize" value="middle"/>
+            <label className="form-check-label" htmlFor="size">Middle</label>
           </div>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="radio" name="clockSize" id="largeSize" value="large"/>
-            <label className="form-check-label" htmlFor="largeSize">Large</label>
+            <input className="form-check-input" type="radio" onChange={handler} name="size" id="largeSize" value="large"/>
+            <label className="form-check-label" htmlFor="size">Large</label>
           </div>
         </div>
         <div className="form-group">
@@ -39,7 +49,7 @@ function OrderForm({submitHandler, townsArr, currentOrder}){
           {townsArr.map((item)=>(
             <div key={item.id+1} className="form-check-inline">
               <label className="form-check-label" htmlFor={item.name}>
-                <input type="radio" className="form-check-input" name="towns" id={item.name} value={item.name}/>
+                <input type="radio" className="form-check-input" onChange={handler} name="town" id={item.name} value={item.name}/>
                 {item.name}
               </label>
             </div>
@@ -47,15 +57,19 @@ function OrderForm({submitHandler, townsArr, currentOrder}){
         </div>
         <div className="form-group">
           <div className="mb-2 font-weight-bold" >Choose date and time<br/><sub>*time from 8 to 18</sub></div>
-          <input type="date" id="date" className="mr-1" required/>
-          <input type="time" id="time" max="18:00" min="08:00" required/>
+          <input type="date" name="date" className="mr-1" onChange={handler} value={currentOrder.date||''} required/>
+          <input type="time" name="time" max="18:00" min="08:00" onChange={handler} value={currentOrder.time||''} required/>
         </div>
         <div className="float-right">
             <input type="submit" value="Next step" className="btn btn-primary"/>
         </div>
-
       </form>
     </>
   );
 }
-export default OrderForm;
+function mapStateToProps(state){
+  return {
+    currentOrder: state.client_order_reduser.currentOrder
+  }
+}
+export default connect(mapStateToProps, {addCurrentOrderToState})(OrderForm);
