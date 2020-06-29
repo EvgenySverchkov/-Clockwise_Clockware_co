@@ -8,6 +8,7 @@ import OrderForm from "./OrderForm";
 import MastersList from "./MastersList";
 
 import {SERVERDOMAIN} from "../../services/serverUrls";
+import {LOCALDOMAIN} from "../../services/serverUrls";
 
 function ClientSrcreen(props){
 	let [townsArr, setTownsArr] = useState([]);
@@ -15,7 +16,7 @@ function ClientSrcreen(props){
 		fetch(`${SERVERDOMAIN}/get_towns`)
 			.then(json=>json.json())
 			.then(data=>setTownsArr(data));
-		getOrdersArrFromServer(SERVERDOMAIN);
+		getOrdersArrFromServer(SERVERDOMAIN).then(data=>props.addOrdersToState(data));
 	}, []);
 
 	function getOrdersArrFromServer(url){
@@ -50,7 +51,7 @@ function ClientSrcreen(props){
 			return false;
 		}
 		let newObj = {...props.currentOrder, masterId: masterId, id: createUniqueId(props.ordersArr)};
-		fetch(`${SERVERDOMAIN}/post_order`, {
+		fetch(`${LOCALDOMAIN}/post_order`, {
 			method: "POST",
 			headers:{
 				'Content-Type': 'application/json;charset=utf-8'
