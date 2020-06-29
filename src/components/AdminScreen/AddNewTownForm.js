@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function AddNewTownForm({handler}){
   return(
@@ -13,4 +14,9 @@ function AddNewTownForm({handler}){
     </form>
   );
 }
+
+AddNewTownForm.propTypes = {
+  handler: PropTypes.func
+}
+
 export default AddNewTownForm;

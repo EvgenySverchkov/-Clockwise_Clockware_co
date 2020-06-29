@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function AddMasterForm({handler, townsArr}){
   return(
@@ -30,4 +31,10 @@ function AddMasterForm({handler, townsArr}){
     </form>
   );
 }
+
+AddMasterForm.propTypes = {
+  handler: PropTypes.func,
+  townsArr: PropTypes.array
+}
+
 export default AddMasterForm;

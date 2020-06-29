@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import OptionsBtns from '../OptionsBtnGroup';
 import ListItem from "./ListItem";
 import ListHeader from "./ListHeader";
 
-export default function CreateList({dataArr, style, deleteAction}){
-
+function CreateList({dataArr, style, deleteAction}){
   return (
     <table className="table table-dark" style={style}>
       <thead>
@@ -23,3 +24,10 @@ export default function CreateList({dataArr, style, deleteAction}){
     </table>
   );
 }
+CreateList.propTypes = {
+  dataArr: PropTypes.array,
+  style: PropTypes.object,
+  deleteAction: PropTypes.func
+}
+
+export default CreateList;

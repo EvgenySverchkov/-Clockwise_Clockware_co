@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
+
 import {Link} from 'react-router-dom';
 
 function MastersList(props){
@@ -50,5 +52,11 @@ function mapStateToProps(state){
     currentOrder: state.client_order_reduser.currentOrder
   }
 };
+
+MastersList.propTypes = {
+  mastersArr: PropTypes.array,
+  currentOrder: PropTypes.object,
+  submitHandler: PropTypes.func
+}
 
 export default connect(mapStateToProps)(MastersList);

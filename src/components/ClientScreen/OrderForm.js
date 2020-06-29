@@ -1,12 +1,17 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {addCurrentOrderToState} from '../../store/clientSide/actions'
+import PropTypes from 'prop-types';
 
+import {addCurrentOrderToState} from '../../store/clientSide/actions';
 
 function OrderForm({submitHandler, townsArr, currentOrder, addCurrentOrderToState}){
   function handler(e){
     let idx = e.target.name;
     addCurrentOrderToState({...currentOrder, [idx]: e.target.value})
+  }
+  function minDate(){
+    let date = new Date();
+    return `${date.getFullYear()}-0${date.getMonth()+1}-${date.getDate()}`;
   }
   return(
     <>
@@ -33,15 +38,15 @@ function OrderForm({submitHandler, townsArr, currentOrder, addCurrentOrderToStat
           <div className="mb-2 font-weight-bold">Choose size of clock</div>
           <div className="form-check form-check-inline">
             <input className="form-check-input" type="radio" onChange={handler} name="size" id="smallSize" value="small"/>
-            <label className="form-check-label" htmlFor="size">Small</label>
+            <label className="form-check-label" htmlFor="smallSize">Small</label>
           </div>
           <div className="form-check form-check-inline">
             <input className="form-check-input" type="radio" onChange={handler} name="size" id="middleSize" value="middle"/>
-            <label className="form-check-label" htmlFor="size">Middle</label>
+            <label className="form-check-label" htmlFor="middleSize">Middle</label>
           </div>
           <div className="form-check form-check-inline">
             <input className="form-check-input" type="radio" onChange={handler} name="size" id="largeSize" value="large"/>
-            <label className="form-check-label" htmlFor="size">Large</label>
+            <label className="form-check-label" htmlFor="largeSize">Large</label>
           </div>
         </div>
         <div className="form-group">
@@ -57,7 +62,7 @@ function OrderForm({submitHandler, townsArr, currentOrder, addCurrentOrderToStat
         </div>
         <div className="form-group">
           <div className="mb-2 font-weight-bold" >Choose date and time<br/><sub>*time from 8 to 18</sub></div>
-          <input type="date" name="date" className="mr-1" onChange={handler} value={currentOrder.date||''} required/>
+          <input type="date" name="date" min={minDate()} className="mr-1" onChange={handler} value={currentOrder.date||''} required/>
           <input type="time" name="time" max="18:00" min="08:00" onChange={handler} value={currentOrder.time||''} required/>
         </div>
         <div className="float-right">
@@ -72,4 +77,12 @@ function mapStateToProps(state){
     currentOrder: state.client_order_reduser.currentOrder
   }
 }
+
+OrderForm.propTypes = {
+  currentOrder: PropTypes.object,
+  submitHandler: PropTypes.func,
+  townsArr: PropTypes.array,
+  addCurrentOrderToState: PropTypes.func
+}
+
 export default connect(mapStateToProps, {addCurrentOrderToState})(OrderForm);

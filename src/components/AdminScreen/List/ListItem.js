@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({infoObj})=>{
+function ListItem({infoObj}){
   let keysArr = Object.keys(infoObj);
   return (
     <>
@@ -12,3 +13,9 @@ export default ({infoObj})=>{
     </>
   );
 }
+
+ListItem.propTypes = {
+  infoObj: PropTypes.object
+}
+
+export default ListItem;

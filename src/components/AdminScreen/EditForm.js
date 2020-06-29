@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
-export default function EditForm({id, handler, arrFromState}){
+function EditForm({id, handler, arrFromState}){
   let obj = arrFromState.find(item=>item.id === id);
   let [stateObj, setStateObj] = useState(obj);
   let keyArr = Object.keys(stateObj||{});
@@ -36,3 +37,11 @@ export default function EditForm({id, handler, arrFromState}){
     </form>
   );
 }
+
+EditForm.propTypes = {
+  id: PropTypes.number,
+  handler: PropTypes.func,
+  arrFromState: PropTypes.array
+}
+
+export default EditForm;

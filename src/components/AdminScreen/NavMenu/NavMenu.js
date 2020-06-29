@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import "./sidebar.css"
+import "./navmenu.css"
 
-function NavMenu(props){
+function NavMenu(){
   return (
     <div className="nav-menu-wrapp mb-5 mt-3">
       <div className="btn-group nav-menu">

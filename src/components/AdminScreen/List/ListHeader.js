@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function ListHeader({templObj}){
+function ListHeader({templObj}){
   let keysArr = Object.keys(templObj||{});
   if(keysArr.length===0){
     return (<tr><th>List is empty</th></tr>)
@@ -26,3 +27,7 @@ export default function ListHeader({templObj}){
     </tr>
   )
 }
+ListHeader.propTypes = {
+  templObj: PropTypes.object
+}
+export default ListHeader;

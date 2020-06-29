@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
 import {Switch, Route} from 'react-router-dom';
-import {addCurrentOrderToState, addSuitableMasters, addOrdersToState, addNewOrderToState} from '../../store/clientSide/actions'
+import PropTypes from 'prop-types';
 
+import {addCurrentOrderToState, addSuitableMasters, addOrdersToState, addNewOrderToState} from '../../store/clientSide/actions';
 import OrderForm from "./OrderForm";
 import MastersList from "./MastersList";
 
 import {SERVERDOMAIN} from "../../services/serverUrls";
-
+import {LOCALDOMAIN} from "../../services/serverUrls";
 
 function ClientSrcreen(props){
 	let [townsArr, setTownsArr] = useState([]);
@@ -50,7 +51,7 @@ function ClientSrcreen(props){
 			return false;
 		}
 		let newObj = {...props.currentOrder, masterId: masterId, id: createUniqueId(props.ordersArr)};
-		fetch(`${SERVERDOMAIN}/post_order`, {
+		fetch(`${LOCALDOMAIN}/post_order`, {
 			method: "POST",
 			headers:{
 				'Content-Type': 'application/json;charset=utf-8'
@@ -116,4 +117,14 @@ let actions = {
 	addSuitableMasters,
 	addNewOrderToState
 }
+
+ClientSrcreen.propTypes = {
+	addOrdersToState: PropTypes.func,
+	addCurrentOrderToState: PropTypes.func,
+	addSuitableMasters: PropTypes.func,
+	addNewOrderToState: PropTypes.func,
+	currentOrder: PropTypes.object,
+	ordersArr: PropTypes.array
+}
+
 export default connect(mapStateToProps, actions)(ClientSrcreen);

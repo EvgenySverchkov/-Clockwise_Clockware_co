@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import {Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
+
 import {addNewMaster, addNewTown, initMasters,
 	      townsInit, updateMasterInState, updateTownInState,
 				deleteMasterFromState, deleteTownFromState, initOrders, deleteOrderFromState, updateOrderInState} from "../../store/adminPanel/actions";
@@ -217,7 +219,7 @@ function AdminSrcreen(props){
 
 	return(
 		<div className="container">
-			<NavMenu/>
+			<NavMenu />
 			<div className="content">
 				<Switch>
 					<Route path="/admin/ordersList"
@@ -280,4 +282,22 @@ const actions = {
 	deleteOrderFromState,
 	updateOrderInState
 }
+
+AdminSrcreen.propTypes = {
+	addNewMaster: PropTypes.func,
+	addNewTown: PropTypes.func,
+	initMasters: PropTypes.func,
+	townsInit: PropTypes.func,
+	updateMasterInState: PropTypes.func,
+	updateTownInState: PropTypes.func,
+	deleteMasterFromState: PropTypes.func,
+	deleteTownFromState: PropTypes.func,
+	initOrders: PropTypes.func,
+	deleteOrderFromState: PropTypes.func,
+	updateOrderInState: PropTypes.func,
+	mastersArr: PropTypes.array,
+	townsArr: PropTypes.array,
+	ordersArr: PropTypes.array,
+}
+
 export default connect(mapStateToProps, actions)(AdminSrcreen);

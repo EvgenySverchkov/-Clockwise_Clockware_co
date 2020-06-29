@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import DeleteBtn from "./DeleteBtn";
 import LinkToEditForm from "./LinkToEditForm";
 
-export default function OptionsBtnsGroup({deleteMasterById, itemId}){
+function OptionsBtnsGroup({deleteMasterById, itemId}){
   return (
     <td className="text-center">
       <div className="dropdown">
@@ -18,3 +19,10 @@ export default function OptionsBtnsGroup({deleteMasterById, itemId}){
     </td>
   );
 }
+
+OptionsBtnsGroup.propTypes = {
+  deleteMasterById: PropTypes.func,
+  itemId: PropTypes.number
+}
+
+export default OptionsBtnsGroup;

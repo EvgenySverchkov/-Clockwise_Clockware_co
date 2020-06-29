@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link, useLocation} from "react-router-dom";
+import PropTypes from 'prop-types';
 
-export default function LinkToEditForm(props){
+function LinkToEditForm({id}){
   let location = useLocation();
 
   function chooseRoute(currentPath){
@@ -20,7 +21,11 @@ export default function LinkToEditForm(props){
     }
   }
   return (
-    <Link to={chooseRoute(location.pathname) + props.id}
+    <Link to={chooseRoute(location.pathname) + id}
           className="dropdown-item">Edit</Link>
   );
 }
+LinkToEditForm.propTypes = {
+  id: PropTypes.number
+}
+export default LinkToEditForm;
