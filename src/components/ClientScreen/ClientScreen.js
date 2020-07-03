@@ -8,6 +8,7 @@ import OrderForm from "./OrderForm";
 import MastersList from "./MastersList";
 
 import {SERVERDOMAIN} from "../../services/serverUrls";
+import {LOCALDOMAIN} from "../../services/serverUrls";
 
 function ClientSrcreen(props){
 	let [townsArr, setTownsArr] = useState([]);
@@ -49,7 +50,21 @@ function ClientSrcreen(props){
 			alert("Please, choose one!!!");
 			return false;
 		}
-		let newObj = {...props.currentOrder, masterId: masterId, id: createUniqueId(props.ordersArr)};
+		let endOrderTime;
+		let clientTimeHour = +props.currentOrder.time.match(/\d\d/);
+		let clientTimeMin = props.currentOrder.time.match(/:\d\d$/)
+		switch(props.currentOrder.size){
+			case 'small':
+				endOrderTime = (clientTimeHour + 1) + clientTimeMin;
+				break;
+			case 'middle':
+				endOrderTime = (clientTimeHour + 2) + clientTimeMin;
+				break;
+			case 'large':
+				endOrderTime = (clientTimeHour + 3) + clientTimeMin;
+				break;
+		}
+		let newObj = {...props.currentOrder, masterId: masterId, id: createUniqueId(props.ordersArr), endTime: endOrderTime};
 		fetch(`${SERVERDOMAIN}/post_order`, {
 			method: "POST",
 			headers:{
@@ -63,12 +78,13 @@ function ClientSrcreen(props){
 				alert("Congratulations, you have booked a master!!!");
 				props.history.push("/client");
 				getOrdersArrFromServer(SERVERDOMAIN).then(data=>props.addOrdersToState(data));
+				sendConfirmEmail(data)
 				props.addCurrentOrderToState({});
 			})
 			.catch((err)=>alert(err));
 	}
-	function getMastersFromServer(clientTown){
-		fetch(`${SERVERDOMAIN}/get_masters`)
+	function getMastersFromServerByClientTown(clientTown){
+		return fetch(`${SERVERDOMAIN}/get_masters`)
 			.then(json=>json.json())
 			.then(data=>{
 				let newarr = data.filter(item=>{
@@ -80,6 +96,7 @@ function ClientSrcreen(props){
 					}
 				});
 				props.addSuitableMasters(newarr);
+				return data;
 			});
 	}
 	function submitOrderFormHandler(e){
@@ -89,10 +106,22 @@ function ClientSrcreen(props){
 			alert("Pleade, filling all gaps!!!");
 			return false;
 		}
-		getMastersFromServer(e.target.town.value);
-		props.history.push("/client/masters");
+		let time = e.target.time.value;
+		let date = e.target.date.value;
+		getMastersFromServerByClientTown(e.target.town.value)
+			.then(data=>{
+				props.history.push("/client/masters");
+			});
 	}
-
+	function sendConfirmEmail(data){
+		fetch(`${SERVERDOMAIN}/send_message`, {
+			method: "POST",
+			headers:{
+				'Content-type': 'application/json;charset=utf-8'
+			},
+			body: JSON.stringify(data)
+		})
+	}
 
 	return (
 		<div style={{width: "70%", margin: "0 auto"}} className="mt-4">
