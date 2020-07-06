@@ -13,14 +13,15 @@ import {LOCALDOMAIN} from "../../services/serverUrls";
 function ClientSrcreen(props){
 	let [townsArr, setTownsArr] = useState([]);
 	useEffect(()=>{
-		fetch(`${SERVERDOMAIN}/get_towns`)
+		document.title = "Clockwise Clockware Co.";
+		fetch(`${SERVERDOMAIN}/towns`)
 			.then(json=>json.json())
 			.then(data=>setTownsArr(data));
 		getOrdersArrFromServer(SERVERDOMAIN).then(data=>props.addOrdersToState(data));
 	}, []);
 
 	function getOrdersArrFromServer(url){
-		return fetch(`${SERVERDOMAIN}/get_orders`)
+		return fetch(`${url}/orders`)
 			.then(json=>json.json())
 	}
 
@@ -65,7 +66,7 @@ function ClientSrcreen(props){
 				break;
 		}
 		let newObj = {...props.currentOrder, masterId: masterId, id: createUniqueId(props.ordersArr), endTime: endOrderTime};
-		fetch(`${SERVERDOMAIN}/post_order`, {
+		fetch(`${SERVERDOMAIN}/orders/post`, {
 			method: "POST",
 			headers:{
 				'Content-Type': 'application/json;charset=utf-8'
@@ -84,7 +85,7 @@ function ClientSrcreen(props){
 			.catch((err)=>alert(err));
 	}
 	function getMastersFromServerByClientTown(clientTown){
-		return fetch(`${SERVERDOMAIN}/get_masters`)
+		return fetch(`${SERVERDOMAIN}/masters`)
 			.then(json=>json.json())
 			.then(data=>{
 				let newarr = data.filter(item=>{

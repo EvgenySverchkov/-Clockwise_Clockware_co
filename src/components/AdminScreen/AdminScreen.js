@@ -16,19 +16,21 @@ import List from "./List";
 import FullInfoModal from "./FullInfoModal";
 
 import {SERVERDOMAIN} from "../../services/serverUrls";
+import {LOCALDOMAIN} from "../../services/serverUrls";
 
 function AdminSrcreen(props){
 	let [currListItem, setCurrListItem] = useState({});
 	useEffect(function(){
-		fetch(`${SERVERDOMAIN}/get_masters`)
+		document.title = "AdminPanel - Clockwise Clockware";
+		fetch(`${SERVERDOMAIN}/masters`)
 			.then(data=>data.json())
 			.then(data=>props.initMasters(data));
 
-		fetch(`${SERVERDOMAIN}/get_towns`)
+		fetch(`${SERVERDOMAIN}/towns`)
 			.then(json=>json.json())
 			.then(data=>props.townsInit(data));
 
-		fetch(`${SERVERDOMAIN}/get_orders`)
+		fetch(`${SERVERDOMAIN}/orders`)
 			.then(json=>json.json())
 			.then(data=>props.initOrders(data));
 	}, []);
@@ -63,7 +65,7 @@ function AdminSrcreen(props){
 						towns: townsArr.join(","),
 						name: masterName,
 					};
-					postData(`${SERVERDOMAIN}/post_master`, infoObj)
+					postData(`${SERVERDOMAIN}/masters/post`, infoObj)
 						.then(data=>props.addNewMaster(data))
 						.then(()=>{
 							alert("You added new master");
@@ -100,7 +102,7 @@ function AdminSrcreen(props){
 					name: townName,
 					id: createUniqueId(props.townsArr),
 				};
-				postData(`${SERVERDOMAIN}/post_town`, infoObj)
+				postData(`${SERVERDOMAIN}/towns/post`, infoObj)
 					.then(data=>{
 						props.addNewTown(data)
 					})
@@ -138,7 +140,7 @@ function AdminSrcreen(props){
 				return false;
 			}
 		}
-		putDataToServer(`${SERVERDOMAIN}/put_master/${newMasterObj.id}`, newMasterObj)
+		putDataToServer(`${SERVERDOMAIN}/masters/put/${newMasterObj.id}`, newMasterObj)
 			.then(data=>{
 				props.updateMasterInState(data);
 				props.history.push('/admin/mastersList');
@@ -155,7 +157,7 @@ function AdminSrcreen(props){
 		if(props.townsArr.find((item)=>item.name.toLowerCase()===newTownObj.name.toLowerCase())){
 			alert("The name of this town is already on the list! \nPlease enter another town name!");
 		}else{
-			putDataToServer(`${SERVERDOMAIN}/put_town/${newTownObj.id}`, newTownObj)
+			putDataToServer(`${SERVERDOMAIN}/towns/put/${newTownObj.id}`, newTownObj)
 				.then(data=>{
 					props.updateTownInState(data);
 					props.history.push('/admin/townsList');
@@ -170,7 +172,7 @@ function AdminSrcreen(props){
 				return false;
 			}
 		}
-		putDataToServer(`${SERVERDOMAIN}/put_order/${newOrderObj.id}`, newOrderObj)
+		putDataToServer(`${SERVERDOMAIN}/orders/put/${newOrderObj.id}`, newOrderObj)
 			.then(data=>{
 				props.updateOrderInState(data);
 				props.history.push('/admin/ordersList')
@@ -207,15 +209,15 @@ function AdminSrcreen(props){
 		});
 	}
 	function deleteMasterById(masterId){
-		deleteDataFromServer(`${SERVERDOMAIN}/delete_master/${masterId}`)
+		deleteDataFromServer(`${SERVERDOMAIN}/masters/delete/${masterId}`)
 		.then(data=>props.deleteMasterFromState(data)).catch((err)=>alert(err));
 	}
 	function deleteTownById(townId){
-		deleteDataFromServer(`${SERVERDOMAIN}/delete_town/${townId}`)
+		deleteDataFromServer(`${SERVERDOMAIN}/towns/delete/${townId}`)
 		.then(data=>props.deleteTownFromState(data)).catch((err)=>alert(err));
 	}
 	function deleteOrderById(orderId){
-		deleteDataFromServer(`${SERVERDOMAIN}/delete_order/${orderId}`)
+		deleteDataFromServer(`${SERVERDOMAIN}/orders/delete/${orderId}`)
 		.then(data=>props.deleteOrderFromState(data)).catch((err)=>alert(err));
 	}
 
