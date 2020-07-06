@@ -11,6 +11,9 @@ import FirstScreen from "./components/FirstScreen";
 import './App.css';
 
 const initialState = {
+  main_adminPanel_reduser:{
+    currItemForModal: {}
+  },
   orders_reducer:{
     ordersArr: []
   },

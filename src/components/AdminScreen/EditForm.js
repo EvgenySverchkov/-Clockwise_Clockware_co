@@ -10,15 +10,15 @@ function EditForm({id, handler, arrFromState}){
     setStateObj({...stateObj, [e.target.id] : e.target.value});
   }
   return (
-    <form onSubmit={(e)=>handler(e, stateObj)} style={{width: '30%', margin: '0 auto'}}>
+    <form onSubmit={(e)=>handler(e, stateObj)}>
       {
         keyArr.map(item=>{
           if(item === 'id'){
             return null;
           }else{
-            return (<div key={item} className="form-group row">
-                <label htmlFor={item} className="col-sm-5 col-form-label">Enter {item}</label>
-                <div className="col-sm-7">
+            return (<div key={item} className="form-group row justify-content-sm-center">
+                <label htmlFor={item} className="col-sm-3 col-form-label">Enter {item}</label>
+                <div className="col-sm-5">
                   {
                     item === "rating" ?
                     <input id={item}
@@ -33,7 +33,9 @@ function EditForm({id, handler, arrFromState}){
           }
         })
       }
-      <input type="submit" value="Edit" className="btn btn-primary"/>
+      <div className="row justify-content-sm-center">
+          <input type="submit" value="Edit" className="btn btn-primary col-12 col-sm-4 mt-3"/>
+      </div>
     </form>
   );
 }

@@ -11,3 +11,5 @@ export const townsInit = (townsString) => ({type: "INIT_NEW_TOWNS", payload: tow
 export const addNewTown = (townName) => ({type: "ADD_NEW_TOWN", payload: townName});
 export const deleteTownFromState = (id) => ({type: "DELETE_TOWN", payload: id});
 export const updateTownInState = (newObj) => ({type: "UPDATE_TOWN", payload: newObj});
+
+export const chngCurrItemForModal = (obj) => ({type: "CHNG_CURR_ITEM_FOR_MODAL", payload: obj});

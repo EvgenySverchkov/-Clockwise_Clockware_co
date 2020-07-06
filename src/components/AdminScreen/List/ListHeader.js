@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ListHeader({templObj}){
-  let keysArr = Object.keys(templObj||{});
-  if(keysArr.length===0){
-    return (<tr><th>List is empty</th></tr>)
-  }
+function ListHeader({templArr}){
   return (
     <tr>
       {
-        keysArr.map(item=>{
+        templArr.map(item=>{
           let value = item;
           if(typeof item === 'string'){
             let upperChar = item.match(/[A-Z]/);

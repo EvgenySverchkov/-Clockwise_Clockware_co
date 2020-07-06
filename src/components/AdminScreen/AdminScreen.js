@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
@@ -13,10 +13,12 @@ import AddNewTownForm from "./AddNewTownForm";
 import AddMasterForm from "./AddMasterForm";
 import EditForm from "./EditForm";
 import List from "./List";
+import FullInfoModal from "./FullInfoModal";
 
 import {SERVERDOMAIN} from "../../services/serverUrls";
 
 function AdminSrcreen(props){
+	let [currListItem, setCurrListItem] = useState({});
 	useEffect(function(){
 		fetch(`${SERVERDOMAIN}/get_masters`)
 			.then(data=>data.json())
@@ -220,43 +222,46 @@ function AdminSrcreen(props){
 	return(
 		<div className="container">
 			<NavMenu />
-			<div className="content">
-				<Switch>
-					<Route path="/admin/ordersList"
-								 render={()=><List dataArr={props.ordersArr}
-							                		 style = {{width: '100%', tableLayout: 'fixed'}}
-							                     deleteAction = {deleteOrderById}/>}/>
-					<Route path="/admin/mastersList"
-								 render={()=><List dataArr={props.mastersArr}
-							                		 style = {{width: '70%',margin: '0 auto', tableLayout: 'fixed'}}
-							                     deleteAction = {deleteMasterById}/>}/>
-					<Route path="/admin/townsList"
-								 render={()=><List dataArr={props.townsArr}
-								 									 style = {{width: '40%', margin: '0 auto', tableLayout: 'fixed'}}
-								 									 deleteAction = {deleteTownById}/>}/>
-					<Route path="/admin/addMasterForm"
-						     render={()=><AddMasterForm townsArr={props.townsArr} handler={addNewMasterHandler}/>}/>
-					<Route path="/admin/addTownForms"
-				 			 	 render={()=><AddNewTownForm handler={addNewTownHandler}/>}/>
-					<Route path="/admin/editMaster/:id"
-								 render={(matchProps)=> (
-									 <EditForm id = {+matchProps.match.params.id}
-									 					 handler={editMasterHandler}
-														 arrFromState={props.mastersArr}/>
-								 )}/>
-				  <Route path="/admin/editTown/:id"
-								 render={(matchProps)=> (
-									 <EditForm id = {+matchProps.match.params.id}
-														 handler={editTownHandler}
-														 arrFromState={props.townsArr}/>
-								 )}/>
-							 <Route path="/admin/editOrder/:id"
-								 render={(matchProps)=> (
-			 							<EditForm id = {+matchProps.match.params.id}
-			 												handler={editOrderHandler}
-			 												arrFromState={props.ordersArr}/>
-			 					 )}/>
-				</Switch>
+			<div className="row justify-content-sm-center">
+				<div className="col-md-8">
+					<Switch>
+						<Route path="/admin/ordersList"
+									 render={()=><List dataArr={props.ordersArr}
+								                     deleteAction = {deleteOrderById}
+																		 mainRows = {["name", "time"]}/>}/>
+						<Route path="/admin/mastersList"
+									 render={()=><List dataArr={props.mastersArr}
+								                     deleteAction = {deleteMasterById}
+																		 mainRows = {["name", "rating"]}/>}/>
+						<Route path="/admin/townsList"
+									 render={()=><List dataArr={props.townsArr}
+									 									 deleteAction = {deleteTownById}
+																		 mainRows = {["name", "id"]}/>}/>
+						<Route path="/admin/addMasterForm"
+							     render={()=><AddMasterForm townsArr={props.townsArr} handler={addNewMasterHandler}/>}/>
+						<Route path="/admin/addTownForms"
+					 			 	 render={()=><AddNewTownForm handler={addNewTownHandler}/>}/>
+						<Route path="/admin/editMaster/:id"
+									 render={(matchProps)=> (
+										 <EditForm id = {+matchProps.match.params.id}
+										 					 handler={editMasterHandler}
+															 arrFromState={props.mastersArr}/>
+									 )}/>
+					  <Route path="/admin/editTown/:id"
+									 render={(matchProps)=> (
+										 <EditForm id = {+matchProps.match.params.id}
+															 handler={editTownHandler}
+															 arrFromState={props.townsArr}/>
+									 )}/>
+								 <Route path="/admin/editOrder/:id"
+									 render={(matchProps)=> (
+				 							<EditForm id = {+matchProps.match.params.id}
+				 												handler={editOrderHandler}
+				 												arrFromState={props.ordersArr}/>
+				 					 )}/>
+					</Switch>
+				</div>
+				<FullInfoModal itemObj={props.currItemForModal}/>
 			</div>
 		</div>
 		);
@@ -267,6 +272,7 @@ function mapStateToProps(state){
 		mastersArr: state.master_reducer.masters,
 		townsArr: state.town_reduser.towns,
 		ordersArr: state.orders_reducer.ordersArr,
+		currItemForModal: state.main_adminPanel_reduser.currItemForModal
 	}
 }
 const actions = {

@@ -33,7 +33,7 @@ function NavMenu(){
             <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Towns
             </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
               <Link to="/admin/townsList" className="dropdown-item">
                 Show towns
               </Link>

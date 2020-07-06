@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ListItem({infoObj}){
+function ListItem({infoObj, mainRows}){
   let keysArr = Object.keys(infoObj);
   return (
     <>
       {
-        keysArr.map((item)=><td className="text-center"
+        mainRows.map((item)=><td className="text-center"
                                 style={{wordWrap: "break-word"}}
                                 key={item}>{infoObj[item]}</td>)
       }

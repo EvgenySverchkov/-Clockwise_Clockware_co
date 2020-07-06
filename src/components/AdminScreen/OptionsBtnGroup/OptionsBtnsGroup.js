@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import DeleteBtn from "./DeleteBtn";
 import LinkToEditForm from "./LinkToEditForm";
+import ShowFullInfo from "./ShowFullInfo";
 
-function OptionsBtnsGroup({deleteMasterById, itemId}){
+function OptionsBtnsGroup({deleteMasterById, itemObj}){
   return (
     <td className="text-center">
       <div className="dropdown">
@@ -12,8 +13,9 @@ function OptionsBtnsGroup({deleteMasterById, itemId}){
             Options
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <DeleteBtn deleteMasterById={deleteMasterById} id={itemId}/>
-            <LinkToEditForm id={itemId}/>
+            <DeleteBtn deleteMasterById={deleteMasterById} id={itemObj.id}/>
+            <LinkToEditForm id={itemObj.id}/>
+            <ShowFullInfo itemObj = {itemObj}/>
           </div>
       </div>
     </td>

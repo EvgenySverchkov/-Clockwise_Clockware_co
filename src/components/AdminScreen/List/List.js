@@ -5,23 +5,25 @@ import OptionsBtns from '../OptionsBtnGroup';
 import ListItem from "./ListItem";
 import ListHeader from "./ListHeader";
 
-function CreateList({dataArr, style, deleteAction}){
+function CreateList({dataArr, style, deleteAction, mainRows}){
   return (
-    <table className="table table-dark" style={style}>
-      <thead>
-        <ListHeader templObj={dataArr[0]}/>
-      </thead>
-      <tbody>
-        {
-          dataArr.map((item)=>(
-            <tr key={item.id+1}>
-              <ListItem infoObj = {item}/>
-              <OptionsBtns deleteMasterById={deleteAction} itemId={item.id}/>
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className="table table-dark">
+        <thead>
+          <ListHeader templArr={mainRows}/>
+        </thead>
+        <tbody>
+          {
+            dataArr.map((item)=>(
+              <tr key={item.id+1}>
+                <ListItem infoObj = {item} mainRows={mainRows}/>
+                <OptionsBtns deleteMasterById={deleteAction} itemObj={item}/>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
   );
 }
 CreateList.propTypes = {
