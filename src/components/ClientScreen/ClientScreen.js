@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
 import {Switch, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { stringify  } from 'qs';
 
 import {addCurrentOrderToState, addSuitableMasters, addOrdersToState, addNewOrderToState} from '../../store/clientSide/actions';
 import OrderForm from "./OrderForm";
@@ -52,7 +53,7 @@ function ClientSrcreen(props){
 			return false;
 		}
 		let endOrderTime;
-		let clientTimeHour = +props.currentOrder.time.match(/\d\d/);
+		let clientTimeHour = +props.currentOrder.time.match(/[^:]+/);
 		let clientTimeMin = props.currentOrder.time.match(/:\d\d$/)
 		switch(props.currentOrder.size){
 			case 'small':
@@ -64,6 +65,8 @@ function ClientSrcreen(props){
 			case 'large':
 				endOrderTime = (clientTimeHour + 3) + clientTimeMin;
 				break;
+			default:
+				endOrderTime = 0
 		}
 		let newObj = {...props.currentOrder, masterId: masterId, id: createUniqueId(props.ordersArr), endTime: endOrderTime};
 		fetch(`${SERVERDOMAIN}/orders/post`, {
@@ -81,24 +84,9 @@ function ClientSrcreen(props){
 				getOrdersArrFromServer(SERVERDOMAIN).then(data=>props.addOrdersToState(data));
 				sendConfirmEmail(data)
 				props.addCurrentOrderToState({});
+
 			})
 			.catch((err)=>alert(err));
-	}
-	function getMastersFromServerByClientTown(clientTown){
-		return fetch(`${SERVERDOMAIN}/masters`)
-			.then(json=>json.json())
-			.then(data=>{
-				let newarr = data.filter(item=>{
-					let townsArr = item.towns.split(',');
-					if(townsArr.includes(clientTown)){
-						return true;
-					}else{
-						return false;
-					}
-				});
-				props.addSuitableMasters(newarr);
-				return data;
-			});
 	}
 	function submitOrderFormHandler(e){
 		e.preventDefault();
@@ -107,12 +95,32 @@ function ClientSrcreen(props){
 			alert("Pleade, filling all gaps!!!");
 			return false;
 		}
-		let time = e.target.time.value;
-		let date = e.target.date.value;
-		getMastersFromServerByClientTown(e.target.town.value)
-			.then(data=>{
+		let endOrderTime;
+		let clientTimeHour = +props.currentOrder.time.match(/\d\d/);
+		let clientTimeMin = props.currentOrder.time.match(/:\d\d$/)
+		switch(props.currentOrder.size){
+			case 'small':
+				endOrderTime = (clientTimeHour + 1) + clientTimeMin;
+				break;
+			case 'middle':
+				endOrderTime = (clientTimeHour + 2) + clientTimeMin;
+				break;
+			case 'large':
+				endOrderTime = (clientTimeHour + 3) + clientTimeMin;
+				break;
+			default:
+			  endOrderTime = 0;
+		}
+		getFreeMastersByClientTownFromServer(SERVERDOMAIN, e.target.town.value, props.currentOrder.time, endOrderTime, props.currentOrder.date)
+		 .then(data=>{
+				props.addSuitableMasters(data);
 				props.history.push("/client/masters");
 			});
+
+	}
+	function getFreeMastersByClientTownFromServer(url, clientTown, clientTimeStart, clientTimeEnd, clientDate){
+		let obj = {town: clientTown, timeStart: clientTimeStart, timeEnd: clientTimeEnd, date: clientDate}
+		return fetch(`${url}/freeMasters/${stringify(obj)}`).then(json=>json.json());
 	}
 	function sendConfirmEmail(data){
 		fetch(`${SERVERDOMAIN}/send_message`, {
@@ -123,9 +131,8 @@ function ClientSrcreen(props){
 			body: JSON.stringify(data)
 		})
 	}
-
 	return (
-		<div style={{width: "70%", margin: "0 auto"}} className="mt-4">
+		<div className="col-md-8 mt-4 container">
 			<Switch>
 				<Route exact path="/client" render={()=><OrderForm townsArr={townsArr} submitHandler = {submitOrderFormHandler}/>}/>
 				<Route path="/client/masters" render={()=><MastersList submitHandler = {submitHandlerInListMasters}/>}/>
@@ -137,14 +144,15 @@ function ClientSrcreen(props){
 function mapStateToProps(state){
 	return {
 		currentOrder: state.client_order_reduser.currentOrder,
-		ordersArr: state.client_order_reduser.ordersArr
-	}
+		ordersArr: state.client_order_reduser.ordersArr,
+		bookedMasters: state.client_order_reduser.bookedMasters
+	};
 }
 let actions = {
 	addOrdersToState,
 	addCurrentOrderToState,
 	addSuitableMasters,
-	addNewOrderToState
+	addNewOrderToState,
 }
 
 ClientSrcreen.propTypes = {
@@ -153,7 +161,7 @@ ClientSrcreen.propTypes = {
 	addSuitableMasters: PropTypes.func,
 	addNewOrderToState: PropTypes.func,
 	currentOrder: PropTypes.object,
-	ordersArr: PropTypes.array
+	ordersArr: PropTypes.array,
 }
 
 export default connect(mapStateToProps, actions)(ClientSrcreen);

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function ListItem({infoObj, mainRows}){
-  let keysArr = Object.keys(infoObj);
   return (
     <>
       {

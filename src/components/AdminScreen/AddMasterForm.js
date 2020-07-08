@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 
 function AddMasterForm({handler, townsArr}){
   return(
-    <form onSubmit={handler}>
-      <div className="form-group row justify-content-sm-center">
-        <label htmlFor="rating" className="col-sm-3 col-xl-3 col-form-label">Enter rating</label>
-        <div className="col-sm-3 col-xl-2">
+    <form onSubmit={handler} className="mt-4 row justify-content-center">
+      <div className="form-group row text-center text-sm-left col-sm-8 col-md-10 col-lg-8">
+        <label htmlFor="rating" className="col-sm-4 pl-0 col-form-label">Enter rating</label>
+        <div className="col-sm-3">
           <input id="rating" className="form-control" type="number" min="0" max="5" />
         </div>
       </div>
-      <div className="form-group row justify-content-sm-center">
-        <label htmlFor="name" className="col-sm-3 col-xl-3 col-form-label">Enter name</label>
-        <div className="col-sm-5 col-xl-4">
+      <div className="form-group row text-center text-sm-left col-sm-8 col-md-10 col-lg-8">
+        <label htmlFor="name" className="col-sm-4 pl-0 col-form-label">Enter name</label>
+        <div className="col-sm-8">
           <input id="name" className="form-control"/>
         </div>
       </div>
-      <div className="form-group justify-content-sm-center">
-        <div className="row justify-content-sm-center justify-content-center">Choose town</div>
-        <div className="row justify-content-sm-center justify-content-center">
+      <div className="form-group text-center text-sm-left col-sm-8 col-md-10 col-lg-8">
+        <div className="mb-2">Choose town</div>
+        <div>
         {townsArr.map((item)=>(
           <div key={item.id+1} className="form-check-inline">
             <label className="form-check-label" htmlFor={item.name}>
@@ -29,7 +29,7 @@ function AddMasterForm({handler, townsArr}){
         ))}
         </div>
       </div>
-      <div className="row justify-content-sm-center">
+      <div className="row justify-content-sm-center col-12">
         <input type="submit" value="Add" className="btn btn-primary col-12 col-sm-4 mt-3"/>
       </div>
     </form>

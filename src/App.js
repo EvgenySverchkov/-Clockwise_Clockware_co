@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -26,7 +26,8 @@ const initialState = {
   client_order_reduser:{
     currentOrder: {},
     suitableMasters: [],
-    ordersArr: []
+    ordersArr: [],
+    bookedMasters: []
   }
 };
 const store = createStore(

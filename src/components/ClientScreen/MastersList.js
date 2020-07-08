@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 function MastersList(props){
-  if(props.mastersArr.length === 0){
+  if(props.suitableMasters.length === 0){
     return (
       <>
         <div className="text-left display-4">We haven't masters in this city</div>
@@ -17,9 +17,9 @@ function MastersList(props){
     <form onSubmit={props.submitHandler}>
       <div className="row">
       {
-        props.mastersArr.map(item=>{
+        props.suitableMasters.map(item=>{
           return (
-            <div className="col-sm-4" key={item.id}>
+            <div className="col-sm-4 mb-2 col-sm-6 col-lg-4" key={item.id}>
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">{item.name}</h5>
@@ -36,10 +36,10 @@ function MastersList(props){
         })
       }
       </div>
-    <div className="form-group float-left mt-5 ml-5">
+    <div className="form-group float-left mt-3">
         <Link to="/client" className="btn btn-primary">Сome back</Link>
     </div>
-    <div className="form-group float-right mt-5 mr-5">
+    <div className="form-group float-right mt-3">
         <input type="submit" value="Book now" className="btn btn-primary"/>
     </div>
     </form>
@@ -48,7 +48,7 @@ function MastersList(props){
 
 function mapStateToProps(state){
   return {
-    mastersArr: state.client_order_reduser.suitableMasters,
+    suitableMasters: state.client_order_reduser.suitableMasters,
     currentOrder: state.client_order_reduser.currentOrder
   }
 };

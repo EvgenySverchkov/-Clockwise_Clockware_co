@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
@@ -16,10 +16,9 @@ import List from "./List";
 import FullInfoModal from "./FullInfoModal";
 
 import {SERVERDOMAIN} from "../../services/serverUrls";
-import {LOCALDOMAIN} from "../../services/serverUrls";
+// import {LOCALDOMAIN} from "../../services/serverUrls";
 
 function AdminSrcreen(props){
-	let [currListItem, setCurrListItem] = useState({});
 	useEffect(function(){
 		document.title = "AdminPanel - Clockwise Clockware";
 		fetch(`${SERVERDOMAIN}/masters`)

@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
+import './orderForm.css';
 
 import {addCurrentOrderToState} from '../../store/clientSide/actions';
 
@@ -15,26 +16,26 @@ function OrderForm({submitHandler, townsArr, currentOrder, addCurrentOrderToStat
   }
   return(
     <>
-      <div className="text-center display-4 mb-1">You are welcomed by <span className="font-italic">Clockwise company</span>
+      <div className="text-center mb-1">You are welcomed by <h1 className="font-italic">Clockwise company</h1>
       </div><br/>
       <div className="text-center">Fill out this form to order a master</div>
-      <form onSubmit={submitHandler} style={{width: '40%', margin: '0 auto'}} className="mt-4">
-        <div className="form-group row">
-          <label htmlFor="town" className="col-sm-5 col-form-label font-weight-bold">Enter your name</label>
-          <div className="col-sm-7">
+      <form onSubmit={submitHandler} className="mt-4 row justify-content-center">
+        <div className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8">
+          <label htmlFor="town" className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold">Enter your name</label>
+          <div className="col-sm-8 col-md-8">
             <input id="name" type="text" name="name" className="form-control"
                    onChange={handler}
                    value={currentOrder.name || ''} required/>
           </div>
         </div>
-        <div className="form-group row">
-          <label htmlFor="email" className="col-sm-5 col-form-label font-weight-bold">Enter your e-mail</label>
-          <div className="col-sm-7">
+        <div className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8">
+          <label htmlFor="email" className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold">Enter your e-mail</label>
+          <div className="col-sm-8 col-md-8">
             <input id="email" type="email" name="email" className="form-control"
                    onChange={handler} value={currentOrder.email||''} required/>
           </div>
         </div>
-        <div className="form-group">
+        <div className="form-group text-center text-sm-left col-12 col-md-10 col-lg-8">
           <div className="mb-2 font-weight-bold">Choose size of clock</div>
           <div className="form-check form-check-inline">
             <input className="form-check-input" type="radio" onChange={handler} name="size" id="smallSize" value="small"/>
@@ -49,7 +50,7 @@ function OrderForm({submitHandler, townsArr, currentOrder, addCurrentOrderToStat
             <label className="form-check-label" htmlFor="largeSize">Large</label>
           </div>
         </div>
-        <div className="form-group">
+        <div className="form-group text-center text-sm-left col-12 col-md-10 col-lg-8">
           <div className="mb-2 font-weight-bold">Choose town</div>
           {townsArr.map((item)=>(
             <div key={item.id+1} className="form-check-inline">
@@ -60,13 +61,13 @@ function OrderForm({submitHandler, townsArr, currentOrder, addCurrentOrderToStat
             </div>
           ))}
         </div>
-        <div className="form-group">
+        <div className="form-group text-center text-sm-left col-12 col-md-10 col-lg-8">
           <div className="mb-2 font-weight-bold" >Choose date and time<br/><sub>*time from 8 to 18</sub></div>
           <input type="date" name="date" min={minDate()} className="mr-1" onChange={handler} value={currentOrder.date||''} required/>
           <input type="time" name="time" max="18:00" min="08:00" onChange={handler} value={currentOrder.time||''} required/>
         </div>
-        <div className="float-right">
-            <input type="submit" value="Next step" className="btn btn-primary"/>
+        <div className="row justify-content-sm-center col-12">
+            <input type="submit" value="Next step" className="btn btn-primary col-12 col-sm-4 mt-3"/>
         </div>
       </form>
     </>
