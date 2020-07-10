@@ -4,7 +4,7 @@ import "./navmenu.css"
 
 function NavMenu(){
   return (
-    <div className="nav-menu-wrapp mb-5 mt-3">
+    <div className="nav-menu-wrapp mb-5">
       <div className="btn-group nav-menu">
         <div className="dropdown mr-1">
           <button className="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

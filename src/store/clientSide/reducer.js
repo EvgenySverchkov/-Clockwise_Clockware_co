@@ -20,6 +20,11 @@ export default function client_order_reduser(state={}, action){
         ...state,
         ordersArr: [...state.ordersArr, action.payload].sort((a, b)=>a.id - b.id)
       }
+    case "TOOGLE_AUTH":
+      return {
+        ...state,
+        isAuth: action.payload
+      }
     default:
       return state;
   }

@@ -2,30 +2,37 @@ import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
 import {Switch, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { stringify  } from 'qs';
+import { stringify } from 'qs';
 
-import {addCurrentOrderToState, addSuitableMasters, addOrdersToState, addNewOrderToState} from '../../store/clientSide/actions';
+import {addCurrentOrderToState, addSuitableMasters, addOrdersToState, addNewOrderToState, toggleAuth} from '../../store/clientSide/actions';
 import OrderForm from "./OrderForm";
 import MastersList from "./MastersList";
+import LoginForm from "./LoginForm";
+import RegistrationForm from './RegistrationForm';
+import Header from './Header';
 
 import {SERVERDOMAIN} from "../../services/serverUrls";
-import {LOCALDOMAIN} from "../../services/serverUrls";
+// import {LOCALDOMAIN} from "../../services/serverUrls";
 
 function ClientSrcreen(props){
 	let [townsArr, setTownsArr] = useState([]);
 	useEffect(()=>{
 		document.title = "Clockwise Clockware Co.";
-		fetch(`${SERVERDOMAIN}/towns`)
+		fetch(`${SERVERDOMAIN}/townsClient`)
 			.then(json=>json.json())
 			.then(data=>setTownsArr(data));
 		getOrdersArrFromServer(SERVERDOMAIN).then(data=>props.addOrdersToState(data));
+		if(localStorage.getItem('user')){
+			props.addCurrentOrderToState({email: JSON.parse(localStorage.getItem('user')).email});
+			props.toggleAuth(true);
+		}else{
+			props.toggleAuth(false);
+		}
 	}, []);
-
 	function getOrdersArrFromServer(url){
-		return fetch(`${url}/orders`)
+		return fetch(`${url}/ordersClient`)
 			.then(json=>json.json())
 	}
-
 	function createUniqueId(objectsArr){
 		if(objectsArr.length === 0){
 			return 1;
@@ -34,7 +41,6 @@ function ClientSrcreen(props){
 		idxsArr.sort((a, b)=> a - b);
 
 		if(idxsArr.length === idxsArr[idxsArr.length - 1]){
-			console.log(idxsArr.length + 1)
 			return idxsArr.length + 1;
 		}else{
 			let resultLength = idxsArr[idxsArr.length - 1] + 1;
@@ -69,7 +75,7 @@ function ClientSrcreen(props){
 				endOrderTime = 0
 		}
 		let newObj = {...props.currentOrder, masterId: masterId, id: createUniqueId(props.ordersArr), endTime: endOrderTime};
-		fetch(`${SERVERDOMAIN}/orders/post`, {
+		fetch(`${SERVERDOMAIN}/ordersClient/post`, {
 			method: "POST",
 			headers:{
 				'Content-Type': 'application/json;charset=utf-8'
@@ -83,7 +89,7 @@ function ClientSrcreen(props){
 				props.history.push("/client");
 				getOrdersArrFromServer(SERVERDOMAIN).then(data=>props.addOrdersToState(data));
 				sendConfirmEmail(data)
-				props.addCurrentOrderToState({});
+				props.addCurrentOrderToState({email: JSON.parse(localStorage.getItem('user')).email});
 
 			})
 			.catch((err)=>alert(err));
@@ -131,13 +137,74 @@ function ClientSrcreen(props){
 			body: JSON.stringify(data)
 		})
 	}
+	function loginHangler(e){
+    e.preventDefault();
+    let login = e.target.login.value;
+    let password = e.target.password.value;
+    let newObj = {login: login, password: password}
+    fetch(`${SERVERDOMAIN}/login`, {
+			method: "POST",
+			headers:{
+				'Content-Type': 'application/json;charset=utf-8'
+			},
+			body: JSON.stringify(newObj)
+		}).then(data=>data.json())
+    .then(data=>{
+			if(!data.success){
+				alert(data.msg)
+			}else{
+				localStorage.setItem("token", data.token);
+	      localStorage.setItem("user", JSON.stringify(data.user));
+				props.addCurrentOrderToState({email: data.user.email});
+				props.toggleAuth(true);
+	      props.history.push("/client");
+			}
+    });
+  }
+	function regHangler(e){
+		e.preventDefault();
+		const elem = e.target;
+		let newObj = {
+			name: elem.name.value,
+			login: elem.login.value,
+			email: elem.email.value,
+			password: elem.password.value,
+		}
+		fetch(`${SERVERDOMAIN}/signUp`, {
+			method: 'POST',
+			headers:{
+				'Content-Type': 'application/json;charset=utf-8'
+			},
+			body: JSON.stringify(newObj)
+		})
+		.then(data=>data.json())
+		.then(data=>{
+			if(!data.success){
+				alert(data.msg);
+			}else{
+				alert(`Congratulations! ${data.user.name} you are signUp`);
+				props.history.push("/client/login");
+			}
+		})
+	}
+	function logOutHandl(){
+		['user', 'token'].forEach((item) => localStorage.removeItem(item));
+		props.addCurrentOrderToState({...props.currentOrder, email: ''});
+		props.toggleAuth(false);
+	}
+
 	return (
+		<>
+		<Header />
 		<div className="col-md-8 mt-4 container">
 			<Switch>
 				<Route exact path="/client" render={()=><OrderForm townsArr={townsArr} submitHandler = {submitOrderFormHandler}/>}/>
 				<Route path="/client/masters" render={()=><MastersList submitHandler = {submitHandlerInListMasters}/>}/>
+				<Route path="/client/login" render={()=><LoginForm handler = {loginHangler}/>}/>
+				<Route path="/client/registration" render={()=><RegistrationForm handler = {regHangler}/>}/>
 			</Switch>
 		</div>
+		</>
 	);
 }
 
@@ -145,7 +212,8 @@ function mapStateToProps(state){
 	return {
 		currentOrder: state.client_order_reduser.currentOrder,
 		ordersArr: state.client_order_reduser.ordersArr,
-		bookedMasters: state.client_order_reduser.bookedMasters
+		bookedMasters: state.client_order_reduser.bookedMasters,
+		isAuth: state.client_order_reduser.isAuth
 	};
 }
 let actions = {
@@ -153,6 +221,7 @@ let actions = {
 	addCurrentOrderToState,
 	addSuitableMasters,
 	addNewOrderToState,
+	toggleAuth
 }
 
 ClientSrcreen.propTypes = {

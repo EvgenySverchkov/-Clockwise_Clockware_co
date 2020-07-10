@@ -13,3 +13,5 @@ export const deleteTownFromState = (id) => ({type: "DELETE_TOWN", payload: id});
 export const updateTownInState = (newObj) => ({type: "UPDATE_TOWN", payload: newObj});
 
 export const chngCurrItemForModal = (obj) => ({type: "CHNG_CURR_ITEM_FOR_MODAL", payload: obj});
+
+export const toogleAuth = (data) => ({type: "TOOGLE_AUTH", payload: data});

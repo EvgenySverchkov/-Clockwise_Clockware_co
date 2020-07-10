@@ -5,6 +5,11 @@ export default function main_adminPanel_reduser(state={}, action){
         ...state,
         currItemForModal: action.payload
       }
+    case "TOOGLE_AUTH":
+      return {
+        ...state,
+        isAuth: action.payload
+      }
     default:
       return state;
   }

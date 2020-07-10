@@ -21,7 +21,7 @@ function OrderForm({submitHandler, townsArr, currentOrder, addCurrentOrderToStat
       <div className="text-center">Fill out this form to order a master</div>
       <form onSubmit={submitHandler} className="mt-4 row justify-content-center">
         <div className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8">
-          <label htmlFor="town" className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold">Enter your name</label>
+          <label htmlFor="name" className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold">Enter your name</label>
           <div className="col-sm-8 col-md-8">
             <input id="name" type="text" name="name" className="form-control"
                    onChange={handler}

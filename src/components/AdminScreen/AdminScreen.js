@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 
 import {addNewMaster, addNewTown, initMasters,
 	      townsInit, updateMasterInState, updateTownInState,
-				deleteMasterFromState, deleteTownFromState, initOrders, deleteOrderFromState, updateOrderInState} from "../../store/adminPanel/actions";
+				deleteMasterFromState, deleteTownFromState, initOrders, deleteOrderFromState, updateOrderInState,
+				toogleAuth} from "../../store/adminPanel/actions";
 import "./adminScreen.css";
 
 import NavMenu from "./NavMenu";
@@ -14,6 +15,7 @@ import AddMasterForm from "./AddMasterForm";
 import EditForm from "./EditForm";
 import List from "./List";
 import FullInfoModal from "./FullInfoModal";
+import AuthForm from "./AuthForm";
 
 import {SERVERDOMAIN} from "../../services/serverUrls";
 // import {LOCALDOMAIN} from "../../services/serverUrls";
@@ -21,23 +23,22 @@ import {SERVERDOMAIN} from "../../services/serverUrls";
 function AdminSrcreen(props){
 	useEffect(function(){
 		document.title = "AdminPanel - Clockwise Clockware";
-		fetch(`${SERVERDOMAIN}/masters`)
-			.then(data=>data.json())
-			.then(data=>props.initMasters(data));
-
-		fetch(`${SERVERDOMAIN}/towns`)
-			.then(json=>json.json())
-			.then(data=>props.townsInit(data));
-
-		fetch(`${SERVERDOMAIN}/orders`)
-			.then(json=>json.json())
-			.then(data=>props.initOrders(data));
+		if(sessionStorage.getItem('token')){
+			props.toogleAuth(true);
+			getAllData();
+		}else{
+			props.history.push('/admin');
+			props.initMasters([]);
+			props.townsInit([]);
+			props.initOrders([])
+		}
 	}, []);
 	function postData(url, newObj){
 		return fetch(url, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json;charset=utf-8'
+				'Authorization': 'Bearer ' + sessionStorage.getItem('token')||'',
+				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(newObj),
 		})
@@ -48,6 +49,24 @@ function AdminSrcreen(props){
 			throw err;
 		});
 	}
+	function getAllData(){
+		const headers = {
+			'Authorization': 'Bearer ' + sessionStorage.getItem('token')||'',
+			'Content-Type': 'application/json'
+		}
+		fetch(`${SERVERDOMAIN}/masters`, {headers})
+			.then(data=>data.json())
+			.then(data=>props.initMasters(data))
+			.catch(err =>{alert("Авторизируйтесь"); props.initMasters([])});
+
+		fetch(`${SERVERDOMAIN}/towns`, {headers})
+			.then(json=>json.json())
+			.then(data=>props.townsInit(data));
+
+		fetch(`${SERVERDOMAIN}/orders`, {headers})
+			.then(json=>json.json())
+			.then(data=>props.initOrders(data));
+}
 	function addNewMasterHandler(e){
 			e.preventDefault();
 			let masterName = e.target.name.value;
@@ -120,7 +139,8 @@ function AdminSrcreen(props){
 		return fetch(url, {
 			method: "PUT",
 			headers: {
-				'Content-Type': 'application/json;charset=utf-8'
+				'Authorization': 'Bearer ' + sessionStorage.getItem('token')||'',
+				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(newObj)
 		})
@@ -198,7 +218,11 @@ function AdminSrcreen(props){
 
 	function deleteDataFromServer(url){
 		return fetch(url, {
-			method: "delete"
+			method: "delete",
+			headers: {
+				'Authorization': 'Bearer ' + sessionStorage.getItem('token')||'',
+				'Content-Type': 'application/json'
+			}
 		})
 		.then(data=>data.json())
 		.catch((err)=>{
@@ -219,13 +243,34 @@ function AdminSrcreen(props){
 		deleteDataFromServer(`${SERVERDOMAIN}/orders/delete/${orderId}`)
 		.then(data=>props.deleteOrderFromState(data)).catch((err)=>alert(err));
 	}
+	function authHandler(e){
+		e.preventDefault();
+		const login = e.target.login.value;
+		const password = e.target.password.value;
+		const newObj = {login, password};
+		fetch(`${SERVERDOMAIN}/adminLogin`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json;charset=utf-8'
+			},
+			body: JSON.stringify(newObj)
+		})
+		.then(json=>json.json())
+		.then(data => {
+			sessionStorage.setItem('token', data.token);
+			props.history.push('/admin/mastersList');
+			getAllData();
+			props.toogleAuth(true);
+		})
+	}
 
 	return(
-		<div className="container">
-			<NavMenu />
+		<div className="container pt-3">
+			{props.isAuth ? <NavMenu /> : <AuthForm handler={authHandler}/>}
 			<div className="row justify-content-sm-center">
 				<div className="col-md-8">
 					<Switch>
+
 						<Route path="/admin/ordersList"
 									 render={()=><List dataArr={props.ordersArr}
 								                     deleteAction = {deleteOrderById}
@@ -273,7 +318,8 @@ function mapStateToProps(state){
 		mastersArr: state.master_reducer.masters,
 		townsArr: state.town_reduser.towns,
 		ordersArr: state.orders_reducer.ordersArr,
-		currItemForModal: state.main_adminPanel_reduser.currItemForModal
+		currItemForModal: state.main_adminPanel_reduser.currItemForModal,
+		isAuth: state.main_adminPanel_reduser.isAuth,
 	}
 }
 const actions = {
@@ -287,7 +333,8 @@ const actions = {
 	deleteTownFromState,
 	initOrders,
 	deleteOrderFromState,
-	updateOrderInState
+	updateOrderInState,
+	toogleAuth
 }
 
 AdminSrcreen.propTypes = {
