@@ -257,10 +257,14 @@ function AdminSrcreen(props){
 		})
 		.then(json=>json.json())
 		.then(data => {
-			sessionStorage.setItem('token', data.token);
-			props.history.push('/admin/mastersList');
-			getAllData();
-			props.toogleAuth(true);
+			if(data.success){
+				sessionStorage.setItem('token', data.token);
+				props.history.push('/admin/mastersList');
+				getAllData();
+				props.toogleAuth(true);
+			}else{
+				alert(data.msg)
+			}
 		})
 	}
 
