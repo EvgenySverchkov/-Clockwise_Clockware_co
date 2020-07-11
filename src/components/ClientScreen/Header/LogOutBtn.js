@@ -1,10 +1,12 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
-function LogOutBtn({handler}){
+function LogOutBtn({ handler }) {
   return (
     <li className="nav-item">
-      <Link className="nav-link" to="/client" onClick={handler}>Logout</Link>
+      <Link className="nav-link" to="/client" onClick={handler}>
+        Logout
+      </Link>
     </li>
   );
 }

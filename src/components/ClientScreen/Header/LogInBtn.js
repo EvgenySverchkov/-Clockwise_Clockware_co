@@ -1,10 +1,12 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
-function LogIn({handler}){
+function LogIn({ handler }) {
   return (
     <li className="nav-item">
-      <Link className="nav-link" to="/client/login">Login</Link>
+      <Link className="nav-link" to="/client/login">
+        Login
+      </Link>
     </li>
   );
 }
