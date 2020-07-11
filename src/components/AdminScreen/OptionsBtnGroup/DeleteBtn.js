@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-function DeleteBtn({deleteMasterById, id}){
+function DeleteBtn({ deleteMasterById, id }) {
   return (
-    <button onClick={()=>deleteMasterById(id)} className="dropdown-item">
+    <button onClick={() => deleteMasterById(id)} className="dropdown-item">
       Delete
     </button>
   );
@@ -11,7 +11,7 @@ function DeleteBtn({deleteMasterById, id}){
 
 DeleteBtn.propTypes = {
   deleteMasterById: PropTypes.func,
-  id: PropTypes.number
-}
+  id: PropTypes.number,
+};
 
 export default DeleteBtn;
