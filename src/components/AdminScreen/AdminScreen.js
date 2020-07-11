@@ -274,11 +274,7 @@ function AdminSrcreen(props){
 			<div className="row justify-content-sm-center">
 				<div className="col-md-8">
 					<Switch>
-
-						<Route path="/admin/ordersList"
-									 render={()=><List dataArr={props.ordersArr}
-								                     deleteAction = {deleteOrderById}
-																		 mainRows = {["name", "time"]}/>}/>
+						<Route path="/admin/ordersList" render={()=><List dataArr={props.ordersArr} deleteAction = {deleteOrderById} mainRows = {["name", "time"]}/>}/>
 						<Route path="/admin/mastersList"
 									 render={()=><List dataArr={props.mastersArr}
 								                     deleteAction = {deleteMasterById}
