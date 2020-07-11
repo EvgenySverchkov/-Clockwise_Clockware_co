@@ -3,7 +3,7 @@ This project was created with [Create React App](https://github.com/facebook/cre
 ## Instructions for running locally
 
 
-### `1`
+### `1` 
 
 Clone a project from the directory https://github.com/EvgenySverchkov/Clockwise_Clockware_co_project_UI .<br>
 
