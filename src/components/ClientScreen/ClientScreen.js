@@ -108,7 +108,7 @@ function ClientSrcreen(props) {
       .then((data) => {
         props.changeMasterListIsLoad(false);
         alert("Congratulations, you have booked a master!!!");
-        props.history.push("/client");
+        props.history.push("/");
         getOrdersArrFromServer(SERVERDOMAIN).then((data) =>
           props.addOrdersToState(data)
         );
@@ -152,7 +152,7 @@ function ClientSrcreen(props) {
     ).then((data) => {
       props.changeOrderFormIsLoad(false);
       props.addSuitableMasters(data);
-      props.history.push("/client/masters");
+      props.history.push("/masters");
     });
   }
   function getFreeMastersByClientTownFromServer(
@@ -211,7 +211,7 @@ function ClientSrcreen(props) {
           localStorage.setItem("user", JSON.stringify(data.user));
           props.addCurrentOrderToState({ email: data.user.email });
           props.toggleAuth(true);
-          props.history.push("/client");
+          props.history.push("/");
         }
       });
   }
@@ -239,7 +239,7 @@ function ClientSrcreen(props) {
           alert(data.msg);
         } else {
           alert(`Congratulations! ${data.user.name} you are signUp`);
-          props.history.push("/client/login");
+          props.history.push("/login");
         }
       });
   }
@@ -256,7 +256,7 @@ function ClientSrcreen(props) {
         <Switch>
           <Route
             exact
-            path="/client"
+            path="/"
             render={() => (
               <OrderForm
                 townsArr={townsArr}
@@ -265,17 +265,17 @@ function ClientSrcreen(props) {
             )}
           />
           <Route
-            path="/client/masters"
+            path="/masters"
             render={() => (
               <MastersList submitHandler={submitHandlerInListMasters} />
             )}
           />
           <Route
-            path="/client/login"
+            path="/login"
             render={() => <LoginForm handler={loginHangler} />}
           />
           <Route
-            path="/client/registration"
+            path="/registration"
             render={() => <RegistrationForm handler={regHangler} />}
           />
         </Switch>

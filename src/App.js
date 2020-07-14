@@ -6,7 +6,6 @@ import reducers from "./store/allReducers.js";
 
 import ClientScreen from "./components/ClientScreen";
 import AdminScreen from "./components/AdminScreen";
-import FirstScreen from "./components/FirstScreen";
 
 import './App.css';
 
@@ -53,8 +52,7 @@ function App() {
     <Provider store = {store}>
       <div className="App">
         <Switch>
-          <Route exact path="/" component={FirstScreen}/>
-          <Route path="/client" component={ClientScreen} />
+          <Route exact path="/" component={ClientScreen} />
           <Route path="/admin" component={AdminScreen}/>
         </Switch>
       </div>

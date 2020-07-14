@@ -11,7 +11,7 @@ function MastersList(props) {
         <div className="text-left display-4">
           We haven't masters in this city
         </div>
-        <Link to="/client" className="btn btn-primary mt-5">
+        <Link to="/" className="btn btn-primary mt-5">
           Сome back
         </Link>
       </>
@@ -47,7 +47,7 @@ function MastersList(props) {
         })}
       </div>
       <div className="form-group float-left mt-3">
-        <Link to="/client" className="btn btn-primary">
+        <Link to="/" className="btn btn-primary">
           Сome back
         </Link>
       </div>
