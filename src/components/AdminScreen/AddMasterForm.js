@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from 'react-redux';
 
-function AddMasterForm({ handler, townsArr }) {
+function AddMasterForm({ handler, townsArr, newMasterFormIsLoad }) {
   return (
     <form onSubmit={handler} className="mt-4 row justify-content-center">
       <div className="form-group row text-center text-sm-left col-sm-8 col-md-10 col-lg-8">
@@ -47,7 +48,7 @@ function AddMasterForm({ handler, townsArr }) {
       <div className="row justify-content-sm-center col-12">
         <input
           type="submit"
-          value="Add"
+          value={newMasterFormIsLoad ? "Loading..." : "Add"}
           className="btn btn-primary col-12 col-sm-4 mt-3"
         />
       </div>
@@ -60,4 +61,10 @@ AddMasterForm.propTypes = {
   townsArr: PropTypes.array,
 };
 
-export default AddMasterForm;
+function mapStateToProps(state){
+  return {
+    newMasterFormIsLoad: state.main_adminPanel_reduser.newMasterFormIsLoad
+  }
+}
+
+export default connect(mapStateToProps)(AddMasterForm);

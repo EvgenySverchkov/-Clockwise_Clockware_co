@@ -1,6 +1,7 @@
 import React from "react";
+import { connect } from 'react-redux';
 
-function LoginForm({ handler }) {
+function LoginForm({ handler, authIsLoad }) {
   return (
     <form onSubmit={handler} className="mt-4 row justify-content-center">
       <div className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8">
@@ -40,7 +41,7 @@ function LoginForm({ handler }) {
       <div className="row justify-content-sm-center col-12">
         <input
           type="submit"
-          value="Login"
+          value={authIsLoad ? "Loading..." : "Login"}
           className="btn btn-primary col-12 col-sm-4 mt-3"
         />
       </div>
@@ -48,4 +49,10 @@ function LoginForm({ handler }) {
   );
 }
 
-export default LoginForm;
+function mapStateToProps(state){
+  return {
+    authIsLoad: state.main_adminPanel_reduser.authIsLoad
+  }
+}
+
+export default connect(mapStateToProps)(LoginForm);

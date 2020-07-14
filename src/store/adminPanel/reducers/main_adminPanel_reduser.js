@@ -10,6 +10,26 @@ export default function main_adminPanel_reduser(state={}, action){
         ...state,
         isAuth: action.payload
       }
+    case "CHANGE_AUTH_IS_LOAD":
+      return {
+        ...state,
+        authIsLoad: action.payload
+      }
+    case "CHANGE_ADD_NEW_TOWN_FORM_IS_LOAD":
+      return {
+        ...state,
+        newTownFormIsLoad: action.payload
+      }
+    case 'CHANGE_ADD_NEW_MASTER_FORM_IS_LOAD':
+      return {
+        ...state,
+        newMasterFormIsLoad: action.payload
+      }
+    case 'CHANGE_EDIT_FORM_IS_LOAD':
+      return {
+        ...state,
+        editFormIsLoad: action.payload
+      }
     default:
       return state;
   }

@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
-function AddNewTownForm({ handler }) {
+function AddNewTownForm({ handler, newTownFormIsLoad }) {
   return (
     <form onSubmit={handler}>
       <div className="form-group row justify-content-sm-center">
@@ -18,7 +19,7 @@ function AddNewTownForm({ handler }) {
       <div className="row justify-content-sm-center">
         <input
           type="submit"
-          value="Add town"
+          value= {newTownFormIsLoad ? "Loading..." : "Add town"}
           className="btn btn-primary col-12 col-sm-4 mt-3"
         />
       </div>
@@ -30,4 +31,10 @@ AddNewTownForm.propTypes = {
   handler: PropTypes.func,
 };
 
-export default AddNewTownForm;
+function mapStateToProps(state){
+  return {
+    newTownFormIsLoad: state.main_adminPanel_reduser.newTownFormIsLoad
+  }
+}
+
+export default connect(mapStateToProps)(AddNewTownForm);

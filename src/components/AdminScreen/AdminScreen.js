@@ -16,6 +16,10 @@ import {
   deleteOrderFromState,
   updateOrderInState,
   toogleAuth,
+  changeAuthIsLoad,
+  changeAddMewTownFormIsLoad,
+  changeAddNewMasterFormIsLoad,
+  changeEditFormIsLoad
 } from "../../store/adminPanel/actions";
 import "./adminScreen.css";
 
@@ -98,8 +102,12 @@ function AdminSrcreen(props) {
           towns: townsArr.join(","),
           name: masterName,
         };
+        props.changeAddNewMasterFormIsLoad(true);
         postData(`${SERVERDOMAIN}/masters/post`, infoObj)
-          .then((data) => props.addNewMaster(data))
+          .then((data) => {
+            props.changeAddNewMasterFormIsLoad(false);
+            props.addNewMaster(data)
+          })
           .then(() => {
             alert("You added new master");
             props.history.push("/admin/mastersList");
@@ -142,8 +150,10 @@ function AdminSrcreen(props) {
           name: townName,
           id: createUniqueId(props.townsArr),
         };
+        props.changeAddMewTownFormIsLoad(true);
         postData(`${SERVERDOMAIN}/towns/post`, infoObj)
           .then((data) => {
+            props.changeAddMewTownFormIsLoad(false);
             props.addNewTown(data);
           })
           .then(() => {
@@ -181,11 +191,13 @@ function AdminSrcreen(props) {
         return false;
       }
     }
+    props.changeEditFormIsLoad(true);
     putDataToServer(
       `${SERVERDOMAIN}/masters/put/${newMasterObj.id}`,
       newMasterObj
     )
       .then((data) => {
+        props.changeEditFormIsLoad(false);
         props.updateMasterInState(data);
         props.history.push("/admin/mastersList");
       })
@@ -208,8 +220,10 @@ function AdminSrcreen(props) {
         "The name of this town is already on the list! \nPlease enter another town name!"
       );
     } else {
+      props.changeEditFormIsLoad(true);
       putDataToServer(`${SERVERDOMAIN}/towns/put/${newTownObj.id}`, newTownObj)
         .then((data) => {
+          props.changeEditFormIsLoad(false);
           props.updateTownInState(data);
           props.history.push("/admin/townsList");
         })
@@ -224,8 +238,10 @@ function AdminSrcreen(props) {
         return false;
       }
     }
+    props.changeEditFormIsLoad(true);
     putDataToServer(`${SERVERDOMAIN}/orders/put/${newOrderObj.id}`, newOrderObj)
       .then((data) => {
+        props.changeEditFormIsLoad(false);
         props.updateOrderInState(data);
         props.history.push("/admin/ordersList");
       })
@@ -285,6 +301,7 @@ function AdminSrcreen(props) {
     const login = e.target.login.value;
     const password = e.target.password.value;
     const newObj = { login, password };
+    props.changeAuthIsLoad(true);
     fetch(`${SERVERDOMAIN}/adminLogin`, {
       method: "POST",
       headers: {
@@ -294,6 +311,7 @@ function AdminSrcreen(props) {
     })
       .then((json) => json.json())
       .then((data) => {
+        props.changeAuthIsLoad(false);
         if (data.success) {
           sessionStorage.setItem("token", data.token);
           props.history.push("/admin/mastersList");
@@ -414,6 +432,10 @@ const actions = {
   deleteOrderFromState,
   updateOrderInState,
   toogleAuth,
+  changeAuthIsLoad,
+  changeAddMewTownFormIsLoad,
+  changeAddNewMasterFormIsLoad,
+  changeEditFormIsLoad
 };
 
 AdminSrcreen.propTypes = {

@@ -13,7 +13,11 @@ import './App.css';
 const initialState = {
   main_adminPanel_reduser:{
     currItemForModal: {},
-    isAuth: false
+    isAuth: false,
+    authIsLoad: false,
+    newTownFormIsLoad: false,
+    newMasterFormIsLoad: false,
+    editFormIsLoad: false
   },
   orders_reducer:{
     ordersArr: []

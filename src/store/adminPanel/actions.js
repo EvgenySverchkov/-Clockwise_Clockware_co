@@ -15,3 +15,8 @@ export const updateTownInState = (newObj) => ({type: "UPDATE_TOWN", payload: new
 export const chngCurrItemForModal = (obj) => ({type: "CHNG_CURR_ITEM_FOR_MODAL", payload: obj});
 
 export const toogleAuth = (data) => ({type: "TOOGLE_AUTH", payload: data});
+
+export const changeAuthIsLoad = (data) => ({type: "CHANGE_AUTH_IS_LOAD", payload: data});
+export const changeAddMewTownFormIsLoad = (data) => ({type: "CHANGE_ADD_NEW_TOWN_FORM_IS_LOAD", payload: data});
+export const changeAddNewMasterFormIsLoad = (data) => ({type: "CHANGE_ADD_NEW_MASTER_FORM_IS_LOAD", payload: data});
+export const changeEditFormIsLoad = (data) => ({type: "CHANGE_EDIT_FORM_IS_LOAD", payload: data});

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-function EditForm({ id, handler, arrFromState }) {
+function EditForm({ id, handler, arrFromState, editFormIsLoad }) {
   let obj = arrFromState.find((item) => item.id === id);
   let [stateObj, setStateObj] = useState(obj);
   let keyArr = Object.keys(stateObj || {});
@@ -50,7 +51,7 @@ function EditForm({ id, handler, arrFromState }) {
       <div className="row justify-content-sm-center">
         <input
           type="submit"
-          value="Edit"
+          value= {editFormIsLoad ? "Loading..." : "Edit"}
           className="btn btn-primary col-12 col-sm-4 mt-3"
         />
       </div>
@@ -64,4 +65,10 @@ EditForm.propTypes = {
   arrFromState: PropTypes.array,
 };
 
-export default EditForm;
+function mapStateToProps(state){
+  return {
+    editFormIsLoad: state.main_adminPanel_reduser.editFormIsLoad
+  }
+}
+
+export default connect(mapStateToProps)(EditForm);
