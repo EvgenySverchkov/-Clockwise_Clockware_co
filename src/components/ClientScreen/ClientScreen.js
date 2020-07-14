@@ -168,7 +168,13 @@ function ClientSrcreen(props) {
       timeEnd: clientTimeEnd,
       date: clientDate,
     };
-    return fetch(`${url}/freeMasters/${stringify(obj)}`).then((json) =>
+    return fetch(`${url}/freeMasters`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(obj)
+    }).then((json) =>
       json.json()
     );
   }
