@@ -22,7 +22,6 @@ import RegistrationForm from "./RegistrationForm";
 import Header from "./Header";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-// import {LOCALDOMAIN} from "../../services/serverUrls";
 
 function ClientSrcreen(props) {
   let [townsArr, setTownsArr] = useState([]);

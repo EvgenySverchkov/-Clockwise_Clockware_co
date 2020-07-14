@@ -32,7 +32,6 @@ import FullInfoModal from "./FullInfoModal";
 import AuthForm from "./AuthForm";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-// import {LOCALDOMAIN} from "../../services/serverUrls";
 
 function AdminSrcreen(props) {
   useEffect(function () {
