@@ -15,4 +15,8 @@ Open the folder with the cloned project and in the cmd run `npm install`
 
 ### `3`
 
-In the cmd run  `npm start`
+In the cmd run  `npm run dev`
+
+### `4`
+
+For creating build run  `npm run build`
