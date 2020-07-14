@@ -1,6 +1,7 @@
 import React from "react";
+import {connect} from "react-redux";
 
-function RegistrationForm({ handler }) {
+function RegistrationForm({ handler, signUpIsLoad }) {
   return (
     <form onSubmit={handler} className="mt-4 row justify-content-center">
       <div className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8">
@@ -74,7 +75,7 @@ function RegistrationForm({ handler }) {
       <div className="row justify-content-sm-center col-12">
         <input
           type="submit"
-          value="Login"
+          value={signUpIsLoad ? "Loading..." : "Sign up"}
           className="btn btn-primary col-12 col-sm-4 mt-3"
         />
       </div>
@@ -82,4 +83,10 @@ function RegistrationForm({ handler }) {
   );
 }
 
-export default RegistrationForm;
+function mapStateToPorps(state){
+  return {
+    signUpIsLoad: state.client_order_reduser.signUpIsLoad,
+  }
+}
+
+export default connect(mapStateToPorps)(RegistrationForm);

@@ -25,6 +25,26 @@ export default function client_order_reduser(state={}, action){
         ...state,
         isAuth: action.payload
       }
+    case 'CHANGE_LOGIN_IS_LOAD':
+      return {
+        ...state,
+        loginIsLoad: action.payload
+      }
+    case 'CHANGE_SIGNUP_IS_LOAD':
+      return {
+        ...state,
+        signUpIsLoad: action.payload
+      }
+    case 'CHANGE_ORDER_FORM_IS_LOAD':
+      return {
+        ...state,
+        orderFormIsLoad: action.payload
+      }
+    case 'CHANGE_MASTER_LIST_IS_LOAD':
+      return {
+        ...state,
+        masterListIsLoad: action.payload
+      }
     default:
       return state;
   }

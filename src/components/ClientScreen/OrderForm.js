@@ -10,6 +10,7 @@ function OrderForm({
   townsArr,
   currentOrder,
   addCurrentOrderToState,
+  orderFormIsLoad
 }) {
   function handler(e) {
     let idx = e.target.name;
@@ -158,7 +159,7 @@ function OrderForm({
         <div className="row justify-content-sm-center col-12">
           <input
             type="submit"
-            value="Next step"
+            value={orderFormIsLoad ? "Loading..." : "Next step" }
             className="btn btn-primary col-12 col-sm-4 mt-3"
           />
         </div>
@@ -169,6 +170,7 @@ function OrderForm({
 function mapStateToProps(state) {
   return {
     currentOrder: state.client_order_reduser.currentOrder,
+    orderFormIsLoad: state.client_order_reduser.orderFormIsLoad
   };
 }
 

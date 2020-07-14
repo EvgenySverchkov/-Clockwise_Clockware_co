@@ -52,7 +52,7 @@ function MastersList(props) {
         </Link>
       </div>
       <div className="form-group float-right mt-3">
-        <input type="submit" value="Book now" className="btn btn-primary" />
+        <input type="submit" value={props.masterListIsLoad? "Loading..." : "Book now"} className="btn btn-primary" />
       </div>
     </form>
   );
@@ -62,6 +62,7 @@ function mapStateToProps(state) {
   return {
     suitableMasters: state.client_order_reduser.suitableMasters,
     currentOrder: state.client_order_reduser.currentOrder,
+    masterListIsLoad: state.client_order_reduser.masterListIsLoad
   };
 }
 

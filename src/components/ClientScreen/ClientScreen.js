@@ -10,6 +10,10 @@ import {
   addOrdersToState,
   addNewOrderToState,
   toggleAuth,
+  changeLoginIsLoad,
+  changeSignUpIsLoad,
+  changeOrderFormIsLoad,
+  changeMasterListIsLoad
 } from "../../store/clientSide/actions";
 import OrderForm from "./OrderForm";
 import MastersList from "./MastersList";
@@ -88,6 +92,8 @@ function ClientSrcreen(props) {
       id: createUniqueId(props.ordersArr),
       endTime: endOrderTime,
     };
+
+    props.changeMasterListIsLoad(true);
     fetch(`${SERVERDOMAIN}/ordersClient/post`, {
       method: "POST",
       headers: {
@@ -100,6 +106,7 @@ function ClientSrcreen(props) {
       })
       .then((json) => json.json())
       .then((data) => {
+        props.changeMasterListIsLoad(false);
         alert("Congratulations, you have booked a master!!!");
         props.history.push("/client");
         getOrdersArrFromServer(SERVERDOMAIN).then((data) =>
@@ -135,6 +142,7 @@ function ClientSrcreen(props) {
       default:
         endOrderTime = 0;
     }
+    props.changeOrderFormIsLoad(true);
     getFreeMastersByClientTownFromServer(
       SERVERDOMAIN,
       e.target.town.value,
@@ -142,6 +150,7 @@ function ClientSrcreen(props) {
       endOrderTime,
       props.currentOrder.date
     ).then((data) => {
+      props.changeOrderFormIsLoad(false);
       props.addSuitableMasters(data);
       props.history.push("/client/masters");
     });
@@ -177,6 +186,8 @@ function ClientSrcreen(props) {
     let login = e.target.login.value;
     let password = e.target.password.value;
     let newObj = { login: login, password: password };
+    
+    props.changeLoginIsLoad(true);
     fetch(`${SERVERDOMAIN}/login`, {
       method: "POST",
       headers: {
@@ -186,6 +197,7 @@ function ClientSrcreen(props) {
     })
       .then((data) => data.json())
       .then((data) => {
+        props.changeLoginIsLoad(false);
         if (!data.success) {
           alert(data.msg);
         } else {
@@ -206,6 +218,7 @@ function ClientSrcreen(props) {
       email: elem.email.value,
       password: elem.password.value,
     };
+    props.changeSignUpIsLoad(true);
     fetch(`${SERVERDOMAIN}/signUp`, {
       method: "POST",
       headers: {
@@ -215,6 +228,7 @@ function ClientSrcreen(props) {
     })
       .then((data) => data.json())
       .then((data) => {
+        props.changeSignUpIsLoad(false);
         if (!data.success) {
           alert(data.msg);
         } else {
@@ -278,6 +292,10 @@ let actions = {
   addSuitableMasters,
   addNewOrderToState,
   toggleAuth,
+  changeLoginIsLoad,
+  changeSignUpIsLoad,
+  changeOrderFormIsLoad,
+  changeMasterListIsLoad
 };
 
 ClientSrcreen.propTypes = {

@@ -28,7 +28,11 @@ const initialState = {
     currentOrder: {},
     suitableMasters: [],
     ordersArr: [],
-    bookedMasters: []
+    bookedMasters: [],
+    loginIsLoad: false,
+    signUpIsLoad: false,
+    orderFormIsLoad: false,
+    masterListIsLoad: false
   }
 };
 const store = createStore(
