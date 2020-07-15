@@ -6,7 +6,6 @@ function ListItem({ infoObj, mainRows }) {
     <>
       {mainRows.map((item) => (
         <td
-          className="text-center"
           style={{ wordWrap: "break-word" }}
           key={item}
         >

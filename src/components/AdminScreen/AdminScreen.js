@@ -163,7 +163,7 @@ function AdminSrcreen(props) {
                 <List
                   dataArr={props.ordersArr}
                   deleteAction={deleteOrderById}
-                  mainRows={["name", "time"]}
+                  mainRows={["name", "time", "date", "town"]}
                 />
               )}
             />

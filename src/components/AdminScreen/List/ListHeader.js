@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./listHeader.css";
 
 function ListHeader({ templArr }) {
   return (
@@ -22,8 +23,6 @@ function ListHeader({ templArr }) {
         return (
           <th
             key={item}
-            className="text-center"
-            style={{ wordWrap: "break-word" }}
           >
             {value}
           </th>

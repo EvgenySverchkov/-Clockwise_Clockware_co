@@ -4,7 +4,7 @@ import "./navmenu.css";
 
 function NavMenu() {
   return (
-    <div className="nav-menu-wrapp mb-5">
+    <div className="nav-menu-wrapp mb-3 mb-sm-5">
       <div className="btn-group nav-menu">
         <div className="dropdown mr-1">
           <button
