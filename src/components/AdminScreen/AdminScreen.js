@@ -313,7 +313,7 @@ function AdminSrcreen(props) {
         props.changeAuthIsLoad(false);
         if (data.success) {
           sessionStorage.setItem("token", data.token);
-          props.history.push("/admin/mastersList");
+          props.history.push("/admin");
           getAllData();
           props.toogleAuth(true);
         } else {

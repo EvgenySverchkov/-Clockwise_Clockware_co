@@ -17,7 +17,7 @@ function Header({ isAuth, toggleAuth, currentOrder, addCurrentOrderToState }) {
   return (
     <header className="masthead mb-auto">
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-        <Link to="/" className="navbar-brand">
+        <Link to="/client" className="navbar-brand">
           Clockwise Co.
         </Link>
         <button
@@ -35,12 +35,12 @@ function Header({ isAuth, toggleAuth, currentOrder, addCurrentOrderToState }) {
           <ul className="navbar-nav mr-auto">
             {isAuth ? <LogOutBtn handler={logOutHandl} /> : <LogInBtn />}
             <li className="nav-item">
-              <Link className="nav-link" to="/registration">
+              <Link className="nav-link" to="/client/registration">
                 SignUp
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/client">
                 To main
               </Link>
             </li>

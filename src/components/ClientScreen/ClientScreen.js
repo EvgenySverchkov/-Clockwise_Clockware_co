@@ -151,7 +151,7 @@ function ClientSrcreen(props) {
     ).then((data) => {
       props.changeOrderFormIsLoad(false);
       props.addSuitableMasters(data);
-      props.history.push("/masters");
+      props.history.push("/client/masters");
     });
   }
   function getFreeMastersByClientTownFromServer(
@@ -210,7 +210,7 @@ function ClientSrcreen(props) {
           localStorage.setItem("user", JSON.stringify(data.user));
           props.addCurrentOrderToState({ email: data.user.email });
           props.toggleAuth(true);
-          props.history.push("/");
+          props.history.push("/client");
         }
       });
   }
@@ -238,7 +238,7 @@ function ClientSrcreen(props) {
           alert(data.msg);
         } else {
           alert(`Congratulations! ${data.user.name} you are signUp`);
-          props.history.push("/login");
+          props.history.push("/client/login");
         }
       });
   }
@@ -255,7 +255,7 @@ function ClientSrcreen(props) {
         <Switch>
           <Route
             exact
-            path="/"
+            path="/client"
             render={() => (
               <OrderForm
                 townsArr={townsArr}
@@ -264,18 +264,18 @@ function ClientSrcreen(props) {
             )}
           />
           <Route
-            path="/masters"
+            path="/client/masters"
             render={() => (
               <MastersList submitHandler={submitHandlerInListMasters} />
             )}
           />
           <Route
-            path="/login"
+            path="/client/login"
             render={() => <LoginForm handler={loginHangler} />}
           />
           <Route
-            path="/registration"
-            render={() => <RegistrationForm handler={regHangler} />}
+            path="/client/registration"
+            render={() =><RegistrationForm handler={regHangler} />}
           />
         </Switch>
       </div>
