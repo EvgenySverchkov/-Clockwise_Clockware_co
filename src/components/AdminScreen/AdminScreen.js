@@ -3,18 +3,19 @@ import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+import putDataToServer from "./services/putDataToServer";
+import deleteDataFromServer from "./services/deleteDataFromServer";
+
 import {
-  addNewMaster,
-  addNewTown,
   initMasters,
   townsInit,
+  initOrders,
   updateMasterInState,
   updateTownInState,
+  updateOrderInState,
   deleteMasterFromState,
   deleteTownFromState,
-  initOrders,
   deleteOrderFromState,
-  updateOrderInState,
   toogleAuth,
   changeAuthIsLoad,
   changeAddMewTownFormIsLoad,
@@ -46,22 +47,7 @@ function AdminSrcreen(props) {
       props.initOrders([]);
     }
   }, []);
-  function postData(url, newObj) {
-    return fetch(url, {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token") || "",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newObj),
-    })
-      .then((json) => json.json())
-      .catch((err) => {
-        alert("Internal Server Error! Try again");
-        console.log(err);
-        throw err;
-      });
-  }
+
   function getAllData() {
     const headers = {
       Authorization: "Bearer " + sessionStorage.getItem("token") || "",
@@ -83,105 +69,7 @@ function AdminSrcreen(props) {
       .then((json) => json.json())
       .then((data) => props.initOrders(data));
   }
-  function addNewMasterHandler(e) {
-    e.preventDefault();
-    let masterName = e.target.name.value;
-    let masterRating = e.target.rating.value;
-    let townsArr = selectCheckedTowns(e.target.elements);
-    if (masterName && masterRating && townsArr.length !== 0) {
-      if (masterName.match(/\d/)) {
-        alert("The string name must not contain numbers!!!!");
-      } else {
-        masterName =
-          masterName.charAt(0).toUpperCase() +
-          masterName.slice(1).toLowerCase();
-        let infoObj = {
-          id: createUniqueId(props.mastersArr),
-          rating: masterRating,
-          towns: townsArr.join(","),
-          name: masterName,
-        };
-        props.changeAddNewMasterFormIsLoad(true);
-        postData(`${SERVERDOMAIN}/masters/post`, infoObj)
-          .then((data) => {
-            props.changeAddNewMasterFormIsLoad(false);
-            props.addNewMaster(data)
-          })
-          .then(() => {
-            alert("You added new master");
-            props.history.push("/admin/mastersList");
-          })
-          .catch((err) => alert(err));
-      }
-    } else {
-      alert("Please, feeling all gaps");
-    }
-    function selectCheckedTowns(elements) {
-      let newArr = Array.from(elements);
-      let towns = [];
-      newArr.forEach((item) => {
-        if (item.className.match(/\btowns\b/)) {
-          if (item.checked) {
-            towns.push(item.value);
-          }
-        }
-      });
-      return towns;
-    }
-  }
-  function addNewTownHandler(e) {
-    e.preventDefault();
-    let townName = e.target.town.value;
-    if (townName) {
-      if (
-        props.townsArr.find(
-          (item) => item.name.toLowerCase() === townName.toLowerCase()
-        )
-      ) {
-        alert(
-          "The name of this town is already on the list! \nPlease enter another town name!"
-        );
-        e.target.town.value = "";
-      } else {
-        townName =
-          townName.charAt(0).toUpperCase() + townName.slice(1).toLowerCase();
-        let infoObj = {
-          name: townName,
-          id: createUniqueId(props.townsArr),
-        };
-        props.changeAddMewTownFormIsLoad(true);
-        postData(`${SERVERDOMAIN}/towns/post`, infoObj)
-          .then((data) => {
-            props.changeAddMewTownFormIsLoad(false);
-            props.addNewTown(data);
-          })
-          .then(() => {
-            alert("You added new town");
-            props.history.push("/admin/townsList");
-          })
-          .catch((err) => alert(err));
-      }
-    } else {
-      alert("Please, filling the gap");
-    }
-  }
 
-  function putDataToServer(url, newObj) {
-    return fetch(url, {
-      method: "PUT",
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token") || "",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newObj),
-    })
-      .then((json) => json.json())
-      .catch((err) => {
-        alert("Internal Server Error! Try again");
-        console.log(err);
-        throw err;
-      });
-  }
   function editMasterHandler(e, newMasterObj) {
     e.preventDefault();
     for (let key in newMasterObj) {
@@ -247,39 +135,6 @@ function AdminSrcreen(props) {
       .catch((err) => alert(err));
   }
 
-  function createUniqueId(objectsArr) {
-    if (objectsArr.length === 0) {
-      return 1;
-    }
-    let idxsArr = objectsArr.map((item) => item.id);
-    idxsArr.sort((a, b) => a - b);
-    if (idxsArr.length === idxsArr[idxsArr.length - 1]) {
-      return idxsArr.length + 1;
-    } else {
-      let resultLength = idxsArr[idxsArr.length - 1] + 1;
-      for (let i = 1; i < resultLength; i++) {
-        if (idxsArr.indexOf(i) === -1) {
-          return i;
-        }
-      }
-    }
-  }
-
-  function deleteDataFromServer(url) {
-    return fetch(url, {
-      method: "delete",
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token") || "",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((data) => data.json())
-      .catch((err) => {
-        alert("Internal Server Error! Try again");
-        console.log(err);
-        throw err;
-      });
-  }
   function deleteMasterById(masterId) {
     deleteDataFromServer(`${SERVERDOMAIN}/masters/delete/${masterId}`)
       .then((data) => props.deleteMasterFromState(data))
@@ -295,36 +150,10 @@ function AdminSrcreen(props) {
       .then((data) => props.deleteOrderFromState(data))
       .catch((err) => alert(err));
   }
-  function authHandler(e) {
-    e.preventDefault();
-    const login = e.target.login.value;
-    const password = e.target.password.value;
-    const newObj = { login, password };
-    props.changeAuthIsLoad(true);
-    fetch(`${SERVERDOMAIN}/adminLogin`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(newObj),
-    })
-      .then((json) => json.json())
-      .then((data) => {
-        props.changeAuthIsLoad(false);
-        if (data.success) {
-          sessionStorage.setItem("token", data.token);
-          props.history.push("/admin");
-          getAllData();
-          props.toogleAuth(true);
-        } else {
-          alert(data.msg);
-        }
-      });
-  }
 
   return (
     <div className="container pt-3">
-      {props.isAuth ? <NavMenu /> : <AuthForm handler={authHandler} />}
+      {props.isAuth ? <NavMenu /> : <AuthForm {...props} getAllData={getAllData}/>}
       <div className="row justify-content-sm-center">
         <div className="col-md-8">
           <Switch>
@@ -360,16 +189,11 @@ function AdminSrcreen(props) {
             />
             <Route
               path="/admin/addMasterForm"
-              render={() => (
-                <AddMasterForm
-                  townsArr={props.townsArr}
-                  handler={addNewMasterHandler}
-                />
-              )}
+              render={(props) => <AddMasterForm {...props}/>}
             />
             <Route
               path="/admin/addTownForms"
-              render={() => <AddNewTownForm handler={addNewTownHandler} />}
+              render={(props) => <AddNewTownForm {...props} />}
             />
             <Route
               path="/admin/editMaster/:id"
@@ -419,17 +243,15 @@ function mapStateToProps(state) {
   };
 }
 const actions = {
-  addNewMaster,
-  addNewTown,
   initMasters,
   townsInit,
-  updateMasterInState,
-  updateTownInState,
+  initOrders,
   deleteMasterFromState,
   deleteTownFromState,
-  initOrders,
   deleteOrderFromState,
   updateOrderInState,
+  updateMasterInState,
+  updateTownInState,
   toogleAuth,
   changeAuthIsLoad,
   changeAddMewTownFormIsLoad,
@@ -438,8 +260,6 @@ const actions = {
 };
 
 AdminSrcreen.propTypes = {
-  addNewMaster: PropTypes.func,
-  addNewTown: PropTypes.func,
   initMasters: PropTypes.func,
   townsInit: PropTypes.func,
   updateMasterInState: PropTypes.func,

@@ -1,7 +1,36 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-function LoginForm({ handler, authIsLoad }) {
+import { changeAuthIsLoad, toogleAuth } from "../../store/adminPanel/actions";
+import { SERVERDOMAIN } from "../../services/serverUrls";
+
+function LoginForm(props) {
+  function handler(e) {
+    e.preventDefault();
+    const login = e.target.login.value;
+    const password = e.target.password.value;
+    const newObj = { login, password };
+    props.changeAuthIsLoad(true);
+    fetch(`${SERVERDOMAIN}/adminLogin`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(newObj),
+    })
+      .then((json) => json.json())
+      .then((data) => {
+        props.changeAuthIsLoad(false);
+        if (data.success) {
+          sessionStorage.setItem("token", data.token);
+          props.history.push("/admin");
+          props.getAllData();
+          props.toogleAuth(true);
+        } else {
+          alert(data.msg);
+        }
+      });
+  }
   return (
     <form onSubmit={handler} className="mt-4 row justify-content-center">
       <div className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8">
@@ -41,7 +70,7 @@ function LoginForm({ handler, authIsLoad }) {
       <div className="row justify-content-sm-center col-12">
         <input
           type="submit"
-          value={authIsLoad ? "Loading..." : "Login"}
+          value={props.authIsLoad ? "Loading..." : "Login"}
           className="btn btn-primary col-12 col-sm-4 mt-3"
         />
       </div>
@@ -55,4 +84,9 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(LoginForm);
+const actions = {
+  changeAuthIsLoad, 
+  toogleAuth
+};
+
+export default connect(mapStateToProps, actions)(LoginForm);

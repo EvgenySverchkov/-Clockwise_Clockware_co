@@ -2,7 +2,49 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-function AddNewTownForm({ handler, newTownFormIsLoad }) {
+import createUniqueId from "./services/createUniqueId";
+import postData from "./services/postData";
+import { SERVERDOMAIN } from "../../services/serverUrls";
+
+import {changeAddMewTownFormIsLoad, addNewTown} from "../../store/adminPanel/actions";
+
+function AddNewTownForm(props) {
+  function handler(e) {
+    e.preventDefault();
+    let townName = e.target.town.value;
+    if (townName) {
+      if (
+        props.townsArr.find(
+          (item) => item.name.toLowerCase() === townName.toLowerCase()
+        )
+      ) {
+        alert(
+          "The name of this town is already on the list! \nPlease enter another town name!"
+        );
+        e.target.town.value = "";
+      } else {
+        townName =
+          townName.charAt(0).toUpperCase() + townName.slice(1).toLowerCase();
+        let infoObj = {
+          name: townName,
+          id: createUniqueId(props.townsArr),
+        };
+        props.changeAddMewTownFormIsLoad(true);
+        postData(`${SERVERDOMAIN}/towns/post`, infoObj)
+          .then((data) => {
+            props.changeAddMewTownFormIsLoad(false);
+            props.addNewTown(data);
+          })
+          .then(() => {
+            alert("You added new town");
+            props.history.push("/admin/townsList");
+          })
+          .catch((err) => alert(err));
+      }
+    } else {
+      alert("Please, filling the gap");
+    }
+  }
   return (
     <form onSubmit={handler}>
       <div className="form-group row justify-content-sm-center">
@@ -19,7 +61,7 @@ function AddNewTownForm({ handler, newTownFormIsLoad }) {
       <div className="row justify-content-sm-center">
         <input
           type="submit"
-          value= {newTownFormIsLoad ? "Loading..." : "Add town"}
+          value= {props.newTownFormIsLoad ? "Loading..." : "Add town"}
           className="btn btn-primary col-12 col-sm-4 mt-3"
         />
       </div>
@@ -33,8 +75,14 @@ AddNewTownForm.propTypes = {
 
 function mapStateToProps(state){
   return {
-    newTownFormIsLoad: state.main_adminPanel_reduser.newTownFormIsLoad
+    newTownFormIsLoad: state.main_adminPanel_reduser.newTownFormIsLoad,
+    townsArr: state.town_reduser.towns
   }
 }
 
-export default connect(mapStateToProps)(AddNewTownForm);
+const actions = {
+  changeAddMewTownFormIsLoad,
+  addNewTown
+};
+
+export default connect(mapStateToProps, actions)(AddNewTownForm);
