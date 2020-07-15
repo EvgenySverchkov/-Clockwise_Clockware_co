@@ -45,6 +45,11 @@ export default function client_order_reduser(state={}, action){
         ...state,
         masterListIsLoad: action.payload
       }
+    case 'ADD_TOWNS_TO_STATE':
+      return {
+        ...state,
+        townsArr: action.payload
+      }
     default:
       return state;
   }

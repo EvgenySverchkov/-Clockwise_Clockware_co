@@ -29,6 +29,7 @@ const initialState = {
   },
   client_order_reduser:{
     currentOrder: {},
+    townsArr:[],
     suitableMasters: [],
     ordersArr: [],
     bookedMasters: [],

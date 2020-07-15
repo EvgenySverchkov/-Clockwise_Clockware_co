@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import PropTypes from "prop-types";
-import { stringify } from "qs";
 
 import {
   addCurrentOrderToState,
@@ -13,7 +12,8 @@ import {
   changeLoginIsLoad,
   changeSignUpIsLoad,
   changeOrderFormIsLoad,
-  changeMasterListIsLoad
+  changeMasterListIsLoad,
+  addTownsToState
 } from "../../store/clientSide/actions";
 import OrderForm from "./OrderForm";
 import MastersList from "./MastersList";
@@ -24,11 +24,10 @@ import Header from "./Header";
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
 function ClientSrcreen(props) {
-  let [townsArr, setTownsArr] = useState([]);
   useEffect(() => {
     fetch(`${SERVERDOMAIN}/townsClient`)
       .then((json) => json.json())
-      .then((data) => setTownsArr(data));
+      .then((data) => props.addTownsToState(data));
     getOrdersArrFromServer(SERVERDOMAIN).then((data) =>
       props.addOrdersToState(data)
     );
@@ -258,7 +257,7 @@ function ClientSrcreen(props) {
             path="/client"
             render={() => (
               <OrderForm
-                townsArr={townsArr}
+                townsArr={props.townsArr}
                 submitHandler={submitOrderFormHandler}
               />
             )}
@@ -289,6 +288,7 @@ function mapStateToProps(state) {
     ordersArr: state.client_order_reduser.ordersArr,
     bookedMasters: state.client_order_reduser.bookedMasters,
     isAuth: state.client_order_reduser.isAuth,
+    townsArr: state.client_order_reduser.townsArr,
   };
 }
 let actions = {
@@ -300,7 +300,8 @@ let actions = {
   changeLoginIsLoad,
   changeSignUpIsLoad,
   changeOrderFormIsLoad,
-  changeMasterListIsLoad
+  changeMasterListIsLoad,
+  addTownsToState
 };
 
 ClientSrcreen.propTypes = {
