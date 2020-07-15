@@ -1,26 +1,80 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import "./orderForm.css";
 
-import { addCurrentOrderToState } from "../../store/clientSide/actions";
+import { addCurrentOrderToState, changeOrderFormIsLoad, addSuitableMasters } from "../../store/clientSide/actions";
 
-function OrderForm({
-  submitHandler,
-  townsArr,
-  currentOrder,
-  addCurrentOrderToState,
-  orderFormIsLoad
-}) {
-  function handler(e) {
+import { SERVERDOMAIN } from "../../services/serverUrls";
+
+function OrderForm(props) {
+  function changeHandler(e) {
     let idx = e.target.name;
-    addCurrentOrderToState({ ...currentOrder, [idx]: e.target.value });
+    props.addCurrentOrderToState({ ...props.currentOrder, [idx]: e.target.value });
   }
   function minDate() {
     let date = new Date();
     return `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
       -2
     )}-${("0" + date.getDate()).slice(-2)}`;
+  }
+  function submitHandler(e) {
+    e.preventDefault();
+    let trgElem = e.target;
+    if (!trgElem.town.value || !trgElem.size.value) {
+      alert("Pleade, filling all gaps!!!");
+      return false;
+    }
+    let endOrderTime;
+    let clientTimeHour = +props.currentOrder.time.match(/\d\d/);
+    let clientTimeMin = props.currentOrder.time.match(/:\d\d$/);
+    switch (props.currentOrder.size) {
+      case "small":
+        endOrderTime = clientTimeHour + 1 + clientTimeMin;
+        break;
+      case "middle":
+        endOrderTime = clientTimeHour + 2 + clientTimeMin;
+        break;
+      case "large":
+        endOrderTime = clientTimeHour + 3 + clientTimeMin;
+        break;
+      default:
+        endOrderTime = 0;
+    }
+    props.changeOrderFormIsLoad(true);
+    getFreeMastersByClientTownFromServer(
+      SERVERDOMAIN,
+      e.target.town.value,
+      props.currentOrder.time,
+      endOrderTime,
+      props.currentOrder.date
+    ).then((data) => {
+      props.changeOrderFormIsLoad(false);
+      props.addSuitableMasters(data);
+      props.history.push("/client/masters");
+    });
+  }
+  function getFreeMastersByClientTownFromServer(
+    url,
+    clientTown,
+    clientTimeStart,
+    clientTimeEnd,
+    clientDate
+  ) {
+    let obj = {
+      town: clientTown,
+      timeStart: clientTimeStart,
+      timeEnd: clientTimeEnd,
+      date: clientDate,
+    };
+    return fetch(`${url}/freeMasters`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(obj)
+    }).then((json) =>
+      json.json()
+    );
   }
   return (
     <>
@@ -46,8 +100,8 @@ function OrderForm({
               type="text"
               name="name"
               className="form-control"
-              onChange={handler}
-              value={currentOrder.name || ""}
+              onChange={changeHandler}
+              value={props.currentOrder.name || ""}
               required
             />
           </div>
@@ -65,8 +119,8 @@ function OrderForm({
               type="email"
               name="email"
               className="form-control"
-              onChange={handler}
-              value={currentOrder.email || ""}
+              onChange={changeHandler}
+              value={props.currentOrder.email || ""}
               required
             />
           </div>
@@ -77,7 +131,7 @@ function OrderForm({
             <input
               className="form-check-input"
               type="radio"
-              onChange={handler}
+              onChange={changeHandler}
               name="size"
               id="smallSize"
               value="small"
@@ -90,7 +144,7 @@ function OrderForm({
             <input
               className="form-check-input"
               type="radio"
-              onChange={handler}
+              onChange={changeHandler}
               name="size"
               id="middleSize"
               value="middle"
@@ -103,7 +157,7 @@ function OrderForm({
             <input
               className="form-check-input"
               type="radio"
-              onChange={handler}
+              onChange={changeHandler}
               name="size"
               id="largeSize"
               value="large"
@@ -115,13 +169,13 @@ function OrderForm({
         </div>
         <div className="form-group text-center text-sm-left col-12 col-md-10 col-lg-8">
           <div className="mb-2 font-weight-bold">Choose town</div>
-          {townsArr.map((item) => (
+          {props.townsArr.map((item) => (
             <div key={item.id + 1} className="form-check-inline">
               <label className="form-check-label" htmlFor={item.name}>
                 <input
                   type="radio"
                   className="form-check-input"
-                  onChange={handler}
+                  onChange={changeHandler}
                   name="town"
                   id={item.name}
                   value={item.name}
@@ -142,8 +196,8 @@ function OrderForm({
             name="date"
             min={minDate()}
             className="mr-1"
-            onChange={handler}
-            value={currentOrder.date || ""}
+            onChange={changeHandler}
+            value={props.currentOrder.date || ""}
             required
           />
           <input
@@ -151,15 +205,15 @@ function OrderForm({
             name="time"
             max="18:00"
             min="08:00"
-            onChange={handler}
-            value={currentOrder.time || ""}
+            onChange={changeHandler}
+            value={props.currentOrder.time || ""}
             required
           />
         </div>
         <div className="row justify-content-sm-center col-12">
           <input
             type="submit"
-            value={orderFormIsLoad ? "Loading..." : "Next step" }
+            value={props.orderFormIsLoad ? "Loading..." : "Next step" }
             className="btn btn-primary col-12 col-sm-4 mt-3"
           />
         </div>
@@ -170,8 +224,15 @@ function OrderForm({
 function mapStateToProps(state) {
   return {
     currentOrder: state.client_order_reduser.currentOrder,
-    orderFormIsLoad: state.client_order_reduser.orderFormIsLoad
+    orderFormIsLoad: state.client_order_reduser.orderFormIsLoad,
+    townsArr: state.client_order_reduser.townsArr,
   };
+}
+
+const actions = {
+  addCurrentOrderToState,
+  changeOrderFormIsLoad,
+  addSuitableMasters
 }
 
 OrderForm.propTypes = {
@@ -181,4 +242,4 @@ OrderForm.propTypes = {
   addCurrentOrderToState: PropTypes.func,
 };
 
-export default connect(mapStateToProps, { addCurrentOrderToState })(OrderForm);
+export default connect(mapStateToProps, actions)(OrderForm);

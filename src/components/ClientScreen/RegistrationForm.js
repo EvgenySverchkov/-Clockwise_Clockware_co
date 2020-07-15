@@ -1,7 +1,38 @@
 import React from "react";
 import {connect} from "react-redux";
+import {changeSignUpIsLoad} from "../../store/clientSide/actions";
 
-function RegistrationForm({ handler, signUpIsLoad }) {
+import { SERVERDOMAIN } from "../../services/serverUrls";
+
+function RegistrationForm(props) {
+  function handler(e) {
+    e.preventDefault();
+    const elem = e.target;
+    let newObj = {
+      name: elem.name.value,
+      login: elem.login.value,
+      email: elem.email.value,
+      password: elem.password.value,
+    };
+    props.changeSignUpIsLoad(true);
+    fetch(`${SERVERDOMAIN}/signUp`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(newObj),
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        props.changeSignUpIsLoad(false);
+        if (!data.success) {
+          alert(data.msg);
+        } else {
+          alert(`Congratulations! ${data.user.name} you are signUp`);
+          props.history.push("/client/login");
+        }
+      });
+  }
   return (
     <form onSubmit={handler} className="mt-4 row justify-content-center">
       <div className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8">
@@ -75,7 +106,7 @@ function RegistrationForm({ handler, signUpIsLoad }) {
       <div className="row justify-content-sm-center col-12">
         <input
           type="submit"
-          value={signUpIsLoad ? "Loading..." : "Sign up"}
+          value={props.signUpIsLoad ? "Loading..." : "Sign up"}
           className="btn btn-primary col-12 col-sm-4 mt-3"
         />
       </div>
@@ -88,5 +119,7 @@ function mapStateToPorps(state){
     signUpIsLoad: state.client_order_reduser.signUpIsLoad,
   }
 }
-
-export default connect(mapStateToPorps)(RegistrationForm);
+const actions = {
+  changeSignUpIsLoad
+}
+export default connect(mapStateToPorps, actions)(RegistrationForm);
