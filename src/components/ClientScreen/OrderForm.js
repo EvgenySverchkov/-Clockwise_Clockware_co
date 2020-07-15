@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import { addCurrentOrderToState, changeOrderFormIsLoad, addSuitableMasters } from "../../store/clientSide/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
+import Label from "./FormComponents/Label";
+import FormGroup from "./FormComponents/FormGroup";
 
 function OrderForm(props) {
   function changeHandler(e) {
@@ -87,13 +89,8 @@ function OrderForm(props) {
         onSubmit={submitHandler}
         className="mt-4 row justify-content-center"
       >
-        <div className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8">
-          <label
-            htmlFor="name"
-            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
-          >
-            Enter your name
-          </label>
+        <FormGroup isRow={true}>
+          <Label forId="name">Enter your name</Label>
           <div className="col-sm-8 col-md-8">
             <input
               id="name"
@@ -105,14 +102,9 @@ function OrderForm(props) {
               required
             />
           </div>
-        </div>
-        <div className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8">
-          <label
-            htmlFor="email"
-            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
-          >
-            Enter your e-mail
-          </label>
+        </FormGroup>
+        <FormGroup isRow={true}>
+          <Label forId="email">Enter your e-mail</Label>
           <div className="col-sm-8 col-md-8">
             <input
               id="email"
@@ -124,8 +116,8 @@ function OrderForm(props) {
               required
             />
           </div>
-        </div>
-        <div className="form-group text-center text-sm-left col-12 col-md-10 col-lg-8">
+        </FormGroup>
+        <FormGroup isRow={false}>
           <div className="mb-2 font-weight-bold">Choose size of clock</div>
           <div className="form-check form-check-inline">
             <input
@@ -166,8 +158,8 @@ function OrderForm(props) {
               Large
             </label>
           </div>
-        </div>
-        <div className="form-group text-center text-sm-left col-12 col-md-10 col-lg-8">
+        </FormGroup>
+        <FormGroup isRow={false}>
           <div className="mb-2 font-weight-bold">Choose town</div>
           {props.townsArr.map((item) => (
             <div key={item.id + 1} className="form-check-inline">
@@ -184,8 +176,8 @@ function OrderForm(props) {
               </label>
             </div>
           ))}
-        </div>
-        <div className="form-group text-center text-sm-left col-12 col-md-10 col-lg-8">
+        </FormGroup>
+        <FormGroup isRow={false}>
           <div className="mb-2 font-weight-bold">
             Choose date and time
             <br />
@@ -209,7 +201,7 @@ function OrderForm(props) {
             value={props.currentOrder.time || ""}
             required
           />
-        </div>
+        </FormGroup>
         <div className="row justify-content-sm-center col-12">
           <input
             type="submit"

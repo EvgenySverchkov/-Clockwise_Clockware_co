@@ -6,7 +6,7 @@ import postData from "./services/postData";
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
 import {changeAddNewMasterFormIsLoad, addNewMaster} from "../../store/adminPanel/actions";
-// townsArr
+
 function AddMasterForm(props) {
   function handler(e) {
     e.preventDefault();
