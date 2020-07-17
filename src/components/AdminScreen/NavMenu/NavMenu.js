@@ -21,6 +21,9 @@ function NavMenu() {
             <Link to="/admin/ordersList" className="dropdown-item">
               Show orders
             </Link>
+            <Link to="/admin/addOrderForm" className="dropdown-item">
+              Add order
+            </Link>
           </div>
         </div>
         <div className="dropdown mr-1">

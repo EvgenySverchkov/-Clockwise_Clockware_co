@@ -1,91 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-
-import { addCurrentOrderToState, changeOrderFormIsLoad, addSuitableMasters } from "../../store/clientSide/actions";
-
-import { SERVERDOMAIN } from "../../services/serverUrls";
-import Label from "./FormComponents/Label";
+import React from 'react';
 import FormGroup from "./FormComponents/FormGroup";
+import Label from "./FormComponents/Label";
+import Button from "./FormComponents/Button";
 
-function OrderForm(props) {
-  function changeHandler(e) {
-    let idx = e.target.name;
-    props.addCurrentOrderToState({ ...props.currentOrder, [idx]: e.target.value });
-  }
+function OrderForm({submitHandler, changeHandler, currentOrder, orderFormIsLoad, townsArr}){
   function minDate() {
     let date = new Date();
     return `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
       -2
     )}-${("0" + date.getDate()).slice(-2)}`;
   }
-  function submitHandler(e) {
-    e.preventDefault();
-    let trgElem = e.target;
-    if (!trgElem.town.value || !trgElem.size.value) {
-      alert("Pleade, filling all gaps!!!");
-      return false;
-    }
-    let endOrderTime;
-    let clientTimeHour = +props.currentOrder.time.match(/\d\d/);
-    let clientTimeMin = props.currentOrder.time.match(/:\d\d$/);
-    switch (props.currentOrder.size) {
-      case "small":
-        endOrderTime = clientTimeHour + 1 + clientTimeMin;
-        break;
-      case "middle":
-        endOrderTime = clientTimeHour + 2 + clientTimeMin;
-        break;
-      case "large":
-        endOrderTime = clientTimeHour + 3 + clientTimeMin;
-        break;
-      default:
-        endOrderTime = 0;
-    }
-    props.changeOrderFormIsLoad(true);
-    getFreeMastersByClientTownFromServer(
-      SERVERDOMAIN,
-      e.target.town.value,
-      props.currentOrder.time,
-      endOrderTime,
-      props.currentOrder.date
-    ).then((data) => {
-      props.changeOrderFormIsLoad(false);
-      props.addSuitableMasters(data);
-      props.history.push("/client/masters");
-    });
-  }
-  function getFreeMastersByClientTownFromServer(
-    url,
-    clientTown,
-    clientTimeStart,
-    clientTimeEnd,
-    clientDate
-  ) {
-    let obj = {
-      town: clientTown,
-      timeStart: clientTimeStart,
-      timeEnd: clientTimeEnd,
-      date: clientDate,
-    };
-    return fetch(`${url}/freeMasters`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(obj)
-    }).then((json) =>
-      json.json()
-    );
-  }
   return (
-    <>
-      <div className="text-center mb-1">
-        You are welcomed by <h1 className="font-italic">Clockwise company</h1>
-      </div>
-      <br />
-      <div className="text-center">Fill out this form to order a master</div>
-      <form
+    <form
         onSubmit={submitHandler}
         className="mt-4 row justify-content-center"
       >
@@ -98,8 +24,8 @@ function OrderForm(props) {
               name="name"
               className="form-control"
               onChange={changeHandler}
-              value={props.currentOrder.name || ""}
-              required
+              value={currentOrder.name || ""}
+              
             />
           </div>
         </FormGroup>
@@ -112,7 +38,7 @@ function OrderForm(props) {
               name="email"
               className="form-control"
               onChange={changeHandler}
-              value={props.currentOrder.email || ""}
+              value={currentOrder.email || ""}
               required
             />
           </div>
@@ -161,7 +87,7 @@ function OrderForm(props) {
         </FormGroup>
         <FormGroup isRow={false}>
           <div className="mb-2 font-weight-bold">Choose town</div>
-          {props.townsArr.map((item) => (
+          {townsArr.map((item) => (
             <div key={item.id + 1} className="form-check-inline">
               <label className="form-check-label" htmlFor={item.name}>
                 <input
@@ -189,7 +115,7 @@ function OrderForm(props) {
             min={minDate()}
             className="mr-1"
             onChange={changeHandler}
-            value={props.currentOrder.date || ""}
+            value={currentOrder.date || ""}
             required
           />
           <input
@@ -198,40 +124,13 @@ function OrderForm(props) {
             max="18:00"
             min="08:00"
             onChange={changeHandler}
-            value={props.currentOrder.time || ""}
+            value={currentOrder.time || ""}
             required
           />
         </FormGroup>
-        <div className="row justify-content-sm-center col-12">
-          <input
-            type="submit"
-            value={props.orderFormIsLoad ? "Loading..." : "Next step" }
-            className="btn btn-primary col-12 col-sm-4 mt-3"
-          />
-        </div>
+        <Button isLoad = {orderFormIsLoad} value={"Next step"}/>
       </form>
-    </>
   );
 }
-function mapStateToProps(state) {
-  return {
-    currentOrder: state.client_order_reduser.currentOrder,
-    orderFormIsLoad: state.client_order_reduser.orderFormIsLoad,
-    townsArr: state.client_order_reduser.townsArr,
-  };
-}
 
-const actions = {
-  addCurrentOrderToState,
-  changeOrderFormIsLoad,
-  addSuitableMasters
-}
-
-OrderForm.propTypes = {
-  currentOrder: PropTypes.object,
-  submitHandler: PropTypes.func,
-  townsArr: PropTypes.array,
-  addCurrentOrderToState: PropTypes.func,
-};
-
-export default connect(mapStateToProps, actions)(OrderForm);
+export default OrderForm;

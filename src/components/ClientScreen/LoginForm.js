@@ -1,13 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { changeLoginIsLoad, addCurrentOrderToState, toggleAuth } from "../../store/clientSide/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-import FormGroup from "./FormComponents/FormGroup";
-import Label from "./FormComponents/Label";
-import TextField from "./FormComponents/TextField";
-import PasswordField from "./FormComponents/PasswordField";
-import SubmitButton from "./FormComponents/SubmitButton";
+import { changeLoginIsLoad, addCurrentOrderToState, toggleAuth } from "../../store/clientSide/actions";
+
+import LoginComponent from "../LoginComponent";
 
 function LoginForm(props) {
   function handler(e) {
@@ -38,19 +35,7 @@ function LoginForm(props) {
         }
       });
   }
-  return (
-    <form onSubmit={handler} className="mt-4 row justify-content-center">
-      <FormGroup isRow={true}>
-        <Label forId="login">Enter your login</Label>
-        <TextField id={"login"} name={"login"}/>
-      </FormGroup>
-      <FormGroup isRow={true}>
-        <Label forId="password">Enter your password</Label>
-        <PasswordField id={'password'}/>
-      </FormGroup>
-      <SubmitButton isLoad = {props.loginIsLoad}/>
-    </form>
-  );
+  return (<LoginComponent submitHandler = {handler} authIsLoad = {props.loginIsLoad}/>);
 }
 
 function mapStateToProps(state){

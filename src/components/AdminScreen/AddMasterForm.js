@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
-import createUniqueId from "./services/createUniqueId";
+
 import postData from "./services/postData";
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -13,34 +13,26 @@ function AddMasterForm(props) {
     let masterName = e.target.name.value;
     let masterRating = e.target.rating.value;
     let townsArr = selectCheckedTowns(e.target.elements);
-    if (masterName && masterRating && townsArr.length !== 0) {
-      if (masterName.match(/\d/)) {
-        alert("The string name must not contain numbers!!!!");
-      } else {
-        masterName =
-          masterName.charAt(0).toUpperCase() +
-          masterName.slice(1).toLowerCase();
-        let infoObj = {
-          id: createUniqueId(props.mastersArr),
-          rating: masterRating,
-          towns: townsArr.join(","),
-          name: masterName,
-        };
-        props.changeAddNewMasterFormIsLoad(true);
-        postData(`${SERVERDOMAIN}/masters/post`, infoObj)
-          .then((data) => {
-            props.changeAddNewMasterFormIsLoad(false);
-            props.addNewMaster(data);
-          })
-          .then(() => {
-            alert("You added new master");
-            props.history.push("/admin/mastersList");
-          })
-          .catch((err) => alert(err));
-      }
-    } else {
-      alert("Please, feeling all gaps");
+    if (masterName.match(/\d/)) {
+      alert("The string name must not contain numbers!!!!");
+    } 
+    props.changeAddNewMasterFormIsLoad(true);
+    let infoObj = {
+      masterName,
+      masterRating,
     }
+    postData(`${SERVERDOMAIN}/masters/post`, infoObj)
+    .then((data) => {
+      props.changeAddNewMasterFormIsLoad(false);
+      if(data.success){
+        alert(data.msg);
+        props.addNewMaster(data.payload);
+        props.history.push("/admin/mastersList");
+      }else{
+        alert(data.msg);
+      }
+    }).catch((err) => alert(err));
+
     function selectCheckedTowns(elements) {
       let newArr = Array.from(elements);
       let towns = [];

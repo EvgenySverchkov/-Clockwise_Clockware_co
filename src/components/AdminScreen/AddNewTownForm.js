@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import createUniqueId from "./services/createUniqueId";
 import postData from "./services/postData";
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -12,53 +11,41 @@ function AddNewTownForm(props) {
   function handler(e) {
     e.preventDefault();
     let townName = e.target.town.value;
-    if (townName) {
-      if (
-        props.townsArr.find(
-          (item) => item.name.toLowerCase() === townName.toLowerCase()
-        )
-      ) {
-        alert(
-          "The name of this town is already on the list! \nPlease enter another town name!"
-        );
-        e.target.town.value = "";
-      } else {
-        townName =
+      townName =
           townName.charAt(0).toUpperCase() + townName.slice(1).toLowerCase();
         let infoObj = {
           name: townName,
-          id: createUniqueId(props.townsArr),
         };
         props.changeAddMewTownFormIsLoad(true);
         postData(`${SERVERDOMAIN}/towns/post`, infoObj)
           .then((data) => {
+            if(data.success){
+              alert(data.msg);
+              props.addNewTown(data.payload);
+              props.history.push("/admin/townsList");
+            }else{
+              alert(data.msg);
+            }
             props.changeAddMewTownFormIsLoad(false);
-            props.addNewTown(data);
-          })
-          .then(() => {
-            alert("You added new town");
-            props.history.push("/admin/townsList");
           })
           .catch((err) => alert(err));
-      }
-    } else {
-      alert("Please, filling the gap");
-    }
+
+    
   }
   return (
-    <form onSubmit={handler}>
-      <div className="form-group row justify-content-sm-center">
+    <form onSubmit={handler} className="mt-4 row justify-content-center">
+      <div className="form-group row text-center text-sm-left col-sm-8 col-md-10 col-lg-8">
         <label
           htmlFor="town"
-          className="col-sm-4 col-lg-3 col-xl-3 col-form-label"
+          className="col-sm-4 pl-0 col-form-label"
         >
           Enter new town
         </label>
-        <div className="col-sm-5 col-xl-4">
+        <div className="col-sm-8">
           <input id="town" type="text" className="form-control" />
         </div>
       </div>
-      <div className="row justify-content-sm-center">
+      <div className="row justify-content-sm-center col-12">
         <input
           type="submit"
           value= {props.newTownFormIsLoad ? "Loading..." : "Add town"}

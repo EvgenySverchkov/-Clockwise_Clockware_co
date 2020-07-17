@@ -30,6 +30,11 @@ export default function main_adminPanel_reduser(state={}, action){
         ...state,
         editFormIsLoad: action.payload
       }
+    case 'CHANGE_ADD_NEW_ORDER_FORM_IS_LOAD':
+      return {
+        ...state,
+        newOrderFormIsLoad: action.payload
+      }
     default:
       return state;
   }

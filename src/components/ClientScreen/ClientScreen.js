@@ -9,7 +9,7 @@ import {
   toggleAuth, 
   addTownsToState 
 } from "../../store/clientSide/actions";
-import OrderForm from "./OrderForm";
+import OrderFormClient from "./OrderFormClient";
 import MastersList from "./MastersList";
 import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
@@ -19,14 +19,11 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 
 function ClientSrcreen(props) {
   useEffect(() => {
+
     fetch(`${SERVERDOMAIN}/townsClient`)
       .then((json) => json.json())
       .then((data) => props.addTownsToState(data));
-
-    fetch(`${SERVERDOMAIN}/ordersClient`)
-      .then((json) => json.json())
-      .then((data) =>props.addOrdersToState(data));
-
+    
     if (localStorage.getItem("user")) {
       props.addCurrentOrderToState({
         email: JSON.parse(localStorage.getItem("user")).email,
@@ -45,7 +42,7 @@ function ClientSrcreen(props) {
           <Route
             exact
             path="/client"
-            render={(props) => <OrderForm {...props}/>}
+            render={(props) => <OrderFormClient {...props}/>}
           />
           <Route
             path="/client/masters"

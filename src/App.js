@@ -16,6 +16,7 @@ const initialState = {
     authIsLoad: false,
     newTownFormIsLoad: false,
     newMasterFormIsLoad: false,
+    newOrderFormIsLoad: false,
     editFormIsLoad: false
   },
   orders_reducer:{

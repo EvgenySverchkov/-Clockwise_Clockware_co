@@ -1,11 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 
 import OptionsBtns from "../OptionsBtnGroup";
 import ListItem from "./ListItem";
 import ListHeader from "./ListHeader";
 
-function CreateList({ dataArr, deleteAction, mainRows }) {
+function CreateList({ dataArr, deleteAction, mainRows, getData, history }) {
+  useEffect(function(){
+    getData();
+  }, [history.location])
   return (
     <div className="table-responsive" style={{overflowY: "auto",  height: '80vh'}}>
       <table className="table table-dark" >
@@ -14,7 +17,7 @@ function CreateList({ dataArr, deleteAction, mainRows }) {
         </thead>
         <tbody>
           {dataArr.map((item) => (
-            <tr key={item.id + 1}>
+            <tr key={item.id}>
               <ListItem infoObj={item} mainRows={mainRows} />
               <OptionsBtns deleteMasterById={deleteAction} itemObj={item} />
             </tr>

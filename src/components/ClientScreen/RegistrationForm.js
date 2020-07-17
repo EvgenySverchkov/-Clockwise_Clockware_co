@@ -4,12 +4,12 @@ import {changeSignUpIsLoad} from "../../store/clientSide/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import FormGroup from "./FormComponents/FormGroup";
-import Label from "./FormComponents/Label";
-import TextField from "./FormComponents/TextField";
-import EmailField from "./FormComponents/EmailField";
-import PasswordField from "./FormComponents/PasswordField";
-import SubmitButton from "./FormComponents/SubmitButton";
+import FormGroup from "../FormComponents/FormGroup";
+import Label from "../FormComponents/Label";
+import TextField from "../FormComponents/TextField";
+import EmailField from "../FormComponents/EmailField";
+import PasswordField from "../FormComponents/PasswordField";
+import Button from "../FormComponents/Button";
 
 function RegistrationForm(props) {
   function handler(e) {
@@ -58,7 +58,7 @@ function RegistrationForm(props) {
         <Label forId={'password'}>Enter your password</Label>
         <PasswordField id={'password'}/>
         </FormGroup>
-      <SubmitButton isLoad = {props.signUpIsLoad}/>  
+      <Button isLoad = {props.signUpIsLoad} value={"Sign Up"}/>  
     </form>
   );
 }

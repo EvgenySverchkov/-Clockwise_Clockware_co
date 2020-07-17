@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { changeMasterListIsLoad, addOrdersToState, addCurrentOrderToState } from "../../store/clientSide/actions";
@@ -6,27 +6,6 @@ import { changeMasterListIsLoad, addOrdersToState, addCurrentOrderToState } from
 import { Link } from "react-router-dom";
 import { SERVERDOMAIN } from "../../services/serverUrls";
 function MastersList(props) {
-  function getOrdersArrFromServer(url) {
-    return fetch(`${url}/ordersClient`).then((json) => json.json());
-  }
-  function createUniqueId(objectsArr) {
-    if (objectsArr.length === 0) {
-      return 1;
-    }
-    let idxsArr = objectsArr.map((item) => item.id);
-    idxsArr.sort((a, b) => a - b);
-
-    if (idxsArr.length === idxsArr[idxsArr.length - 1]) {
-      return idxsArr.length + 1;
-    } else {
-      let resultLength = idxsArr[idxsArr.length - 1] + 1;
-      for (let i = 1; i < resultLength; i++) {
-        if (idxsArr.indexOf(i) === -1) {
-          return i;
-        }
-      }
-    }
-  }
   function submitHandler(e) {
     e.preventDefault();
     let masterId = e.target.chooseMaster.value;
@@ -53,33 +32,33 @@ function MastersList(props) {
     let newObj = {
       ...props.currentOrder,
       masterId: masterId,
-      id: createUniqueId(props.ordersArr),
       endTime: endOrderTime,
     };
 
     props.changeMasterListIsLoad(true);
-    fetch(`${SERVERDOMAIN}/ordersClient/post`, {
+    fetch(`${SERVERDOMAIN}/orders/post`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json;charset=utf-8",
+        Authorization: "Bearer " + sessionStorage.getItem("token") || "",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(newObj),
     })
-      .catch((err) => {
-        throw err;
-      })
-      .then((json) => json.json())
-      .then((data) => {
-        props.changeMasterListIsLoad(false);
-        alert("Congratulations, you have booked a master!!!");
+    .then((json) => json.json())
+    .then((data) => {
+      props.changeMasterListIsLoad(false);
+      if(data.success){
+        alert(data.msg);
         props.history.push("/");
-        getOrdersArrFromServer(SERVERDOMAIN).then((data)=>props.addOrdersToState(data));
         sendConfirmEmail(data);
         props.addCurrentOrderToState(props.isAuth ? {
           email: JSON.parse(localStorage.getItem("user")).email,
         } : {});
-      })
-      .catch((err) => alert(err));
+      }else{
+        alert(data.msg)
+      }
+    })
+    .catch((err) => alert(err));
   }
   function sendConfirmEmail(data) {
     fetch(`${SERVERDOMAIN}/send_message`, {
