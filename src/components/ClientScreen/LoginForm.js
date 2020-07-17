@@ -1,8 +1,12 @@
 import React from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-import { changeLoginIsLoad, addCurrentOrderToState, toggleAuth } from "../../store/clientSide/actions";
+import {
+  changeLoginIsLoad,
+  addCurrentOrderToState,
+  toggleAuth,
+} from "../../store/clientSide/actions";
 
 import LoginComponent from "../LoginComponent";
 
@@ -12,7 +16,7 @@ function LoginForm(props) {
     let login = e.target.login.value;
     let password = e.target.password.value;
     let newObj = { login: login, password: password };
-    
+
     props.changeLoginIsLoad(true);
     fetch(`${SERVERDOMAIN}/login`, {
       method: "POST",
@@ -35,17 +39,19 @@ function LoginForm(props) {
         }
       });
   }
-  return (<LoginComponent submitHandler = {handler} authIsLoad = {props.loginIsLoad}/>);
+  return (
+    <LoginComponent submitHandler={handler} authIsLoad={props.loginIsLoad} />
+  );
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
-    loginIsLoad: state.client_order_reduser.loginIsLoad
-  }
+    loginIsLoad: state.client_order_reduser.loginIsLoad,
+  };
 }
 const actions = {
   changeLoginIsLoad,
   addCurrentOrderToState,
-  toggleAuth
-}
+  toggleAuth,
+};
 export default connect(mapStateToProps, actions)(LoginForm);

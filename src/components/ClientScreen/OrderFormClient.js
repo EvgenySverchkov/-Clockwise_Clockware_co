@@ -2,7 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { addCurrentOrderToState, changeOrderFormIsLoad, addSuitableMasters } from "../../store/clientSide/actions";
+import {
+  addCurrentOrderToState,
+  changeOrderFormIsLoad,
+  addSuitableMasters,
+} from "../../store/clientSide/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -11,7 +15,10 @@ import OrderForm from "../OrderForm";
 function OrderFormClient(props) {
   function changeHandler(e) {
     let idx = e.target.name;
-    props.addCurrentOrderToState({ ...props.currentOrder, [idx]: e.target.value });
+    props.addCurrentOrderToState({
+      ...props.currentOrder,
+      [idx]: e.target.value,
+    });
   }
 
   function submitHandler(e) {
@@ -68,10 +75,8 @@ function OrderFormClient(props) {
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
-      body: JSON.stringify(obj)
-    }).then((json) =>
-      json.json()
-    );
+      body: JSON.stringify(obj),
+    }).then((json) => json.json());
   }
   return (
     <>
@@ -80,13 +85,14 @@ function OrderFormClient(props) {
       </div>
       <br />
       <div className="text-center">Fill out this form to order a master</div>
-      <OrderForm 
-        submitHandler = {submitHandler} 
-        changeHandler = {changeHandler} 
+      <OrderForm
+        submitHandler={submitHandler}
+        changeHandler={changeHandler}
         orderFormIsLoad={props.orderFormIsLoad}
-        currentOrder = {props.currentOrder}
-        orderFormIsLoad = {props.orderFormIsLoad}
-        townsArr = {props.townsArr}/>
+        currentOrder={props.currentOrder}
+        orderFormIsLoad={props.orderFormIsLoad}
+        townsArr={props.townsArr}
+      />
     </>
   );
 }
@@ -101,8 +107,8 @@ function mapStateToProps(state) {
 const actions = {
   addCurrentOrderToState,
   changeOrderFormIsLoad,
-  addSuitableMasters
-}
+  addSuitableMasters,
+};
 
 OrderForm.propTypes = {
   currentOrder: PropTypes.object,

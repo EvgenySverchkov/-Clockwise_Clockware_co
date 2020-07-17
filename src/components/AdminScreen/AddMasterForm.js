@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 
 import postData from "./services/postData";
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import {changeAddNewMasterFormIsLoad, addNewMaster} from "../../store/adminPanel/actions";
+import {
+  changeAddNewMasterFormIsLoad,
+  addNewMaster,
+} from "../../store/adminPanel/actions";
 
 function AddMasterForm(props) {
   function handler(e) {
@@ -15,23 +18,24 @@ function AddMasterForm(props) {
     let townsArr = selectCheckedTowns(e.target.elements);
     if (masterName.match(/\d/)) {
       alert("The string name must not contain numbers!!!!");
-    } 
+    }
     props.changeAddNewMasterFormIsLoad(true);
     let infoObj = {
       masterName,
       masterRating,
-    }
+    };
     postData(`${SERVERDOMAIN}/masters/post`, infoObj)
-    .then((data) => {
-      props.changeAddNewMasterFormIsLoad(false);
-      if(data.success){
-        alert(data.msg);
-        props.addNewMaster(data.payload);
-        props.history.push("/admin/mastersList");
-      }else{
-        alert(data.msg);
-      }
-    }).catch((err) => alert(err));
+      .then((data) => {
+        props.changeAddNewMasterFormIsLoad(false);
+        if (data.success) {
+          alert(data.msg);
+          props.addNewMaster(data.payload);
+          props.history.push("/admin/mastersList");
+        } else {
+          alert(data.msg);
+        }
+      })
+      .catch((err) => alert(err));
 
     function selectCheckedTowns(elements) {
       let newArr = Array.from(elements);
@@ -104,15 +108,15 @@ AddMasterForm.propTypes = {
   townsArr: PropTypes.array,
 };
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
     newMasterFormIsLoad: state.main_adminPanel_reduser.newMasterFormIsLoad,
     townsArr: state.town_reduser.towns,
-    mastersArr: state.master_reducer.masters
-  }
+    mastersArr: state.master_reducer.masters,
+  };
 }
 const actions = {
   changeAddNewMasterFormIsLoad,
-  addNewMaster
+  addNewMaster,
 };
 export default connect(mapStateToProps, actions)(AddMasterForm);

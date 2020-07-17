@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { changeMasterListIsLoad, addOrdersToState, addCurrentOrderToState } from "../../store/clientSide/actions";
+import {
+  changeMasterListIsLoad,
+  addOrdersToState,
+  addCurrentOrderToState,
+} from "../../store/clientSide/actions";
 
 import { Link } from "react-router-dom";
 import { SERVERDOMAIN } from "../../services/serverUrls";
@@ -36,29 +40,32 @@ function MastersList(props) {
     };
 
     props.changeMasterListIsLoad(true);
-    fetch(`${SERVERDOMAIN}/orders/post`, {
+    fetch(`${SERVERDOMAIN}/ordersClient/post`, {
       method: "POST",
       headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token") || "",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newObj),
     })
-    .then((json) => json.json())
-    .then((data) => {
-      props.changeMasterListIsLoad(false);
-      if(data.success){
-        alert(data.msg);
-        props.history.push("/");
-        sendConfirmEmail(data);
-        props.addCurrentOrderToState(props.isAuth ? {
-          email: JSON.parse(localStorage.getItem("user")).email,
-        } : {});
-      }else{
-        alert(data.msg)
-      }
-    })
-    .catch((err) => alert(err));
+      .then((json) => json.json())
+      .then((data) => {
+        props.changeMasterListIsLoad(false);
+        if (data.success) {
+          alert(data.msg);
+          props.history.push("/");
+          sendConfirmEmail(data);
+          props.addCurrentOrderToState(
+            props.isAuth
+              ? {
+                  email: JSON.parse(localStorage.getItem("user")).email,
+                }
+              : {}
+          );
+        } else {
+          alert(data.msg);
+        }
+      })
+      .catch((err) => alert(err));
   }
   function sendConfirmEmail(data) {
     fetch(`${SERVERDOMAIN}/send_message`, {
@@ -117,7 +124,11 @@ function MastersList(props) {
         </Link>
       </div>
       <div className="form-group float-right mt-3">
-        <input type="submit" value={props.masterListIsLoad? "Loading..." : "Book now"} className="btn btn-primary" />
+        <input
+          type="submit"
+          value={props.masterListIsLoad ? "Loading..." : "Book now"}
+          className="btn btn-primary"
+        />
       </div>
     </form>
   );
@@ -128,14 +139,14 @@ function mapStateToProps(state) {
     suitableMasters: state.client_order_reduser.suitableMasters,
     currentOrder: state.client_order_reduser.currentOrder,
     masterListIsLoad: state.client_order_reduser.masterListIsLoad,
-    ordersArr: state.client_order_reduser.ordersArr
+    ordersArr: state.client_order_reduser.ordersArr,
   };
 }
 const actions = {
   changeMasterListIsLoad,
   addOrdersToState,
-  addCurrentOrderToState
-}
+  addCurrentOrderToState,
+};
 MastersList.propTypes = {
   mastersArr: PropTypes.array,
   currentOrder: PropTypes.object,

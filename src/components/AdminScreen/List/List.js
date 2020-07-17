@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 import OptionsBtns from "../OptionsBtnGroup";
@@ -6,12 +6,18 @@ import ListItem from "./ListItem";
 import ListHeader from "./ListHeader";
 
 function CreateList({ dataArr, deleteAction, mainRows, getData, history }) {
-  useEffect(function(){
-    getData();
-  }, [history.location])
+  useEffect(
+    function () {
+      getData();
+    },
+    [history.location]
+  );
   return (
-    <div className="table-responsive" style={{overflowY: "auto",  height: '80vh'}}>
-      <table className="table table-dark" >
+    <div
+      className="table-responsive"
+      style={{ overflowY: "auto", height: "80vh" }}
+    >
+      <table className="table table-dark">
         <thead>
           <ListHeader templArr={mainRows} />
         </thead>

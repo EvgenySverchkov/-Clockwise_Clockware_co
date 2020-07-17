@@ -2,7 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import {changeAddMewOrderFormIsLoad, addNewTown} from "../../store/adminPanel/actions";
+import {
+  changeAddMewOrderFormIsLoad,
+  addNewTown,
+} from "../../store/adminPanel/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -33,14 +36,12 @@ function OrderFormAdmin(props) {
         endOrderTime = 0;
     }
     props.changeAddMewOrderFormIsLoad(true);
-    
-
   }
   return (
-    <OrderForm 
-        submitHandler = {submitHandler} 
-        orderFormIsLoad={props.newOrderFormIsLoad}
-        townsArr = {props.townsArr}
+    <OrderForm
+      submitHandler={submitHandler}
+      orderFormIsLoad={props.newOrderFormIsLoad}
+      townsArr={props.townsArr}
     />
   );
 }
@@ -53,7 +54,7 @@ function mapStateToProps(state) {
 
 const actions = {
   changeAddMewOrderFormIsLoad,
-}
+};
 
 OrderForm.propTypes = {
   currentOrder: PropTypes.object,

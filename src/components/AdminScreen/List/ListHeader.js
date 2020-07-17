@@ -20,13 +20,7 @@ function ListHeader({ templArr }) {
           }
           value = strCopy[0].toUpperCase() + strCopy.slice(1);
         }
-        return (
-          <th
-            key={item}
-          >
-            {value}
-          </th>
-        );
+        return <th key={item}>{value}</th>;
       })}
       <th></th>
     </tr>

@@ -1,6 +1,6 @@
 import React from "react";
-import {connect} from "react-redux";
-import {changeSignUpIsLoad} from "../../store/clientSide/actions";
+import { connect } from "react-redux";
+import { changeSignUpIsLoad } from "../../store/clientSide/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -43,32 +43,32 @@ function RegistrationForm(props) {
   return (
     <form onSubmit={handler} className="mt-4 row justify-content-center">
       <FormGroup isRow={true}>
-        <Label forId={'name'}>Enter your name</Label>
-        <TextField id={'name'} name={'name'}/>
+        <Label forId={"name"}>Enter your name</Label>
+        <TextField id={"name"} name={"name"} />
       </FormGroup>
       <FormGroup isRow={true}>
-        <Label forId={'login'}>Enter your login</Label>
-        <TextField id={'login'} name={'login'}/>
-        </FormGroup>
+        <Label forId={"login"}>Enter your login</Label>
+        <TextField id={"login"} name={"login"} />
+      </FormGroup>
       <FormGroup isRow={true}>
-        <Label forId={'email'}>Enter your email</Label>
-        <EmailField id={'email'}/>
-        </FormGroup>
+        <Label forId={"email"}>Enter your email</Label>
+        <EmailField id={"email"} />
+      </FormGroup>
       <FormGroup isRow={true}>
-        <Label forId={'password'}>Enter your password</Label>
-        <PasswordField id={'password'}/>
-        </FormGroup>
-      <Button isLoad = {props.signUpIsLoad} value={"Sign Up"}/>  
+        <Label forId={"password"}>Enter your password</Label>
+        <PasswordField id={"password"} />
+      </FormGroup>
+      <Button isLoad={props.signUpIsLoad} value={"Sign Up"} />
     </form>
   );
 }
 
-function mapStateToPorps(state){
+function mapStateToPorps(state) {
   return {
     signUpIsLoad: state.client_order_reduser.signUpIsLoad,
-  }
+  };
 }
 const actions = {
-  changeSignUpIsLoad
-}
+  changeSignUpIsLoad,
+};
 export default connect(mapStateToPorps, actions)(RegistrationForm);

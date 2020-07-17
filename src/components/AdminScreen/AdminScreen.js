@@ -20,7 +20,7 @@ import {
   changeAuthIsLoad,
   changeAddMewTownFormIsLoad,
   changeAddNewMasterFormIsLoad,
-  changeEditFormIsLoad
+  changeEditFormIsLoad,
 } from "../../store/adminPanel/actions";
 import "./adminScreen.css";
 
@@ -31,7 +31,7 @@ import EditForm from "./EditForm";
 import List from "./List";
 import FullInfoModal from "./FullInfoModal";
 import AuthForm from "./AuthForm";
-import AddNewOrderForm from "./AddNewOrderForm"
+import AddNewOrderForm from "./AddNewOrderForm";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -47,7 +47,7 @@ function AdminSrcreen(props) {
       props.initOrders([]);
     }
   }, []);
-  function getMastersAndTownsFromServerToState(){
+  function getMastersAndTownsFromServerToState() {
     const headers = {
       Authorization: "Bearer " + sessionStorage.getItem("token") || "",
       "Content-Type": "application/json",
@@ -59,18 +59,18 @@ function AdminSrcreen(props) {
         alert("Авторизируйтесь");
         props.initMasters([]);
       });
-      getTownsFromServerToState();
+    getTownsFromServerToState();
   }
-  function getOrdersFromServerToState(){
+  function getOrdersFromServerToState() {
     const headers = {
       Authorization: "Bearer " + sessionStorage.getItem("token") || "",
       "Content-Type": "application/json",
     };
     fetch(`${SERVERDOMAIN}/orders`, { headers })
-    .then((json) => json.json())
-    .then((data) => props.initOrders(data));
+      .then((json) => json.json())
+      .then((data) => props.initOrders(data));
   }
-  function getTownsFromServerToState(){
+  function getTownsFromServerToState() {
     const headers = {
       Authorization: "Bearer " + sessionStorage.getItem("token") || "",
       "Content-Type": "application/json",
@@ -88,11 +88,11 @@ function AdminSrcreen(props) {
     )
       .then((data) => {
         props.changeEditFormIsLoad(false);
-        if(data.success){
+        if (data.success) {
           alert(data.msg);
           props.updateMasterInState(data);
           props.history.push("/admin/mastersList");
-        }else{
+        } else {
           alert(data.msg);
         }
       })
@@ -100,19 +100,19 @@ function AdminSrcreen(props) {
   }
   function editTownHandler(e, newTownObj) {
     e.preventDefault();
-      props.changeEditFormIsLoad(true);
-      putDataToServer(`${SERVERDOMAIN}/towns/put/${newTownObj.id}`, newTownObj)
-        .then((data) => {
-          props.changeEditFormIsLoad(false);
-          if(data.success){
-            alert(data.msg)
-            props.updateTownInState(data);
-            props.history.push("/admin/townsList");
-          }else{
-            alert(data.msg)
-          }
-        })
-        .catch((err) => alert(err));
+    props.changeEditFormIsLoad(true);
+    putDataToServer(`${SERVERDOMAIN}/towns/put/${newTownObj.id}`, newTownObj)
+      .then((data) => {
+        props.changeEditFormIsLoad(false);
+        if (data.success) {
+          alert(data.msg);
+          props.updateTownInState(data);
+          props.history.push("/admin/townsList");
+        } else {
+          alert(data.msg);
+        }
+      })
+      .catch((err) => alert(err));
   }
   function editOrderHandler(e, newOrderObj) {
     e.preventDefault();
@@ -120,12 +120,12 @@ function AdminSrcreen(props) {
     putDataToServer(`${SERVERDOMAIN}/orders/put/${newOrderObj.id}`, newOrderObj)
       .then((data) => {
         props.changeEditFormIsLoad(false);
-        if(data.success){
+        if (data.success) {
           alert(data.msg);
           props.updateOrderInState(data);
           props.history.push("/admin/ordersList");
-        }else{
-          alert(data.msg)
+        } else {
+          alert(data.msg);
         }
       })
       .catch((err) => alert(err));
@@ -134,11 +134,11 @@ function AdminSrcreen(props) {
   function deleteMasterById(masterId) {
     deleteDataFromServer(`${SERVERDOMAIN}/masters/delete/${masterId}`)
       .then((data) => {
-        if(data.success){
-          props.deleteMasterFromState(data.payload)
-          alert(data.msg)
-        }else{
-          alert(data.msg)
+        if (data.success) {
+          props.deleteMasterFromState(data.payload);
+          alert(data.msg);
+        } else {
+          alert(data.msg);
         }
       })
       .catch((err) => alert(err));
@@ -146,10 +146,10 @@ function AdminSrcreen(props) {
   function deleteTownById(townId) {
     deleteDataFromServer(`${SERVERDOMAIN}/towns/delete/${townId}`)
       .then((data) => {
-        if(data.success){
+        if (data.success) {
           props.deleteTownFromState(data.payload);
           alert(data.msg);
-        }else{
+        } else {
           alert(data.msg);
         }
       })
@@ -158,10 +158,10 @@ function AdminSrcreen(props) {
   function deleteOrderById(orderId) {
     deleteDataFromServer(`${SERVERDOMAIN}/orders/delete/${orderId}`)
       .then((data) => {
-        if(data.success){
+        if (data.success) {
           props.deleteOrderFromState(data.payload);
           alert(data.msg);
-        }else{
+        } else {
           alert(data.msg);
         }
       })
@@ -170,7 +170,7 @@ function AdminSrcreen(props) {
 
   return (
     <div className="container pt-3">
-      {props.isAuth ? <NavMenu /> : <AuthForm {...props}/>}
+      {props.isAuth ? <NavMenu /> : <AuthForm {...props} />}
       <div className="row justify-content-sm-center">
         <div className="col-md-8">
           <Switch>
@@ -182,10 +182,10 @@ function AdminSrcreen(props) {
                     dataArr={props.ordersArr}
                     deleteAction={deleteOrderById}
                     mainRows={["name", "time", "date", "town"]}
-                    getData = {getOrdersFromServerToState}
+                    getData={getOrdersFromServerToState}
                     {...prop}
                   />
-                )
+                );
               }}
             />
             <Route
@@ -196,10 +196,10 @@ function AdminSrcreen(props) {
                     dataArr={props.mastersArr}
                     deleteAction={deleteMasterById}
                     mainRows={["name", "rating"]}
-                    getData = {getMastersAndTownsFromServerToState}
+                    getData={getMastersAndTownsFromServerToState}
                     {...prop}
                   />
-                )
+                );
               }}
             />
             <Route
@@ -210,18 +210,19 @@ function AdminSrcreen(props) {
                     dataArr={props.townsArr}
                     deleteAction={deleteTownById}
                     mainRows={["name", "id"]}
-                    getData = {getTownsFromServerToState}
+                    getData={getTownsFromServerToState}
                     {...prop}
                   />
-                )
+                );
               }}
             />
-            <Route 
+            <Route
               path="/admin/addOrderForm"
-              render={(props)=><AddNewOrderForm {...props}/>}/>
+              render={(props) => <AddNewOrderForm {...props} />}
+            />
             <Route
               path="/admin/addMasterForm"
-              render={(props) => <AddMasterForm {...props}/>}
+              render={(props) => <AddMasterForm {...props} />}
             />
             <Route
               path="/admin/addTownForms"
@@ -288,7 +289,7 @@ const actions = {
   changeAuthIsLoad,
   changeAddMewTownFormIsLoad,
   changeAddNewMasterFormIsLoad,
-  changeEditFormIsLoad
+  changeEditFormIsLoad,
 };
 
 AdminSrcreen.propTypes = {

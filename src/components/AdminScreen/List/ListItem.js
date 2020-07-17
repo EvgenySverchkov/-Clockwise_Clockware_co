@@ -5,10 +5,7 @@ function ListItem({ infoObj, mainRows }) {
   return (
     <>
       {mainRows.map((item) => (
-        <td
-          style={{ wordWrap: "break-word" }}
-          key={item}
-        >
+        <td style={{ wordWrap: "break-word" }} key={item}>
           {infoObj[item]}
         </td>
       ))}

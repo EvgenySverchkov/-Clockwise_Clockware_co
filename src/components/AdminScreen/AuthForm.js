@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import { changeAuthIsLoad, toogleAuth } from "../../store/adminPanel/actions";
@@ -32,18 +32,20 @@ function AuthForm(props) {
         }
       });
   }
-  return (<LoginComponent submitHandler = {handler} authIsLoad = {props.authIsLoad}/>);
+  return (
+    <LoginComponent submitHandler={handler} authIsLoad={props.authIsLoad} />
+  );
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
-    authIsLoad: state.main_adminPanel_reduser.authIsLoad
-  }
+    authIsLoad: state.main_adminPanel_reduser.authIsLoad,
+  };
 }
 
 const actions = {
-  changeAuthIsLoad, 
-  toogleAuth
+  changeAuthIsLoad,
+  toogleAuth,
 };
 
 export default connect(mapStateToProps, actions)(AuthForm);

@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { 
-  addCurrentOrderToState, 
-  addOrdersToState, 
-  toggleAuth, 
-  addTownsToState 
+import {
+  addCurrentOrderToState,
+  addOrdersToState,
+  toggleAuth,
+  addTownsToState,
 } from "../../store/clientSide/actions";
 import OrderFormClient from "./OrderFormClient";
 import MastersList from "./MastersList";
@@ -19,11 +19,10 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 
 function ClientSrcreen(props) {
   useEffect(() => {
-
     fetch(`${SERVERDOMAIN}/townsClient`)
       .then((json) => json.json())
       .then((data) => props.addTownsToState(data));
-    
+
     if (localStorage.getItem("user")) {
       props.addCurrentOrderToState({
         email: JSON.parse(localStorage.getItem("user")).email,
@@ -42,11 +41,11 @@ function ClientSrcreen(props) {
           <Route
             exact
             path="/client"
-            render={(props) => <OrderFormClient {...props}/>}
+            render={(props) => <OrderFormClient {...props} />}
           />
           <Route
             path="/client/masters"
-            render={(props) => <MastersList {...props}/>}
+            render={(props) => <MastersList {...props} />}
           />
           <Route
             path="/client/login"
@@ -54,7 +53,7 @@ function ClientSrcreen(props) {
           />
           <Route
             path="/client/registration"
-            render={(props) =><RegistrationForm {...props} />}
+            render={(props) => <RegistrationForm {...props} />}
           />
         </Switch>
       </div>
@@ -66,14 +65,14 @@ let actions = {
   addTownsToState,
   addOrdersToState,
   addCurrentOrderToState,
-  toggleAuth
+  toggleAuth,
 };
 
 ClientSrcreen.propTypes = {
   addTownsToState: PropTypes.func,
   addOrdersToState: PropTypes.func,
   addCurrentOrderToState: PropTypes.func,
-  toggleAuth: PropTypes.func
+  toggleAuth: PropTypes.func,
 };
 
 export default connect(null, actions)(ClientSrcreen);

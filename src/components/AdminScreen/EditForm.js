@@ -51,7 +51,7 @@ function EditForm({ id, handler, arrFromState, editFormIsLoad }) {
       <div className="row justify-content-sm-center">
         <input
           type="submit"
-          value= {editFormIsLoad ? "Loading..." : "Edit"}
+          value={editFormIsLoad ? "Loading..." : "Edit"}
           className="btn btn-primary col-12 col-sm-4 mt-3"
         />
       </div>
@@ -65,10 +65,10 @@ EditForm.propTypes = {
   arrFromState: PropTypes.array,
 };
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
-    editFormIsLoad: state.main_adminPanel_reduser.editFormIsLoad
-  }
+    editFormIsLoad: state.main_adminPanel_reduser.editFormIsLoad,
+  };
 }
 
 export default connect(mapStateToProps)(EditForm);
