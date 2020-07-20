@@ -13,16 +13,17 @@ import {
 function AddMasterForm(props) {
   function handler(e) {
     e.preventDefault();
-    let masterName = e.target.name.value;
-    let masterRating = e.target.rating.value;
-    let townsArr = selectCheckedTowns(e.target.elements);
-    if (masterName.match(/\d/)) {
+    let name = e.target.name.value;
+    let rating = e.target.rating.value;
+    let towns = selectCheckedTowns(e.target.elements);
+    if (name.match(/\d/)) {
       alert("The string name must not contain numbers!!!!");
     }
     props.changeAddNewMasterFormIsLoad(true);
     let infoObj = {
-      masterName,
-      masterRating,
+      name,
+      rating,
+      towns: towns.join(",")
     };
     postData(`${SERVERDOMAIN}/masters/post`, infoObj)
       .then((data) => {
