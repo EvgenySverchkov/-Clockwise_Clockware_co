@@ -54,7 +54,7 @@ function MastersList(props) {
         if (data.success) {
           alert(data.msg);
           props.history.push("/");
-          sendConfirmEmail(data);
+          sendConfirmEmail(data.payload);
           props.addCurrentOrderToState(
             props.isAuth
               ? {
