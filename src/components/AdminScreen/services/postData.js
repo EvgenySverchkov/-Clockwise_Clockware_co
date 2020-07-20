@@ -1,8 +1,9 @@
-export default (url, newObj) =>
-  fetch(url, {
+export default (url, newObj) =>{
+  console.log(sessionStorage.getItem("token")? "Bearer " + sessionStorage.getItem("token") : "")
+  return fetch(url, {
     method: "POST",
     headers: {
-      Authorization: sessionStorage.getItem("token")? "Bearer" + sessionStorage.getItem("token") : "",
+      Authorization: sessionStorage.getItem("token")? "Bearer " + sessionStorage.getItem("token") : "",
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newObj),
@@ -13,3 +14,5 @@ export default (url, newObj) =>
       console.log(err);
       throw err;
     });
+}
+  
