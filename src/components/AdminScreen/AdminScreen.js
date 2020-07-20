@@ -32,6 +32,7 @@ import List from "./List";
 import FullInfoModal from "./FullInfoModal";
 import AuthForm from "./AuthForm";
 import AddNewOrderForm from "./AddNewOrderForm";
+import FreeMasters from "./FreeMasters";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -258,6 +259,20 @@ function AdminSrcreen(props) {
                 />
               )}
             />
+            <Route
+              path="/admin/freeMasters"
+              render={(prop) => {
+                return (
+                  <FreeMasters 
+                    {...prop} 
+                    currentOrder={props.currentOrder} 
+                    isAuth = {props.isAuth} 
+                    suitableMasters={props.suitableMasters||[]}
+                    backTo="/admin/addOrderForm"
+                  />
+                );
+              }}
+            />
           </Switch>
         </div>
         <FullInfoModal itemObj={props.currItemForModal} />
@@ -273,6 +288,8 @@ function mapStateToProps(state) {
     ordersArr: state.orders_reducer.ordersArr,
     currItemForModal: state.main_adminPanel_reduser.currItemForModal,
     isAuth: state.main_adminPanel_reduser.isAuth,
+    currentOrder: state.orders_reducer.currentOrder,
+    suitableMasters: state.orders_reducer.suitableMasters
   };
 }
 const actions = {

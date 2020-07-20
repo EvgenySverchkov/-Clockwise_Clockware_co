@@ -19,13 +19,15 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 
 function ClientSrcreen(props) {
   useEffect(() => {
+    let token = localStorage.getItem("token") ? ("Bearer " + localStorage.getItem("token")) : "";
+    console.log(token)
     fetch(`${SERVERDOMAIN}/towns`, {
       headers: {
-        Authorization: localStorage.getItem("token")? "Bearer " + localStorage.getItem("token") : "",
+        Authorization: token,
       }
     })
-      .then((json) => json.json())
-      .then((data) => props.addTownsToState(data));
+    .then((json) => json.json())
+    .then((data) => props.addTownsToState(data));
 
     if (localStorage.getItem("user")) {
       props.addCurrentOrderToState({

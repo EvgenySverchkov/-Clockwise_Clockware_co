@@ -21,9 +21,13 @@ const initialState = {
   },
   orders_reducer: {
     ordersArr: [],
+    currentOrder: {},
+    suitableMasters: [],
+    orderFormIsLoad: false
   },
   master_reducer: {
     masters: [],
+    masterListIsLoad: false
   },
   town_reduser: {
     towns: [],

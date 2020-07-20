@@ -69,3 +69,23 @@ export const changeEditFormIsLoad = (data) => ({
   type: "CHANGE_EDIT_FORM_IS_LOAD",
   payload: data,
 });
+
+export const addCurrentOrderToState = (obj) => ({
+  type: "ADD_CURRNET_ORDER",
+  payload: obj,
+});
+
+export const addSuitableMasters = (arr) => ({
+  type: "ADD_SUITABLE_MASTERS",
+  payload: arr,
+});
+
+export const changeOrderFormIsLoad = (data) => ({
+  type: "CHANGE_ORDER_FORM_IS_LOAD",
+  payload: data,
+});
+
+export const changeMasterListIsLoad = (data) => ({
+  type: "MSTER_LIST_IS_LOAD",
+  payload: data,
+});

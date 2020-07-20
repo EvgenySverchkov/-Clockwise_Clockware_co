@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -8,9 +8,23 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 import {
   changeAddNewMasterFormIsLoad,
   addNewMaster,
+  townsInit
 } from "../../store/adminPanel/actions";
 
 function AddMasterForm(props) {
+  useEffect(function(){
+    getTownsFromServerToState()
+  }, []);
+
+  function getTownsFromServerToState() {
+    const headers = {
+      Authorization: "Bearer " + sessionStorage.getItem("token") || "",
+      "Content-Type": "application/json",
+    };
+    fetch(`${SERVERDOMAIN}/towns`, { headers })
+      .then((json) => json.json())
+      .then((data) => props.townsInit(data));
+  }
   function handler(e) {
     e.preventDefault();
     let name = e.target.name.value;
@@ -119,5 +133,6 @@ function mapStateToProps(state) {
 const actions = {
   changeAddNewMasterFormIsLoad,
   addNewMaster,
+  townsInit
 };
 export default connect(mapStateToProps, actions)(AddMasterForm);

@@ -24,6 +24,11 @@ export default function master_reducer(state = {}, action) {
           item.id !== action.payload ? true : false
         ),
       };
+    case "MSTER_LIST_IS_LOAD":
+      return {
+        ...state,
+        masterListIsLoad: action.payload
+      }
     default:
       return state;
   }
