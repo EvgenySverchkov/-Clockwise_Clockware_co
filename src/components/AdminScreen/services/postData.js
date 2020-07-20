@@ -1,5 +1,4 @@
 export default (url, newObj) =>{
-  console.log(sessionStorage.getItem("token")? "Bearer " + sessionStorage.getItem("token") : "")
   return fetch(url, {
     method: "POST",
     headers: {

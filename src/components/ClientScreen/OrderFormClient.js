@@ -13,6 +13,9 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 import OrderForm from "../OrderForm";
 
 function OrderFormClient(props) {
+  function guestHandler(){
+
+  }
   function changeHandler(e) {
     let idx = e.target.name;
     props.addCurrentOrderToState({
@@ -20,43 +23,44 @@ function OrderFormClient(props) {
       [idx]: e.target.value,
     });
   }
-
+  
   function submitHandler(e) {
     e.preventDefault();
     let trgElem = e.target;
-    if (!trgElem.town.value || !trgElem.size.value) {
-      alert("Pleade, filling all gaps!!!");
+    if (!trgElem.town.value || !trgElem.size.value || !trgElem.name.value || !trgElem.email.value || !trgElem.time.value || !trgElem.date.value) {
+      alert("Please, filling all gaps!!!");
       return false;
     }
-    let endOrderTime;
-    let clientTimeHour = +props.currentOrder.time.match(/\d\d/);
-    let clientTimeMin = props.currentOrder.time.match(/:\d\d$/);
-    switch (props.currentOrder.size) {
-      case "small":
-        endOrderTime = clientTimeHour + 1 + clientTimeMin;
-        break;
-      case "middle":
-        endOrderTime = clientTimeHour + 2 + clientTimeMin;
-        break;
-      case "large":
-        endOrderTime = clientTimeHour + 3 + clientTimeMin;
-        break;
-      default:
-        endOrderTime = 0;
+
+      let endOrderTime;
+      let clientTimeHour = +props.currentOrder.time.match(/\d\d/);
+      let clientTimeMin = props.currentOrder.time.match(/:\d\d$/);
+      switch (props.currentOrder.size) {
+        case "small":
+          endOrderTime = clientTimeHour + 1 + clientTimeMin;
+          break;
+        case "middle":
+          endOrderTime = clientTimeHour + 2 + clientTimeMin;
+          break;
+        case "large":
+          endOrderTime = clientTimeHour + 3 + clientTimeMin;
+          break;
+        default:
+          endOrderTime = 0;
+      }
+      props.changeOrderFormIsLoad(true);
+      getFreeMastersByClientTownFromServer(
+        SERVERDOMAIN,
+        trgElem.town.value,
+        props.currentOrder.time,
+        endOrderTime,
+        props.currentOrder.date
+      ).then((data) => {
+        props.changeOrderFormIsLoad(false);
+        props.addSuitableMasters(data);
+        props.history.push("/client/masters");
+      });
     }
-    props.changeOrderFormIsLoad(true);
-    getFreeMastersByClientTownFromServer(
-      SERVERDOMAIN,
-      e.target.town.value,
-      props.currentOrder.time,
-      endOrderTime,
-      props.currentOrder.date
-    ).then((data) => {
-      props.changeOrderFormIsLoad(false);
-      props.addSuitableMasters(data);
-      props.history.push("/client/masters");
-    });
-  }
   function getFreeMastersByClientTownFromServer(
     url,
     clientTown,
@@ -73,6 +77,7 @@ function OrderFormClient(props) {
     return fetch(`${url}/freeMasters`, {
       method: "POST",
       headers: {
+        Authorization: localStorage.getItem("token")? "Bearer " + localStorage.getItem("token") : "",
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(obj),

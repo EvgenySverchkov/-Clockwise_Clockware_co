@@ -28,6 +28,7 @@ function OrderForm({
             className="form-control"
             onChange={changeHandler}
             value={currentOrder.name || ""}
+            required
           />
         </div>
       </FormGroup>

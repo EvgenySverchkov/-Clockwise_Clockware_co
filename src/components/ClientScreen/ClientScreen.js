@@ -19,7 +19,11 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 
 function ClientSrcreen(props) {
   useEffect(() => {
-    fetch(`${SERVERDOMAIN}/townsClient`)
+    fetch(`${SERVERDOMAIN}/towns`, {
+      headers: {
+        Authorization: localStorage.getItem("token")? "Bearer " + localStorage.getItem("token") : "",
+      }
+    })
       .then((json) => json.json())
       .then((data) => props.addTownsToState(data));
 

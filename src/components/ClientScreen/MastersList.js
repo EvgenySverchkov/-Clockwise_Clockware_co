@@ -40,9 +40,10 @@ function MastersList(props) {
     };
 
     props.changeMasterListIsLoad(true);
-    fetch(`${SERVERDOMAIN}/ordersClient/post`, {
+    fetch(`${SERVERDOMAIN}/orders/post`, {
       method: "POST",
       headers: {
+        Authorization: localStorage.getItem("token")? "Bearer " + localStorage.getItem("token") : "",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newObj),
@@ -65,7 +66,10 @@ function MastersList(props) {
           alert(data.msg);
         }
       })
-      .catch((err) => alert(err));
+      .catch((err) => {
+        props.changeMasterListIsLoad(false);
+        alert(err);
+      });
   }
   function sendConfirmEmail(data) {
     fetch(`${SERVERDOMAIN}/send_message`, {
