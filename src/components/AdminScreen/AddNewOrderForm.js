@@ -75,9 +75,14 @@ function OrderFormAdmin({
       currentOrder.date
     ).then((data) => {
       changeOrderFormIsLoad(false);
-      console.log(data);
-      addSuitableMasters(data);
-      history.push("/admin/freeMasters");
+      if(data.success){
+        addSuitableMasters(data.payload);
+        history.push("/admin/freeMasters");
+      }else{
+        addSuitableMasters([]);
+        alert(data.msg);
+        history.push("/admin/addOrderForm");
+      }
     });
   }
   function getFreeMastersByClientTownFromServer(
@@ -104,7 +109,7 @@ function OrderFormAdmin({
   }
   return (
     <OrderForm 
-      currentOrder={currentOrder} 
+      currentOrder={currentOrder||[]} 
       changeHandler = {changeHandler} 
       townsArr={townsArr} 
       submitHandler={submitHandler}

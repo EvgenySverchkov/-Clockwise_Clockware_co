@@ -30,9 +30,6 @@ function AddMasterForm(props) {
     let name = e.target.name.value;
     let rating = e.target.rating.value;
     let towns = selectCheckedTowns(e.target.elements);
-    if (name.match(/\d/)) {
-      alert("The string name must not contain numbers!!!!");
-    }
     props.changeAddNewMasterFormIsLoad(true);
     let infoObj = {
       name,

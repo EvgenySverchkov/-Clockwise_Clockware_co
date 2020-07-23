@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {
@@ -7,6 +7,7 @@ import {
   addCurrentOrderToState,
 } from "../../store/clientSide/actions";
 import FreeMastersList from "../FreeMasterList";
+import sendConfirmEmail from "../../services/mailSendler";
 
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
@@ -55,7 +56,7 @@ function MastersList(props) {
         if (data.success) {
           alert(data.msg);
           props.history.push("/");
-          sendConfirmEmail(data.payload);
+          sendConfirmEmail(`${SERVERDOMAIN}/send_message`, data.payload.email);
           props.addCurrentOrderToState(
             props.isAuth
               ? {

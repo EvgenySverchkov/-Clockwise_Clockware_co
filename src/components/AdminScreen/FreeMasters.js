@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import FreeMastersList from "../FreeMasterList";
 import {addCurrentOrderToState, changeMasterListIsLoad} from "../../store/adminPanel/actions";
 import { SERVERDOMAIN } from "../../services/serverUrls";
+import sendConfirmEmail from "../../services/mailSendler";
 
 function MastersList(props){
   function submitHandler(e) {
@@ -34,7 +35,7 @@ function MastersList(props){
       masterId: masterId,
       endTime: endOrderTime,
     };
-
+    
     props.changeMasterListIsLoad(true);
     fetch(`${SERVERDOMAIN}/orders/post`, {
       method: "POST",
@@ -50,6 +51,8 @@ function MastersList(props){
         if (data.success) {
           alert(data.msg);
           props.history.push("/admin/ordersList");
+          props.addCurrentOrderToState({});
+          sendConfirmEmail(`${SERVERDOMAIN}/send_message`, data.payload.email);
         } else {
           alert(data.msg);
         }

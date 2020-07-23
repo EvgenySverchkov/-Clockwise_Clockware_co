@@ -66,8 +66,14 @@ function OrderFormClient(props) {
       props.currentOrder.date
     ).then((data) => {
       props.changeOrderFormIsLoad(false);
-      props.addSuitableMasters(data);
-      props.history.push("/client/masters");
+      if(data.success){
+        props.addSuitableMasters(data.payload);
+        props.history.push("/client/masters");
+      }else{
+        props.addSuitableMasters([]);
+        alert(data.msg);
+        props.history.push("/client");
+      }
     });
   }
   function getFreeMastersByClientTownFromServer(

@@ -2,20 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function FreeMastersList({submitHandler, isLoad, suitableMasters, backTo}){
-  console.log(suitableMasters)
-    if (suitableMasters.length === 0) {
-        return (
-          <>
-            <div className="text-left display-4">
-              We haven't masters in this city
-            </div>
-            <Link to={backTo} className="btn btn-primary mt-5">
-              Сome back
-            </Link>
-          </>
-        );
-      }
+  if (suitableMasters.length === 0) {
     return (
+    <>
+      <div className="text-left display-4">
+        List is empty...
+      </div>
+      <Link to={backTo} className="btn btn-primary mt-5">
+        Сome back
+      </Link>
+    </>
+    );
+  }
+  return (
     <form onSubmit={submitHandler}>
       <div className="row">
         {suitableMasters.map((item) => {

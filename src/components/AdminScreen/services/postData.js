@@ -10,7 +10,6 @@ export default (url, newObj) =>{
     .then((json) => json.json())
     .catch((err) => {
       alert("Internal Server Error! Try again");
-      console.log(err);
       throw err;
     });
 }
