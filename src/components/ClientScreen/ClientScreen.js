@@ -20,7 +20,6 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 function ClientSrcreen(props) {
   useEffect(() => {
     let token = localStorage.getItem("token") ? ("Bearer " + localStorage.getItem("token")) : "";
-    console.log(token)
     fetch(`${SERVERDOMAIN}/towns`, {
       headers: {
         Authorization: token,

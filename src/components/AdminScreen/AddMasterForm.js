@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import postData from "./services/postData";
+import SubscribeBtn from "../FormComponents/Button";
+import FormGroup from "../FormComponents/FormGroup";
+import NameField from "../FormComponents/TextField";
+import NumField from "../FormComponents/NumField";
+import Label from "../FormComponents/Label";
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
 import {
@@ -64,29 +69,15 @@ function AddMasterForm(props) {
   }
   return (
     <form onSubmit={handler} className="mt-4 row justify-content-center">
-      <div className="form-group row text-center text-sm-left col-sm-8 col-md-10 col-lg-8">
-        <label htmlFor="rating" className="col-sm-4 pl-0 col-form-label">
-          Enter rating
-        </label>
-        <div className="col-sm-3">
-          <input
-            id="rating"
-            className="form-control"
-            type="number"
-            min="0"
-            max="5"
-          />
-        </div>
-      </div>
-      <div className="form-group row text-center text-sm-left col-sm-8 col-md-10 col-lg-8">
-        <label htmlFor="name" className="col-sm-4 pl-0 col-form-label">
-          Enter name
-        </label>
-        <div className="col-sm-8">
-          <input id="name" className="form-control" />
-        </div>
-      </div>
-      <div className="form-group text-center text-sm-left col-sm-8 col-md-10 col-lg-8">
+      <FormGroup>
+        <Label forId={"rating"}>Enter rating</Label>
+        <NumField max={5} min={0} id={"rating"}/>
+      </FormGroup>
+      <FormGroup>
+        <Label forId={"name"}>Enter name</Label>
+        <NameField id={"name"} name={"name"}/>
+      </FormGroup>
+      <FormGroup isRow={false}>
         <div className="mb-2">Choose town</div>
         <div>
           {props.townsArr.map((item) => (
@@ -103,14 +94,8 @@ function AddMasterForm(props) {
             </div>
           ))}
         </div>
-      </div>
-      <div className="row justify-content-sm-center col-12">
-        <input
-          type="submit"
-          value={props.newMasterFormIsLoad ? "Loading..." : "Add"}
-          className="btn btn-primary col-12 col-sm-4 mt-3"
-        />
-      </div>
+      </FormGroup>
+      <SubscribeBtn isLoad={props.newMasterFormIsLoad} value={"Add"}/>
     </form>
   );
 }

@@ -7,8 +7,6 @@ import {
   addCurrentOrderToState,
 } from "../../store/clientSide/actions";
 import FreeMastersList from "../FreeMasterList";
-import sendConfirmEmail from "../../services/mailSendler";
-
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 function MastersList(props) {

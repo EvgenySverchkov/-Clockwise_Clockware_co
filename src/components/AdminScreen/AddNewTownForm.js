@@ -3,12 +3,18 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import postData from "./services/postData";
+import FormGroup from "../FormComponents/FormGroup";
+import Label from "../FormComponents/Label";
+import TextField from "../FormComponents/TextField";
+import Button from "../FormComponents/Button";
+
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
 import {
   changeAddMewTownFormIsLoad,
   addNewTown,
 } from "../../store/adminPanel/actions";
+
 
 function AddNewTownForm(props) {
   function handler(e) {
@@ -35,21 +41,11 @@ function AddNewTownForm(props) {
   }
   return (
     <form onSubmit={handler} className="mt-4 row justify-content-center">
-      <div className="form-group row text-center text-sm-left col-sm-8 col-md-10 col-lg-8">
-        <label htmlFor="town" className="col-sm-4 pl-0 col-form-label">
-          Enter new town
-        </label>
-        <div className="col-sm-8">
-          <input id="town" type="text" className="form-control" />
-        </div>
-      </div>
-      <div className="row justify-content-sm-center col-12">
-        <input
-          type="submit"
-          value={props.newTownFormIsLoad ? "Loading..." : "Add town"}
-          className="btn btn-primary col-12 col-sm-4 mt-3"
-        />
-      </div>
+      <FormGroup>
+        <Label forId="town">Enter new town</Label>
+        <TextField id={"town"}/>
+      </FormGroup>
+      <Button isLoad = {props.newTownFormIsLoad} value={"Add town"}/>
     </form>
   );
 }

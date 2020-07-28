@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
+import Label from "../FormComponents/Label";
+import NumField from "../FormComponents/NumField";
+import TextField from "../FormComponents/TextField";
+import FormGroup from "../FormComponents/FormGroup";
+import Button from "../FormComponents/Button";
+
 function EditForm({ id, handler, arrFromState, editFormIsLoad }) {
   let obj = arrFromState.find((item) => item.id === id);
   let [stateObj, setStateObj] = useState(obj);
@@ -11,50 +17,24 @@ function EditForm({ id, handler, arrFromState, editFormIsLoad }) {
     setStateObj({ ...stateObj, [e.target.id]: e.target.value });
   }
   return (
-    <form onSubmit={(e) => handler(e, stateObj)}>
+    <form onSubmit={(e) => handler(e, stateObj)} className="mt-4 row justify-content-center"> 
       {keyArr.map((item) => {
         if (item === "id") {
           return null;
         } else {
           return (
-            <div
-              key={item}
-              className="form-group row justify-content-sm-center"
-            >
-              <label htmlFor={item} className="col-sm-3 col-form-label">
-                Enter {item}
-              </label>
-              <div className="col-sm-5">
+            <FormGroup>
+              <Label forId={item}>Enter {item}</Label>
                 {item === "rating" ? (
-                  <input
-                    id={item}
-                    className="form-control"
-                    type="number"
-                    min="0"
-                    max="5"
-                    value={stateObj[item] || ""}
-                    onChange={changeValue}
-                  />
+                  <NumField id={item} min={0} max={5} value={stateObj[item] || ""} onChange={changeValue}/>
                 ) : (
-                  <input
-                    id={item}
-                    className="form-control"
-                    value={stateObj[item] || ""}
-                    onChange={changeValue}
-                  />
+                  <TextField id={item} value={stateObj[item] || ""} chngHandler={changeValue}/>
                 )}
-              </div>
-            </div>
+            </FormGroup>
           );
         }
       })}
-      <div className="row justify-content-sm-center">
-        <input
-          type="submit"
-          value={editFormIsLoad ? "Loading..." : "Edit"}
-          className="btn btn-primary col-12 col-sm-4 mt-3"
-        />
-      </div>
+      <Button value={"Edit"}/>
     </form>
   );
 }

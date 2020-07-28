@@ -110,7 +110,7 @@ function OrderFormClient(props) {
         changeHandler={changeHandler}
         orderFormIsLoad={props.orderFormIsLoad}
         currentOrder={props.currentOrder}
-        orderFormIsLoad={props.orderFormIsLoad}
+        isLoadOrderForm={props.orderFormIsLoad}
         townsArr={props.townsArr}
       />
     </>

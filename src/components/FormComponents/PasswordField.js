@@ -7,6 +7,7 @@ const PasswordField = ({ id }) => (
       type="password"
       name="password"
       className="form-control"
+      autoComplete="username"
       required
     />
   </div>
