@@ -5,7 +5,7 @@ export default ({id, value, name, chngHandler, children})=>(
         <input
             className="form-check-input"
             type="radio"
-            onChange={chngHandler}
+            onChange={chngHandler||null}
             name={name}
             id={id}
             value={value}

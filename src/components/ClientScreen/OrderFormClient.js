@@ -131,7 +131,7 @@ const actions = {
   addTownsToState
 };
 
-OrderForm.propTypes = {
+OrderFormClient.propTypes = {
   currentOrder: PropTypes.object,
   submitHandler: PropTypes.func,
   townsArr: PropTypes.array,
@@ -139,8 +139,8 @@ OrderForm.propTypes = {
   addTownsToState: PropTypes.func,
   changeOrderFormIsLoad: PropTypes.func,
   addSuitableMasters: PropTypes.func,
-  orderFormIsLoad: PropTypes.string,
-  history: PropTypes.string
+  orderFormIsLoad: PropTypes.bool,
+  history: PropTypes.object
 };
 
 export default connect(mapStateToProps, actions)(OrderFormClient);
