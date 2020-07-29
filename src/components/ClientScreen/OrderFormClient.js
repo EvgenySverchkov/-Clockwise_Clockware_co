@@ -108,7 +108,6 @@ function OrderFormClient(props) {
       <OrderForm
         submitHandler={submitHandler}
         changeHandler={changeHandler}
-        orderFormIsLoad={props.orderFormIsLoad}
         currentOrder={props.currentOrder}
         isLoadOrderForm={props.orderFormIsLoad}
         townsArr={props.townsArr}
@@ -132,14 +131,13 @@ const actions = {
 };
 
 OrderFormClient.propTypes = {
-  currentOrder: PropTypes.object,
-  submitHandler: PropTypes.func,
-  townsArr: PropTypes.array,
-  addCurrentOrderToState: PropTypes.func,
-  addTownsToState: PropTypes.func,
-  changeOrderFormIsLoad: PropTypes.func,
-  addSuitableMasters: PropTypes.func,
-  orderFormIsLoad: PropTypes.bool,
+  currentOrder: PropTypes.object.isRequired,
+  townsArr: PropTypes.array.isRequired,
+  addCurrentOrderToState: PropTypes.func.isRequired,
+  addTownsToState: PropTypes.func.isRequired,
+  changeOrderFormIsLoad: PropTypes.func.isRequired,
+  addSuitableMasters: PropTypes.func.isRequired,
+  orderFormIsLoad: PropTypes.bool.isRequired,
   history: PropTypes.object
 };
 

@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
 import { changeSignUpIsLoad } from "../../store/clientSide/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
@@ -61,6 +63,12 @@ function RegistrationForm(props) {
       <Button isLoad={props.signUpIsLoad} value={"Sign Up"} />
     </form>
   );
+}
+
+RegistrationForm.propTypes = {
+  signUpIsLoad: PropTypes.bool,
+  history: PropTypes.object.isRequired,
+  changeSignUpIsLoad: PropTypes.func
 }
 
 function mapStateToPorps(state) {

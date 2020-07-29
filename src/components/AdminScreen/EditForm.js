@@ -23,10 +23,10 @@ function EditForm({ id, handler, arrFromState, editFormIsLoad }) {
           return null;
         } else {
           return (
-            <FormGroup>
+            <FormGroup key= {item}>
               <Label forId={item}>Enter {item}</Label>
                 {item === "rating" ? (
-                  <NumField id={item} min={0} max={5} value={stateObj[item] || ""} onChange={changeValue}/>
+                  <NumField id={item} min={0} max={5} value={stateObj[item] || ""} chngHandler={changeValue}/>
                 ) : (
                   <TextField id={item} value={stateObj[item] || ""} chngHandler={changeValue}/>
                 )}

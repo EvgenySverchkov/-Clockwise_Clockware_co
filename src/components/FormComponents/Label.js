@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Label = ({ children, forId, isFontWeight=true }) => (
   <label
@@ -8,5 +9,11 @@ const Label = ({ children, forId, isFontWeight=true }) => (
     {children}
   </label>
 );
+
+Label.propTypes = {
+  children: PropTypes.node.isRequired, 
+  forId: PropTypes.string.isRequired, 
+  isFontWeight: PropTypes.bool
+}
 
 export default Label;

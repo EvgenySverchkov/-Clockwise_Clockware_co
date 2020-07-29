@@ -78,7 +78,8 @@ function MastersList(props) {
       submitHandler = {submitHandler}
       suitableMasters = {props.suitableMasters} 
       isLoad={props.masterListIsLoad}
-      backTo={"/client"}/>
+      backTo={"/client"}
+    />
   );
 }
 
@@ -102,6 +103,8 @@ MastersList.propTypes = {
   changeMasterListIsLoad: PropTypes.func,
   history: PropTypes.object,
   isAuth: PropTypes.bool,
+  masterListIsLoad: PropTypes.bool,
+  suitableMasters: PropTypes.array
 };
 
 export default connect(mapStateToProps, actions)(MastersList);

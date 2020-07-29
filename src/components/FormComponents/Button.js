@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const SubmitButton = ({ isLoad, value }) => (
   <div className="row justify-content-sm-center col-12">
@@ -9,5 +10,10 @@ const SubmitButton = ({ isLoad, value }) => (
     />
   </div>
 );
+
+SubmitButton.propTypes = {
+  isLoad: PropTypes.bool, 
+  value: PropTypes.string.isRequired
+}
 
 export default SubmitButton;

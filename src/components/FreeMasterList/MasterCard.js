@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from "prop-types";
+
 import RadioBtn from "../FormComponents/RadioBtn";
-import Label from "../FormComponents/Label";
 
 const MasterCard = ({id, name, rating, towns})=>(
     <div className="col-sm-4 mb-2 col-sm-6 col-lg-4">
@@ -14,9 +15,16 @@ const MasterCard = ({id, name, rating, towns})=>(
                       Choose
                     </label>
                 </RadioBtn>
-                </div>
               </div>
-            </div>
+          </div>
+      </div>
 );
+
+MasterCard.propTypes = {
+  id: PropTypes.number, 
+  name: PropTypes.string.isRequired, 
+  rating: PropTypes.number.isRequired, 
+  towns: PropTypes.number.isRequired
+}
 
 export default MasterCard;

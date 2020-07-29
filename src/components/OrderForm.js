@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import FormGroup from "./FormComponents/FormGroup";
 import Label from "./FormComponents/Label";
@@ -14,7 +15,7 @@ function OrderForm({
   changeHandler,
   currentOrder,
   isLoadOrderForm,
-  townsArr,
+  townsArr
 }) {
   function minDate() {
     let date = new Date();
@@ -66,6 +67,14 @@ function OrderForm({
       <Button isLoad={isLoadOrderForm} value={"Next step"} />
     </form>
   );
+}
+
+OrderForm.propTypes = {
+  submitHandler: PropTypes.func.isRequired,
+  changeHandler: PropTypes.func.isRequired,
+  currentOrder: PropTypes.object.isRequired,
+  isLoadOrderForm: PropTypes.bool.isRequired,
+  townsArr: PropTypes.array.isRequired
 }
 
 export default OrderForm;

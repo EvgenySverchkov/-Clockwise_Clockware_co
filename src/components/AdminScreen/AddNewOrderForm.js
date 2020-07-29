@@ -113,7 +113,7 @@ function OrderFormAdmin({
       changeHandler = {changeHandler} 
       townsArr={townsArr} 
       submitHandler={submitHandler}
-      orderFormIsLoad={orderFormIsLoad}
+      isLoadOrderForm={orderFormIsLoad}
     />
   );
 }

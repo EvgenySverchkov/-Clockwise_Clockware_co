@@ -1,20 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import MasterCard from "./MasterCard";
 import ComeBackBtn from "./ComeBackBtn";
 import SubmitBtn from "./SubmitBtn";
+import EmptyList from "./EmptyList";
 
 function FreeMastersList({submitHandler, isLoad, suitableMasters, backTo}){
   if (suitableMasters.length === 0) {
     return (
     <>
-      <div className="text-left display-4">
-        List is empty...
-      </div>
-      <Link to={backTo} className="btn btn-primary mt-5">
-        Сome back
-      </Link>
+      <EmptyList>List is empty...</EmptyList>
+      <ComeBackBtn backTo={backTo}/>
     </>
     );
   }
@@ -29,6 +26,13 @@ function FreeMastersList({submitHandler, isLoad, suitableMasters, backTo}){
       <SubmitBtn isLoad={isLoad}/>
     </form>
     );
+}
+
+FreeMastersList.propTypes = {
+  submitHandler: PropTypes.func.isRequired, 
+  isLoad: PropTypes.bool, 
+  suitableMasters: PropTypes.array, 
+  backTo: PropTypes.string.isRequired
 }
 
 export default FreeMastersList;

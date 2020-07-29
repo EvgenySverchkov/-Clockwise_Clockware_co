@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const FormGroup = ({ children, isRow = true }) => (
   <div
@@ -9,5 +10,10 @@ const FormGroup = ({ children, isRow = true }) => (
     {children}
   </div>
 );
+
+FormGroup.propTypes = {
+  children: PropTypes.node.isRequired, 
+  isRow: PropTypes.bool,
+};
 
 export default FormGroup;

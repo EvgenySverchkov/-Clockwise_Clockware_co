@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 const SubmitBtn = ({isLoad})=>(
     <div className="form-group float-right mt-3">
@@ -9,5 +10,9 @@ const SubmitBtn = ({isLoad})=>(
         />
       </div>
 );
+
+SubmitBtn.propTypes = {
+  isLoad: PropTypes.bool
+}
 
 export default SubmitBtn;

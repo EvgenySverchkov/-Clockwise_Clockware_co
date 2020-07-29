@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default ({name, max, min, chngHandler, value})=>(
+const TimeField = ({name, max, min, chngHandler, value})=>(
     <input
         type="time"
         name={name}
@@ -11,3 +12,13 @@ export default ({name, max, min, chngHandler, value})=>(
         required
     />
 );
+
+TimeField.propTypes = {
+    name: PropTypes.string.isRequired, 
+    max: PropTypes.string.isRequired, 
+    min: PropTypes.string.isRequired, 
+    chngHandler: PropTypes.func, 
+    value: PropTypes.string
+}
+
+export default TimeField;

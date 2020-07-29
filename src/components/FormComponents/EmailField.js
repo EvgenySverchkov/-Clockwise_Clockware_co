@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const EmailField = ({ id, chngHandler, value }) => (
   <div className="col-sm-8 col-md-8">
@@ -13,5 +14,11 @@ const EmailField = ({ id, chngHandler, value }) => (
     />
   </div>
 );
+
+EmailField.propTypes = {
+  id: PropTypes.string, 
+  chngHandler: PropTypes.func, 
+  value: PropTypes.string
+}
 
 export default EmailField;

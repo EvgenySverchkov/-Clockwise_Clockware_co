@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default ({min, chngHandler, value, name})=>(
+const DateField = ({min, chngHandler, value, name})=>(
     <input
         type="date"
         name={name}
@@ -11,3 +12,12 @@ export default ({min, chngHandler, value, name})=>(
         required
     />
 );
+
+DateField.propTypes = {
+    min: PropTypes.string.isRequired, 
+    chngHandler: PropTypes.func, 
+    value: PropTypes.string, 
+    name: PropTypes.string
+}
+
+export default DateField;

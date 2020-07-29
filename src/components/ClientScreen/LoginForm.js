@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import {
@@ -44,6 +45,14 @@ function LoginForm(props) {
   );
 }
 
+LoginForm.propTypes = {
+  loginIsLoad: PropTypes.bool,
+  history: PropTypes.object,
+  toggleAuth: PropTypes.func.isRequired,
+  addCurrentOrderToState: PropTypes.func.isRequired,
+  changeLoginIsLoad: PropTypes.func
+}
+
 function mapStateToProps(state) {
   return {
     loginIsLoad: state.client_order_reduser.loginIsLoad,
@@ -54,4 +63,5 @@ const actions = {
   addCurrentOrderToState,
   toggleAuth,
 };
+
 export default connect(mapStateToProps, actions)(LoginForm);
