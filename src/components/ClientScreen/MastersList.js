@@ -14,9 +14,10 @@ function MastersList(props) {
   function submitHandler(e) {
     e.preventDefault();
     let masterId = e.target.chooseMaster.value;
-    if (!masterId) {
-      alert("Please, choose one!!!");
-      return false;
+    if(!e.target.chooseMaster.length){
+      if(!e.target.chooseMaster.checked){
+        masterId = null;
+      }
     }
     let endOrderTime;
     let clientTimeHour = +props.currentOrder.time.match(/[^:]+/);
@@ -98,6 +99,9 @@ MastersList.propTypes = {
   mastersArr: PropTypes.array,
   currentOrder: PropTypes.object,
   submitHandler: PropTypes.func,
+  changeMasterListIsLoad: PropTypes.func,
+  history: PropTypes.object,
+  isAuth: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, actions)(MastersList);
