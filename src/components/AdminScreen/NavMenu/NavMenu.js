@@ -32,7 +32,7 @@ function NavMenu() {
             Add town
           </Link>
         </NavBtn>
-        <LogOutBtn/>
+        <LogOutBtn />
       </div>
     </div>
   );

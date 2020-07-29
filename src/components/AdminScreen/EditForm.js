@@ -17,24 +17,37 @@ function EditForm({ id, handler, arrFromState, editFormIsLoad }) {
     setStateObj({ ...stateObj, [e.target.id]: e.target.value });
   }
   return (
-    <form onSubmit={(e) => handler(e, stateObj)} className="mt-4 row justify-content-center"> 
+    <form
+      onSubmit={(e) => handler(e, stateObj)}
+      className="mt-4 row justify-content-center"
+    >
       {keyArr.map((item) => {
         if (item === "id") {
           return null;
         } else {
           return (
-            <FormGroup key= {item}>
+            <FormGroup key={item}>
               <Label forId={item}>Enter {item}</Label>
-                {item === "rating" ? (
-                  <NumField id={item} min={0} max={5} value={stateObj[item] || ""} chngHandler={changeValue}/>
-                ) : (
-                  <TextField id={item} value={stateObj[item] || ""} chngHandler={changeValue}/>
-                )}
+              {item === "rating" ? (
+                <NumField
+                  id={item}
+                  min={0}
+                  max={5}
+                  value={stateObj[item] || ""}
+                  chngHandler={changeValue}
+                />
+              ) : (
+                <TextField
+                  id={item}
+                  value={stateObj[item] || ""}
+                  chngHandler={changeValue}
+                />
+              )}
             </FormGroup>
           );
         }
       })}
-      <Button value={"Edit"}/>
+      <Button value={"Edit"} />
     </form>
   );
 }

@@ -27,8 +27,8 @@ export default function master_reducer(state = {}, action) {
     case "MSTER_LIST_IS_LOAD":
       return {
         ...state,
-        masterListIsLoad: action.payload
-      }
+        masterListIsLoad: action.payload,
+      };
     default:
       return state;
   }

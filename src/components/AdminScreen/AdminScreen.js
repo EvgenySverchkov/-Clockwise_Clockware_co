@@ -73,25 +73,25 @@ function AdminSrcreen(props) {
             />
             <Route
               path="/admin/editMaster/:id"
-              render={(prop) => <EditMasterForm {...prop}/> }
+              render={(prop) => <EditMasterForm {...prop} />}
             />
             <Route
               path="/admin/editTown/:id"
-              render={(prop) => <EditTownForm {...prop}/>}
+              render={(prop) => <EditTownForm {...prop} />}
             />
             <Route
               path="/admin/editOrder/:id"
-              render={(prop) => <EditOrderForm {...prop}/>}
+              render={(prop) => <EditOrderForm {...prop} />}
             />
             <Route
               path="/admin/freeMasters"
               render={(prop) => {
                 return (
-                  <FreeMasters 
-                    {...prop} 
-                    currentOrder={props.currentOrder} 
-                    isAuth = {props.isAuth} 
-                    suitableMasters={props.suitableMasters||[]}
+                  <FreeMasters
+                    {...prop}
+                    currentOrder={props.currentOrder}
+                    isAuth={props.isAuth}
+                    suitableMasters={props.suitableMasters || []}
                     backTo="/admin/addOrderForm"
                   />
                 );
@@ -110,7 +110,7 @@ function mapStateToProps(state) {
     currItemForModal: state.main_adminPanel_reduser.currItemForModal,
     isAuth: state.main_adminPanel_reduser.isAuth,
     currentOrder: state.orders_reducer.currentOrder,
-    suitableMasters: state.orders_reducer.suitableMasters
+    suitableMasters: state.orders_reducer.suitableMasters,
   };
 }
 const actions = {
@@ -129,7 +129,7 @@ AdminSrcreen.propTypes = {
   isAuth: PropTypes.bool,
   currentOrder: PropTypes.object,
   suitableMasters: PropTypes.array,
-  currItemForModal: PropTypes.object
+  currItemForModal: PropTypes.object,
 };
 
 export default connect(mapStateToProps, actions)(AdminSrcreen);

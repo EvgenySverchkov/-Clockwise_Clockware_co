@@ -19,7 +19,13 @@ function CreateList({ dataArr, deleteAction, mainRows, getData, history }) {
     >
       <table className="table table-dark">
         <thead>
-          {dataArr.length===0?<tr><th>List is empty</th></tr>:<ListHeader templArr={mainRows} />}
+          {dataArr.length === 0 ? (
+            <tr>
+              <th>List is empty</th>
+            </tr>
+          ) : (
+            <ListHeader templArr={mainRows} />
+          )}
         </thead>
         <tbody>
           {dataArr.map((item) => (

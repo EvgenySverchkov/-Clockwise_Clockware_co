@@ -12,8 +12,8 @@ const SubmitButton = ({ isLoad, value }) => (
 );
 
 SubmitButton.propTypes = {
-  isLoad: PropTypes.bool, 
-  value: PropTypes.string.isRequired
-}
+  isLoad: PropTypes.bool,
+  value: PropTypes.string.isRequired,
+};
 
 export default SubmitButton;

@@ -15,7 +15,6 @@ import {
   addNewTown,
 } from "../../store/adminPanel/actions";
 
-
 function AddNewTownForm(props) {
   function handler(e) {
     e.preventDefault();
@@ -43,9 +42,9 @@ function AddNewTownForm(props) {
     <form onSubmit={handler} className="mt-4 row justify-content-center">
       <FormGroup>
         <Label forId="town">Enter new town</Label>
-        <TextField id={"town"}/>
+        <TextField id={"town"} />
       </FormGroup>
-      <Button isLoad = {props.newTownFormIsLoad} value={"Add town"}/>
+      <Button isLoad={props.newTownFormIsLoad} value={"Add town"} />
     </form>
   );
 }

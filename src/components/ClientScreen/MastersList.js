@@ -7,15 +7,15 @@ import {
   addCurrentOrderToState,
 } from "../../store/clientSide/actions";
 import FreeMastersList from "../FreeMasterList";
-import sendMail from "../../services/mailSendler"
+import sendMail from "../../services/mailSendler";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 function MastersList(props) {
   function submitHandler(e) {
     e.preventDefault();
     let masterId = e.target.chooseMaster.value;
-    if(!e.target.chooseMaster.length){
-      if(!e.target.chooseMaster.checked){
+    if (!e.target.chooseMaster.length) {
+      if (!e.target.chooseMaster.checked) {
         masterId = null;
       }
     }
@@ -45,7 +45,9 @@ function MastersList(props) {
     fetch(`${SERVERDOMAIN}/orders/post`, {
       method: "POST",
       headers: {
-        Authorization: localStorage.getItem("token")? "Bearer " + localStorage.getItem("token") : "",
+        Authorization: localStorage.getItem("token")
+          ? "Bearer " + localStorage.getItem("token")
+          : "",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newObj),
@@ -74,9 +76,9 @@ function MastersList(props) {
       });
   }
   return (
-    <FreeMastersList 
-      submitHandler = {submitHandler}
-      suitableMasters = {props.suitableMasters} 
+    <FreeMastersList
+      submitHandler={submitHandler}
+      suitableMasters={props.suitableMasters}
       isLoad={props.masterListIsLoad}
       backTo={"/client"}
     />
@@ -104,7 +106,7 @@ MastersList.propTypes = {
   history: PropTypes.object,
   isAuth: PropTypes.bool,
   masterListIsLoad: PropTypes.bool,
-  suitableMasters: PropTypes.array
+  suitableMasters: PropTypes.array,
 };
 
 export default connect(mapStateToProps, actions)(MastersList);

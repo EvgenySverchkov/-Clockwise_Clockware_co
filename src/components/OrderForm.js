@@ -15,7 +15,7 @@ function OrderForm({
   changeHandler,
   currentOrder,
   isLoadOrderForm,
-  townsArr
+  townsArr,
 }) {
   function minDate() {
     let date = new Date();
@@ -27,30 +27,68 @@ function OrderForm({
     <form onSubmit={submitHandler} className="mt-4 row justify-content-center">
       <FormGroup isRow={true}>
         <Label forId="name">Enter your name</Label>
-        <TextFiled id={"name"} name={"name"} chngHandler={changeHandler} value={currentOrder.name || ""} />
+        <TextFiled
+          id={"name"}
+          name={"name"}
+          chngHandler={changeHandler}
+          value={currentOrder.name || ""}
+        />
       </FormGroup>
       <FormGroup isRow={true}>
         <Label forId="email">Enter your e-mail</Label>
-        <EmailField id={"email"} name={"email"} chngHandler={changeHandler} value={currentOrder.email || ""}/>
+        <EmailField
+          id={"email"}
+          name={"email"}
+          chngHandler={changeHandler}
+          value={currentOrder.email || ""}
+        />
       </FormGroup>
       <FormGroup isRow={false}>
         <div className="mb-2 font-weight-bold">Choose size of clock</div>
-        <RadioBtn id={"smallSize"} value={"small"} name={"size"} chngHandler={changeHandler}>
-          <Label forId={"smallSize"} isFontWeight={false}>Small</Label>
+        <RadioBtn
+          id={"smallSize"}
+          value={"small"}
+          name={"size"}
+          chngHandler={changeHandler}
+        >
+          <Label forId={"smallSize"} isFontWeight={false}>
+            Small
+          </Label>
         </RadioBtn>
-        <RadioBtn id={"middleSize"} value={"middle"} name={"size"} chngHandler={changeHandler}>
-          <Label forId={"middleSize"} isFontWeight={false}>Middle</Label>
+        <RadioBtn
+          id={"middleSize"}
+          value={"middle"}
+          name={"size"}
+          chngHandler={changeHandler}
+        >
+          <Label forId={"middleSize"} isFontWeight={false}>
+            Middle
+          </Label>
         </RadioBtn>
-        <RadioBtn id={"largeSize"} value={"large"} name={"size"} chngHandler={changeHandler}>
-          <Label forId={"largeSize"} isFontWeight={false}>Middle</Label>
+        <RadioBtn
+          id={"largeSize"}
+          value={"large"}
+          name={"size"}
+          chngHandler={changeHandler}
+        >
+          <Label forId={"largeSize"} isFontWeight={false}>
+            Middle
+          </Label>
         </RadioBtn>
       </FormGroup>
       <FormGroup isRow={false}>
         <div className="mb-2 font-weight-bold">Choose town</div>
         {townsArr.map((item) => (
           <div key={item.id + 1} className="form-check-inline">
-            <RadioBtn id={item.name} value={item.name} name={"town"} chngHandler={changeHandler}>
-              <Label forId={item.name} isFontWeight={false}>{item.name}</Label>
+            <RadioBtn
+              id={item.name}
+              value={item.name}
+              name={"town"}
+              chngHandler={changeHandler}
+            >
+              <Label forId={item.name} isFontWeight={false}>
+                {item.name}
+              </Label>
             </RadioBtn>
           </div>
         ))}
@@ -61,8 +99,19 @@ function OrderForm({
           <br />
           <sub>*time from 8 to 18</sub>
         </div>
-        <DateField name={"date"} min={minDate()} chngHandler={changeHandler} value={currentOrder.date || ""}/>
-        <TimeField name={"time"} max={"18:00"} min={"08:00"} chngHandler={changeHandler} value={currentOrder.time || ""}/>
+        <DateField
+          name={"date"}
+          min={minDate()}
+          chngHandler={changeHandler}
+          value={currentOrder.date || ""}
+        />
+        <TimeField
+          name={"time"}
+          max={"18:00"}
+          min={"08:00"}
+          chngHandler={changeHandler}
+          value={currentOrder.time || ""}
+        />
       </FormGroup>
       <Button isLoad={isLoadOrderForm} value={"Next step"} />
     </form>
@@ -74,7 +123,7 @@ OrderForm.propTypes = {
   changeHandler: PropTypes.func.isRequired,
   currentOrder: PropTypes.object.isRequired,
   isLoadOrderForm: PropTypes.bool.isRequired,
-  townsArr: PropTypes.array.isRequired
-}
+  townsArr: PropTypes.array.isRequired,
+};
 
 export default OrderForm;

@@ -13,12 +13,12 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 import {
   changeAddNewMasterFormIsLoad,
   addNewMaster,
-  townsInit
+  townsInit,
 } from "../../store/adminPanel/actions";
 
 function AddMasterForm(props) {
-  useEffect(function(){
-    getTownsFromServerToState()
+  useEffect(function () {
+    getTownsFromServerToState();
   }, []);
 
   function getTownsFromServerToState() {
@@ -39,7 +39,7 @@ function AddMasterForm(props) {
     let infoObj = {
       name,
       rating,
-      towns: towns.join(",")
+      towns: towns.join(","),
     };
     postData(`${SERVERDOMAIN}/masters/post`, infoObj)
       .then((data) => {
@@ -71,11 +71,11 @@ function AddMasterForm(props) {
     <form onSubmit={handler} className="mt-4 row justify-content-center">
       <FormGroup>
         <Label forId={"rating"}>Enter rating</Label>
-        <NumField max={5} min={0} id={"rating"}/>
+        <NumField max={5} min={0} id={"rating"} />
       </FormGroup>
       <FormGroup>
         <Label forId={"name"}>Enter name</Label>
-        <NameField id={"name"} name={"name"}/>
+        <NameField id={"name"} name={"name"} />
       </FormGroup>
       <FormGroup isRow={false}>
         <div className="mb-2">Choose town</div>
@@ -95,7 +95,7 @@ function AddMasterForm(props) {
           ))}
         </div>
       </FormGroup>
-      <SubscribeBtn isLoad={props.newMasterFormIsLoad} value={"Add"}/>
+      <SubscribeBtn isLoad={props.newMasterFormIsLoad} value={"Add"} />
     </form>
   );
 }
@@ -115,6 +115,6 @@ function mapStateToProps(state) {
 const actions = {
   changeAddNewMasterFormIsLoad,
   addNewMaster,
-  townsInit
+  townsInit,
 };
 export default connect(mapStateToProps, actions)(AddMasterForm);

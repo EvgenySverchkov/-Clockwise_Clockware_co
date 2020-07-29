@@ -50,8 +50,8 @@ LoginForm.propTypes = {
   history: PropTypes.object,
   toggleAuth: PropTypes.func.isRequired,
   addCurrentOrderToState: PropTypes.func.isRequired,
-  changeLoginIsLoad: PropTypes.func
-}
+  changeLoginIsLoad: PropTypes.func,
+};
 
 function mapStateToProps(state) {
   return {

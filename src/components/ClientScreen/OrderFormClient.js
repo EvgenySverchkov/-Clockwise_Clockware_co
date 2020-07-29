@@ -6,7 +6,7 @@ import {
   addCurrentOrderToState,
   changeOrderFormIsLoad,
   addSuitableMasters,
-  addTownsToState
+  addTownsToState,
 } from "../../store/clientSide/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
@@ -14,7 +14,7 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 import OrderForm from "../OrderForm";
 
 function OrderFormClient(props) {
-  useEffect(function(){
+  useEffect(function () {
     getTownsFromServerToState();
   }, []);
   function changeHandler(e) {
@@ -26,7 +26,9 @@ function OrderFormClient(props) {
   }
   function getTownsFromServerToState() {
     const headers = {
-      Authorization: localStorage.getItem("token")? "Bearer " + localStorage.getItem("token") : "",
+      Authorization: localStorage.getItem("token")
+        ? "Bearer " + localStorage.getItem("token")
+        : "",
       "Content-Type": "application/json",
     };
     fetch(`${SERVERDOMAIN}/towns`, { headers })
@@ -36,7 +38,14 @@ function OrderFormClient(props) {
   function submitHandler(e) {
     e.preventDefault();
     let trgElem = e.target;
-    if (!trgElem.town.value || !trgElem.size.value || !trgElem.name.value || !trgElem.email.value || !trgElem.time.value || !trgElem.date.value) {
+    if (
+      !trgElem.town.value ||
+      !trgElem.size.value ||
+      !trgElem.name.value ||
+      !trgElem.email.value ||
+      !trgElem.time.value ||
+      !trgElem.date.value
+    ) {
       alert("Please, filling all gaps!!!");
       return false;
     }
@@ -66,10 +75,10 @@ function OrderFormClient(props) {
       props.currentOrder.date
     ).then((data) => {
       props.changeOrderFormIsLoad(false);
-      if(data.success){
+      if (data.success) {
         props.addSuitableMasters(data.payload);
         props.history.push("/client/masters");
-      }else{
+      } else {
         props.addSuitableMasters([]);
         alert(data.msg);
         props.history.push("/client");
@@ -92,7 +101,9 @@ function OrderFormClient(props) {
     return fetch(`${url}/freeMasters`, {
       method: "POST",
       headers: {
-        Authorization: localStorage.getItem("token")? "Bearer " + localStorage.getItem("token") : "",
+        Authorization: localStorage.getItem("token")
+          ? "Bearer " + localStorage.getItem("token")
+          : "",
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(obj),
@@ -127,7 +138,7 @@ const actions = {
   addCurrentOrderToState,
   changeOrderFormIsLoad,
   addSuitableMasters,
-  addTownsToState
+  addTownsToState,
 };
 
 OrderFormClient.propTypes = {
@@ -138,7 +149,7 @@ OrderFormClient.propTypes = {
   changeOrderFormIsLoad: PropTypes.func.isRequired,
   addSuitableMasters: PropTypes.func.isRequired,
   orderFormIsLoad: PropTypes.bool.isRequired,
-  history: PropTypes.object
+  history: PropTypes.object,
 };
 
 export default connect(mapStateToProps, actions)(OrderFormClient);

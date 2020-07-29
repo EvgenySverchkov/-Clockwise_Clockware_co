@@ -68,8 +68,8 @@ function RegistrationForm(props) {
 RegistrationForm.propTypes = {
   signUpIsLoad: PropTypes.bool,
   history: PropTypes.object.isRequired,
-  changeSignUpIsLoad: PropTypes.func
-}
+  changeSignUpIsLoad: PropTypes.func,
+};
 
 function mapStateToPorps(state) {
   return {

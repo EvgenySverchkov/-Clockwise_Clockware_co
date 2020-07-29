@@ -1,11 +1,14 @@
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import {toggleAuth, addCurrentOrderToState} from "../../../store/clientSide/actions";
+import {
+  toggleAuth,
+  addCurrentOrderToState,
+} from "../../../store/clientSide/actions";
 
-function LogOutBtn({toggleAuth, addCurrentOrderToState, currentOrder}) {
+function LogOutBtn({ toggleAuth, addCurrentOrderToState, currentOrder }) {
   function logOutHandl() {
     ["user", "token"].forEach((item) => localStorage.removeItem(item));
     addCurrentOrderToState({ ...currentOrder, email: "" });
@@ -21,15 +24,17 @@ function LogOutBtn({toggleAuth, addCurrentOrderToState, currentOrder}) {
 }
 
 LogOutBtn.propTypes = {
-  toggleAuth: PropTypes.func.isRequired, 
-  addCurrentOrderToState: PropTypes.func.isRequired, 
-  currentOrder: PropTypes.object
-}
+  toggleAuth: PropTypes.func.isRequired,
+  addCurrentOrderToState: PropTypes.func.isRequired,
+  currentOrder: PropTypes.object,
+};
 
 const mapStateToProps = (state) => {
   return {
-    currentOrder: state.orders_reducer.currentOrder
-  }
+    currentOrder: state.orders_reducer.currentOrder,
+  };
 };
 
-export default connect(mapStateToProps, {toggleAuth, addCurrentOrderToState})(LogOutBtn);
+export default connect(mapStateToProps, { toggleAuth, addCurrentOrderToState })(
+  LogOutBtn
+);

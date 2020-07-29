@@ -1,1 +1,1 @@
-export {default} from "./FreeMasterList";
+export { default } from "./FreeMasterList";

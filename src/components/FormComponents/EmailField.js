@@ -9,16 +9,16 @@ const EmailField = ({ id, chngHandler, value }) => (
       name="email"
       className="form-control"
       onChange={chngHandler}
-      value = {value}
+      value={value}
       required
     />
   </div>
 );
 
 EmailField.propTypes = {
-  id: PropTypes.string, 
-  chngHandler: PropTypes.func, 
-  value: PropTypes.string
-}
+  id: PropTypes.string,
+  chngHandler: PropTypes.func,
+  value: PropTypes.string,
+};
 
 export default EmailField;

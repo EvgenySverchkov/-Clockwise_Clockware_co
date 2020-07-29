@@ -1,8 +1,10 @@
-export default (url, newObj) =>{
+export default (url, newObj) => {
   return fetch(url, {
     method: "POST",
     headers: {
-      Authorization: sessionStorage.getItem("token")? "Bearer " + sessionStorage.getItem("token") : "",
+      Authorization: sessionStorage.getItem("token")
+        ? "Bearer " + sessionStorage.getItem("token")
+        : "",
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newObj),
@@ -12,5 +14,4 @@ export default (url, newObj) =>{
       alert("Internal Server Error! Try again");
       throw err;
     });
-}
-  
+};

@@ -12,7 +12,7 @@ const FormGroup = ({ children, isRow = true }) => (
 );
 
 FormGroup.propTypes = {
-  children: PropTypes.node.isRequired, 
+  children: PropTypes.node.isRequired,
   isRow: PropTypes.bool,
 };
 

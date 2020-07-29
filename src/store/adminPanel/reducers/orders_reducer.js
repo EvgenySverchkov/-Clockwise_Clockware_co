@@ -32,8 +32,8 @@ export default function orders_reducer(state = {}, action) {
     case "CHANGE_ORDER_FORM_IS_LOAD":
       return {
         ...state,
-        orderFormIsLoad: action.payload
-      }
+        orderFormIsLoad: action.payload,
+      };
     default:
       return state;
   }

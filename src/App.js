@@ -23,11 +23,11 @@ const initialState = {
     ordersArr: [],
     currentOrder: {},
     suitableMasters: [],
-    orderFormIsLoad: false
+    orderFormIsLoad: false,
   },
   master_reducer: {
     masters: [],
-    masterListIsLoad: false
+    masterListIsLoad: false,
   },
   town_reduser: {
     towns: [],

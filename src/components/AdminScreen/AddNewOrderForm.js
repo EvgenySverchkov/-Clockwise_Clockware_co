@@ -7,7 +7,7 @@ import {
   addCurrentOrderToState,
   townsInit,
   addSuitableMasters,
-  changeOrderFormIsLoad
+  changeOrderFormIsLoad,
 } from "../../store/adminPanel/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
@@ -15,15 +15,16 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 import OrderForm from "../OrderForm";
 
 function OrderFormAdmin({
-  currentOrder, 
-  addCurrentOrderToState, 
-  townsArr, 
-  townsInit, 
-  history, 
+  currentOrder,
+  addCurrentOrderToState,
+  townsArr,
+  townsInit,
+  history,
   addSuitableMasters,
   changeOrderFormIsLoad,
-  orderFormIsLoad}) {
-  useEffect(function(){
+  orderFormIsLoad,
+}) {
+  useEffect(function () {
     getTownsFromServerToState();
   }, []);
   function changeHandler(e) {
@@ -45,7 +46,14 @@ function OrderFormAdmin({
   function submitHandler(e) {
     e.preventDefault();
     let trgElem = e.target;
-    if (!trgElem.town.value || !trgElem.size.value || !trgElem.name.value || !trgElem.email.value || !trgElem.time.value || !trgElem.date.value) {
+    if (
+      !trgElem.town.value ||
+      !trgElem.size.value ||
+      !trgElem.name.value ||
+      !trgElem.email.value ||
+      !trgElem.time.value ||
+      !trgElem.date.value
+    ) {
       alert("Please, filling all gaps!!!");
       return false;
     }
@@ -75,10 +83,10 @@ function OrderFormAdmin({
       currentOrder.date
     ).then((data) => {
       changeOrderFormIsLoad(false);
-      if(data.success){
+      if (data.success) {
         addSuitableMasters(data.payload);
         history.push("/admin/freeMasters");
-      }else{
+      } else {
         addSuitableMasters([]);
         alert(data.msg);
         history.push("/admin/addOrderForm");
@@ -101,17 +109,19 @@ function OrderFormAdmin({
     return fetch(`${url}/freeMasters`, {
       method: "POST",
       headers: {
-        Authorization: sessionStorage.getItem("token")? "Bearer " + sessionStorage.getItem("token") : "",
+        Authorization: sessionStorage.getItem("token")
+          ? "Bearer " + sessionStorage.getItem("token")
+          : "",
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(obj),
     }).then((json) => json.json());
   }
   return (
-    <OrderForm 
-      currentOrder={currentOrder||[]} 
-      changeHandler = {changeHandler} 
-      townsArr={townsArr} 
+    <OrderForm
+      currentOrder={currentOrder || []}
+      changeHandler={changeHandler}
+      townsArr={townsArr}
       submitHandler={submitHandler}
       isLoadOrderForm={orderFormIsLoad}
     />
@@ -121,7 +131,7 @@ function mapStateToProps(state) {
   return {
     currentOrder: state.orders_reducer.currentOrder,
     townsArr: state.town_reduser.towns,
-    orderFormIsLoad: state.orders_reducer.orderFormIsLoad
+    orderFormIsLoad: state.orders_reducer.orderFormIsLoad,
   };
 }
 
@@ -130,7 +140,7 @@ const actions = {
   addCurrentOrderToState,
   townsInit,
   addSuitableMasters,
-  changeOrderFormIsLoad
+  changeOrderFormIsLoad,
 };
 
 OrderForm.propTypes = {

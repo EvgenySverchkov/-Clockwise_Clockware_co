@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-export default ({title, children}) => (
-    <div className="dropdown mr-1">
+export default ({ title, children }) => (
+  <div className="dropdown mr-1">
     <button
       className="btn btn-secondary dropdown-toggle"
       href="#"
@@ -10,10 +10,10 @@ export default ({title, children}) => (
       aria-haspopup="true"
       aria-expanded="false"
     >
-        {title}
+      {title}
     </button>
     <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        {children}
+      {children}
     </div>
   </div>
 );
