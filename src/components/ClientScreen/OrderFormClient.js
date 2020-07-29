@@ -136,6 +136,11 @@ OrderForm.propTypes = {
   submitHandler: PropTypes.func,
   townsArr: PropTypes.array,
   addCurrentOrderToState: PropTypes.func,
+  addTownsToState: PropTypes.func,
+  changeOrderFormIsLoad: PropTypes.func,
+  addSuitableMasters: PropTypes.func,
+  orderFormIsLoad: PropTypes.string,
+  history: PropTypes.string
 };
 
 export default connect(mapStateToProps, actions)(OrderFormClient);

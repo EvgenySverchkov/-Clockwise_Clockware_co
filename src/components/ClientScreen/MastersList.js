@@ -7,6 +7,7 @@ import {
   addCurrentOrderToState,
 } from "../../store/clientSide/actions";
 import FreeMastersList from "../FreeMasterList";
+import sendMail from "../../services/mailSendler"
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 function MastersList(props) {
@@ -54,7 +55,7 @@ function MastersList(props) {
         if (data.success) {
           alert(data.msg);
           props.history.push("/");
-          sendConfirmEmail(`${SERVERDOMAIN}/send_message`, data.payload.email);
+          sendMail(`${SERVERDOMAIN}/send_message`, data.payload.email);
           props.addCurrentOrderToState(
             props.isAuth
               ? {
@@ -70,15 +71,6 @@ function MastersList(props) {
         props.changeMasterListIsLoad(false);
         alert(err);
       });
-  }
-  function sendConfirmEmail(data) {
-    fetch(`${SERVERDOMAIN}/send_message`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(data),
-    });
   }
   return (
     <FreeMastersList 

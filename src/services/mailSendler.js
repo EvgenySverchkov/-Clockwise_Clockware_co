@@ -1,4 +1,5 @@
 export default (url, email)=>{
+  console.log(JSON.stringify({email}))
     fetch(url, {
         method: "POST",
         headers: {
