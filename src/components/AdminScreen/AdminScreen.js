@@ -9,24 +9,24 @@ import {
   initOrders,
   toogleAuth,
 } from "../../store/adminPanel/actions";
-import "./adminScreen.css";
 
 import NavMenu from "./NavMenu";
-import AddNewTownForm from "./AddNewTownForm";
-import AddMasterForm from "./AddMasterForm";
-
-import FullInfoModal from "./FullInfoModal";
-import AuthForm from "./AuthForm";
-import AddNewOrderForm from "./AddNewOrderForm";
-import FreeMasters from "./FreeMasters";
 
 import MastersList from "./ItemsLists/MastersList";
 import OrdersList from "./ItemsLists/OrdersList";
 import TownsList from "./ItemsLists/TownsList";
 
+import AddNewTownForm from "./AddItemsForms/AddNewTownForm";
+import AddMasterForm from "./AddItemsForms/AddMasterForm";
+import AddNewOrderForm from "./AddItemsForms/AddNewOrderForm";
+
 import EditMasterForm from "./EditForms/EditMasterForm";
 import EditOrderForm from "./EditForms/EditOrderForm";
 import EditTownForm from "./EditForms/EditTownForm";
+
+import FullInfoModal from "./FullInfoModal";
+import AuthForm from "./AuthForm";
+import FreeMasters from "./FreeMasters";
 
 function AdminSrcreen(props) {
   useEffect(function () {

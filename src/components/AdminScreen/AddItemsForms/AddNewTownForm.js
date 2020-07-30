@@ -2,18 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import postData from "./services/postData";
-import FormGroup from "../FormComponents/FormGroup";
-import Label from "../FormComponents/Label";
-import TextField from "../FormComponents/TextField";
-import Button from "../FormComponents/Button";
+import postData from "../services/postData";
+import FormGroup from "../../FormComponents/FormGroup";
+import Label from "../../FormComponents/Label";
+import TextField from "../../FormComponents/TextField";
+import Button from "../../FormComponents/Button";
 
-import { SERVERDOMAIN } from "../../services/serverUrls";
+import { SERVERDOMAIN } from "../../../services/serverUrls";
 
 import {
   changeAddMewTownFormIsLoad,
   addNewTown,
-} from "../../store/adminPanel/actions";
+} from "../../../store/adminPanel/actions";
 
 function AddNewTownForm(props) {
   function handler(e) {
