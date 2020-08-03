@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import postData from "../components/AdminScreen/services/postData";
 import SubscribeBtn from "../components/FormComponents/Button";
@@ -16,7 +16,15 @@ import {
   townsInit,
 } from "../store/adminPanel/actions";
 
-function AddMasterForm(props) {
+function AddMasterForm({history}) {
+  const state = useSelector(state=>{
+    return {
+      newMasterFormIsLoad: state.main_adminPanel_reduser.newMasterFormIsLoad,
+      townsArr: state.town_reduser.towns
+    }
+  });
+  const dispatch = useDispatch();
+
   useEffect(function () {
     getTownsFromServerToState();
   }, []);
@@ -28,14 +36,14 @@ function AddMasterForm(props) {
     };
     fetch(`${SERVERDOMAIN}/towns`, { headers })
       .then((json) => json.json())
-      .then((data) => props.townsInit(data));
+      .then((data) => dispatch(townsInit(data)));
   }
   function handler(e) {
     e.preventDefault();
     let name = e.target.name.value;
     let rating = e.target.rating.value;
     let towns = selectCheckedTowns(e.target.elements);
-    props.changeAddNewMasterFormIsLoad(true);
+    dispatch(changeAddNewMasterFormIsLoad(true));
     let infoObj = {
       name,
       rating,
@@ -43,11 +51,11 @@ function AddMasterForm(props) {
     };
     postData(`${SERVERDOMAIN}/masters/post`, infoObj)
       .then((data) => {
-        props.changeAddNewMasterFormIsLoad(false);
+        dispatch(changeAddNewMasterFormIsLoad(false));
         if (data.success) {
           alert(data.msg);
-          props.addNewMaster(data.payload);
-          props.history.push("/admin/mastersList");
+          dispatch(addNewMaster(data.payload));
+          history.push("/admin/mastersList");
         } else {
           alert(data.msg);
         }
@@ -80,7 +88,7 @@ function AddMasterForm(props) {
       <FormGroup isRow={false}>
         <div className="mb-2">Choose town</div>
         <div>
-          {props.townsArr.map((item) => (
+          {state.townsArr.map((item) => (
             <div key={item.id + 1} className="form-check-inline">
               <label className="form-check-label" htmlFor={item.name}>
                 <input
@@ -95,26 +103,13 @@ function AddMasterForm(props) {
           ))}
         </div>
       </FormGroup>
-      <SubscribeBtn isLoad={props.newMasterFormIsLoad} value={"Add"} />
+      <SubscribeBtn isLoad={state.newMasterFormIsLoad} value={"Add"} />
     </form>
   );
 }
 
 AddMasterForm.propTypes = {
-  handler: PropTypes.func,
-  townsArr: PropTypes.array,
+  history: PropTypes.object
 };
 
-function mapStateToProps(state) {
-  return {
-    newMasterFormIsLoad: state.main_adminPanel_reduser.newMasterFormIsLoad,
-    townsArr: state.town_reduser.towns,
-    mastersArr: state.master_reducer.masters,
-  };
-}
-const actions = {
-  changeAddNewMasterFormIsLoad,
-  addNewMaster,
-  townsInit,
-};
-export default connect(mapStateToProps, actions)(AddMasterForm);
+export default AddMasterForm;

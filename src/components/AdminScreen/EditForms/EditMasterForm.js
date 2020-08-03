@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import {
@@ -12,25 +12,24 @@ import EditForm from "../../../forms/EditForm";
 
 import { SERVERDOMAIN } from "../../../services/serverUrls";
 
-const EditMasterForm = ({
-  match,
-  history,
-  mastersArr,
-  changeEditFormIsLoad,
-  updateMasterInState,
-}) => {
+const EditMasterForm = ({match,history}) => {
+  const state = useSelector(state=>{
+    return {mastersArr: state.master_reducer.masters}
+  });
+  const dispatch = useDispatch();
+
   function editMasterHandler(e, newMasterObj) {
     e.preventDefault();
-    changeEditFormIsLoad(true);
+    dispatch(changeEditFormIsLoad(true));
     putDataToServer(
       `${SERVERDOMAIN}/masters/put/${newMasterObj.id}`,
       newMasterObj
     )
       .then((data) => {
-        changeEditFormIsLoad(false);
+        dispatch(changeEditFormIsLoad(false));
         if (data.success) {
           alert(data.msg);
-          updateMasterInState(data);
+          dispatch(updateMasterInState(data));
           history.push("/admin/mastersList");
         } else {
           alert(data.msg);
@@ -42,7 +41,7 @@ const EditMasterForm = ({
     <EditForm
       id={+match.params.id}
       handler={editMasterHandler}
-      arrFromState={mastersArr}
+      arrFromState={state.mastersArr}
     />
   );
 };
@@ -50,20 +49,6 @@ const EditMasterForm = ({
 EditMasterForm.propTypes = {
   match: PropTypes.object,
   history: PropTypes.object,
-  mastersArr: PropTypes.array.isRequired,
-  changeEditFormIsLoad: PropTypes.func.isRequired,
-  updateMasterInState: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    mastersArr: state.master_reducer.masters,
-  };
-};
-
-const actions = {
-  changeEditFormIsLoad,
-  updateMasterInState,
-};
-
-export default connect(mapStateToProps, actions)(EditMasterForm);
+export default EditMasterForm;

@@ -1,9 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import {
   changeMasterListIsLoad,
-  addOrdersToState,
   addCurrentOrderToState,
 } from "../../store/clientSide/actions";
 import FreeMastersForm from "../../forms/FreeMastersForm";
@@ -11,6 +10,16 @@ import sendMail from "../../services/mailSendler";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 function MastersList(props) {
+  const state = useSelector(state=>{
+    return {
+      suitableMasters: state.client_order_reduser.suitableMasters,
+      currentOrder: state.client_order_reduser.currentOrder,
+      masterListIsLoad: state.client_order_reduser.masterListIsLoad,
+      isAuth: state.client_order_reduser.isAuth
+    }
+  });
+  const dispatch = useDispatch();
+
   function submitHandler(e) {
     e.preventDefault();
     let masterId = e.target.chooseMaster.value;
@@ -20,9 +29,9 @@ function MastersList(props) {
       }
     }
     let endOrderTime;
-    let clientTimeHour = +props.currentOrder.time.match(/[^:]+/);
-    let clientTimeMin = props.currentOrder.time.match(/:\d\d$/);
-    switch (props.currentOrder.size) {
+    let clientTimeHour = +state.currentOrder.time.match(/[^:]+/);
+    let clientTimeMin = state.currentOrder.time.match(/:\d\d$/);
+    switch (state.currentOrder.size) {
       case "small":
         endOrderTime = clientTimeHour + 1 + clientTimeMin;
         break;
@@ -36,12 +45,12 @@ function MastersList(props) {
         endOrderTime = 0;
     }
     let newObj = {
-      ...props.currentOrder,
+      ...state.currentOrder,
       masterId: masterId,
       endTime: endOrderTime,
     };
 
-    props.changeMasterListIsLoad(true);
+    dispatch(changeMasterListIsLoad(true));
     fetch(`${SERVERDOMAIN}/orders/post`, {
       method: "POST",
       headers: {
@@ -54,59 +63,42 @@ function MastersList(props) {
     })
       .then((json) => json.json())
       .then((data) => {
-        props.changeMasterListIsLoad(false);
+        dispatch(changeMasterListIsLoad(false));
         if (data.success) {
           alert(data.msg);
           props.history.push("/");
           sendMail(`${SERVERDOMAIN}/send_message`, data.payload.email);
-          props.addCurrentOrderToState(
-            props.isAuth
+          dispatch(addCurrentOrderToState(
+            state.isAuth
               ? {
                   email: JSON.parse(localStorage.getItem("user")).email,
                 }
               : {}
-          );
+          ));
         } else {
           alert(data.msg);
         }
       })
       .catch((err) => {
-        props.changeMasterListIsLoad(false);
+        dispatch(changeMasterListIsLoad(false));
         alert(err);
       });
   }
   return (
     <FreeMastersForm
       submitHandler={submitHandler}
-      suitableMasters={props.suitableMasters}
-      isLoad={props.masterListIsLoad}
+      suitableMasters={state.suitableMasters}
+      isLoad={state.masterListIsLoad}
       backTo={"/client"}
     />
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    suitableMasters: state.client_order_reduser.suitableMasters,
-    currentOrder: state.client_order_reduser.currentOrder,
-    masterListIsLoad: state.client_order_reduser.masterListIsLoad,
-    ordersArr: state.client_order_reduser.ordersArr,
-  };
-}
-const actions = {
-  changeMasterListIsLoad,
-  addOrdersToState,
-  addCurrentOrderToState,
-};
 MastersList.propTypes = {
   mastersArr: PropTypes.array,
-  currentOrder: PropTypes.object,
   submitHandler: PropTypes.func,
-  changeMasterListIsLoad: PropTypes.func,
   history: PropTypes.object,
   isAuth: PropTypes.bool,
-  masterListIsLoad: PropTypes.bool,
-  suitableMasters: PropTypes.array,
 };
 
-export default connect(mapStateToProps, actions)(MastersList);
+export default MastersList;

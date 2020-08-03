@@ -1,12 +1,14 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { toogleAuth } from "../../../store/adminPanel/actions";
 
-const LogOutBtn = ({ toogleAuth }) => {
+const LogOutBtn = () => {
+  const dispatch = useDispatch();
+
   function handler() {
     sessionStorage.removeItem("token");
-    toogleAuth(false);
+    dispatch(toogleAuth(false));
   }
   return (
     <div className="mr-1">
@@ -23,4 +25,4 @@ const LogOutBtn = ({ toogleAuth }) => {
   );
 };
 
-export default connect(null, { toogleAuth })(LogOutBtn);
+export default LogOutBtn;

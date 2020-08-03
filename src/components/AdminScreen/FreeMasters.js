@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import FreeMastersForm from "../../forms/FreeMastersForm";
 import {
@@ -10,6 +10,14 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 import sendConfirmEmail from "../../services/mailSendler";
 
 function MastersList(props) {
+  const state = useSelector(state=>{
+    return {
+      suitableMasters: state.orders_reducer.suitableMasters,
+      masterListIsLoad: state.master_reducer.masterListIsLoad
+    }
+  });
+  const dispatch = useDispatch();
+
   function submitHandler(e) {
     e.preventDefault();
     let masterId = e.target.chooseMaster.value;
@@ -39,7 +47,7 @@ function MastersList(props) {
       endTime: endOrderTime,
     };
 
-    props.changeMasterListIsLoad(true);
+    dispatch(changeMasterListIsLoad(true));
     fetch(`${SERVERDOMAIN}/orders/post`, {
       method: "POST",
       headers: {
@@ -52,38 +60,29 @@ function MastersList(props) {
     })
       .then((json) => json.json())
       .then((data) => {
-        props.changeMasterListIsLoad(false);
+        dispatch(changeMasterListIsLoad(false));
         if (data.success) {
           alert(data.msg);
           props.history.push("/admin/ordersList");
-          props.addCurrentOrderToState({});
+          dispatch(addCurrentOrderToState({}));
           sendConfirmEmail(`${SERVERDOMAIN}/send_message`, data.payload.email);
         } else {
           alert(data.msg);
         }
       })
       .catch((err) => {
-        props.changeMasterListIsLoad(false);
+        dispatch(changeMasterListIsLoad(false));
         alert(err);
       });
   }
   return (
     <FreeMastersForm
       submitHandler={submitHandler}
-      isLoad={props.masterListIsLoad}
-      suitableMasters={props.suitableMasters}
+      isLoad={state.masterListIsLoad}
+      suitableMasters={state.suitableMasters}
       backTo={"/admin/addOrderForm"}
     />
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    suitableMasters: state.orders_reducer.suitableMasters,
-    masterListIsLoad: state.master_reducer.masterListIsLoad,
-  };
-}
-export default connect(mapStateToProps, {
-  addCurrentOrderToState,
-  changeMasterListIsLoad,
-})(MastersList);
+export default MastersList;

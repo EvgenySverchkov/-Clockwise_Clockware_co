@@ -1,18 +1,23 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import { changeAuthIsLoad, toogleAuth } from "../../store/adminPanel/actions";
 
 import LoginForm from "../../forms/LoginForm";
 
-function AuthForm(props) {
+function LoginPage(props) {
+  const state = useSelector(state=>{
+    return {authIsLoad: state.main_adminPanel_reduser.authIsLoad}
+  });
+  const dispatch = useDispatch();
+
   function handler(e) {
     e.preventDefault();
     const login = e.target.login.value;
     const password = e.target.password.value;
     const newObj = { login, password };
-    props.changeAuthIsLoad(true);
+    dispatch(changeAuthIsLoad(true));
     fetch(`${SERVERDOMAIN}/adminLogin`, {
       method: "POST",
       headers: {
@@ -22,30 +27,19 @@ function AuthForm(props) {
     })
       .then((json) => json.json())
       .then((data) => {
-        props.changeAuthIsLoad(false);
+        dispatch(changeAuthIsLoad(false));
         if (data.success) {
           sessionStorage.setItem("token", data.token);
           props.history.push("/admin/ordersList");
-          props.toogleAuth(true);
+          dispatch(toogleAuth(true));
         } else {
           alert(data.msg);
         }
       });
   }
   return (
-    <LoginForm submitHandler={handler} authIsLoad={props.authIsLoad} />
+    <LoginForm submitHandler={handler} authIsLoad={state.authIsLoad} />
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    authIsLoad: state.main_adminPanel_reduser.authIsLoad,
-  };
-}
-
-const actions = {
-  changeAuthIsLoad,
-  toogleAuth,
-};
-
-export default connect(mapStateToProps, actions)(AuthForm);
+export default LoginPage;

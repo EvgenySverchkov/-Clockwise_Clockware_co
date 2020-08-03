@@ -47,7 +47,7 @@ export const chngCurrItemForModal = (obj) => ({
   payload: obj,
 });
 
-export const toogleAuth = (data) => ({ type: "TOOGLE_AUTH", payload: data });
+export const toogleAuth = (data) => ({ type: "TOOGLE_AUTH_ADMIN", payload: data });
 
 export const changeAuthIsLoad = (data) => ({
   type: "CHANGE_AUTH_IS_LOAD",
@@ -61,7 +61,7 @@ export const changeAddNewMasterFormIsLoad = (data) => ({
   type: "CHANGE_ADD_NEW_MASTER_FORM_IS_LOAD",
   payload: data,
 });
-export const changeAddMewOrderFormIsLoad = (data) => ({
+export const changeAddNewOrderFormIsLoad = (data) => ({
   type: "CHANGE_ADD_NEW_ORDER_FORM_IS_LOAD",
   payload: data,
 });

@@ -1,33 +1,27 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import {
-  changeEditFormIsLoad,
-  updateOrderInState,
-} from "../../../store/adminPanel/actions";
+import {updateOrderInState} from "../../../store/adminPanel/actions";
 import putDataToServer from "../services/putDataToServer";
 
 import EditForm from "../../../forms/EditForm";
 
 import { SERVERDOMAIN } from "../../../services/serverUrls";
 
-const EditOrderForm = ({
-  match,
-  history,
-  ordersArr,
-  changeEditFormIsLoad,
-  updateOrderInState,
-}) => {
+const EditOrderForm = ({match,history}) => {
+  const state = useSelector(state=>{
+    return {ordersArr: state.orders_reducer.ordersArr}
+  });
+  const dispatch = useDispatch();
+
   function editOrderHandler(e, newOrderObj) {
     e.preventDefault();
-    changeEditFormIsLoad(true);
     putDataToServer(`${SERVERDOMAIN}/orders/put/${newOrderObj.id}`, newOrderObj)
       .then((data) => {
-        changeEditFormIsLoad(false);
         if (data.success) {
           alert(data.msg);
-          updateOrderInState(data);
+          dispatch(updateOrderInState(data));
           history.push("/admin/ordersList");
         } else {
           alert(data.msg);
@@ -39,28 +33,15 @@ const EditOrderForm = ({
     <EditForm
       id={+match.params.id}
       handler={editOrderHandler}
-      arrFromState={ordersArr}
+      arrFromState={state.ordersArr}
     />
   );
 };
 
 EditOrderForm.propTypes = {
   match: PropTypes.object,
-  history: PropTypes.object,
-  ordersArr: PropTypes.array.isRequired,
-  changeEditFormIsLoad: PropTypes.func.isRequired,
-  updateOrderInState: PropTypes.func.isRequired,
+  history: PropTypes.object
 };
 
-const mapStateToProps = (state) => {
-  return {
-    ordersArr: state.orders_reducer.ordersArr,
-  };
-};
 
-const actions = {
-  changeEditFormIsLoad,
-  updateOrderInState,
-};
-
-export default connect(mapStateToProps, actions)(EditOrderForm);
+export default EditOrderForm;

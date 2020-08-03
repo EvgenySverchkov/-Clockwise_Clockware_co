@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import {
-  changeAddMewOrderFormIsLoad,
   addCurrentOrderToState,
   townsInit,
   addSuitableMasters,
@@ -14,25 +13,25 @@ import { SERVERDOMAIN } from "../services/serverUrls";
 
 import OrderForm from "./OrderForm";
 
-function OrderFormAdmin({
-  currentOrder,
-  addCurrentOrderToState,
-  townsArr,
-  townsInit,
-  history,
-  addSuitableMasters,
-  changeOrderFormIsLoad,
-  orderFormIsLoad,
-}) {
+function OrderFormAdmin({history}) {
+  const state = useSelector(state=>{
+    return {
+      currentOrder: state.orders_reducer.currentOrder,
+      townsArr: state.town_reduser.towns,
+      orderFormIsLoad: state.orders_reducer.orderFormIsLoad,
+    }
+  });
+  const dispatch = useDispatch();
+
   useEffect(function () {
     getTownsFromServerToState();
   }, []);
   function changeHandler(e) {
     let idx = e.target.name;
-    addCurrentOrderToState({
-      ...currentOrder,
+    dispatch(addCurrentOrderToState({
+      ...state.currentOrder,
       [idx]: e.target.value,
-    });
+    }));
   }
   function getTownsFromServerToState() {
     const headers = {
@@ -41,7 +40,7 @@ function OrderFormAdmin({
     };
     fetch(`${SERVERDOMAIN}/towns`, { headers })
       .then((json) => json.json())
-      .then((data) => townsInit(data));
+      .then((data) => dispatch(townsInit(data)));
   }
   function submitHandler(e) {
     e.preventDefault();
@@ -59,9 +58,9 @@ function OrderFormAdmin({
     }
 
     let endOrderTime;
-    let clientTimeHour = +currentOrder.time.match(/\d\d/);
-    let clientTimeMin = currentOrder.time.match(/:\d\d$/);
-    switch (currentOrder.size) {
+    let clientTimeHour = +state.currentOrder.time.match(/\d\d/);
+    let clientTimeMin = state.currentOrder.time.match(/:\d\d$/);
+    switch (state.currentOrder.size) {
       case "small":
         endOrderTime = clientTimeHour + 1 + clientTimeMin;
         break;
@@ -74,20 +73,20 @@ function OrderFormAdmin({
       default:
         endOrderTime = 0;
     }
-    changeOrderFormIsLoad(true);
+    dispatch(changeOrderFormIsLoad(true));
     getFreeMastersByClientTownFromServer(
       SERVERDOMAIN,
       trgElem.town.value,
-      currentOrder.time,
+      state.currentOrder.time,
       endOrderTime,
-      currentOrder.date
+      state.currentOrder.date
     ).then((data) => {
-      changeOrderFormIsLoad(false);
+      dispatch(changeOrderFormIsLoad(false));
       if (data.success) {
-        addSuitableMasters(data.payload);
+       dispatch(addSuitableMasters(data.payload));
         history.push("/admin/freeMasters");
       } else {
-        addSuitableMasters([]);
+       dispatch(addSuitableMasters([]));
         alert(data.msg);
         history.push("/admin/addOrderForm");
       }
@@ -119,35 +118,17 @@ function OrderFormAdmin({
   }
   return (
     <OrderForm
-      currentOrder={currentOrder || []}
+      currentOrder={state.currentOrder || []}
       changeHandler={changeHandler}
-      townsArr={townsArr}
+      townsArr={state.townsArr}
       submitHandler={submitHandler}
-      isLoadOrderForm={orderFormIsLoad}
+      isLoadOrderForm={state.orderFormIsLoad}
     />
   );
 }
-function mapStateToProps(state) {
-  return {
-    currentOrder: state.orders_reducer.currentOrder,
-    townsArr: state.town_reduser.towns,
-    orderFormIsLoad: state.orders_reducer.orderFormIsLoad,
-  };
-}
-
-const actions = {
-  changeAddMewOrderFormIsLoad,
-  addCurrentOrderToState,
-  townsInit,
-  addSuitableMasters,
-  changeOrderFormIsLoad,
-};
 
 OrderForm.propTypes = {
-  currentOrder: PropTypes.object,
   submitHandler: PropTypes.func,
-  townsArr: PropTypes.array,
-  addCurrentOrderToState: PropTypes.func,
 };
 
-export default connect(mapStateToProps, actions)(OrderFormAdmin);
+export default OrderFormAdmin;

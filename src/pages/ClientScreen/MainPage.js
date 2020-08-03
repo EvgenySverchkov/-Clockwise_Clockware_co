@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
-import PropTypes from "prop-types";
 
 import {
   addCurrentOrderToState,
-  addOrdersToState,
   toggleAuth,
   addTownsToState,
 } from "../../store/clientSide/actions";
@@ -17,7 +15,8 @@ import Header from "../../components/ClientScreen/Header";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-function ClientSrcreen(props) {
+function ClientSrcreen() {
+  const dispatch = useDispatch();
   useEffect(() => {
     let token = localStorage.getItem("token")
       ? "Bearer " + localStorage.getItem("token")
@@ -28,15 +27,15 @@ function ClientSrcreen(props) {
       },
     })
       .then((json) => json.json())
-      .then((data) => props.addTownsToState(data));
+      .then((data) => dispatch(addTownsToState(data)));
 
     if (localStorage.getItem("user")) {
-      props.addCurrentOrderToState({
+      dispatch(addCurrentOrderToState({
         email: JSON.parse(localStorage.getItem("user")).email,
-      });
-      props.toggleAuth(true);
+      }));
+      dispatch(toggleAuth(true));
     } else {
-      props.toggleAuth(false);
+      dispatch(toggleAuth(false));
     }
   }, []);
 
@@ -68,18 +67,4 @@ function ClientSrcreen(props) {
   );
 }
 
-let actions = {
-  addTownsToState,
-  addOrdersToState,
-  addCurrentOrderToState,
-  toggleAuth,
-};
-
-ClientSrcreen.propTypes = {
-  addTownsToState: PropTypes.func,
-  addOrdersToState: PropTypes.func,
-  addCurrentOrderToState: PropTypes.func,
-  toggleAuth: PropTypes.func,
-};
-
-export default connect(null, actions)(ClientSrcreen);
+export default ClientSrcreen;

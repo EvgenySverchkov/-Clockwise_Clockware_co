@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import { changeSignUpIsLoad } from "../../store/clientSide/actions";
@@ -13,7 +13,12 @@ import EmailField from "../../components/FormComponents/EmailField";
 import PasswordField from "../../components/FormComponents/PasswordField";
 import Button from "../../components/FormComponents/Button";
 
-function RegistrationForm(props) {
+function RegistrationForm({history}) {
+  const state = useSelector(state=>{
+    return {signUpIsLoad: state.client_order_reduser.signUpIsLoad}
+  });
+  const dispatch = useDispatch();
+
   function handler(e) {
     e.preventDefault();
     const elem = e.target;
@@ -23,7 +28,7 @@ function RegistrationForm(props) {
       email: elem.email.value,
       password: elem.password.value,
     };
-    props.changeSignUpIsLoad(true);
+    dispatch(changeSignUpIsLoad(true));
     fetch(`${SERVERDOMAIN}/signUp`, {
       method: "POST",
       headers: {
@@ -33,12 +38,12 @@ function RegistrationForm(props) {
     })
       .then((data) => data.json())
       .then((data) => {
-        props.changeSignUpIsLoad(false);
+        dispatch(changeSignUpIsLoad(false));
         if (!data.success) {
           alert(data.msg);
         } else {
           alert(`Congratulations! ${data.user.name} you are signUp`);
-          props.history.push("/client/login");
+          history.push("/client/login");
         }
       });
   }
@@ -60,23 +65,13 @@ function RegistrationForm(props) {
         <Label forId={"password"}>Enter your password</Label>
         <PasswordField id={"password"} />
       </FormGroup>
-      <Button isLoad={props.signUpIsLoad} value={"Sign Up"} />
+      <Button isLoad={state.signUpIsLoad} value={"Sign Up"} />
     </form>
   );
 }
 
 RegistrationForm.propTypes = {
-  signUpIsLoad: PropTypes.bool,
   history: PropTypes.object.isRequired,
-  changeSignUpIsLoad: PropTypes.func,
 };
 
-function mapStateToPorps(state) {
-  return {
-    signUpIsLoad: state.client_order_reduser.signUpIsLoad,
-  };
-}
-const actions = {
-  changeSignUpIsLoad,
-};
-export default connect(mapStateToPorps, actions)(RegistrationForm);
+export default RegistrationForm;

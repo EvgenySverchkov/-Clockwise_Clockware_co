@@ -42,6 +42,7 @@ const initialState = {
     signUpIsLoad: false,
     orderFormIsLoad: false,
     masterListIsLoad: false,
+    isAuth: false
   },
 };
 const store = createStore(

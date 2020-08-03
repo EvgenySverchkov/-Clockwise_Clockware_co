@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
 import Label from "../components/FormComponents/Label";
 import NumField from "../components/FormComponents/NumField";
@@ -8,7 +7,7 @@ import TextField from "../components/FormComponents/TextField";
 import FormGroup from "../components/FormComponents/FormGroup";
 import Button from "../components/FormComponents/Button";
 
-function EditForm({ id, handler, arrFromState, editFormIsLoad }) {
+function EditForm({ id, handler, arrFromState }) {
   let obj = arrFromState.find((item) => item.id === id);
   let [stateObj, setStateObj] = useState(obj);
   let keyArr = Object.keys(stateObj || {});
@@ -58,10 +57,4 @@ EditForm.propTypes = {
   arrFromState: PropTypes.array,
 };
 
-function mapStateToProps(state) {
-  return {
-    editFormIsLoad: state.main_adminPanel_reduser.editFormIsLoad,
-  };
-}
-
-export default connect(mapStateToProps)(EditForm);
+export default EditForm;

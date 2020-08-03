@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import postData from "../components/AdminScreen/services/postData";
 import FormGroup from "../components/FormComponents/FormGroup";
@@ -15,7 +15,14 @@ import {
   addNewTown,
 } from "../store/adminPanel/actions";
 
-function AddNewTownForm(props) {
+function AddNewTownForm({history}) {
+  const state = useSelector(state=>{
+    return {
+      newTownFormIsLoad: state.main_adminPanel_reduser.newTownFormIsLoad
+    }
+  });
+  const dispatch = useDispatch();
+
   function handler(e) {
     e.preventDefault();
     let townName = e.target.town.value;
@@ -24,17 +31,17 @@ function AddNewTownForm(props) {
     let infoObj = {
       name: townName,
     };
-    props.changeAddMewTownFormIsLoad(true);
+    dispatch(changeAddMewTownFormIsLoad(true));
     postData(`${SERVERDOMAIN}/towns/post`, infoObj)
       .then((data) => {
         if (data.success) {
           alert(data.msg);
-          props.addNewTown(data.payload);
-          props.history.push("/admin/townsList");
+          dispatch(addNewTown(data.payload));
+          history.push("/admin/townsList");
         } else {
           alert(data.msg);
         }
-        props.changeAddMewTownFormIsLoad(false);
+        dispatch(changeAddMewTownFormIsLoad(false));
       })
       .catch((err) => alert(err));
   }
@@ -44,25 +51,13 @@ function AddNewTownForm(props) {
         <Label forId="town">Enter new town</Label>
         <TextField id={"town"} />
       </FormGroup>
-      <Button isLoad={props.newTownFormIsLoad} value={"Add town"} />
+      <Button isLoad={state.newTownFormIsLoad} value={"Add town"} />
     </form>
   );
 }
 
 AddNewTownForm.propTypes = {
-  handler: PropTypes.func,
+  history: PropTypes.object,
 };
 
-function mapStateToProps(state) {
-  return {
-    newTownFormIsLoad: state.main_adminPanel_reduser.newTownFormIsLoad,
-    townsArr: state.town_reduser.towns,
-  };
-}
-
-const actions = {
-  changeAddMewTownFormIsLoad,
-  addNewTown,
-};
-
-export default connect(mapStateToProps, actions)(AddNewTownForm);
+export default AddNewTownForm;

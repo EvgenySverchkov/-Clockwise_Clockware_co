@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import {
@@ -12,13 +12,12 @@ import List from "../List";
 
 import { SERVERDOMAIN } from "../../../services/serverUrls";
 
-const MastersList = ({
-  mastersArr,
-  deleteMasterFromState,
-  initMasters,
-  townsInit,
-  history,
-}) => {
+const MastersList = ({history}) => {
+  const state = useSelector(state=>{
+    return {mastersArr: state.master_reducer.masters}
+  });
+  const dispatch = useDispatch();
+
   function getMastersAndTownsFromServerToState() {
     const headers = {
       Authorization: "Bearer " + sessionStorage.getItem("token") || "",
@@ -26,10 +25,10 @@ const MastersList = ({
     };
     fetch(`${SERVERDOMAIN}/masters`, { headers })
       .then((data) => data.json())
-      .then((data) => initMasters(data))
+      .then((data) => dispatch(initMasters(data)))
       .catch((err) => {
         alert("Please, authorise");
-        initMasters([]);
+        dispatch(initMasters([]));
       });
     getTownsFromServerToState();
   }
@@ -40,13 +39,13 @@ const MastersList = ({
     };
     fetch(`${SERVERDOMAIN}/towns`, { headers })
       .then((json) => json.json())
-      .then((data) => townsInit(data));
+      .then((data) => dispatch(townsInit(data)));
   }
   function deleteMasterById(masterId) {
     deleteDataFromServer(`${SERVERDOMAIN}/masters/delete/${masterId}`)
       .then((data) => {
         if (data.success) {
-          deleteMasterFromState(data.payload);
+          dispatch(deleteMasterFromState(data.payload));
           alert(data.msg);
         } else {
           alert(data.msg);
@@ -56,7 +55,7 @@ const MastersList = ({
   }
   return (
     <List
-      dataArr={mastersArr}
+      dataArr={state.mastersArr}
       deleteAction={deleteMasterById}
       mainRows={["name", "rating"]}
       getData={getMastersAndTownsFromServerToState}
@@ -65,24 +64,8 @@ const MastersList = ({
   );
 };
 
-const actions = {
-  initMasters,
-  deleteMasterFromState,
-  townsInit,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    mastersArr: state.master_reducer.masters,
-  };
-};
-
 MastersList.propTypes = {
-  mastersArr: PropTypes.array.isRequired,
-  deleteMasterFromState: PropTypes.func.isRequired,
-  initMasters: PropTypes.func.isRequired,
-  townsInit: PropTypes.func.isRequired,
-  history: PropTypes.object,
+  history: PropTypes.object
 };
 
-export default connect(mapStateToProps, actions)(MastersList);
+export default MastersList;

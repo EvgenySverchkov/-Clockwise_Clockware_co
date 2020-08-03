@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import {
@@ -12,7 +12,12 @@ import List from "../List";
 
 import { SERVERDOMAIN } from "../../../services/serverUrls";
 
-const TownsList = ({ townsArr, townsInit, deleteTownFromState, history }) => {
+const TownsList = ({ history }) => {
+  const state = useSelector(state=>{
+    return {townsArr: state.town_reduser.towns}
+  });
+  const dispatch = useDispatch();
+
   function getTownsFromServerToState() {
     const headers = {
       Authorization: "Bearer " + sessionStorage.getItem("token") || "",
@@ -20,13 +25,13 @@ const TownsList = ({ townsArr, townsInit, deleteTownFromState, history }) => {
     };
     fetch(`${SERVERDOMAIN}/towns`, { headers })
       .then((json) => json.json())
-      .then((data) => townsInit(data));
+      .then((data) => dispatch(townsInit(data)));
   }
   function deleteTownById(townId) {
     deleteDataFromServer(`${SERVERDOMAIN}/towns/delete/${townId}`)
       .then((data) => {
         if (data.success) {
-          deleteTownFromState(data.payload);
+          dispatch(deleteTownFromState(data.payload));
           alert(data.msg);
         } else {
           alert(data.msg);
@@ -36,7 +41,7 @@ const TownsList = ({ townsArr, townsInit, deleteTownFromState, history }) => {
   }
   return (
     <List
-      dataArr={townsArr}
+      dataArr={state.townsArr}
       deleteAction={deleteTownById}
       mainRows={["name", "id"]}
       getData={getTownsFromServerToState}
@@ -46,21 +51,7 @@ const TownsList = ({ townsArr, townsInit, deleteTownFromState, history }) => {
 };
 
 TownsList.propTypes = {
-  townsArr: PropTypes.array.isRequired,
-  townsInit: PropTypes.func.isRequired,
-  deleteTownFromState: PropTypes.func.isRequired,
   history: PropTypes.object,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    townsArr: state.town_reduser.towns,
-  };
-};
-
-const actions = {
-  townsInit,
-  deleteTownFromState,
-};
-
-export default connect(mapStateToProps, actions)(TownsList);
+export default TownsList;

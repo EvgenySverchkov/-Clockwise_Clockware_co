@@ -1,12 +1,13 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { chngCurrItemForModal } from "../../../store/adminPanel/actions";
 
-function ShowFullInfo({ itemObj, chngCurrItemForModal }) {
+function ShowFullInfo({ itemObj }) {
+  const dispatch = useDispatch();
   return (
     <button
       onClick={() => {
-        chngCurrItemForModal(itemObj);
+        dispatch(chngCurrItemForModal(itemObj));
       }}
       type="button"
       className="dropdown-item"
@@ -18,4 +19,4 @@ function ShowFullInfo({ itemObj, chngCurrItemForModal }) {
   );
 }
 
-export default connect(null, { chngCurrItemForModal })(ShowFullInfo);
+export default ShowFullInfo;

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import {
@@ -29,20 +29,30 @@ import LoginPage from "./LoginPage";
 import FreeMasters from "../../components/AdminScreen/FreeMasters";
 
 function AdminSrcreen(props) {
+  const state = useSelector(state=>{
+    return {
+      currItemForModal: state.main_adminPanel_reduser.currItemForModal,
+      isAuth: state.main_adminPanel_reduser.isAuth,
+      currentOrder: state.orders_reducer.currentOrder,
+      suitableMasters: state.orders_reducer.suitableMasters,
+    }
+  });
+  const dispatch = useDispatch();
+  
   useEffect(function () {
     document.title = "AdminPanel - Clockwise Clockware";
     if (sessionStorage.getItem("token")) {
-      props.toogleAuth(true);
+      dispatch(toogleAuth(true));
     } else {
       props.history.push("/admin");
-      props.initMasters([]);
-      props.townsInit([]);
-      props.initOrders([]);
+      dispatch(initMasters([]));
+      dispatch(townsInit([]));
+      dispatch(initOrders([]));
     }
   }, []);
   return (
     <div className="container pt-3">
-      {props.isAuth ? <NavMenu /> : <LoginPage {...props} />}
+      {state.isAuth ? <NavMenu /> : <LoginPage {...props} />}
       <div className="row justify-content-sm-center">
         <div className="col-md-8">
           <Switch>
@@ -88,9 +98,9 @@ function AdminSrcreen(props) {
                 return (
                   <FreeMasters
                     {...prop}
-                    currentOrder={props.currentOrder}
-                    isAuth={props.isAuth}
-                    suitableMasters={props.suitableMasters || []}
+                    currentOrder={state.currentOrder}
+                    isAuth={state.isAuth}
+                    suitableMasters={state.suitableMasters || []}
                     backTo="/admin/addOrderForm"
                   />
                 );
@@ -98,37 +108,14 @@ function AdminSrcreen(props) {
             />
           </Switch>
         </div>
-        <FullInfoModal itemObj={props.currItemForModal} />
+        <FullInfoModal itemObj={state.currItemForModal} />
       </div>
     </div>
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    currItemForModal: state.main_adminPanel_reduser.currItemForModal,
-    isAuth: state.main_adminPanel_reduser.isAuth,
-    currentOrder: state.orders_reducer.currentOrder,
-    suitableMasters: state.orders_reducer.suitableMasters,
-  };
-}
-const actions = {
-  initMasters,
-  townsInit,
-  initOrders,
-  toogleAuth,
-};
-
 AdminSrcreen.propTypes = {
-  toogleAuth: PropTypes.func,
-  history: PropTypes.object,
-  initMasters: PropTypes.func,
-  townsInit: PropTypes.func,
-  initOrders: PropTypes.func,
-  isAuth: PropTypes.bool,
-  currentOrder: PropTypes.object,
-  suitableMasters: PropTypes.array,
-  currItemForModal: PropTypes.object,
+  history: PropTypes.object
 };
 
-export default connect(mapStateToProps, actions)(AdminSrcreen);
+export default AdminSrcreen;

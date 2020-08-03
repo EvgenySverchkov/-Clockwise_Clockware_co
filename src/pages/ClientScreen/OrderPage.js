@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import {
@@ -13,16 +13,25 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 
 import OrderForm from "../../forms/OrderForm";
 
-function OrderFormClient(props) {
+function OrderFormClient({history}) {
+  const state = useSelector(state=>{
+    return {
+      currentOrder: state.client_order_reduser.currentOrder,
+      orderFormIsLoad: state.client_order_reduser.orderFormIsLoad,
+      townsArr: state.client_order_reduser.townsArr,
+    }
+  });
+  const dispatch = useDispatch();
+
   useEffect(function () {
     getTownsFromServerToState();
   }, []);
   function changeHandler(e) {
     let idx = e.target.name;
-    props.addCurrentOrderToState({
-      ...props.currentOrder,
+    dispatch(addCurrentOrderToState({
+      ...state.currentOrder,
       [idx]: e.target.value,
-    });
+    }));
   }
   function getTownsFromServerToState() {
     const headers = {
@@ -33,7 +42,7 @@ function OrderFormClient(props) {
     };
     fetch(`${SERVERDOMAIN}/towns`, { headers })
       .then((json) => json.json())
-      .then((data) => props.addTownsToState(data));
+      .then((data) => dispatch(addTownsToState(data)));
   }
   function submitHandler(e) {
     e.preventDefault();
@@ -56,9 +65,9 @@ function OrderFormClient(props) {
     }
 
     let endOrderTime;
-    let clientTimeHour = +props.currentOrder.time.match(/\d\d/);
-    let clientTimeMin = props.currentOrder.time.match(/:\d\d$/);
-    switch (props.currentOrder.size) {
+    let clientTimeHour = +state.currentOrder.time.match(/\d\d/);
+    let clientTimeMin = state.currentOrder.time.match(/:\d\d$/);
+    switch (state.currentOrder.size) {
       case "small":
         endOrderTime = clientTimeHour + 1 + clientTimeMin;
         break;
@@ -71,22 +80,22 @@ function OrderFormClient(props) {
       default:
         endOrderTime = 0;
     }
-    props.changeOrderFormIsLoad(true);
+    dispatch(changeOrderFormIsLoad(true));
     getFreeMastersByClientTownFromServer(
       SERVERDOMAIN,
       trgElem.town.value,
-      props.currentOrder.time,
+      state.currentOrder.time,
       endOrderTime,
-      props.currentOrder.date
+      state.currentOrder.date
     ).then((data) => {
-      props.changeOrderFormIsLoad(false);
+      dispatch(changeOrderFormIsLoad(false));
       if (data.success) {
-        props.addSuitableMasters(data.payload);
-        props.history.push("/client/masters");
+        dispatch(addSuitableMasters(data.payload));
+        history.push("/client/masters");
       } else {
-        props.addSuitableMasters([]);
+        dispatch(addSuitableMasters([]));
         alert(data.msg);
-        props.history.push("/client");
+        history.push("/client");
       }
     });
   }
@@ -124,37 +133,16 @@ function OrderFormClient(props) {
       <OrderForm
         submitHandler={submitHandler}
         changeHandler={changeHandler}
-        currentOrder={props.currentOrder}
-        isLoadOrderForm={props.orderFormIsLoad}
-        townsArr={props.townsArr}
+        currentOrder={state.currentOrder}
+        isLoadOrderForm={state.orderFormIsLoad}
+        townsArr={state.townsArr}
       />
     </>
   );
 }
-function mapStateToProps(state) {
-  return {
-    currentOrder: state.client_order_reduser.currentOrder,
-    orderFormIsLoad: state.client_order_reduser.orderFormIsLoad,
-    townsArr: state.client_order_reduser.townsArr,
-  };
-}
-
-const actions = {
-  addCurrentOrderToState,
-  changeOrderFormIsLoad,
-  addSuitableMasters,
-  addTownsToState,
-};
 
 OrderFormClient.propTypes = {
-  currentOrder: PropTypes.object.isRequired,
-  townsArr: PropTypes.array.isRequired,
-  addCurrentOrderToState: PropTypes.func.isRequired,
-  addTownsToState: PropTypes.func.isRequired,
-  changeOrderFormIsLoad: PropTypes.func.isRequired,
-  addSuitableMasters: PropTypes.func.isRequired,
-  orderFormIsLoad: PropTypes.bool.isRequired,
   history: PropTypes.object,
 };
 
-export default connect(mapStateToProps, actions)(OrderFormClient);
+export default OrderFormClient;
