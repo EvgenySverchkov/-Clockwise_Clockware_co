@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import MasterCard from "./MasterCard";
-import ComeBackBtn from "./ComeBackBtn";
-import SubmitBtn from "./SubmitBtn";
-import EmptyList from "./EmptyList";
+import MasterCard from "../components/FreeMasterList/MasterCard";
+import ComeBackBtn from "../components/FreeMasterList/ComeBackBtn";
+import SubmitBtn from "../components/FreeMasterList/SubmitBtn";
+import EmptyList from "../components/FreeMasterList/EmptyList";
 
 function FreeMastersList({ submitHandler, isLoad, suitableMasters, backTo }) {
   if (suitableMasters.length === 0) {

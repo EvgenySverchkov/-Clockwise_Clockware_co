@@ -8,11 +8,11 @@ import {
   townsInit,
   addSuitableMasters,
   changeOrderFormIsLoad,
-} from "../../../store/adminPanel/actions";
+} from "../store/adminPanel/actions";
 
-import { SERVERDOMAIN } from "../../../services/serverUrls";
+import { SERVERDOMAIN } from "../services/serverUrls";
 
-import OrderForm from "../../OrderForm";
+import OrderForm from "./OrderForm";
 
 function OrderFormAdmin({
   currentOrder,

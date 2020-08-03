@@ -9,9 +9,9 @@ import {
   toggleAuth,
 } from "../../store/clientSide/actions";
 
-import LoginComponent from "../LoginComponent";
+import LoginForm from "../../forms/LoginForm";
 
-function LoginForm(props) {
+function LoginPage(props) {
   function handler(e) {
     e.preventDefault();
     let login = e.target.login.value;
@@ -41,7 +41,7 @@ function LoginForm(props) {
       });
   }
   return (
-    <LoginComponent submitHandler={handler} authIsLoad={props.loginIsLoad} />
+    <LoginForm submitHandler={handler} authIsLoad={props.loginIsLoad} />
   );
 }
 
@@ -64,4 +64,4 @@ const actions = {
   toggleAuth,
 };
 
-export default connect(mapStateToProps, actions)(LoginForm);
+export default connect(mapStateToProps, actions)(LoginPage);

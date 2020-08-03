@@ -11,7 +11,7 @@ import {
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import OrderForm from "../OrderForm";
+import OrderForm from "../../forms/OrderForm";
 
 function OrderFormClient(props) {
   useEffect(function () {

@@ -4,8 +4,8 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducers from "./store/allReducers.js";
 
-import ClientScreen from "./components/ClientScreen";
-import AdminScreen from "./components/AdminScreen";
+import ClientScreen from "./pages/ClientScreen";
+import AdminScreen from "./pages/AdminScreen";
 
 import "./App.css";
 

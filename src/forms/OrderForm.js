@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import FormGroup from "./FormComponents/FormGroup";
-import Label from "./FormComponents/Label";
-import Button from "./FormComponents/Button";
-import TextFiled from "./FormComponents/TextField";
-import EmailField from "./FormComponents/EmailField";
-import RadioBtn from "./FormComponents/RadioBtn";
-import TimeField from "./FormComponents/TimeField";
-import DateField from "./FormComponents/DateField";
+import FormGroup from "../components/FormComponents/FormGroup";
+import Label from "../components/FormComponents/Label";
+import Button from "../components/FormComponents/Button";
+import TextFiled from "../components/FormComponents/TextField";
+import EmailField from "../components/FormComponents/EmailField";
+import RadioBtn from "../components/FormComponents/RadioBtn";
+import TimeField from "../components/FormComponents/TimeField";
+import DateField from "../components/FormComponents/DateField";
 
 function OrderForm({
   submitHandler,

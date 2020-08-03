@@ -6,12 +6,12 @@ import { changeSignUpIsLoad } from "../../store/clientSide/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import FormGroup from "../FormComponents/FormGroup";
-import Label from "../FormComponents/Label";
-import TextField from "../FormComponents/TextField";
-import EmailField from "../FormComponents/EmailField";
-import PasswordField from "../FormComponents/PasswordField";
-import Button from "../FormComponents/Button";
+import FormGroup from "../../components/FormComponents/FormGroup";
+import Label from "../../components/FormComponents/Label";
+import TextField from "../../components/FormComponents/TextField";
+import EmailField from "../../components/FormComponents/EmailField";
+import PasswordField from "../../components/FormComponents/PasswordField";
+import Button from "../../components/FormComponents/Button";
 
 function RegistrationForm(props) {
   function handler(e) {

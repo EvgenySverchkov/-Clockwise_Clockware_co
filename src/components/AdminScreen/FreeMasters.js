@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import FreeMastersList from "../FreeMasterList";
+import FreeMastersForm from "../../forms/FreeMastersForm";
 import {
   addCurrentOrderToState,
   changeMasterListIsLoad,
@@ -68,7 +68,7 @@ function MastersList(props) {
       });
   }
   return (
-    <FreeMastersList
+    <FreeMastersForm
       submitHandler={submitHandler}
       isLoad={props.masterListIsLoad}
       suitableMasters={props.suitableMasters}

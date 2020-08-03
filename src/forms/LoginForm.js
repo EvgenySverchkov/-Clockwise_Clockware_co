@@ -1,10 +1,10 @@
 import React from "react";
 
-import FormGroup from "./FormComponents/FormGroup";
-import Label from "./FormComponents/Label";
-import TextField from "./FormComponents/TextField";
-import PasswordField from "./FormComponents/PasswordField";
-import Button from "./FormComponents/Button";
+import FormGroup from "../components/FormComponents/FormGroup";
+import Label from "../components/FormComponents/Label";
+import TextField from "../components/FormComponents/TextField";
+import PasswordField from "../components/FormComponents/PasswordField";
+import Button from "../components/FormComponents/Button";
 
 const LoginForm = ({ submitHandler, authIsLoad }) => (
   <form onSubmit={submitHandler} className="mt-4 row justify-content-center">

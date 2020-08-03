@@ -8,7 +8,7 @@ import {
 } from "../../../store/adminPanel/actions";
 import putDataToServer from "../services/putDataToServer";
 
-import EditForm from "../EditForm";
+import EditForm from "../../../forms/EditForm";
 
 import { SERVERDOMAIN } from "../../../services/serverUrls";
 

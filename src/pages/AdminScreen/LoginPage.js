@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import { changeAuthIsLoad, toogleAuth } from "../../store/adminPanel/actions";
 
-import LoginComponent from "../LoginComponent";
+import LoginForm from "../../forms/LoginForm";
 
 function AuthForm(props) {
   function handler(e) {
@@ -33,7 +33,7 @@ function AuthForm(props) {
       });
   }
   return (
-    <LoginComponent submitHandler={handler} authIsLoad={props.authIsLoad} />
+    <LoginForm submitHandler={handler} authIsLoad={props.authIsLoad} />
   );
 }
 

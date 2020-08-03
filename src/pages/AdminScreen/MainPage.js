@@ -10,23 +10,23 @@ import {
   toogleAuth,
 } from "../../store/adminPanel/actions";
 
-import NavMenu from "./NavMenu";
+import NavMenu from "../../components/AdminScreen/NavMenu";
 
-import MastersList from "./ItemsLists/MastersList";
-import OrdersList from "./ItemsLists/OrdersList";
-import TownsList from "./ItemsLists/TownsList";
+import MastersList from "../../components/AdminScreen/ItemsLists/MastersList";
+import OrdersList from "../../components/AdminScreen/ItemsLists/OrdersList";
+import TownsList from "../../components/AdminScreen/ItemsLists/TownsList";
 
-import AddNewTownForm from "./AddItemsForms/AddNewTownForm";
-import AddMasterForm from "./AddItemsForms/AddMasterForm";
-import AddNewOrderForm from "./AddItemsForms/AddNewOrderForm";
+import AddNewTownForm from "../../forms/AddNewTownForm";
+import AddMasterForm from "../../forms/AddMasterForm";
+import AddNewOrderForm from "../../forms/AddNewOrderForm";
 
-import EditMasterForm from "./EditForms/EditMasterForm";
-import EditOrderForm from "./EditForms/EditOrderForm";
-import EditTownForm from "./EditForms/EditTownForm";
+import EditMasterForm from "../../components/AdminScreen/EditForms/EditMasterForm";
+import EditOrderForm from "../../components/AdminScreen/EditForms/EditOrderForm";
+import EditTownForm from "../../components/AdminScreen/EditForms/EditTownForm";
 
-import FullInfoModal from "./FullInfoModal";
-import AuthForm from "./AuthForm";
-import FreeMasters from "./FreeMasters";
+import FullInfoModal from "../../components/AdminScreen/FullInfoModal";
+import LoginPage from "./LoginPage";
+import FreeMasters from "../../components/AdminScreen/FreeMasters";
 
 function AdminSrcreen(props) {
   useEffect(function () {
@@ -40,10 +40,9 @@ function AdminSrcreen(props) {
       props.initOrders([]);
     }
   }, []);
-
   return (
     <div className="container pt-3">
-      {props.isAuth ? <NavMenu /> : <AuthForm {...props} />}
+      {props.isAuth ? <NavMenu /> : <LoginPage {...props} />}
       <div className="row justify-content-sm-center">
         <div className="col-md-8">
           <Switch>

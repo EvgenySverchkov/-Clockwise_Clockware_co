@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import Label from "../FormComponents/Label";
-import NumField from "../FormComponents/NumField";
-import TextField from "../FormComponents/TextField";
-import FormGroup from "../FormComponents/FormGroup";
-import Button from "../FormComponents/Button";
+import Label from "../components/FormComponents/Label";
+import NumField from "../components/FormComponents/NumField";
+import TextField from "../components/FormComponents/TextField";
+import FormGroup from "../components/FormComponents/FormGroup";
+import Button from "../components/FormComponents/Button";
 
 function EditForm({ id, handler, arrFromState, editFormIsLoad }) {
   let obj = arrFromState.find((item) => item.id === id);

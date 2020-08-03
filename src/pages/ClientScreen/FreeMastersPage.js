@@ -6,7 +6,7 @@ import {
   addOrdersToState,
   addCurrentOrderToState,
 } from "../../store/clientSide/actions";
-import FreeMastersList from "../FreeMasterList";
+import FreeMastersForm from "../../forms/FreeMastersForm";
 import sendMail from "../../services/mailSendler";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
@@ -76,7 +76,7 @@ function MastersList(props) {
       });
   }
   return (
-    <FreeMastersList
+    <FreeMastersForm
       submitHandler={submitHandler}
       suitableMasters={props.suitableMasters}
       isLoad={props.masterListIsLoad}

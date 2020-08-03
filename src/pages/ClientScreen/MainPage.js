@@ -9,11 +9,11 @@ import {
   toggleAuth,
   addTownsToState,
 } from "../../store/clientSide/actions";
-import OrderFormClient from "./OrderFormClient";
-import MastersList from "./MastersList";
-import LoginForm from "./LoginForm";
-import RegistrationForm from "./RegistrationForm";
-import Header from "./Header";
+import OrderPage from "./OrderPage";
+import FreeMastersPage from "./FreeMastersPage";
+import LoginPage from "./LoginPage";
+import SignUpPage from "./SignUpPage";
+import Header from "../../components/ClientScreen/Header";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -48,19 +48,19 @@ function ClientSrcreen(props) {
           <Route
             exact
             path="/client"
-            render={(props) => <OrderFormClient {...props} />}
+            render={(props) => <OrderPage {...props} />}
           />
           <Route
             path="/client/masters"
-            render={(props) => <MastersList {...props} />}
+            render={(props) => <FreeMastersPage {...props} />}
           />
           <Route
             path="/client/login"
-            render={(props) => <LoginForm {...props} />}
+            render={(props) => <LoginPage {...props} />}
           />
           <Route
             path="/client/registration"
-            render={(props) => <RegistrationForm {...props} />}
+            render={(props) => <SignUpPage {...props} />}
           />
         </Switch>
       </div>

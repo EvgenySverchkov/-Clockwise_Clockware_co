@@ -2,19 +2,19 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import postData from "../services/postData";
-import SubscribeBtn from "../../FormComponents/Button";
-import FormGroup from "../../FormComponents/FormGroup";
-import NameField from "../../FormComponents/TextField";
-import NumField from "../../FormComponents/NumField";
-import Label from "../../FormComponents/Label";
-import { SERVERDOMAIN } from "../../../services/serverUrls";
+import postData from "../components/AdminScreen/services/postData";
+import SubscribeBtn from "../components/FormComponents/Button";
+import FormGroup from "../components/FormComponents/FormGroup";
+import NameField from "../components/FormComponents/TextField";
+import NumField from "../components/FormComponents/NumField";
+import Label from "../components/FormComponents/Label";
+import { SERVERDOMAIN } from "../services/serverUrls";
 
 import {
   changeAddNewMasterFormIsLoad,
   addNewMaster,
   townsInit,
-} from "../../../store/adminPanel/actions";
+} from "../store/adminPanel/actions";
 
 function AddMasterForm(props) {
   useEffect(function () {
