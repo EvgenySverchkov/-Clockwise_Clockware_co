@@ -50,6 +50,11 @@ function OrderFormClient(props) {
       return false;
     }
 
+    if(trgElem.name.value.length <= 3){
+      alert("Name field must be at least 3 characters");
+      return false;
+    }
+
     let endOrderTime;
     let clientTimeHour = +props.currentOrder.time.match(/\d\d/);
     let clientTimeMin = props.currentOrder.time.match(/:\d\d$/);

@@ -72,7 +72,7 @@ function OrderForm({
           chngHandler={changeHandler}
         >
           <Label forId={"largeSize"} isFontWeight={false}>
-            Middle
+            Large
           </Label>
         </RadioBtn>
       </FormGroup>

@@ -7,13 +7,26 @@ import LogInBtn from "./LogInBtn";
 import NavItem from "./NavItem";
 
 const NavList = ({ isAuth }) => (
-  <div className="navbar-collapse collapse" id="navbarsExample03">
-    <ul className="navbar-nav mr-auto">
-      {isAuth ? <LogOutBtn /> : <LogInBtn />}
-      <NavItem title={"SignUp"} link={"/client/registration"} />
-      <NavItem title={"To main"} link={"/client"} />
-    </ul>
-  </div>
+  <>
+    <button
+      className="navbar-toggler collapsed"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarsExample03"
+      aria-controls="navbarsExample03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="navbar-collapse collapse" id="navbarsExample03">
+      <ul className="navbar-nav mr-auto">
+        {isAuth ? <LogOutBtn /> : <LogInBtn />}
+        <NavItem title={"SignUp"} link={"/client/registration"} />
+        <NavItem title={"To main"} link={"/client"} />
+      </ul>
+    </div>
+  </>
 );
 
 NavList.propTypes = {
