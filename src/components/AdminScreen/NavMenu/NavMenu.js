@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavBtn from "./NavBtn";
 import LogOutBtn from "./LogOutBtn";
-import "./navmenu.css";
+import "./navmenu.scss";
 
 function NavMenu() {
   return (

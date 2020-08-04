@@ -9,8 +9,6 @@ import AdminScreen from "./pages/AdminScreen";
 
 import {initialState} from "./store/initialState";
 
-import "./App.css";
-
 const store = createStore(
   reducers,
   initialState,

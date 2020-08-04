@@ -1,0 +1,1 @@
+export const ADD_TOWNS_TO_STATE = "ADD_TOWNS_TO_STATE";

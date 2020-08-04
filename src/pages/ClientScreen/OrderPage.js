@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 
 import {
   addCurrentOrderToState,
-  addSuitableMasters,
-  addTownsToState
+  addSuitableMasters
 } from "../../store/clientSide/data/actions";
+import {addTownsToState} from "../../store/clientSide/towns/actions";
 import {changeOrderFormIsLoad} from "../../store/clientSide/services/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
@@ -18,7 +18,7 @@ function OrderFormClient({history}) {
     return {
       currentOrder: state.client_order_reduser.currentOrder,
       orderFormIsLoad: state.client_services.orderFormIsLoad,
-      townsArr: state.client_order_reduser.townsArr,
+      townsArr: state.client_towns_reduser.townsArr,
     }
   });
   const dispatch = useDispatch();

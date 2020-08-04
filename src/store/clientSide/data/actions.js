@@ -8,7 +8,3 @@ export const addSuitableMasters = (arr) => ({
   type: actionType.ADD_SUITABLE_MASTERS,
   payload: arr,
 });
-export const addTownsToState = (arr) => ({
-  type: actionType.ADD_TOWNS_TO_STATE,
-  payload: arr,
-});

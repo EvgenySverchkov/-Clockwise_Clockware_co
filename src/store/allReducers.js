@@ -6,6 +6,7 @@ import main_adminPanel_reduser from "./adminPanel/services/reducers";
 
 import client_services from "./clientSide/services/reducers";
 import client_order_reduser from "./clientSide/data/reducers";
+import client_towns_reduser from "./clientSide/towns/reducers";
 
 export default combineReducers({
   master_reducer,
@@ -13,5 +14,6 @@ export default combineReducers({
   town_reduser,
   main_adminPanel_reduser,
   client_order_reduser,
-  client_services
+  client_services,
+  client_towns_reduser
 });

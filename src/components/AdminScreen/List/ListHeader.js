@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./listHeader.css";
+import "./listHeader.scss";
 
 function ListHeader({ templArr }) {
   return (
