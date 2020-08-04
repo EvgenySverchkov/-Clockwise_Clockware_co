@@ -3,13 +3,10 @@ import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import {
-  initMasters,
-  townsInit,
-  initOrders,
-  toogleAuth,
-} from "../../store/adminPanel/actions";
-
+import {toogleAuth} from "../../store/adminPanel/services/actions";
+import {townsInit} from "../../store/adminPanel/towns/actions";
+import {initMasters} from "../../store/adminPanel/masters/actions";
+import {initOrders} from "../../store/adminPanel/orders/actions";
 import NavMenu from "../../components/AdminScreen/NavMenu";
 
 import MastersList from "../../components/AdminScreen/ItemsLists/MastersList";
@@ -20,9 +17,9 @@ import AddNewTownForm from "../../forms/AddNewTownForm";
 import AddMasterForm from "../../forms/AddMasterForm";
 import AddNewOrderForm from "../../forms/AddNewOrderForm";
 
-import EditMasterForm from "../../components/AdminScreen/EditForms/EditMasterForm";
-import EditOrderForm from "../../components/AdminScreen/EditForms/EditOrderForm";
-import EditTownForm from "../../components/AdminScreen/EditForms/EditTownForm";
+import EditMasterForm from "../../forms/EditMasterForm";
+import EditOrderForm from "../../forms/EditOrderForm";
+import EditTownForm from "../../forms/EditTownForm";
 
 import FullInfoModal from "../../components/AdminScreen/FullInfoModal";
 import LoginPage from "./LoginPage";

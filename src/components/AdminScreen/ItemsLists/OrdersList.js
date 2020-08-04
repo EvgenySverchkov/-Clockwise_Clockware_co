@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import {
   initOrders,
   deleteOrderFromState,
-} from "../../../store/adminPanel/actions";
+} from "../../../store/adminPanel/orders/actions";
 import deleteDataFromServer from "../services/deleteDataFromServer";
 
 import List from "../List";

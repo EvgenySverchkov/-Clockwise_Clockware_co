@@ -2,18 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
-import {
-  addCurrentOrderToState,
-  toggleAuth,
-  addTownsToState,
-} from "../../store/clientSide/actions";
+import {addCurrentOrderToState} from "../../store/clientSide/data/actions";
+import {toggleAuth} from "../../store/clientSide/services/actions";
 import OrderPage from "./OrderPage";
 import FreeMastersPage from "./FreeMastersPage";
 import LoginPage from "./LoginPage";
 import SignUpPage from "./SignUpPage";
 import Header from "../../components/ClientScreen/Header";
-
-import { SERVERDOMAIN } from "../../services/serverUrls";
 
 function ClientSrcreen() {
   const dispatch = useDispatch();
@@ -21,13 +16,6 @@ function ClientSrcreen() {
     let token = localStorage.getItem("token")
       ? "Bearer " + localStorage.getItem("token")
       : "";
-    fetch(`${SERVERDOMAIN}/towns`, {
-      headers: {
-        Authorization: token,
-      },
-    })
-      .then((json) => json.json())
-      .then((data) => dispatch(addTownsToState(data)));
 
     if (localStorage.getItem("user")) {
       dispatch(addCurrentOrderToState({

@@ -2,12 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import {updateOrderInState} from "../../../store/adminPanel/actions";
-import putDataToServer from "../services/putDataToServer";
+import {updateOrderInState} from "../store/adminPanel/orders/actions";
+import putDataToServer from "../components/AdminScreen/services/putDataToServer";
 
-import EditForm from "../../../forms/EditForm";
+import EditForm from "./EditForm";
 
-import { SERVERDOMAIN } from "../../../services/serverUrls";
+import { SERVERDOMAIN } from "../services/serverUrls";
 
 const EditOrderForm = ({match,history}) => {
   const state = useSelector(state=>{

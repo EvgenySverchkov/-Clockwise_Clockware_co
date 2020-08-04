@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import {
   deleteTownFromState,
   townsInit,
-} from "../../../store/adminPanel/actions";
+} from "../../../store/adminPanel/towns/actions";
 import deleteDataFromServer from "../services/deleteDataFromServer";
 
 import List from "../List";

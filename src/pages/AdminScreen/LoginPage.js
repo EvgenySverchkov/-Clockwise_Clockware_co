@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-import { changeAuthIsLoad, toogleAuth } from "../../store/adminPanel/actions";
+import { changeAuthIsLoad, toogleAuth } from "../../store/adminPanel/services/actions";
 
 import LoginForm from "../../forms/LoginForm";
 

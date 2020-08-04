@@ -2,11 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import {
-  initMasters,
-  deleteMasterFromState,
-  townsInit,
-} from "../../../store/adminPanel/actions";
+import {townsInit} from "../../../store/adminPanel/towns/actions";
+import {initMasters, deleteMasterFromState} from "../../../store/adminPanel/masters/actions"
 import deleteDataFromServer from "../services/deleteDataFromServer";
 import List from "../List";
 

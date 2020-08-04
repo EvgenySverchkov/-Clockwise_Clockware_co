@@ -2,15 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import {
-  changeEditFormIsLoad,
-  updateMasterInState,
-} from "../../../store/adminPanel/actions";
-import putDataToServer from "../services/putDataToServer";
+import {updateMasterInState} from "../store/adminPanel/masters/actions";
+import putDataToServer from "../components/AdminScreen/services/putDataToServer";
 
-import EditForm from "../../../forms/EditForm";
+import EditForm from "./EditForm";
 
-import { SERVERDOMAIN } from "../../../services/serverUrls";
+import { SERVERDOMAIN } from "../services/serverUrls";
 
 const EditMasterForm = ({match,history}) => {
   const state = useSelector(state=>{
@@ -20,13 +17,11 @@ const EditMasterForm = ({match,history}) => {
 
   function editMasterHandler(e, newMasterObj) {
     e.preventDefault();
-    dispatch(changeEditFormIsLoad(true));
     putDataToServer(
       `${SERVERDOMAIN}/masters/put/${newMasterObj.id}`,
       newMasterObj
     )
       .then((data) => {
-        dispatch(changeEditFormIsLoad(false));
         if (data.success) {
           alert(data.msg);
           dispatch(updateMasterInState(data));

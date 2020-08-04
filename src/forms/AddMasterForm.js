@@ -10,11 +10,9 @@ import NumField from "../components/FormComponents/NumField";
 import Label from "../components/FormComponents/Label";
 import { SERVERDOMAIN } from "../services/serverUrls";
 
-import {
-  changeAddNewMasterFormIsLoad,
-  addNewMaster,
-  townsInit,
-} from "../store/adminPanel/actions";
+import { addNewMaster } from "../store/adminPanel/masters/actions";
+import {changeAddNewMasterFormIsLoad} from "../store/adminPanel/services/actions";
+import {townsInit} from "../store/adminPanel/towns/actions";
 
 function AddMasterForm({history}) {
   const state = useSelector(state=>{

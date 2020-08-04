@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { changeSignUpIsLoad } from "../../store/clientSide/actions";
+import { changeSignUpIsLoad } from "../../store/clientSide/services/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -15,7 +15,7 @@ import Button from "../../components/FormComponents/Button";
 
 function RegistrationForm({history}) {
   const state = useSelector(state=>{
-    return {signUpIsLoad: state.client_order_reduser.signUpIsLoad}
+    return {signUpIsLoad: state.client_services.signUpIsLoad}
   });
   const dispatch = useDispatch();
 

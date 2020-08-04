@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { chngCurrItemForModal } from "../../../store/adminPanel/actions";
+import { chngCurrItemForModal } from "../../../store/adminPanel/services/actions";
 
 function ShowFullInfo({ itemObj }) {
   const dispatch = useDispatch();

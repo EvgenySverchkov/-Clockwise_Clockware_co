@@ -2,10 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import {
-  toggleAuth,
-  addCurrentOrderToState,
-} from "../../../store/clientSide/actions";
+import {addCurrentOrderToState} from "../../../store/clientSide/data/actions";
+import {toggleAuth} from "../../../store/clientSide/services/actions";
 
 function LogOutBtn() {
   const state = useSelector(state=>{

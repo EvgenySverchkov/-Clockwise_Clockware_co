@@ -10,10 +10,8 @@ import Button from "../components/FormComponents/Button";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 
-import {
-  changeAddMewTownFormIsLoad,
-  addNewTown,
-} from "../store/adminPanel/actions";
+import {addNewTown} from "../store/adminPanel/towns/actions";
+import {changeAddMewTownFormIsLoad} from "../store/adminPanel/services/actions";
 
 function AddNewTownForm({history}) {
   const state = useSelector(state=>{

@@ -3,17 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
+
+import {addCurrentOrderToState} from "../../store/clientSide/data/actions";
 import {
   changeLoginIsLoad,
-  addCurrentOrderToState,
   toggleAuth,
-} from "../../store/clientSide/actions";
+} from "../../store/clientSide/services/actions";
 
 import LoginForm from "../../forms/LoginForm";
 
 function LoginPage({history}) {
   const state = useSelector(state=>{
-    return {loginIsLoad: state.client_order_reduser.loginIsLoad}
+    return {loginIsLoad: state.client_services.loginIsLoad}
   });
   const dispatch = useDispatch();
 

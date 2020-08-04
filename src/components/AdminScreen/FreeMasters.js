@@ -2,18 +2,18 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FreeMastersForm from "../../forms/FreeMastersForm";
-import {
-  addCurrentOrderToState,
-  changeMasterListIsLoad,
-} from "../../store/adminPanel/actions";
+
+import {addCurrentOrderToState} from "../../store/adminPanel/orders/actions";
+import {changeMasterListIsLoad} from "../../store/adminPanel/services/actions";
+
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import sendConfirmEmail from "../../services/mailSendler";
 
 function MastersList(props) {
   const state = useSelector(state=>{
     return {
-      suitableMasters: state.orders_reducer.suitableMasters,
-      masterListIsLoad: state.master_reducer.masterListIsLoad
+      suitableMasters: state.master_reducer.suitableMasters,
+      masterListIsLoad: state.main_adminPanel_reduser.masterListIsLoad
     }
   });
   const dispatch = useDispatch();

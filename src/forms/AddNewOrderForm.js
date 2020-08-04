@@ -2,12 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import {
-  addCurrentOrderToState,
-  townsInit,
-  addSuitableMasters,
-  changeOrderFormIsLoad,
-} from "../store/adminPanel/actions";
+import {townsInit} from "../store/adminPanel/towns/actions";
+import {addSuitableMasters} from "../store/adminPanel/masters/actions";
+import {addCurrentOrderToState} from "../store/adminPanel/orders/actions";
+import {changeOrderFormIsLoad} from "../store/adminPanel/services/actions";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 
@@ -18,7 +16,7 @@ function OrderFormAdmin({history}) {
     return {
       currentOrder: state.orders_reducer.currentOrder,
       townsArr: state.town_reduser.towns,
-      orderFormIsLoad: state.orders_reducer.orderFormIsLoad,
+      orderFormIsLoad: state.main_adminPanel_reduser.orderFormIsLoad,
     }
   });
   const dispatch = useDispatch();

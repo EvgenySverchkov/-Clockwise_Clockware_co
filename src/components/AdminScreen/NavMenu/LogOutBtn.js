@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { toogleAuth } from "../../../store/adminPanel/actions";
+import { toogleAuth } from "../../../store/adminPanel/services/actions";
 
 const LogOutBtn = () => {
   const dispatch = useDispatch();

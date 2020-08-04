@@ -2,12 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import {updateTownInState} from "../../../store/adminPanel/actions";
-import putDataToServer from "../services/putDataToServer";
+import {updateTownInState} from "../store/adminPanel/towns/actions";
+import putDataToServer from "../components/AdminScreen/services/putDataToServer";
 
-import EditForm from "../../../forms/EditForm";
+import EditForm from "./EditForm";
 
-import { SERVERDOMAIN } from "../../../services/serverUrls";
+import { SERVERDOMAIN } from "../services/serverUrls";
 
 const EditTownForm = ({match,history}) => {
   const state = useSelector(state=>{

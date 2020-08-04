@@ -1,0 +1,19 @@
+import * as actionType from "./actionTypes";
+
+export const toggleAuth = (data) => ({ type: actionType.TOOGLE_AUTH, payload: data });
+export const changeLoginIsLoad = (data) => ({
+  type: actionType.CHANGE_LOGIN_IS_LOAD,
+  payload: data,
+});
+export const changeSignUpIsLoad = (data) => ({
+  type: actionType.CHANGE_SIGNUP_IS_LOAD,
+  payload: data,
+});
+export const changeOrderFormIsLoad = (data) => ({
+  type: actionType.CHANGE_ORDER_FORM_IS_LOAD,
+  payload: data,
+});
+export const changeMasterListIsLoad = (data) => ({
+  type: actionType.CHANGE_MASTER_LIST_IS_LOAD,
+  payload: data,
+});

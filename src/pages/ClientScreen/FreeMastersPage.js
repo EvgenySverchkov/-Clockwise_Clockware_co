@@ -2,9 +2,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import {
-  changeMasterListIsLoad,
   addCurrentOrderToState,
-} from "../../store/clientSide/actions";
+} from "../../store/clientSide/data/actions";
+import {changeMasterListIsLoad} from "../../store/clientSide/services/actions";
 import FreeMastersForm from "../../forms/FreeMastersForm";
 import sendMail from "../../services/mailSendler";
 
@@ -14,8 +14,8 @@ function MastersList(props) {
     return {
       suitableMasters: state.client_order_reduser.suitableMasters,
       currentOrder: state.client_order_reduser.currentOrder,
-      masterListIsLoad: state.client_order_reduser.masterListIsLoad,
-      isAuth: state.client_order_reduser.isAuth
+      masterListIsLoad: state.client_services.masterListIsLoad,
+      isAuth: state.client_services.isAuth
     }
   });
   const dispatch = useDispatch();

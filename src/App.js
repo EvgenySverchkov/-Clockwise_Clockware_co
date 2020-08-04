@@ -7,44 +7,10 @@ import reducers from "./store/allReducers.js";
 import ClientScreen from "./pages/ClientScreen";
 import AdminScreen from "./pages/AdminScreen";
 
+import {initialState} from "./store/initialState";
+
 import "./App.css";
 
-const initialState = {
-  main_adminPanel_reduser: {
-    currItemForModal: {},
-    isAuth: false,
-    authIsLoad: false,
-    newTownFormIsLoad: false,
-    newMasterFormIsLoad: false,
-    newOrderFormIsLoad: false,
-    editFormIsLoad: false,
-  },
-  orders_reducer: {
-    ordersArr: [],
-    currentOrder: {},
-    suitableMasters: [],
-    orderFormIsLoad: false,
-  },
-  master_reducer: {
-    masters: [],
-    masterListIsLoad: false,
-  },
-  town_reduser: {
-    towns: [],
-  },
-  client_order_reduser: {
-    currentOrder: {},
-    townsArr: [],
-    suitableMasters: [],
-    ordersArr: [],
-    bookedMasters: [],
-    loginIsLoad: false,
-    signUpIsLoad: false,
-    orderFormIsLoad: false,
-    masterListIsLoad: false,
-    isAuth: false
-  },
-};
 const store = createStore(
   reducers,
   initialState,
