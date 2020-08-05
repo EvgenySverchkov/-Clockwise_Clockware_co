@@ -9,8 +9,8 @@ import Button from "../components/FormComponents/Button";
 const LoginForm = ({ submitHandler, authIsLoad }) => (
   <form onSubmit={submitHandler} className="mt-4 row justify-content-center">
     <FormGroup>
-      <Label forId="login">Enter your login</Label>
-      <TextField id={"login"} name={"login"} />
+      <Label forId="email">Enter your email</Label>
+      <TextField id={"email"} name={"email"} />
     </FormGroup>
     <FormGroup>
       <Label forId="password">Enter your password</Label>

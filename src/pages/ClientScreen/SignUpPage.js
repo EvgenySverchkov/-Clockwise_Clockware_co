@@ -24,7 +24,6 @@ function RegistrationForm({history}) {
     const elem = e.target;
     let newObj = {
       name: elem.name.value,
-      login: elem.login.value,
       email: elem.email.value,
       password: elem.password.value,
     };
@@ -52,10 +51,6 @@ function RegistrationForm({history}) {
       <FormGroup isRow={true}>
         <Label forId={"name"}>Enter your name</Label>
         <TextField id={"name"} name={"name"} />
-      </FormGroup>
-      <FormGroup isRow={true}>
-        <Label forId={"login"}>Enter your login</Label>
-        <TextField id={"login"} name={"login"} />
       </FormGroup>
       <FormGroup isRow={true}>
         <Label forId={"email"}>Enter your email</Label>

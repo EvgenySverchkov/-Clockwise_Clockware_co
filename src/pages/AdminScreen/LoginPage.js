@@ -14,9 +14,9 @@ function LoginPage(props) {
 
   function handler(e) {
     e.preventDefault();
-    const login = e.target.login.value;
+    const email = e.target.email.value;
     const password = e.target.password.value;
-    const newObj = { login, password };
+    const newObj = { email, password };
     dispatch(changeAuthIsLoad(true));
     fetch(`${SERVERDOMAIN}/adminLogin`, {
       method: "POST",

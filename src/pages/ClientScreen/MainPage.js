@@ -35,19 +35,19 @@ function ClientSrcreen() {
           <Route
             exact
             path="/client"
-            render={(props) => <OrderPage {...props} />}
+            component={OrderPage}
           />
           <Route
             path="/client/masters"
-            render={(props) => <FreeMastersPage {...props} />}
+            component={FreeMastersPage}
           />
           <Route
             path="/client/login"
-            render={(props) => <LoginPage {...props} />}
+            component={LoginPage}
           />
           <Route
             path="/client/registration"
-            render={(props) => <SignUpPage {...props} />}
+            component={SignUpPage}
           />
         </Switch>
       </div>

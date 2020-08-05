@@ -20,9 +20,9 @@ function LoginPage({history}) {
 
   function handler(e) {
     e.preventDefault();
-    let login = e.target.login.value;
+    let email = e.target.email.value;
     let password = e.target.password.value;
-    let newObj = { login: login, password: password };
+    let newObj = { email: email, password: password };
 
     dispatch(changeLoginIsLoad(true));
     fetch(`${SERVERDOMAIN}/login`, {

@@ -55,39 +55,39 @@ function AdminSrcreen(props) {
           <Switch>
             <Route
               path="/admin/ordersList"
-              render={(prop) => <OrdersList {...prop} />}
+              component={OrdersList}
             />
             <Route
               path="/admin/mastersList"
-              render={(prop) => <MastersList {...prop} />}
+              component={MastersList}
             />
             <Route
               path="/admin/townsList"
-              render={(prop) => <TownsList {...prop} />}
+              component={TownsList}
             />
             <Route
               path="/admin/addOrderForm"
-              render={(props) => <AddNewOrderForm {...props} />}
+              component={AddNewOrderForm}
             />
             <Route
               path="/admin/addMasterForm"
-              render={(props) => <AddMasterForm {...props} />}
+              component={AddMasterForm}
             />
             <Route
               path="/admin/addTownForms"
-              render={(props) => <AddNewTownForm {...props} />}
+              component={AddNewTownForm}
             />
             <Route
               path="/admin/editMaster/:id"
-              render={(prop) => <EditMasterForm {...prop} />}
+              component={EditMasterForm}
             />
             <Route
               path="/admin/editTown/:id"
-              render={(prop) => <EditTownForm {...prop} />}
+              component={EditTownForm}
             />
             <Route
               path="/admin/editOrder/:id"
-              render={(prop) => <EditOrderForm {...prop} />}
+              component={EditOrderForm}
             />
             <Route
               path="/admin/freeMasters"

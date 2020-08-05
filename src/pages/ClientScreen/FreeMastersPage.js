@@ -9,7 +9,7 @@ import FreeMastersForm from "../../forms/FreeMastersForm";
 import sendMail from "../../services/mailSendler";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-function MastersList(props) {
+function MastersList({history}) {
   const state = useSelector(state=>{
     return {
       suitableMasters: state.client_order_reduser.suitableMasters,
@@ -66,7 +66,7 @@ function MastersList(props) {
         dispatch(changeMasterListIsLoad(false));
         if (data.success) {
           alert(data.msg);
-          props.history.push("/");
+          history.push("/");
           sendMail(`${SERVERDOMAIN}/send_message`, data.payload.email);
           dispatch(addCurrentOrderToState(
             state.isAuth
