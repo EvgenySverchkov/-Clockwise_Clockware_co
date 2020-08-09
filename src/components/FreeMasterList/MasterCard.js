@@ -24,7 +24,7 @@ MasterCard.propTypes = {
   id: PropTypes.number,
   name: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
-  towns: PropTypes.number.isRequired,
+  towns: PropTypes.string.isRequired,
 };
 
 export default MasterCard;

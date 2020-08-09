@@ -41,7 +41,7 @@ function RegistrationForm({history}) {
         if (!data.success) {
           alert(data.msg);
         } else {
-          alert(`Congratulations! ${data.user.name} you are signUp`);
+          alert(`Congratulations! ${data.user.name} you are registered`);
           history.push("/client/login");
         }
       });

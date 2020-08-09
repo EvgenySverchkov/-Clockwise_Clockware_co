@@ -23,6 +23,16 @@ function OrderForm({
       -2
     )}-${("0" + date.getDate()).slice(-2)}`;
   }
+  function maxDate(minDate){
+    const datetime_regex = /(\d\d\d\d)-(\d\d)-(\d\d)/;
+    const min_date_arr = datetime_regex.exec(minDate);
+    min_date_arr.shift();
+    min_date_arr[0] = +min_date_arr[0] + 1;
+    
+    return min_date_arr.join("-");
+  }
+
+  const currDate = minDate();
   return (
     <form onSubmit={submitHandler} className="mt-4 row justify-content-center">
       <FormGroup isRow={true}>
@@ -101,14 +111,13 @@ function OrderForm({
         </div>
         <DateField
           name={"date"}
-          min={minDate()}
+          min={currDate}
+          max = {maxDate(currDate)}
           chngHandler={changeHandler}
           value={currentOrder.date || ""}
         />
         <TimeField
           name={"time"}
-          max={"18:00"}
-          min={"08:00"}
           chngHandler={changeHandler}
           value={currentOrder.time || ""}
         />
