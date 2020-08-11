@@ -33,7 +33,7 @@ function EditForm({ id, handler, arrFromState }) {
     })
     .then(data=>data.json())
     .then(data=>{
-      setMastersState(data);
+      setMastersFromServer(data);
     })
   }
 
@@ -48,6 +48,7 @@ function EditForm({ id, handler, arrFromState }) {
   let obj = arrFromState.find((item) => item.id === id);
   let [stateObj, setStateObj] = useState({...obj});
   let [mastersState, setMastersState] = useState([]);
+  let [mastersFromServer, setMastersFromServer] = useState([]);
   let keyArr = Object.keys(stateObj || {});
 
   function getTownsFromServerToState() {
@@ -87,7 +88,6 @@ function EditForm({ id, handler, arrFromState }) {
     }
     if(e.target.name === 'towns'){
         let arr = stateObj.towns.length === 0 ? [] : stateObj.towns.split(",");
-        
         if(e.target.checked){
           if(arr.indexOf(e.target.value) === -1){
             arr.push(e.target.value)
@@ -95,8 +95,10 @@ function EditForm({ id, handler, arrFromState }) {
         }else{
           arr = arr.filter(item=>item===e.target.value? false : true)
         }
-        console.log(arr)
         setStateObj({ ...stateObj, "towns": arr.length === 0 ? [] : arr.join(",") });
+    }
+    if(e.target.name === 'town'){
+      setMastersState(mastersFromServer.filter(item=>item.towns.split(",").includes(e.target.value)))
     }
   }
   function minDate() {
@@ -147,7 +149,8 @@ function EditForm({ id, handler, arrFromState }) {
           <FormGroup key={item}>
             <Label forId={item}>Choose master</Label>
             <ul className="list-group">
-            {
+            { mastersState.length === 0 ?
+              <li className="list-group-item">List is empty (choose town)</li> :
               mastersState.map(item=>(
                 <li className="list-group-item" key={item.id}>
                   Name: {item.name}<br/>
