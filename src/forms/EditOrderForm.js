@@ -33,7 +33,7 @@ const EditOrderForm = ({match,history}) => {
     <EditForm
       id={+match.params.id}
       handler={editOrderHandler}
-      arrFromState={state.ordersArr}
+      arrFromState={state.ordersArr.map(item=>{return {...item, town: "", size: "", masterId: null}})}
     />
   );
 };

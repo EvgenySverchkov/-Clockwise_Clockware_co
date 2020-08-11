@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const NumField = ({ max, min, id, value, chngHandler }) => (
+const NumField = ({ max, min, id, value, chngHandler, name }) => (
   <div className="col-sm-3">
     <input
       id={id}
@@ -11,6 +11,7 @@ const NumField = ({ max, min, id, value, chngHandler }) => (
       max={max}
       onChange={chngHandler || null}
       value={value}
+      name = {name}
     />
   </div>
 );

@@ -65,8 +65,8 @@ function EditForm({ id, handler, arrFromState }) {
   }
 
   function changeValue(e) {
-      setStateObj({ ...stateObj, [e.target.name]: e.target.value });
-      if(e.target.name === "size"){
+    setStateObj({ ...stateObj, [e.target.name]: e.target.value });
+    if(e.target.name === "size"){
         let endOrderTime;
         let clientTimeHour = +stateObj.time.match(/\d\d/);
         let clientTimeMin = stateObj.time.match(/:\d\d$/);
@@ -83,10 +83,9 @@ function EditForm({ id, handler, arrFromState }) {
           default:
             endOrderTime = 0;
           }
-          setStateObj({ ...stateObj, "endTime": endOrderTime });
-        }
-      if(e.target.name === 'towns'){
-        console.log(stateObj.towns)
+          setStateObj({ ...stateObj, "endTime": endOrderTime, [e.target.name]: e.target.value });
+    }
+    if(e.target.name === 'towns'){
         let arr = stateObj.towns.length === 0 ? [] : stateObj.towns.split(",");
         
         if(e.target.checked){
@@ -98,7 +97,7 @@ function EditForm({ id, handler, arrFromState }) {
         }
         console.log(arr)
         setStateObj({ ...stateObj, "towns": arr.length === 0 ? [] : arr.join(",") });
-      }
+    }
   }
   function minDate() {
     let date = new Date();
@@ -231,6 +230,7 @@ function EditForm({ id, handler, arrFromState }) {
             id={item}
             min={0}
             max={5}
+            name = {"rating"}
             value={stateObj[item] || ""}
             chngHandler={changeValue}
           />
