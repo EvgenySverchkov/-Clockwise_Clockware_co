@@ -36,7 +36,7 @@ const EditMasterForm = ({match,history}) => {
     <EditForm
       id={+match.params.id}
       handler={editMasterHandler}
-      arrFromState={state.mastersArr}
+      arrFromState={state.mastersArr.map(item=>{return {...item, towns: ""}})}
     />
   );
 };

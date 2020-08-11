@@ -11,7 +11,7 @@ import Button from "../components/FormComponents/Button";
 import { SERVERDOMAIN } from "../services/serverUrls";
 
 import {addNewTown} from "../store/adminPanel/towns/actions";
-import {changeAddMewTownFormIsLoad} from "../store/adminPanel/services/actions";
+import {changeAddMewTownFormIsLoad, changeSuccessModalDataAdmin} from "../store/adminPanel/services/actions";
 
 function AddNewTownForm({history}) {
   const state = useSelector(state=>{
@@ -33,9 +33,10 @@ function AddNewTownForm({history}) {
     postData(`${SERVERDOMAIN}/towns/post`, infoObj)
       .then((data) => {
         if (data.success) {
-          alert(data.msg);
           dispatch(addNewTown(data.payload));
-          history.push("/admin/townsList");
+          dispatch(changeSuccessModalDataAdmin({msg: data.msg, backBtnTxt: "Go to the list of towns", backTo: "/admin/townsList"}));
+          history.push("/admin");
+          document.getElementById("callSuccessModalBtn").click();
         } else {
           alert(data.msg);
         }

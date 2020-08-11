@@ -17,3 +17,13 @@ export const changeMasterListIsLoad = (data) => ({
   type: actionType.CHANGE_MASTER_LIST_IS_LOAD,
   payload: data,
 });
+
+export const changeSuccessModalData = (obj) => ({
+  type: actionType.CHANGE_SUCCESS_MODAL_DATA,
+  payload: obj,
+});
+
+export const changeTownsFromOrderFormIsLoad = (data) => ({
+  type: actionType.CHANGE_TOWNS_FROM_ORDER_FORM_IS_LOAD,
+  payload: data
+})

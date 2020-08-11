@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import {townsInit} from "../../../store/adminPanel/towns/actions";
-import {initMasters, deleteMasterFromState} from "../../../store/adminPanel/masters/actions"
+import {initMasters, deleteMasterFromState} from "../../../store/adminPanel/masters/actions";
+import {changeListIsLoad} from "../../../store/adminPanel/services/actions";
 import deleteDataFromServer from "../services/deleteDataFromServer";
 import List from "../List";
 
@@ -11,7 +12,10 @@ import { SERVERDOMAIN } from "../../../services/serverUrls";
 
 const MastersList = ({history}) => {
   const state = useSelector(state=>{
-    return {mastersArr: state.master_reducer.masters}
+    return {
+      mastersArr: state.master_reducer.masters,
+      listIsLoad: state.main_adminPanel_reduser.listIsLoad
+    }
   });
   const dispatch = useDispatch();
 
@@ -19,13 +23,22 @@ const MastersList = ({history}) => {
     const headers = {
       Authorization: "Bearer " + sessionStorage.getItem("token") || "",
       "Content-Type": "application/json",
+      include: "all"
     };
-    fetch(`${SERVERDOMAIN}/masters`, { headers })
+    dispatch(changeListIsLoad(true))
+    fetch(`${SERVERDOMAIN}/masters`, { 
+      headers,
+      method: "POST" 
+    })
       .then((data) => data.json())
-      .then((data) => dispatch(initMasters(data)))
+      .then((data) => {
+        dispatch(initMasters(data))
+        dispatch(changeListIsLoad(false))
+      })
       .catch((err) => {
         alert("Please, authorise");
         dispatch(initMasters([]));
+        dispatch(changeListIsLoad(false))
       });
     getTownsFromServerToState();
   }
@@ -57,6 +70,7 @@ const MastersList = ({history}) => {
       mainRows={["name", "rating"]}
       getData={getMastersAndTownsFromServerToState}
       history={history}
+      listIsLoad = {state.listIsLoad}
     />
   );
 };

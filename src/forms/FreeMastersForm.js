@@ -4,10 +4,11 @@ import PropTypes from "prop-types";
 import MasterCard from "../components/FreeMasterList/MasterCard";
 import ComeBackBtn from "../components/FreeMasterList/ComeBackBtn";
 import SubmitBtn from "../components/FreeMasterList/SubmitBtn";
+
 import EmptyList from "../components/FreeMasterList/EmptyList";
 
-function FreeMastersList({ submitHandler, isLoad, suitableMasters, backTo }) {
-  if (suitableMasters.length === 0) {
+function FreeMastersList({ submitHandler, isLoad, suitableMasters, backTo, isMakeOrder }) {
+  if (suitableMasters.length === 0 || isMakeOrder) {
     return (
       <>
         <EmptyList>List is empty...</EmptyList>

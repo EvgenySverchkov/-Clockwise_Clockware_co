@@ -27,6 +27,7 @@ function App(props) {
           <Route path="/admin" component={AdminScreen} />
           <Redirect exact to="/client" from="/" />
         </Switch>
+        <button data-toggle="modal" data-target="#successModal" id="callSuccessModalBtn" style={{display: "none"}}></button>
       </div>
     </Provider>
   );

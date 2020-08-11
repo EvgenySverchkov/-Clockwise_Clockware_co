@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import postData from "../components/AdminScreen/services/postData";
 import SubscribeBtn from "../components/FormComponents/Button";
+
 import FormGroup from "../components/FormComponents/FormGroup";
 import NameField from "../components/FormComponents/TextField";
 import NumField from "../components/FormComponents/NumField";
@@ -11,7 +12,7 @@ import Label from "../components/FormComponents/Label";
 import { SERVERDOMAIN } from "../services/serverUrls";
 
 import { addNewMaster } from "../store/adminPanel/masters/actions";
-import {changeAddNewMasterFormIsLoad} from "../store/adminPanel/services/actions";
+import {changeAddNewMasterFormIsLoad, changeSuccessModalDataAdmin} from "../store/adminPanel/services/actions";
 import {townsInit} from "../store/adminPanel/towns/actions";
 
 function AddMasterForm({history}) {
@@ -51,9 +52,10 @@ function AddMasterForm({history}) {
       .then((data) => {
         dispatch(changeAddNewMasterFormIsLoad(false));
         if (data.success) {
-          alert(data.msg);
           dispatch(addNewMaster(data.payload));
-          history.push("/admin/mastersList");
+          dispatch(changeSuccessModalDataAdmin({msg: data.msg, backBtnTxt: "Back to masters list", backTo: "/admin/mastersList"}));
+          history.push("/admin");
+          document.getElementById("callSuccessModalBtn").click();
         } else {
           alert(data.msg);
         }
@@ -84,7 +86,7 @@ function AddMasterForm({history}) {
         <NameField id={"name"} name={"name"} />
       </FormGroup>
       <FormGroup isRow={false}>
-        <div className="mb-2">Choose town</div>
+        <div className="mb-2">Choose towns</div>
         <div>
           {state.townsArr.map((item) => (
             <div key={item.id + 1} className="form-check-inline">
@@ -102,6 +104,7 @@ function AddMasterForm({history}) {
         </div>
       </FormGroup>
       <SubscribeBtn isLoad={state.newMasterFormIsLoad} value={"Add"} />
+      
     </form>
   );
 }

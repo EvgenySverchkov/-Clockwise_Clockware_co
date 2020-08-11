@@ -15,7 +15,8 @@ function OrderForm({
   changeHandler,
   currentOrder,
   isLoadOrderForm,
-  townsArr,
+  townsArr = [],
+  townsInOrderFormIsLoad
 }) {
   function minDate() {
     let date = new Date();
@@ -88,7 +89,9 @@ function OrderForm({
       </FormGroup>
       <FormGroup isRow={false}>
         <div className="mb-2 font-weight-bold">Choose town</div>
-        {townsArr.map((item) => (
+        {townsInOrderFormIsLoad ?
+        "Loading...":
+        townsArr.map((item) => (
           <div key={item.id + 1} className="form-check-inline">
             <RadioBtn
               id={item.name}

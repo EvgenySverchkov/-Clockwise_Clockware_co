@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FreeMastersForm from "../../forms/FreeMastersForm";
 
 import {addCurrentOrderToState} from "../../store/adminPanel/orders/actions";
-import {changeMasterListIsLoad} from "../../store/adminPanel/services/actions";
+import {changeMasterListIsLoad, changeSuccessModalDataAdmin} from "../../store/adminPanel/services/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import sendConfirmEmail from "../../services/mailSendler";
@@ -21,6 +21,11 @@ function MastersList(props) {
   function submitHandler(e) {
     e.preventDefault();
     let masterId = e.target.chooseMaster.value;
+    if (!e.target.chooseMaster.length) {
+      if (!e.target.chooseMaster.checked) {
+        masterId = null;
+      }
+    }
     if (!masterId) {
       alert("Please, choose one!!!");
       return false;
@@ -62,8 +67,9 @@ function MastersList(props) {
       .then((data) => {
         dispatch(changeMasterListIsLoad(false));
         if (data.success) {
-          alert(data.msg);
-          props.history.push("/admin/ordersList");
+          dispatch(changeSuccessModalDataAdmin({msg: data.msg, backBtnTxt: "Go to the list of orders", backTo: "/admin/ordersList"}));
+          props.history.push("/admin");
+          document.getElementById("callSuccessModalBtn").click();
           dispatch(addCurrentOrderToState({}));
           sendConfirmEmail(`${SERVERDOMAIN}/send_message`, data.payload.email);
         } else {

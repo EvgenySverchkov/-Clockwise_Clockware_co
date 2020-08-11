@@ -5,5 +5,7 @@ export const initialStateServices = {
     newTownFormIsLoad: false,
     newMasterFormIsLoad: false,
     orderFormIsLoad: false,
-    main_adminPanel_reduser: false
+    main_adminPanel_reduser: false,
+    listIsLoad: false,
+    modalDataAdmin: {}
 }

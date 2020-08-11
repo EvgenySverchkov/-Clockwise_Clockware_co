@@ -28,3 +28,13 @@ export const changeAuthIsLoad = (data) => ({
     type: actionType.CHANGE_AUTH_IS_LOAD,
     payload: data,
 });
+
+export const changeSuccessModalDataAdmin = (data) => ({
+    type: actionType.CHANGE_SUCCESS_MODAL_DATA_ADMIN,
+    payload: data,
+});
+
+export const changeListIsLoad = (data) => ({
+    type: actionType.CHANGE_LIST_IS_LOAD,
+    payload: data,
+})

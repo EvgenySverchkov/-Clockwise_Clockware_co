@@ -3,5 +3,7 @@ export const initialStateClientServices = {
     signUpIsLoad: false,
     orderFormIsLoad: false,
     masterListIsLoad: false,
-    isAuth: false
+    isAuth: false,
+    townsInOrderFormIsLoad: false,
+    modalSuccesData: {}
 }

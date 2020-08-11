@@ -14,7 +14,7 @@ const Label = ({ children, forId, isFontWeight = true }) => (
 
 Label.propTypes = {
   children: PropTypes.node.isRequired,
-  forId: PropTypes.string.isRequired,
+  forId: PropTypes.string,
   isFontWeight: PropTypes.bool,
 };
 

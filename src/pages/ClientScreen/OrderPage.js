@@ -7,7 +7,7 @@ import {
   addSuitableMasters
 } from "../../store/clientSide/data/actions";
 import {addTownsToState} from "../../store/clientSide/towns/actions";
-import {changeOrderFormIsLoad} from "../../store/clientSide/services/actions";
+import {changeOrderFormIsLoad, changeTownsFromOrderFormIsLoad} from "../../store/clientSide/services/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -19,6 +19,7 @@ function OrderFormClient({history}) {
       currentOrder: state.client_order_reduser.currentOrder,
       orderFormIsLoad: state.client_services.orderFormIsLoad,
       townsArr: state.client_towns_reduser.townsArr,
+      townsInOrderFormIsLoad: state.client_services.townsInOrderFormIsLoad
     }
   });
   const dispatch = useDispatch();
@@ -40,9 +41,13 @@ function OrderFormClient({history}) {
         : "",
       "Content-Type": "application/json",
     };
+    dispatch(changeTownsFromOrderFormIsLoad(true));
     fetch(`${SERVERDOMAIN}/towns`, { headers })
       .then((json) => json.json())
-      .then((data) => dispatch(addTownsToState(data)));
+      .then((data) => {
+        dispatch(addTownsToState(data));
+        dispatch(changeTownsFromOrderFormIsLoad(false));
+      });
   }
   function submitHandler(e) {
     e.preventDefault();
@@ -117,13 +122,14 @@ function OrderFormClient({history}) {
       timeEnd: clientTimeEnd,
       date: clientDate,
     };
-    return fetch(`${url}/freeMasters`, {
+    return fetch(`${url}/masters`, {
       method: "POST",
       headers: {
         Authorization: localStorage.getItem("token")
           ? "Bearer " + localStorage.getItem("token")
           : "",
         "Content-Type": "application/json;charset=utf-8",
+        include: "free"
       },
       body: JSON.stringify(obj),
     }).then((json) => json.json());
@@ -157,6 +163,7 @@ function OrderFormClient({history}) {
         currentOrder={state.currentOrder}
         isLoadOrderForm={state.orderFormIsLoad}
         townsArr={state.townsArr}
+        townsInOrderFormIsLoad = {state.townsInOrderFormIsLoad}
       />
     </>
   );

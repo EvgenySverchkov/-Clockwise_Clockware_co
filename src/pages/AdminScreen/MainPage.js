@@ -23,7 +23,8 @@ import EditTownForm from "../../forms/EditTownForm";
 
 import FullInfoModal from "../../components/AdminScreen/FullInfoModal";
 import LoginPage from "./LoginPage";
-import FreeMasters from "../../components/AdminScreen/FreeMasters";
+import FreeMastersPage from "./FreeMastersPage";
+import SuccessModal from "../SuccessModal";
 
 function AdminSrcreen(props) {
   const state = useSelector(state=>{
@@ -32,6 +33,7 @@ function AdminSrcreen(props) {
       isAuth: state.main_adminPanel_reduser.isAuth,
       currentOrder: state.orders_reducer.currentOrder,
       suitableMasters: state.orders_reducer.suitableMasters,
+      modalDataAdmin: state.main_adminPanel_reduser.modalDataAdmin
     }
   });
   const dispatch = useDispatch();
@@ -93,7 +95,7 @@ function AdminSrcreen(props) {
               path="/admin/freeMasters"
               render={(prop) => {
                 return (
-                  <FreeMasters
+                  <FreeMastersPage
                     {...prop}
                     currentOrder={state.currentOrder}
                     isAuth={state.isAuth}
@@ -106,6 +108,7 @@ function AdminSrcreen(props) {
           </Switch>
         </div>
         <FullInfoModal itemObj={state.currItemForModal} />
+        <SuccessModal history = {props.history} data = {state.modalDataAdmin}/>
       </div>
     </div>
   );

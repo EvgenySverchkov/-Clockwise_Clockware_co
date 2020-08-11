@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
 import {addCurrentOrderToState} from "../../store/clientSide/data/actions";
@@ -9,8 +9,15 @@ import FreeMastersPage from "./FreeMastersPage";
 import LoginPage from "./LoginPage";
 import SignUpPage from "./SignUpPage";
 import Header from "../../components/ClientScreen/Header";
+import SuccessModal from "../SuccessModal";
 
-function ClientSrcreen() {
+function ClientSrcreen({history}) {
+  const state = useSelector((state)=>{
+    return {
+      modalSuccesData: state.client_services.modalSuccesData
+    }
+  })
+
   const dispatch = useDispatch();
   useEffect(() => {
     let token = localStorage.getItem("token")
@@ -50,6 +57,7 @@ function ClientSrcreen() {
             component={SignUpPage}
           />
         </Switch>
+        <SuccessModal history={history} data = {state.modalSuccesData}/>
       </div>
     </>
   );

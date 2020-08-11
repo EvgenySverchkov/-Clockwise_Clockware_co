@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import {
   addCurrentOrderToState,
 } from "../../store/clientSide/data/actions";
-import {changeMasterListIsLoad} from "../../store/clientSide/services/actions";
+import {changeMasterListIsLoad, changeSuccessModalData} from "../../store/clientSide/services/actions";
 import FreeMastersForm from "../../forms/FreeMastersForm";
 import sendMail from "../../services/mailSendler";
 
@@ -15,7 +15,7 @@ function MastersList({history}) {
       suitableMasters: state.client_order_reduser.suitableMasters,
       currentOrder: state.client_order_reduser.currentOrder,
       masterListIsLoad: state.client_services.masterListIsLoad,
-      isAuth: state.client_services.isAuth
+      isAuth: state.client_services.isAuth,
     }
   });
   const dispatch = useDispatch();
@@ -27,6 +27,9 @@ function MastersList({history}) {
       if (!e.target.chooseMaster.checked) {
         masterId = null;
       }
+    }
+    if(Object.keys(state.currentOrder).length === 1){
+      return false;
     }
     let endOrderTime;
     let clientTimeHour = +state.currentOrder.time.match(/[^:]+/);
@@ -65,8 +68,6 @@ function MastersList({history}) {
       .then((data) => {
         dispatch(changeMasterListIsLoad(false));
         if (data.success) {
-          alert(data.msg);
-          history.push("/");
           sendMail(`${SERVERDOMAIN}/send_message`, data.payload.email);
           dispatch(addCurrentOrderToState(
             state.isAuth
@@ -75,6 +76,8 @@ function MastersList({history}) {
                 }
               : {}
           ));
+          dispatch(changeSuccessModalData({msg: data.msg, backBtnTxt: "Back to order form", backTo: "/"}));
+          document.getElementById("callSuccessModalBtn").click();
         } else {
           alert(data.msg);
         }
@@ -90,6 +93,7 @@ function MastersList({history}) {
       suitableMasters={state.suitableMasters}
       isLoad={state.masterListIsLoad}
       backTo={"/client"}
+      isMakeOrder = {(Object.keys(state.currentOrder).length <= 1)? true : false}
     />
   );
 }

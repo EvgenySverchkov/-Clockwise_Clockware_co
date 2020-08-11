@@ -103,13 +103,14 @@ function OrderFormAdmin({history}) {
       timeEnd: clientTimeEnd,
       date: clientDate,
     };
-    return fetch(`${url}/freeMasters`, {
+    return fetch(`${url}/masters`, {
       method: "POST",
       headers: {
         Authorization: sessionStorage.getItem("token")
           ? "Bearer " + sessionStorage.getItem("token")
           : "",
         "Content-Type": "application/json;charset=utf-8",
+        include: "free"
       },
       body: JSON.stringify(obj),
     }).then((json) => json.json());
