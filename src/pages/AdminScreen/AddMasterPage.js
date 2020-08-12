@@ -9,6 +9,8 @@ import FormGroup from "../../components/FormComponents/FormGroup";
 import NameField from "../../components/FormComponents/TextField";
 import NumField from "../../components/FormComponents/NumField";
 import Label from "../../components/FormComponents/Label";
+import CheckBtn from "../../components/FormComponents/CheckBtn";
+
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
 import { addNewMaster } from "../../store/adminPanel/masters/actions";
@@ -97,20 +99,10 @@ function AddMasterPage({ history }) {
         <NameField id={"name"} name={"name"} />
       </FormGroup>
       <FormGroup isRow={false}>
-        <div className="mb-2">Choose towns</div>
+        <div className="mb-2 font-weight-bold">Choose towns</div>
         <div>
           {state.townsArr.map((item) => (
-            <div key={item.id + 1} className="form-check-inline">
-              <label className="form-check-label" htmlFor={item.name}>
-                <input
-                  type="checkbox"
-                  className="form-check-input towns"
-                  id={item.name}
-                  value={item.name}
-                />
-                {item.name}
-              </label>
-            </div>
+            <CheckBtn name = {item.name} id = {item.id}/>
           ))}
         </div>
       </FormGroup>

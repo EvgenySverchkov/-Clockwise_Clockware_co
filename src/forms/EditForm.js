@@ -10,6 +10,8 @@ import Button from "../components/FormComponents/Button";
 import RadioBtn from "../components/FormComponents/RadioBtn";
 import TimeField from "../components/FormComponents/TimeField";
 import DateField from "../components/FormComponents/DateField";
+import ChooseClockSizeField from "../components/CompleteFormFields/ChooseClockSizeField";
+import ChooseTownsField from "../components/CompleteFormFields/ChooseTownField";
 
 import { townsInit } from "../store/adminPanel/towns/actions";
 import { changeTownsFromOrderFormIsLoad } from "../store/clientSide/services/actions";
@@ -127,7 +129,7 @@ function EditForm({ id, handler, arrFromState }) {
   }
 
   const currDate = minDate();
-  function componentChanger(item) {
+  function componentSelector(item) {
     switch (item) {
       case "towns":
         return (
@@ -187,41 +189,7 @@ function EditForm({ id, handler, arrFromState }) {
           </FormGroup>
         );
       case "size":
-        return (
-          <FormGroup key={item} isRow={false}>
-            <div className="mb-2 font-weight-bold">Choose size of clock</div>
-            <RadioBtn
-              id={"smallSize"}
-              value={"small"}
-              name={"size"}
-              chngHandler={changeValue}
-            >
-              <Label forId={"smallSize"} isFontWeight={false}>
-                Small
-              </Label>
-            </RadioBtn>
-            <RadioBtn
-              id={"middleSize"}
-              value={"middle"}
-              name={"size"}
-              chngHandler={changeValue}
-            >
-              <Label forId={"middleSize"} isFontWeight={false}>
-                Middle
-              </Label>
-            </RadioBtn>
-            <RadioBtn
-              id={"largeSize"}
-              value={"large"}
-              name={"size"}
-              chngHandler={changeValue}
-            >
-              <Label forId={"largeSize"} isFontWeight={false}>
-                Large
-              </Label>
-            </RadioBtn>
-          </FormGroup>
-        );
+        return <ChooseClockSizeField changeHandler={changeValue} key = {item}/>;
       case "date":
         return (
           <FormGroup key={item} isRow={false}>
@@ -262,25 +230,12 @@ function EditForm({ id, handler, arrFromState }) {
         );
       case "town":
         return (
-          <FormGroup key={item} isRow={false}>
-            <div className="mb-2 font-weight-bold">Choose town</div>
-            {state.townsInOrderFormIsLoad
-              ? "Loading..."
-              : state.townsArr.map((item) => (
-                  <div key={item.id + 1} className="form-check-inline">
-                    <RadioBtn
-                      id={item.name}
-                      value={item.name}
-                      name={"town"}
-                      chngHandler={changeValue}
-                    >
-                      <Label forId={item.name} isFontWeight={false}>
-                        {item.name}
-                      </Label>
-                    </RadioBtn>
-                  </div>
-                ))}
-          </FormGroup>
+          <ChooseTownsField 
+            changeHandler = {changeValue} 
+            isLoad = {state.townsInOrderFormIsLoad} 
+            townsArr = {state.townsArr}
+            key = {item}
+          />
         );
       default:
         return (
@@ -301,11 +256,11 @@ function EditForm({ id, handler, arrFromState }) {
       onSubmit={(e) => handler(e, stateObj)}
       className="mt-4 row justify-content-center"
     >
-      {keyArr.map((item) => {
-        if (item === "id") {
+      {keyArr.map((fieldName) => {
+        if (fieldName === "id") {
           return null;
         } else {
-          return componentChanger(item);
+          return componentSelector(fieldName);
         }
       })}
       <Button value={"Edit"} />

@@ -10,6 +10,10 @@ import RadioBtn from "../components/FormComponents/RadioBtn";
 import TimeField from "../components/FormComponents/TimeField";
 import DateField from "../components/FormComponents/DateField";
 
+import TextFieldWithLabel from "../components/CompleteFormFields/TextFieldWithLabel";
+import ChooseClockSizeField from "../components/CompleteFormFields/ChooseClockSizeField";
+import ChooseTownsField from "../components/CompleteFormFields/ChooseTownField";
+
 function OrderForm({
   submitHandler,
   changeHandler,
@@ -35,76 +39,22 @@ function OrderForm({
   const currDate = minDate();
   return (
     <form onSubmit={submitHandler} className="mt-4 row justify-content-center">
-      <FormGroup isRow={true}>
-        <Label forId="name">Enter your name</Label>
-        <TextFiled
-          id={"name"}
-          name={"name"}
-          chngHandler={changeHandler}
-          value={currentOrder.name || ""}
-        />
-      </FormGroup>
-      <FormGroup isRow={true}>
-        <Label forId="email">Enter your e-mail</Label>
-        <EmailField
-          id={"email"}
-          name={"email"}
-          chngHandler={changeHandler}
-          value={currentOrder.email || ""}
-        />
-      </FormGroup>
-      <FormGroup isRow={false}>
-        <div className="mb-2 font-weight-bold">Choose size of clock</div>
-        <RadioBtn
-          id={"smallSize"}
-          value={"small"}
-          name={"size"}
-          chngHandler={changeHandler}
-        >
-          <Label forId={"smallSize"} isFontWeight={false}>
-            Small
-          </Label>
-        </RadioBtn>
-        <RadioBtn
-          id={"middleSize"}
-          value={"middle"}
-          name={"size"}
-          chngHandler={changeHandler}
-        >
-          <Label forId={"middleSize"} isFontWeight={false}>
-            Middle
-          </Label>
-        </RadioBtn>
-        <RadioBtn
-          id={"largeSize"}
-          value={"large"}
-          name={"size"}
-          chngHandler={changeHandler}
-        >
-          <Label forId={"largeSize"} isFontWeight={false}>
-            Large
-          </Label>
-        </RadioBtn>
-      </FormGroup>
-      <FormGroup isRow={false}>
-        <div className="mb-2 font-weight-bold">Choose town</div>
-        {townsInOrderFormIsLoad
-          ? "Loading..."
-          : townsArr.map((item) => (
-              <div key={item.id + 1} className="form-check-inline">
-                <RadioBtn
-                  id={item.name}
-                  value={item.name}
-                  name={"town"}
-                  chngHandler={changeHandler}
-                >
-                  <Label forId={item.name} isFontWeight={false}>
-                    {item.name}
-                  </Label>
-                </RadioBtn>
-              </div>
-            ))}
-      </FormGroup>
+      <TextFieldWithLabel
+        fieldName = {"name"} 
+        changeHandler = {changeHandler} 
+        value={currentOrder.name || ""} 
+      />
+      <TextFieldWithLabel
+        fieldName = {"email"} 
+        changeHandler = {changeHandler} 
+        value={currentOrder.email || ""} 
+      />
+      <ChooseClockSizeField changeHandler={changeHandler}/>
+      <ChooseTownsField 
+        changeHandler = {changeHandler} 
+        isLoad = {townsInOrderFormIsLoad} 
+        townsArr = {townsArr}
+      />
       <FormGroup isRow={false}>
         <div className="mb-2 font-weight-bold">
           Choose date and time
