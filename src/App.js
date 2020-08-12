@@ -28,6 +28,7 @@ function App(props) {
           <Redirect exact to="/client" from="/" />
         </Switch>
         <button data-toggle="modal" data-target="#successModal" id="callSuccessModalBtn" style={{display: "none"}}></button>
+        <button data-toggle="modal" data-target="#warningModal" id="callWarningModalBtn" style={{display: "none"}}></button>
       </div>
     </Provider>
   );

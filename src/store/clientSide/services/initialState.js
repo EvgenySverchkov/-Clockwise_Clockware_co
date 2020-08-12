@@ -5,5 +5,6 @@ export const initialStateClientServices = {
     masterListIsLoad: false,
     isAuth: false,
     townsInOrderFormIsLoad: false,
-    modalSuccesData: {}
+    modalSuccesData: {},
+    modalWarningData: {}
 }

@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-import { changeAuthIsLoad, toogleAuth } from "../../store/adminPanel/services/actions";
+import { changeAuthIsLoad, toogleAuth, changeModalWarningDataAdmin } from "../../store/adminPanel/services/actions";
+
 
 import LoginForm from "../../forms/LoginForm";
 
@@ -33,7 +34,8 @@ function LoginPage(props) {
           props.history.push("/admin/ordersList");
           dispatch(toogleAuth(true));
         } else {
-          alert(data.msg);
+          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          document.getElementById("callWarningModalBtn").click();
         }
       });
   }

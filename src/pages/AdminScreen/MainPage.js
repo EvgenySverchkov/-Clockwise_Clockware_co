@@ -25,6 +25,7 @@ import FullInfoModal from "../../components/AdminScreen/FullInfoModal";
 import LoginPage from "./LoginPage";
 import FreeMastersPage from "./FreeMastersPage";
 import SuccessModal from "../SuccessModal";
+import WarningModal from "../WarningModal";
 
 function AdminSrcreen(props) {
   const state = useSelector(state=>{
@@ -33,7 +34,8 @@ function AdminSrcreen(props) {
       isAuth: state.main_adminPanel_reduser.isAuth,
       currentOrder: state.orders_reducer.currentOrder,
       suitableMasters: state.orders_reducer.suitableMasters,
-      modalDataAdmin: state.main_adminPanel_reduser.modalDataAdmin
+      modalDataAdmin: state.main_adminPanel_reduser.modalDataAdmin,
+      modalWarningDataAdmin: state.main_adminPanel_reduser.modalWarningDataAdmin,
     }
   });
   const dispatch = useDispatch();
@@ -109,6 +111,7 @@ function AdminSrcreen(props) {
         </div>
         <FullInfoModal itemObj={state.currItemForModal} />
         <SuccessModal history = {props.history} data = {state.modalDataAdmin}/>
+        <WarningModal data = {state.modalWarningDataAdmin}/>
       </div>
     </div>
   );

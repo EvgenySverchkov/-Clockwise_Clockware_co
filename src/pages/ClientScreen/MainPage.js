@@ -10,11 +10,13 @@ import LoginPage from "./LoginPage";
 import SignUpPage from "./SignUpPage";
 import Header from "../../components/ClientScreen/Header";
 import SuccessModal from "../SuccessModal";
+import WarningModal from "../WarningModal";
 
 function ClientSrcreen({history}) {
   const state = useSelector((state)=>{
     return {
-      modalSuccesData: state.client_services.modalSuccesData
+      modalSuccesData: state.client_services.modalSuccesData,
+      modalWarningData: state.client_services.modalWarningData
     }
   })
 
@@ -58,6 +60,7 @@ function ClientSrcreen({history}) {
           />
         </Switch>
         <SuccessModal history={history} data = {state.modalSuccesData}/>
+        <WarningModal data = {state.modalWarningData}/>
       </div>
     </>
   );

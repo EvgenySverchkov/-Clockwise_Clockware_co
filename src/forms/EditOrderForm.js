@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import {updateOrderInState} from "../store/adminPanel/orders/actions";
 import putDataToServer from "../components/AdminScreen/services/putDataToServer";
+import {changeSuccessModalDataAdmin, changeModalWarningDataAdmin} from "../store/adminPanel/services/actions";
 
 import EditForm from "./EditForm";
 
@@ -20,11 +21,13 @@ const EditOrderForm = ({match,history}) => {
     putDataToServer(`${SERVERDOMAIN}/orders/put/${newOrderObj.id}`, newOrderObj)
       .then((data) => {
         if (data.success) {
-          alert(data.msg);
+          dispatch(changeSuccessModalDataAdmin({msg: data.msg, backBtnTxt: "Go to the list of masters", backTo: "/admin/ordersList"}));
+          document.getElementById("callSuccessModalBtn").click();
+          history.push("/admin");
           dispatch(updateOrderInState(data));
-          history.push("/admin/ordersList");
         } else {
-          alert(data.msg);
+          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          document.getElementById("callWarningModalBtn").click();
         }
       })
       .catch((err) => alert(err));

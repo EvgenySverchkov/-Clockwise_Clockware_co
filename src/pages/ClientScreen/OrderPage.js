@@ -7,7 +7,7 @@ import {
   addSuitableMasters
 } from "../../store/clientSide/data/actions";
 import {addTownsToState} from "../../store/clientSide/towns/actions";
-import {changeOrderFormIsLoad, changeTownsFromOrderFormIsLoad} from "../../store/clientSide/services/actions";
+import {changeOrderFormIsLoad, changeTownsFromOrderFormIsLoad, changeWarningModalData} from "../../store/clientSide/services/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -60,17 +60,17 @@ function OrderFormClient({history}) {
       !trgElem.time.value ||
       !trgElem.date.value
     ) {
-      alert("Please, fill all fields!");
+      callWarningModal("Please, fill all fields!")
       return false;
     }
 
     if(trgElem.name.value.length <= 3){
-      alert("Name field must be at least 3 characters!");
+      callWarningModal("Name field must be at least 3 characters!");
       return false;
     }
     
     if(!isClientDateLargeThenCurrDate(trgElem.date.value)){
-      alert("Date must not be less than or equal to the current date");
+      callWarningModal("Date must not be less than or equal to the current date");
       return false;
     }
 
@@ -104,7 +104,7 @@ function OrderFormClient({history}) {
         history.push("/client/masters");
       } else {
         dispatch(addSuitableMasters([]));
-        alert(data.msg);
+        callWarningModal(data.msg);
         history.push("/client");
       }
     });
@@ -138,7 +138,6 @@ function OrderFormClient({history}) {
   function isClientDateLargeThenCurrDate(clientDate){
     const datetime_regex = /(\d\d\d\d)-(\d\d)-(\d\d)/;
     const client_date_arr = datetime_regex.exec(clientDate);
-    console.log(client_date_arr);
     const client_datetime = new Date(`${client_date_arr[3]}-${client_date_arr[2]}-${client_date_arr[1]}`);
     
     const currDate = new Date();
@@ -148,6 +147,13 @@ function OrderFormClient({history}) {
     } else {
       return true;
     }
+  }
+
+  function callWarningModal(msg){
+    dispatch(changeWarningModalData({
+      msg: msg
+    }));
+    document.getElementById("callWarningModalBtn").click();
   }
 
   return (

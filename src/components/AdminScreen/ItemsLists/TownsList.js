@@ -44,7 +44,6 @@ const TownsList = ({ history }) => {
       .then((data) => {
         if (data.success) {
           dispatch(deleteTownFromState(data.payload));
-          alert(data.msg);
         } else {
           alert(data.msg);
         }

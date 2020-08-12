@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import {updateTownInState} from "../store/adminPanel/towns/actions";
 import putDataToServer from "../components/AdminScreen/services/putDataToServer";
+import {changeSuccessModalDataAdmin, changeModalWarningDataAdmin} from "../store/adminPanel/services/actions";
 
 import EditForm from "./EditForm";
 
@@ -20,11 +21,13 @@ const EditTownForm = ({match,history}) => {
     putDataToServer(`${SERVERDOMAIN}/towns/put/${newTownObj.id}`, newTownObj)
       .then((data) => {
         if (data.success) {
-          alert(data.msg);
+          dispatch(changeSuccessModalDataAdmin({msg: data.msg, backBtnTxt: "Go to the list of masters", backTo: "/admin/townsList"}));
+          document.getElementById("callSuccessModalBtn").click();
+          history.push("/admin");
           dispatch(updateTownInState(data));
-          history.push("/admin/townsList");
         } else {
-          alert(data.msg);
+          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          document.getElementById("callWarningModalBtn").click();
         }
       })
       .catch((err) => alert(err));

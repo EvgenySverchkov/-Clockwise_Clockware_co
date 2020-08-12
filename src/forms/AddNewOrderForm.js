@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import {townsInit} from "../store/adminPanel/towns/actions";
 import {addSuitableMasters} from "../store/adminPanel/masters/actions";
 import {addCurrentOrderToState} from "../store/adminPanel/orders/actions";
-import {changeOrderFormIsLoad} from "../store/adminPanel/services/actions";
+import {changeOrderFormIsLoad, changeModalWarningDataAdmin} from "../store/adminPanel/services/actions";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 
@@ -51,7 +51,8 @@ function OrderFormAdmin({history}) {
       !trgElem.time.value ||
       !trgElem.date.value
     ) {
-      alert("Please, filling all gaps!!!");
+      dispatch(changeModalWarningDataAdmin({msg: "Please, filling all gaps!!!"}))
+      document.getElementById("callWarningModalBtn").click();
       return false;
     }
 
@@ -85,8 +86,9 @@ function OrderFormAdmin({history}) {
         history.push("/admin/freeMasters");
       } else {
        dispatch(addSuitableMasters([]));
-        alert(data.msg);
-        history.push("/admin/addOrderForm");
+       dispatch(changeModalWarningDataAdmin({msg: data.msg}));
+       document.getElementById("callWarningModalBtn").click();
+       history.push("/admin/addOrderForm");
       }
     });
   }

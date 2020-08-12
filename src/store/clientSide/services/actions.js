@@ -23,6 +23,11 @@ export const changeSuccessModalData = (obj) => ({
   payload: obj,
 });
 
+export const changeWarningModalData = (obj) => ({
+  type: actionType.CHANGE_WARNING_MODAL_DATA,
+  payload: obj
+})
+
 export const changeTownsFromOrderFormIsLoad = (data) => ({
   type: actionType.CHANGE_TOWNS_FROM_ORDER_FORM_IS_LOAD,
   payload: data

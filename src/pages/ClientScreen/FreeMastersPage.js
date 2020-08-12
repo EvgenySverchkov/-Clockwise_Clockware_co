@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import {
   addCurrentOrderToState,
 } from "../../store/clientSide/data/actions";
-import {changeMasterListIsLoad, changeSuccessModalData} from "../../store/clientSide/services/actions";
+import {changeMasterListIsLoad, changeSuccessModalData, changeWarningModalData} from "../../store/clientSide/services/actions";
 import FreeMastersForm from "../../forms/FreeMastersForm";
 import sendMail from "../../services/mailSendler";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-function MastersList({history}) {
+function MastersList() {
   const state = useSelector(state=>{
     return {
       suitableMasters: state.client_order_reduser.suitableMasters,
@@ -79,7 +79,10 @@ function MastersList({history}) {
           dispatch(changeSuccessModalData({msg: data.msg, backBtnTxt: "Back to order form", backTo: "/"}));
           document.getElementById("callSuccessModalBtn").click();
         } else {
-          alert(data.msg);
+          dispatch(changeWarningModalData({
+            msg: data.msg
+          }));
+          document.getElementById("callWarningModalBtn").click();
         }
       })
       .catch((err) => {

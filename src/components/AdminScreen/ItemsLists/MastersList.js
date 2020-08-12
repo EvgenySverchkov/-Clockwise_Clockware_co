@@ -56,7 +56,6 @@ const MastersList = ({history}) => {
       .then((data) => {
         if (data.success) {
           dispatch(deleteMasterFromState(data.payload));
-          alert(data.msg);
         } else {
           alert(data.msg);
         }

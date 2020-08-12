@@ -45,7 +45,6 @@ const OrdersList = ({history}) => {
       .then((data) => {
         if (data.success) {
           dispatch(deleteOrderFromState(data.payload));
-          alert(data.msg);
         } else {
           alert(data.msg);
         }

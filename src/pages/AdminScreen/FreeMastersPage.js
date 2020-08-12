@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FreeMastersForm from "../../forms/FreeMastersForm";
 
 import {addCurrentOrderToState} from "../../store/adminPanel/orders/actions";
-import {changeMasterListIsLoad, changeSuccessModalDataAdmin} from "../../store/adminPanel/services/actions";
+import {changeMasterListIsLoad, changeSuccessModalDataAdmin, changeModalWarningDataAdmin} from "../../store/adminPanel/services/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import sendConfirmEmail from "../../services/mailSendler";
@@ -27,7 +27,8 @@ function MastersList(props) {
       }
     }
     if (!masterId) {
-      alert("Please, choose one!!!");
+      dispatch(changeModalWarningDataAdmin({msg: "Please, choose one!!!"}))
+      document.getElementById("callWarningModalBtn").click();
       return false;
     }
     let endOrderTime;
@@ -73,7 +74,8 @@ function MastersList(props) {
           dispatch(addCurrentOrderToState({}));
           sendConfirmEmail(`${SERVERDOMAIN}/send_message`, data.payload.email);
         } else {
-          alert(data.msg);
+          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          document.getElementById("callWarningModalBtn").click();
         }
       })
       .catch((err) => {

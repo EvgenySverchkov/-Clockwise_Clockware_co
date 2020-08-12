@@ -11,7 +11,7 @@ import Button from "../components/FormComponents/Button";
 import { SERVERDOMAIN } from "../services/serverUrls";
 
 import {addNewTown} from "../store/adminPanel/towns/actions";
-import {changeAddMewTownFormIsLoad, changeSuccessModalDataAdmin} from "../store/adminPanel/services/actions";
+import {changeAddMewTownFormIsLoad, changeSuccessModalDataAdmin, changeModalWarningDataAdmin} from "../store/adminPanel/services/actions";
 
 function AddNewTownForm({history}) {
   const state = useSelector(state=>{
@@ -38,7 +38,8 @@ function AddNewTownForm({history}) {
           history.push("/admin");
           document.getElementById("callSuccessModalBtn").click();
         } else {
-          alert(data.msg);
+          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          document.getElementById("callWarningModalBtn").click();
         }
         dispatch(changeAddMewTownFormIsLoad(false));
       })

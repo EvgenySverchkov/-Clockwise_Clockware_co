@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { changeSignUpIsLoad, changeSuccessModalData } from "../../store/clientSide/services/actions";
+import { changeSignUpIsLoad, changeSuccessModalData, changeWarningModalData } from "../../store/clientSide/services/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -12,7 +12,6 @@ import TextField from "../../components/FormComponents/TextField";
 import EmailField from "../../components/FormComponents/EmailField";
 import PasswordField from "../../components/FormComponents/PasswordField";
 import Button from "../../components/FormComponents/Button";
-import ButtonWithSuccess from "../../components/FormComponents/ButtonWithSuccess";
 
 function RegistrationForm({history}) {
   const state = useSelector(state=>{
@@ -36,11 +35,14 @@ function RegistrationForm({history}) {
       },
       body: JSON.stringify(newObj),
     })
-      .then((data) => data.json())
-      .then((data) => {
-        dispatch(changeSignUpIsLoad(false));
+    .then((data) => data.json())
+    .then((data) => {
+      dispatch(changeSignUpIsLoad(false));
         if (!data.success) {
-          alert(data.msg);
+          dispatch(changeWarningModalData({
+            msg: data.msg
+          }));
+          document.getElementById("callWarningModalBtn").click();
         } else {
           dispatch(changeSuccessModalData({
             msg: `Congratulations! ${data.user.name} you are registered`, 
@@ -50,7 +52,7 @@ function RegistrationForm({history}) {
           document.getElementById("callSuccessModalBtn").click();
           history.push("/client/login");
         }
-      });
+    });
   }
   return (
     <form onSubmit={handler} className="mt-4 row justify-content-center">

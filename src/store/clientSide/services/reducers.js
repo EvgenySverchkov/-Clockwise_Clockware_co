@@ -32,6 +32,11 @@ export default function client_services(state={}, action){
             ...state,
             modalSuccesData: action.payload
             }
+        case actionType.CHANGE_WARNING_MODAL_DATA:
+            return {
+            ...state,
+            modalWarningData: action.payload
+            }
         case actionType.CHANGE_TOWNS_FROM_ORDER_FORM_IS_LOAD:
             return {
             ...state,

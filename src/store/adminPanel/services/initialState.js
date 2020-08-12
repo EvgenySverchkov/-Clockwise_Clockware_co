@@ -7,5 +7,6 @@ export const initialStateServices = {
     orderFormIsLoad: false,
     main_adminPanel_reduser: false,
     listIsLoad: false,
-    modalDataAdmin: {}
+    modalDataAdmin: {},
+    modalWarningDataAdmin: {}
 }

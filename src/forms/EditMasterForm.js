@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import {updateMasterInState} from "../store/adminPanel/masters/actions";
 import putDataToServer from "../components/AdminScreen/services/putDataToServer";
+import {changeSuccessModalDataAdmin, changeModalWarningDataAdmin} from "../store/adminPanel/services/actions";
 
 import EditForm from "./EditForm";
 
@@ -23,11 +24,13 @@ const EditMasterForm = ({match,history}) => {
     )
       .then((data) => {
         if (data.success) {
-          alert(data.msg);
+          dispatch(changeSuccessModalDataAdmin({msg: data.msg, backBtnTxt: "Go to the list of masters", backTo: "/admin/mastersList"}));
+          document.getElementById("callSuccessModalBtn").click();
           dispatch(updateMasterInState(data));
-          history.push("/admin/mastersList");
+          history.push("/admin");
         } else {
-          alert(data.msg);
+          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          document.getElementById("callWarningModalBtn").click();
         }
       })
       .catch((err) => alert(err));

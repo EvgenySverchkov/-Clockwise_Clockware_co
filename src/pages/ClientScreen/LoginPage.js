@@ -8,6 +8,7 @@ import {addCurrentOrderToState} from "../../store/clientSide/data/actions";
 import {
   changeLoginIsLoad,
   toggleAuth,
+  changeWarningModalData
 } from "../../store/clientSide/services/actions";
 
 import LoginForm from "../../forms/LoginForm";
@@ -36,7 +37,10 @@ function LoginPage({history}) {
       .then((data) => {
         dispatch(changeLoginIsLoad(false));
         if (!data.success) {
-          alert(data.msg);
+          dispatch(changeWarningModalData({
+            msg: data.msg
+          }));
+          document.getElementById("callWarningModalBtn").click();
         } else {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));

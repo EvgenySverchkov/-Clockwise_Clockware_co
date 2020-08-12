@@ -12,7 +12,7 @@ import Label from "../components/FormComponents/Label";
 import { SERVERDOMAIN } from "../services/serverUrls";
 
 import { addNewMaster } from "../store/adminPanel/masters/actions";
-import {changeAddNewMasterFormIsLoad, changeSuccessModalDataAdmin} from "../store/adminPanel/services/actions";
+import {changeAddNewMasterFormIsLoad, changeSuccessModalDataAdmin, changeModalWarningDataAdmin} from "../store/adminPanel/services/actions";
 import {townsInit} from "../store/adminPanel/towns/actions";
 
 function AddMasterForm({history}) {
@@ -57,7 +57,8 @@ function AddMasterForm({history}) {
           history.push("/admin");
           document.getElementById("callSuccessModalBtn").click();
         } else {
-          alert(data.msg);
+          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          document.getElementById("callWarningModalBtn").click();
         }
       })
       .catch((err) => alert(err));

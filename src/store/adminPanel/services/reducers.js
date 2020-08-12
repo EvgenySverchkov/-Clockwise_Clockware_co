@@ -42,6 +42,11 @@ export default function main_adminPanel_reduser(state = {}, action) {
           ...state,
           modalDataAdmin: action.payload
         }
+      case actionType.CHANGE_MODAL_WARNING_DATA_ADMIN:
+        return {
+          ...state,
+          modalWarningDataAdmin: action.payload
+        }
       case actionType.CHANGE_LIST_IS_LOAD:
         return {
           ...state,
