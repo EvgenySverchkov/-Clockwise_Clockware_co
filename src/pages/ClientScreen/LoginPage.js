@@ -4,18 +4,18 @@ import PropTypes from "prop-types";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import {addCurrentOrderToState} from "../../store/clientSide/data/actions";
+import { addCurrentOrderToState } from "../../store/clientSide/data/actions";
 import {
   changeLoginIsLoad,
   toggleAuth,
-  changeWarningModalData
+  changeWarningModalData,
 } from "../../store/clientSide/services/actions";
 
 import LoginForm from "../../forms/LoginForm";
 
-function LoginPage({history}) {
-  const state = useSelector(state=>{
-    return {loginIsLoad: state.client_services.loginIsLoad}
+function LoginPage({ history }) {
+  const state = useSelector((state) => {
+    return { loginIsLoad: state.client_services.loginIsLoad };
   });
   const dispatch = useDispatch();
 
@@ -37,9 +37,11 @@ function LoginPage({history}) {
       .then((data) => {
         dispatch(changeLoginIsLoad(false));
         if (!data.success) {
-          dispatch(changeWarningModalData({
-            msg: data.msg
-          }));
+          dispatch(
+            changeWarningModalData({
+              msg: data.msg,
+            })
+          );
           document.getElementById("callWarningModalBtn").click();
         } else {
           localStorage.setItem("token", data.token);
@@ -50,9 +52,7 @@ function LoginPage({history}) {
         }
       });
   }
-  return (
-    <LoginForm submitHandler={handler} authIsLoad={state.loginIsLoad} />
-  );
+  return <LoginForm submitHandler={handler} authIsLoad={state.loginIsLoad} />;
 }
 
 LoginForm.propTypes = {

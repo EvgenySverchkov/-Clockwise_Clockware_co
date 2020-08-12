@@ -2,7 +2,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { changeSignUpIsLoad, changeSuccessModalData, changeWarningModalData } from "../../store/clientSide/services/actions";
+import {
+  changeSignUpIsLoad,
+  changeSuccessModalData,
+  changeWarningModalData,
+} from "../../store/clientSide/services/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -13,9 +17,9 @@ import EmailField from "../../components/FormComponents/EmailField";
 import PasswordField from "../../components/FormComponents/PasswordField";
 import Button from "../../components/FormComponents/Button";
 
-function RegistrationForm({history}) {
-  const state = useSelector(state=>{
-    return {signUpIsLoad: state.client_services.signUpIsLoad}
+function RegistrationForm({ history }) {
+  const state = useSelector((state) => {
+    return { signUpIsLoad: state.client_services.signUpIsLoad };
   });
   const dispatch = useDispatch();
 
@@ -35,24 +39,28 @@ function RegistrationForm({history}) {
       },
       body: JSON.stringify(newObj),
     })
-    .then((data) => data.json())
-    .then((data) => {
-      dispatch(changeSignUpIsLoad(false));
+      .then((data) => data.json())
+      .then((data) => {
+        dispatch(changeSignUpIsLoad(false));
         if (!data.success) {
-          dispatch(changeWarningModalData({
-            msg: data.msg
-          }));
+          dispatch(
+            changeWarningModalData({
+              msg: data.msg,
+            })
+          );
           document.getElementById("callWarningModalBtn").click();
         } else {
-          dispatch(changeSuccessModalData({
-            msg: `Congratulations! ${data.user.name} you are registered`, 
-            backBtnTxt: "Back to the main page", 
-            backTo: "/"
-          }));
+          dispatch(
+            changeSuccessModalData({
+              msg: `Congratulations! ${data.user.name} you are registered`,
+              backBtnTxt: "Back to the main page",
+              backTo: "/",
+            })
+          );
           document.getElementById("callSuccessModalBtn").click();
           history.push("/client/login");
         }
-    });
+      });
   }
   return (
     <form onSubmit={handler} className="mt-4 row justify-content-center">

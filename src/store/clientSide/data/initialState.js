@@ -1,4 +1,4 @@
 export const initialStateClientData = {
-    currentOrder: {},
-    suitableMasters: []
-}
+  currentOrder: {},
+  suitableMasters: [],
+};

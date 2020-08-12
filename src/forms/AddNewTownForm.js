@@ -10,14 +10,18 @@ import Button from "../components/FormComponents/Button";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 
-import {addNewTown} from "../store/adminPanel/towns/actions";
-import {changeAddMewTownFormIsLoad, changeSuccessModalDataAdmin, changeModalWarningDataAdmin} from "../store/adminPanel/services/actions";
+import { addNewTown } from "../store/adminPanel/towns/actions";
+import {
+  changeAddMewTownFormIsLoad,
+  changeSuccessModalDataAdmin,
+  changeModalWarningDataAdmin,
+} from "../store/adminPanel/services/actions";
 
-function AddNewTownForm({history}) {
-  const state = useSelector(state=>{
+function AddNewTownForm({ history }) {
+  const state = useSelector((state) => {
     return {
-      newTownFormIsLoad: state.main_adminPanel_reduser.newTownFormIsLoad
-    }
+      newTownFormIsLoad: state.main_adminPanel_reduser.newTownFormIsLoad,
+    };
   });
   const dispatch = useDispatch();
 
@@ -34,11 +38,17 @@ function AddNewTownForm({history}) {
       .then((data) => {
         if (data.success) {
           dispatch(addNewTown(data.payload));
-          dispatch(changeSuccessModalDataAdmin({msg: data.msg, backBtnTxt: "Go to the list of towns", backTo: "/admin/townsList"}));
+          dispatch(
+            changeSuccessModalDataAdmin({
+              msg: data.msg,
+              backBtnTxt: "Go to the list of towns",
+              backTo: "/admin/townsList",
+            })
+          );
           history.push("/admin");
           document.getElementById("callSuccessModalBtn").click();
         } else {
-          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          dispatch(changeModalWarningDataAdmin({ msg: data.msg }));
           document.getElementById("callWarningModalBtn").click();
         }
         dispatch(changeAddMewTownFormIsLoad(false));

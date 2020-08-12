@@ -6,7 +6,7 @@ import {
   deleteTownFromState,
   townsInit,
 } from "../../../store/adminPanel/towns/actions";
-import {changeListIsLoad} from "../../../store/adminPanel/services/actions";
+import { changeListIsLoad } from "../../../store/adminPanel/services/actions";
 import deleteDataFromServer from "../services/deleteDataFromServer";
 
 import List from "../List";
@@ -14,11 +14,11 @@ import List from "../List";
 import { SERVERDOMAIN } from "../../../services/serverUrls";
 
 const TownsList = ({ history }) => {
-  const state = useSelector(state=>{
+  const state = useSelector((state) => {
     return {
       townsArr: state.town_reduser.towns,
-      listIsLoad: state.main_adminPanel_reduser.listIsLoad
-    }
+      listIsLoad: state.main_adminPanel_reduser.listIsLoad,
+    };
   });
   const dispatch = useDispatch();
 
@@ -27,16 +27,16 @@ const TownsList = ({ history }) => {
       Authorization: "Bearer " + sessionStorage.getItem("token") || "",
       "Content-Type": "application/json",
     };
-    dispatch(changeListIsLoad(true))
+    dispatch(changeListIsLoad(true));
     fetch(`${SERVERDOMAIN}/towns`, { headers })
       .then((json) => json.json())
       .then((data) => {
-        dispatch(changeListIsLoad(false))
-        dispatch(townsInit(data))
-      })
-      .catch(err=>{
         dispatch(changeListIsLoad(false));
-        alert(err)
+        dispatch(townsInit(data));
+      })
+      .catch((err) => {
+        dispatch(changeListIsLoad(false));
+        alert(err);
       });
   }
   function deleteTownById(townId) {

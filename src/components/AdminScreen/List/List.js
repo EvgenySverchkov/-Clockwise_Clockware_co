@@ -5,7 +5,14 @@ import OptionsBtns from "../OptionsBtnGroup";
 import ListItem from "./ListItem";
 import ListHeader from "./ListHeader";
 
-function CreateList({ dataArr, deleteAction, mainRows, getData, history, listIsLoad }) {
+function CreateList({
+  dataArr,
+  deleteAction,
+  mainRows,
+  getData,
+  history,
+  listIsLoad,
+}) {
   useEffect(
     function () {
       getData();
@@ -20,14 +27,15 @@ function CreateList({ dataArr, deleteAction, mainRows, getData, history, listIsL
       <table className="table table-dark">
         <thead>
           {listIsLoad ? (
-          <tr>
-            <th>Loading...</th>
-          </tr>
-          ) : (
-            dataArr.length === 0 ? (
+            <tr>
+              <th>Loading...</th>
+            </tr>
+          ) : dataArr.length === 0 ? (
             <tr>
               <th>List is empty</th>
-            </tr>) : <ListHeader templArr={mainRows} />
+            </tr>
+          ) : (
+            <ListHeader templArr={mainRows} />
           )}
         </thead>
         <tbody>

@@ -2,22 +2,25 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import {townsInit} from "../store/adminPanel/towns/actions";
-import {addSuitableMasters} from "../store/adminPanel/masters/actions";
-import {addCurrentOrderToState} from "../store/adminPanel/orders/actions";
-import {changeOrderFormIsLoad, changeModalWarningDataAdmin} from "../store/adminPanel/services/actions";
+import { townsInit } from "../store/adminPanel/towns/actions";
+import { addSuitableMasters } from "../store/adminPanel/masters/actions";
+import { addCurrentOrderToState } from "../store/adminPanel/orders/actions";
+import {
+  changeOrderFormIsLoad,
+  changeModalWarningDataAdmin,
+} from "../store/adminPanel/services/actions";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 
 import OrderForm from "./OrderForm";
 
-function OrderFormAdmin({history}) {
-  const state = useSelector(state=>{
+function OrderFormAdmin({ history }) {
+  const state = useSelector((state) => {
     return {
       currentOrder: state.orders_reducer.currentOrder,
       townsArr: state.town_reduser.towns,
       orderFormIsLoad: state.main_adminPanel_reduser.orderFormIsLoad,
-    }
+    };
   });
   const dispatch = useDispatch();
 
@@ -26,10 +29,12 @@ function OrderFormAdmin({history}) {
   }, []);
   function changeHandler(e) {
     let idx = e.target.name;
-    dispatch(addCurrentOrderToState({
-      ...state.currentOrder,
-      [idx]: e.target.value,
-    }));
+    dispatch(
+      addCurrentOrderToState({
+        ...state.currentOrder,
+        [idx]: e.target.value,
+      })
+    );
   }
   function getTownsFromServerToState() {
     const headers = {
@@ -51,7 +56,9 @@ function OrderFormAdmin({history}) {
       !trgElem.time.value ||
       !trgElem.date.value
     ) {
-      dispatch(changeModalWarningDataAdmin({msg: "Please, filling all gaps!!!"}))
+      dispatch(
+        changeModalWarningDataAdmin({ msg: "Please, filling all gaps!!!" })
+      );
       document.getElementById("callWarningModalBtn").click();
       return false;
     }
@@ -82,13 +89,13 @@ function OrderFormAdmin({history}) {
     ).then((data) => {
       dispatch(changeOrderFormIsLoad(false));
       if (data.success) {
-       dispatch(addSuitableMasters(data.payload));
+        dispatch(addSuitableMasters(data.payload));
         history.push("/admin/freeMasters");
       } else {
-       dispatch(addSuitableMasters([]));
-       dispatch(changeModalWarningDataAdmin({msg: data.msg}));
-       document.getElementById("callWarningModalBtn").click();
-       history.push("/admin/addOrderForm");
+        dispatch(addSuitableMasters([]));
+        dispatch(changeModalWarningDataAdmin({ msg: data.msg }));
+        document.getElementById("callWarningModalBtn").click();
+        history.push("/admin/addOrderForm");
       }
     });
   }
@@ -112,7 +119,7 @@ function OrderFormAdmin({history}) {
           ? "Bearer " + sessionStorage.getItem("token")
           : "",
         "Content-Type": "application/json;charset=utf-8",
-        include: "free"
+        include: "free",
       },
       body: JSON.stringify(obj),
     }).then((json) => json.json());

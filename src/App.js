@@ -7,7 +7,7 @@ import reducers from "./store/allReducers.js";
 import ClientScreen from "./pages/ClientScreen";
 import AdminScreen from "./pages/AdminScreen";
 
-import {initialState} from "./store/initialState";
+import { initialState } from "./store/initialState";
 
 const store = createStore(
   reducers,
@@ -27,8 +27,18 @@ function App(props) {
           <Route path="/admin" component={AdminScreen} />
           <Redirect exact to="/client" from="/" />
         </Switch>
-        <button data-toggle="modal" data-target="#successModal" id="callSuccessModalBtn" style={{display: "none"}}></button>
-        <button data-toggle="modal" data-target="#warningModal" id="callWarningModalBtn" style={{display: "none"}}></button>
+        <button
+          data-toggle="modal"
+          data-target="#successModal"
+          id="callSuccessModalBtn"
+          style={{ display: "none" }}
+        ></button>
+        <button
+          data-toggle="modal"
+          data-target="#warningModal"
+          id="callWarningModalBtn"
+          style={{ display: "none" }}
+        ></button>
       </div>
     </Provider>
   );

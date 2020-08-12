@@ -7,7 +7,13 @@ import SubmitBtn from "../components/FreeMasterList/SubmitBtn";
 
 import EmptyList from "../components/FreeMasterList/EmptyList";
 
-function FreeMastersList({ submitHandler, isLoad, suitableMasters, backTo, isMakeOrder }) {
+function FreeMastersList({
+  submitHandler,
+  isLoad,
+  suitableMasters,
+  backTo,
+  isMakeOrder,
+}) {
   if (suitableMasters.length === 0 || isMakeOrder) {
     return (
       <>

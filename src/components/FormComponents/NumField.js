@@ -11,7 +11,7 @@ const NumField = ({ max, min, id, value, chngHandler, name }) => (
       max={max}
       onChange={chngHandler || null}
       value={value}
-      name = {name}
+      name={name}
     />
   </div>
 );

@@ -1,4 +1,4 @@
 export const initialStateMasters = {
-    masters: [],
-    masterListIsLoad: false,
+  masters: [],
+  masterListIsLoad: false,
 };

@@ -16,7 +16,7 @@ function OrderForm({
   currentOrder,
   isLoadOrderForm,
   townsArr = [],
-  townsInOrderFormIsLoad
+  townsInOrderFormIsLoad,
 }) {
   function minDate() {
     let date = new Date();
@@ -24,12 +24,12 @@ function OrderForm({
       -2
     )}-${("0" + date.getDate()).slice(-2)}`;
   }
-  function maxDate(minDate){
+  function maxDate(minDate) {
     const datetime_regex = /(\d\d\d\d)-(\d\d)-(\d\d)/;
     const min_date_arr = datetime_regex.exec(minDate);
     min_date_arr.shift();
     min_date_arr[0] = +min_date_arr[0] + 1;
-    
+
     return min_date_arr.join("-");
   }
 
@@ -89,22 +89,22 @@ function OrderForm({
       </FormGroup>
       <FormGroup isRow={false}>
         <div className="mb-2 font-weight-bold">Choose town</div>
-        {townsInOrderFormIsLoad ?
-        "Loading...":
-        townsArr.map((item) => (
-          <div key={item.id + 1} className="form-check-inline">
-            <RadioBtn
-              id={item.name}
-              value={item.name}
-              name={"town"}
-              chngHandler={changeHandler}
-            >
-              <Label forId={item.name} isFontWeight={false}>
-                {item.name}
-              </Label>
-            </RadioBtn>
-          </div>
-        ))}
+        {townsInOrderFormIsLoad
+          ? "Loading..."
+          : townsArr.map((item) => (
+              <div key={item.id + 1} className="form-check-inline">
+                <RadioBtn
+                  id={item.name}
+                  value={item.name}
+                  name={"town"}
+                  chngHandler={changeHandler}
+                >
+                  <Label forId={item.name} isFontWeight={false}>
+                    {item.name}
+                  </Label>
+                </RadioBtn>
+              </div>
+            ))}
       </FormGroup>
       <FormGroup isRow={false}>
         <div className="mb-2 font-weight-bold">
@@ -115,7 +115,7 @@ function OrderForm({
         <DateField
           name={"date"}
           min={currDate}
-          max = {maxDate(currDate)}
+          max={maxDate(currDate)}
           chngHandler={changeHandler}
           value={currentOrder.date || ""}
         />

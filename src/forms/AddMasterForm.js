@@ -12,15 +12,19 @@ import Label from "../components/FormComponents/Label";
 import { SERVERDOMAIN } from "../services/serverUrls";
 
 import { addNewMaster } from "../store/adminPanel/masters/actions";
-import {changeAddNewMasterFormIsLoad, changeSuccessModalDataAdmin, changeModalWarningDataAdmin} from "../store/adminPanel/services/actions";
-import {townsInit} from "../store/adminPanel/towns/actions";
+import {
+  changeAddNewMasterFormIsLoad,
+  changeSuccessModalDataAdmin,
+  changeModalWarningDataAdmin,
+} from "../store/adminPanel/services/actions";
+import { townsInit } from "../store/adminPanel/towns/actions";
 
-function AddMasterForm({history}) {
-  const state = useSelector(state=>{
+function AddMasterForm({ history }) {
+  const state = useSelector((state) => {
     return {
       newMasterFormIsLoad: state.main_adminPanel_reduser.newMasterFormIsLoad,
-      townsArr: state.town_reduser.towns
-    }
+      townsArr: state.town_reduser.towns,
+    };
   });
   const dispatch = useDispatch();
 
@@ -53,11 +57,17 @@ function AddMasterForm({history}) {
         dispatch(changeAddNewMasterFormIsLoad(false));
         if (data.success) {
           dispatch(addNewMaster(data.payload));
-          dispatch(changeSuccessModalDataAdmin({msg: data.msg, backBtnTxt: "Back to masters list", backTo: "/admin/mastersList"}));
+          dispatch(
+            changeSuccessModalDataAdmin({
+              msg: data.msg,
+              backBtnTxt: "Back to masters list",
+              backTo: "/admin/mastersList",
+            })
+          );
           history.push("/admin");
           document.getElementById("callSuccessModalBtn").click();
         } else {
-          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          dispatch(changeModalWarningDataAdmin({ msg: data.msg }));
           document.getElementById("callWarningModalBtn").click();
         }
       })
@@ -105,13 +115,12 @@ function AddMasterForm({history}) {
         </div>
       </FormGroup>
       <SubscribeBtn isLoad={state.newMasterFormIsLoad} value={"Add"} />
-      
     </form>
   );
 }
 
 AddMasterForm.propTypes = {
-  history: PropTypes.object
+  history: PropTypes.object,
 };
 
 export default AddMasterForm;

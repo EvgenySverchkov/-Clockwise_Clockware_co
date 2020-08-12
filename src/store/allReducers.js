@@ -15,5 +15,5 @@ export default combineReducers({
   main_adminPanel_reduser,
   client_order_reduser,
   client_services,
-  client_towns_reduser
+  client_towns_reduser,
 });

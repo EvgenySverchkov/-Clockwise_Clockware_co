@@ -2,17 +2,20 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import {updateMasterInState} from "../store/adminPanel/masters/actions";
+import { updateMasterInState } from "../store/adminPanel/masters/actions";
 import putDataToServer from "../components/AdminScreen/services/putDataToServer";
-import {changeSuccessModalDataAdmin, changeModalWarningDataAdmin} from "../store/adminPanel/services/actions";
+import {
+  changeSuccessModalDataAdmin,
+  changeModalWarningDataAdmin,
+} from "../store/adminPanel/services/actions";
 
 import EditForm from "./EditForm";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 
-const EditMasterForm = ({match,history}) => {
-  const state = useSelector(state=>{
-    return {mastersArr: state.master_reducer.masters}
+const EditMasterForm = ({ match, history }) => {
+  const state = useSelector((state) => {
+    return { mastersArr: state.master_reducer.masters };
   });
   const dispatch = useDispatch();
 
@@ -24,12 +27,18 @@ const EditMasterForm = ({match,history}) => {
     )
       .then((data) => {
         if (data.success) {
-          dispatch(changeSuccessModalDataAdmin({msg: data.msg, backBtnTxt: "Go to the list of masters", backTo: "/admin/mastersList"}));
+          dispatch(
+            changeSuccessModalDataAdmin({
+              msg: data.msg,
+              backBtnTxt: "Go to the list of masters",
+              backTo: "/admin/mastersList",
+            })
+          );
           document.getElementById("callSuccessModalBtn").click();
           dispatch(updateMasterInState(data));
           history.push("/admin");
         } else {
-          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          dispatch(changeModalWarningDataAdmin({ msg: data.msg }));
           document.getElementById("callWarningModalBtn").click();
         }
       })
@@ -39,7 +48,9 @@ const EditMasterForm = ({match,history}) => {
     <EditForm
       id={+match.params.id}
       handler={editMasterHandler}
-      arrFromState={state.mastersArr.map(item=>{return {...item, towns: ""}})}
+      arrFromState={state.mastersArr.map((item) => {
+        return { ...item, towns: "" };
+      })}
     />
   );
 };

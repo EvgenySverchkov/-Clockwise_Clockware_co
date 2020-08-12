@@ -5,8 +5,8 @@ const TimeField = ({ name, max, min, chngHandler, value }) => (
   <input
     type="time"
     name={name}
-    max={max||null}
-    min={min||null}
+    max={max || null}
+    min={min || null}
     onChange={chngHandler}
     value={value}
     required

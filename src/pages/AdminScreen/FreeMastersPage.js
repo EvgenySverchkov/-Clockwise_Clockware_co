@@ -3,18 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 
 import FreeMastersForm from "../../forms/FreeMastersForm";
 
-import {addCurrentOrderToState} from "../../store/adminPanel/orders/actions";
-import {changeMasterListIsLoad, changeSuccessModalDataAdmin, changeModalWarningDataAdmin} from "../../store/adminPanel/services/actions";
+import { addCurrentOrderToState } from "../../store/adminPanel/orders/actions";
+import {
+  changeMasterListIsLoad,
+  changeSuccessModalDataAdmin,
+  changeModalWarningDataAdmin,
+} from "../../store/adminPanel/services/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import sendConfirmEmail from "../../services/mailSendler";
 
 function MastersList(props) {
-  const state = useSelector(state=>{
+  const state = useSelector((state) => {
     return {
       suitableMasters: state.master_reducer.suitableMasters,
-      masterListIsLoad: state.main_adminPanel_reduser.masterListIsLoad
-    }
+      masterListIsLoad: state.main_adminPanel_reduser.masterListIsLoad,
+    };
   });
   const dispatch = useDispatch();
 
@@ -27,7 +31,7 @@ function MastersList(props) {
       }
     }
     if (!masterId) {
-      dispatch(changeModalWarningDataAdmin({msg: "Please, choose one!!!"}))
+      dispatch(changeModalWarningDataAdmin({ msg: "Please, choose one!!!" }));
       document.getElementById("callWarningModalBtn").click();
       return false;
     }
@@ -68,13 +72,19 @@ function MastersList(props) {
       .then((data) => {
         dispatch(changeMasterListIsLoad(false));
         if (data.success) {
-          dispatch(changeSuccessModalDataAdmin({msg: data.msg, backBtnTxt: "Go to the list of orders", backTo: "/admin/ordersList"}));
+          dispatch(
+            changeSuccessModalDataAdmin({
+              msg: data.msg,
+              backBtnTxt: "Go to the list of orders",
+              backTo: "/admin/ordersList",
+            })
+          );
           props.history.push("/admin");
           document.getElementById("callSuccessModalBtn").click();
           dispatch(addCurrentOrderToState({}));
-          sendConfirmEmail(`${SERVERDOMAIN}/send_message`, data.payload.email);
+          sendConfirmEmail(`${SERVERDOMAIN}/send_message`, data.payload);
         } else {
-          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          dispatch(changeModalWarningDataAdmin({ msg: data.msg }));
           document.getElementById("callWarningModalBtn").click();
         }
       })

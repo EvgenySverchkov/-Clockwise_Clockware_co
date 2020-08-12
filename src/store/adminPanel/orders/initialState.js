@@ -1,4 +1,4 @@
 export const initialStateOrders = {
-    ordersArr: [],
-    currentOrder: {},
-  }
+  ordersArr: [],
+  currentOrder: {},
+};

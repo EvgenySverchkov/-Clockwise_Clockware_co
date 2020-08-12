@@ -2,14 +2,17 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-import { changeAuthIsLoad, toogleAuth, changeModalWarningDataAdmin } from "../../store/adminPanel/services/actions";
-
+import {
+  changeAuthIsLoad,
+  toogleAuth,
+  changeModalWarningDataAdmin,
+} from "../../store/adminPanel/services/actions";
 
 import LoginForm from "../../forms/LoginForm";
 
 function LoginPage(props) {
-  const state = useSelector(state=>{
-    return {authIsLoad: state.main_adminPanel_reduser.authIsLoad}
+  const state = useSelector((state) => {
+    return { authIsLoad: state.main_adminPanel_reduser.authIsLoad };
   });
   const dispatch = useDispatch();
 
@@ -34,14 +37,12 @@ function LoginPage(props) {
           props.history.push("/admin/ordersList");
           dispatch(toogleAuth(true));
         } else {
-          dispatch(changeModalWarningDataAdmin({msg: data.msg}))
+          dispatch(changeModalWarningDataAdmin({ msg: data.msg }));
           document.getElementById("callWarningModalBtn").click();
         }
       });
   }
-  return (
-    <LoginForm submitHandler={handler} authIsLoad={state.authIsLoad} />
-  );
+  return <LoginForm submitHandler={handler} authIsLoad={state.authIsLoad} />;
 }
 
 export default LoginPage;
