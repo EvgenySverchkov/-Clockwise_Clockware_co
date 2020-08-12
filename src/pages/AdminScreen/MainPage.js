@@ -13,9 +13,9 @@ import MastersList from "../../components/AdminScreen/ItemsLists/MastersList";
 import OrdersList from "../../components/AdminScreen/ItemsLists/OrdersList";
 import TownsList from "../../components/AdminScreen/ItemsLists/TownsList";
 
-import AddNewTownForm from "../../forms/AddNewTownForm";
-import AddMasterForm from "../../forms/AddMasterForm";
-import AddNewOrderForm from "../../forms/AddNewOrderForm";
+import AddNewTownPage from "./AddNewTownPage";
+import AddMasterPage from "./AddMasterPage";
+import AddNewOrderPage from "./AddNewOrderPage";
 
 import EditMasterForm from "../../forms/EditMasterForm";
 import EditOrderForm from "../../forms/EditOrderForm";
@@ -61,9 +61,9 @@ function AdminSrcreen(props) {
             <Route path="/admin/ordersList" component={OrdersList} />
             <Route path="/admin/mastersList" component={MastersList} />
             <Route path="/admin/townsList" component={TownsList} />
-            <Route path="/admin/addOrderForm" component={AddNewOrderForm} />
-            <Route path="/admin/addMasterForm" component={AddMasterForm} />
-            <Route path="/admin/addTownForms" component={AddNewTownForm} />
+            <Route path="/admin/addOrderForm" component={AddNewOrderPage} />
+            <Route path="/admin/addMasterForm" component={AddMasterPage} />
+            <Route path="/admin/addTownForms" component={AddNewTownPage} />
             <Route path="/admin/editMaster/:id" component={EditMasterForm} />
             <Route path="/admin/editTown/:id" component={EditTownForm} />
             <Route path="/admin/editOrder/:id" component={EditOrderForm} />

@@ -2,22 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 
-import postData from "../components/AdminScreen/services/postData";
-import FormGroup from "../components/FormComponents/FormGroup";
-import Label from "../components/FormComponents/Label";
-import TextField from "../components/FormComponents/TextField";
-import Button from "../components/FormComponents/Button";
+import postData from "../../components/AdminScreen/services/postData";
+import FormGroup from "../../components/FormComponents/FormGroup";
+import Label from "../../components/FormComponents/Label";
+import TextField from "../../components/FormComponents/TextField";
+import Button from "../../components/FormComponents/Button";
 
-import { SERVERDOMAIN } from "../services/serverUrls";
+import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import { addNewTown } from "../store/adminPanel/towns/actions";
+import { addNewTown } from "../../store/adminPanel/towns/actions";
 import {
   changeAddMewTownFormIsLoad,
   changeSuccessModalDataAdmin,
   changeModalWarningDataAdmin,
-} from "../store/adminPanel/services/actions";
+} from "../../store/adminPanel/services/actions";
 
-function AddNewTownForm({ history }) {
+function AddNewTownPage({ history }) {
   const state = useSelector((state) => {
     return {
       newTownFormIsLoad: state.main_adminPanel_reduser.newTownFormIsLoad,
@@ -66,8 +66,8 @@ function AddNewTownForm({ history }) {
   );
 }
 
-AddNewTownForm.propTypes = {
+AddNewTownPage.propTypes = {
   history: PropTypes.object,
 };
 
-export default AddNewTownForm;
+export default AddNewTownPage;

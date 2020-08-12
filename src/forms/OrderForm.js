@@ -25,12 +25,11 @@ function OrderForm({
     )}-${("0" + date.getDate()).slice(-2)}`;
   }
   function maxDate(minDate) {
-    const datetime_regex = /(\d\d\d\d)-(\d\d)-(\d\d)/;
-    const min_date_arr = datetime_regex.exec(minDate);
-    min_date_arr.shift();
-    min_date_arr[0] = +min_date_arr[0] + 1;
-
-    return min_date_arr.join("-");
+    let date = new Date(minDate)
+    date.setFullYear(date.getFullYear()+1);
+    return `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
+      -2
+    )}-${("0" + date.getDate()).slice(-2)}`;
   }
 
   const currDate = minDate();

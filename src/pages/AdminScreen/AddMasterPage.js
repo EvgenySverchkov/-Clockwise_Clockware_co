@@ -2,24 +2,24 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 
-import postData from "../components/AdminScreen/services/postData";
-import SubscribeBtn from "../components/FormComponents/Button";
+import postData from "../../components/AdminScreen/services/postData";
+import SubscribeBtn from "../../components/FormComponents/Button";
 
-import FormGroup from "../components/FormComponents/FormGroup";
-import NameField from "../components/FormComponents/TextField";
-import NumField from "../components/FormComponents/NumField";
-import Label from "../components/FormComponents/Label";
-import { SERVERDOMAIN } from "../services/serverUrls";
+import FormGroup from "../../components/FormComponents/FormGroup";
+import NameField from "../../components/FormComponents/TextField";
+import NumField from "../../components/FormComponents/NumField";
+import Label from "../../components/FormComponents/Label";
+import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import { addNewMaster } from "../store/adminPanel/masters/actions";
+import { addNewMaster } from "../../store/adminPanel/masters/actions";
 import {
   changeAddNewMasterFormIsLoad,
   changeSuccessModalDataAdmin,
   changeModalWarningDataAdmin,
-} from "../store/adminPanel/services/actions";
-import { townsInit } from "../store/adminPanel/towns/actions";
+} from "../../store/adminPanel/services/actions";
+import { townsInit } from "../../store/adminPanel/towns/actions";
 
-function AddMasterForm({ history }) {
+function AddMasterPage({ history }) {
   const state = useSelector((state) => {
     return {
       newMasterFormIsLoad: state.main_adminPanel_reduser.newMasterFormIsLoad,
@@ -119,8 +119,8 @@ function AddMasterForm({ history }) {
   );
 }
 
-AddMasterForm.propTypes = {
+AddMasterPage.propTypes = {
   history: PropTypes.object,
 };
 
-export default AddMasterForm;
+export default AddMasterPage;

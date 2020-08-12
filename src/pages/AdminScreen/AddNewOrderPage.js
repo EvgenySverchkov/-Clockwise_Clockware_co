@@ -2,19 +2,19 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { townsInit } from "../store/adminPanel/towns/actions";
-import { addSuitableMasters } from "../store/adminPanel/masters/actions";
-import { addCurrentOrderToState } from "../store/adminPanel/orders/actions";
+import { townsInit } from "../../store/adminPanel/towns/actions";
+import { addSuitableMasters } from "../../store/adminPanel/masters/actions";
+import { addCurrentOrderToState } from "../../store/adminPanel/orders/actions";
 import {
   changeOrderFormIsLoad,
   changeModalWarningDataAdmin,
-} from "../store/adminPanel/services/actions";
+} from "../../store/adminPanel/services/actions";
 
-import { SERVERDOMAIN } from "../services/serverUrls";
+import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import OrderForm from "./OrderForm";
+import OrderForm from "../../forms/OrderForm";
 
-function OrderFormAdmin({ history }) {
+function AddNewOrderPage({ history }) {
   const state = useSelector((state) => {
     return {
       currentOrder: state.orders_reducer.currentOrder,
@@ -135,8 +135,8 @@ function OrderFormAdmin({ history }) {
   );
 }
 
-OrderForm.propTypes = {
+AddNewOrderPage.propTypes = {
   submitHandler: PropTypes.func,
 };
 
-export default OrderFormAdmin;
+export default AddNewOrderPage;

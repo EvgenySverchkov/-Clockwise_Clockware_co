@@ -9,6 +9,8 @@ import AdminScreen from "./pages/AdminScreen";
 
 import { initialState } from "./store/initialState";
 
+import "./App.scss";
+
 const store = createStore(
   reducers,
   initialState,
@@ -28,16 +30,16 @@ function App(props) {
           <Redirect exact to="/client" from="/" />
         </Switch>
         <button
+          className = "callModalBtn"
           data-toggle="modal"
           data-target="#successModal"
           id="callSuccessModalBtn"
-          style={{ display: "none" }}
         ></button>
         <button
+          className = "callModalBtn"
           data-toggle="modal"
           data-target="#warningModal"
           id="callWarningModalBtn"
-          style={{ display: "none" }}
         ></button>
       </div>
     </Provider>

@@ -119,12 +119,11 @@ function EditForm({ id, handler, arrFromState }) {
     )}-${("0" + date.getDate()).slice(-2)}`;
   }
   function maxDate(minDate) {
-    const datetime_regex = /(\d\d\d\d)-(\d\d)-(\d\d)/;
-    const min_date_arr = datetime_regex.exec(minDate);
-    min_date_arr.shift();
-    min_date_arr[0] = +min_date_arr[0] + 1;
-
-    return min_date_arr.join("-");
+    let date = new Date(minDate)
+    date.setFullYear(date.getFullYear()+1);
+    return `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
+      -2
+    )}-${("0" + date.getDate()).slice(-2)}`;
   }
 
   const currDate = minDate();
@@ -132,7 +131,7 @@ function EditForm({ id, handler, arrFromState }) {
     switch (item) {
       case "towns":
         return (
-          <FormGroup key={item}>
+          <FormGroup key={item} isRow={false}>
             <Label>Choose towns</Label>
             <div>
               {state.townsArr.map((item) => (
@@ -157,8 +156,8 @@ function EditForm({ id, handler, arrFromState }) {
         return null;
       case "masterId":
         return (
-          <FormGroup key={item}>
-            <Label forId={item}>Choose master</Label>
+          <FormGroup key={item} isRow={false}>
+            <div className="mb-2 font-weight-bold">Choose master</div>
             <ul className="list-group">
               {mastersState.length === 0 ? (
                 <li className="list-group-item">List is empty (choose town)</li>
@@ -189,8 +188,8 @@ function EditForm({ id, handler, arrFromState }) {
         );
       case "size":
         return (
-          <FormGroup key={item}>
-            <Label forId={item}>Choose {item}</Label>
+          <FormGroup key={item} isRow={false}>
+            <div className="mb-2 font-weight-bold">Choose size of clock</div>
             <RadioBtn
               id={"smallSize"}
               value={"small"}
@@ -225,7 +224,7 @@ function EditForm({ id, handler, arrFromState }) {
         );
       case "date":
         return (
-          <FormGroup key={item}>
+          <FormGroup key={item} isRow={false}>
             <Label forId={item}>Enter {item}</Label>
             <DateField
               name={"date"}
@@ -238,7 +237,7 @@ function EditForm({ id, handler, arrFromState }) {
         );
       case "time":
         return (
-          <FormGroup key={item}>
+          <FormGroup key={item} isRow={false}>
             <Label forId={item}>Enter {item}</Label>
             <TimeField
               name={"time"}
@@ -263,8 +262,8 @@ function EditForm({ id, handler, arrFromState }) {
         );
       case "town":
         return (
-          <FormGroup key={item}>
-            <Label forId={item}>Choose {item}</Label>
+          <FormGroup key={item} isRow={false}>
+            <div className="mb-2 font-weight-bold">Choose town</div>
             {state.townsInOrderFormIsLoad
               ? "Loading..."
               : state.townsArr.map((item) => (
@@ -285,7 +284,7 @@ function EditForm({ id, handler, arrFromState }) {
         );
       default:
         return (
-          <FormGroup key={item}>
+          <FormGroup key={item} isRow={true}>
             <Label forId={item}>Enter {item}</Label>
             <TextField
               id={item}
