@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CheckBtn = ({ id, name }) => (
+const CheckBtn = ({ id, name, changeHandler, nm }) => (
 <div key={id + 1} className="form-check-inline">
     <label className="form-check-label" htmlFor={name}>
       <input
@@ -9,6 +9,8 @@ const CheckBtn = ({ id, name }) => (
         className="form-check-input towns"
         id={name}
         value={name}
+        name = {nm}
+        onChange = {changeHandler}
       />
       {name}
     </label>

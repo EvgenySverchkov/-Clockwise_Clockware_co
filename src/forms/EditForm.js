@@ -7,11 +7,13 @@ import NumField from "../components/FormComponents/NumField";
 import TextField from "../components/FormComponents/TextField";
 import FormGroup from "../components/FormComponents/FormGroup";
 import Button from "../components/FormComponents/Button";
-import RadioBtn from "../components/FormComponents/RadioBtn";
 import TimeField from "../components/FormComponents/TimeField";
 import DateField from "../components/FormComponents/DateField";
+
 import ChooseClockSizeField from "../components/CompleteFormFields/ChooseClockSizeField";
 import ChooseTownsField from "../components/CompleteFormFields/ChooseTownField";
+import SelectTownsField from "../components/CompleteFormFields/SelectTownsField";
+import TextFieldWithLabel from "../components/CompleteFormFields/TextFieldWithLabel";
 
 import { townsInit } from "../store/adminPanel/towns/actions";
 import { changeTownsFromOrderFormIsLoad } from "../store/clientSide/services/actions";
@@ -132,28 +134,7 @@ function EditForm({ id, handler, arrFromState }) {
   function componentSelector(item) {
     switch (item) {
       case "towns":
-        return (
-          <FormGroup key={item} isRow={false}>
-            <Label>Choose towns</Label>
-            <div>
-              {state.townsArr.map((item) => (
-                <div key={item.id + 1} className="form-check-inline">
-                  <label className="form-check-label" htmlFor={item.name}>
-                    <input
-                      type="checkbox"
-                      className="form-check-input towns"
-                      id={item.name}
-                      value={item.name}
-                      name="towns"
-                      onChange={changeValue}
-                    />
-                    {item.name}
-                  </label>
-                </div>
-              ))}
-            </div>
-          </FormGroup>
-        );
+        return <SelectTownsField townsArr = {state.townsArr} key = {item} changeHandler={changeValue}/>;
       case "endTime":
         return null;
       case "masterId":
@@ -239,15 +220,12 @@ function EditForm({ id, handler, arrFromState }) {
         );
       default:
         return (
-          <FormGroup key={item} isRow={true}>
-            <Label forId={item}>Enter {item}</Label>
-            <TextField
-              id={item}
-              name={item}
-              value={stateObj[item] || ""}
-              chngHandler={changeValue}
-            />
-          </FormGroup>
+          <TextFieldWithLabel 
+            fieldName={item} 
+            changeHandler = {changeValue} 
+            value = {stateObj[item] || ""}
+            key = {item}
+          />
         );
     }
   }

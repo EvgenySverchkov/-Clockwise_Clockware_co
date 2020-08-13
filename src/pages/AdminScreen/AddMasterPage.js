@@ -9,7 +9,8 @@ import FormGroup from "../../components/FormComponents/FormGroup";
 import NameField from "../../components/FormComponents/TextField";
 import NumField from "../../components/FormComponents/NumField";
 import Label from "../../components/FormComponents/Label";
-import CheckBtn from "../../components/FormComponents/CheckBtn";
+
+import SelectTownsField from "../../components/CompleteFormFields/SelectTownsField";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -98,14 +99,7 @@ function AddMasterPage({ history }) {
         <Label forId={"name"}>Enter name</Label>
         <NameField id={"name"} name={"name"} />
       </FormGroup>
-      <FormGroup isRow={false}>
-        <div className="mb-2 font-weight-bold">Choose towns</div>
-        <div>
-          {state.townsArr.map((item) => (
-            <CheckBtn name = {item.name} id = {item.id}/>
-          ))}
-        </div>
-      </FormGroup>
+      <SelectTownsField townsArr = {state.townsArr}/>
       <SubscribeBtn isLoad={state.newMasterFormIsLoad} value={"Add"} />
     </form>
   );
