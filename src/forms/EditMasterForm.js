@@ -15,7 +15,7 @@ import { SERVERDOMAIN } from "../services/serverUrls";
 
 const EditMasterForm = ({ match, history }) => {
   const state = useSelector((state) => {
-    return { mastersArr: state.master_reducer.masters };
+    return { mastersArr: state.masterReducer.masters };
   });
   const dispatch = useDispatch();
 

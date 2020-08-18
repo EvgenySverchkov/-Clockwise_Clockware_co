@@ -14,10 +14,10 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 function MastersList() {
   const state = useSelector((state) => {
     return {
-      suitableMasters: state.client_order_reduser.suitableMasters,
-      currentOrder: state.client_order_reduser.currentOrder,
-      masterListIsLoad: state.client_services.masterListIsLoad,
-      isAuth: state.client_services.isAuth,
+      suitableMasters: state.clientOrderReduser.suitableMasters,
+      currentOrder: state.clientOrderReduser.currentOrder,
+      masterListIsLoad: state.clientServices.masterListIsLoad,
+      isAuth: state.clientServices.isAuth,
     };
   });
   const dispatch = useDispatch();

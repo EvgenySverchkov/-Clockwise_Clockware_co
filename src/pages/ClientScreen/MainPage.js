@@ -15,8 +15,8 @@ import WarningModal from "../WarningModal";
 function ClientSrcreen({ history }) {
   const state = useSelector((state) => {
     return {
-      modalSuccesData: state.client_services.modalSuccesData,
-      modalWarningData: state.client_services.modalWarningData,
+      modalSuccesData: state.clientServices.modalSuccesData,
+      modalWarningData: state.clientServices.modalWarningData,
     };
   });
 

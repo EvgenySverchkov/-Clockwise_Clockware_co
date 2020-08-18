@@ -19,7 +19,7 @@ import Button from "../../components/FormComponents/Button";
 
 function RegistrationForm({ history }) {
   const state = useSelector((state) => {
-    return { signUpIsLoad: state.client_services.signUpIsLoad };
+    return { signUpIsLoad: state.clientServices.signUpIsLoad };
   });
   const dispatch = useDispatch();
 

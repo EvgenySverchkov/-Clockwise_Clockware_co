@@ -16,8 +16,8 @@ import { SERVERDOMAIN } from "../../../services/serverUrls";
 const MastersList = ({ history }) => {
   const state = useSelector((state) => {
     return {
-      mastersArr: state.master_reducer.masters,
-      listIsLoad: state.main_adminPanel_reduser.listIsLoad,
+      mastersArr: state.masterReducer.masters,
+      listIsLoad: state.mainAdminPanelReduser.listIsLoad,
     };
   });
   const dispatch = useDispatch();

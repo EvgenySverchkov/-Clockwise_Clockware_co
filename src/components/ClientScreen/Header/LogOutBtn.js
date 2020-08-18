@@ -7,7 +7,7 @@ import { toggleAuth } from "../../../store/clientSide/services/actions";
 
 function LogOutBtn() {
   const state = useSelector((state) => {
-    return { currentOrder: state.orders_reducer.currentOrder };
+    return { currentOrder: state.ordersReducer.currentOrder };
   });
   const dispatch = useDispatch();
 

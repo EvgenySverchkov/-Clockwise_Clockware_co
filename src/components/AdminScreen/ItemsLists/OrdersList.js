@@ -17,8 +17,8 @@ import { SERVERDOMAIN } from "../../../services/serverUrls";
 const OrdersList = ({ history }) => {
   const state = useSelector((state) => {
     return {
-      ordersArr: state.orders_reducer.ordersArr,
-      listIsLoad: state.main_adminPanel_reduser.listIsLoad,
+      ordersArr: state.ordersReducer.ordersArr,
+      listIsLoad: state.mainAdminPanelReduser.listIsLoad,
     };
   });
   const dispatch = useDispatch();

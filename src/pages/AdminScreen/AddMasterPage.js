@@ -25,8 +25,8 @@ import { townsInit } from "../../store/adminPanel/towns/actions";
 function AddMasterPage({ history }) {
   const state = useSelector((state) => {
     return {
-      newMasterFormIsLoad: state.main_adminPanel_reduser.newMasterFormIsLoad,
-      townsArr: state.town_reduser.towns,
+      newMasterFormIsLoad: state.mainAdminPanelReduser.newMasterFormIsLoad,
+      townsArr: state.townReduser.towns,
     };
   });
   const dispatch = useDispatch();

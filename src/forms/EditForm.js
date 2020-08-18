@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 import Label from "../components/FormComponents/Label";
 import NumField from "../components/FormComponents/NumField";
-import TextField from "../components/FormComponents/TextField";
 import FormGroup from "../components/FormComponents/FormGroup";
 import Button from "../components/FormComponents/Button";
 import TimeField from "../components/FormComponents/TimeField";
@@ -44,8 +43,8 @@ function EditForm({ id, handler, arrFromState }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
-      townsArr: state.town_reduser.towns,
-      townsInOrderFormIsLoad: state.client_services.townsInOrderFormIsLoad,
+      townsArr: state.townReduser.towns,
+      townsInOrderFormIsLoad: state.clientServices.townsInOrderFormIsLoad,
     };
   });
 

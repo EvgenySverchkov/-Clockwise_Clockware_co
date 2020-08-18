@@ -20,10 +20,10 @@ import OrderForm from "../../forms/OrderForm";
 function OrderFormClient({ history }) {
   const state = useSelector((state) => {
     return {
-      currentOrder: state.client_order_reduser.currentOrder,
-      orderFormIsLoad: state.client_services.orderFormIsLoad,
-      townsArr: state.client_towns_reduser.townsArr,
-      townsInOrderFormIsLoad: state.client_services.townsInOrderFormIsLoad,
+      currentOrder: state.clientOrderReduser.currentOrder,
+      orderFormIsLoad: state.clientServices.orderFormIsLoad,
+      townsArr: state.clientTownsReduser.townsArr,
+      townsInOrderFormIsLoad: state.clientServices.townsInOrderFormIsLoad,
     };
   });
   const dispatch = useDispatch();
@@ -144,15 +144,10 @@ function OrderFormClient({ history }) {
   }
 
   function isClientDateLargeThenCurrDate(clientDate) {
-    const datetime_regex = /(\d\d\d\d)-(\d\d)-(\d\d)/;
-    const client_date_arr = datetime_regex.exec(clientDate);
-    const client_datetime = new Date(
-      `${client_date_arr[3]}-${client_date_arr[2]}-${client_date_arr[1]}`
-    );
-
+    const clientDt = new Date(clientDate);
     const currDate = new Date();
 
-    if (currDate.getTime() > client_datetime.getTime()) {
+    if (currDate.getTime() > clientDt.getTime()) {
       return false;
     } else {
       return true;

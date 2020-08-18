@@ -15,7 +15,7 @@ import LoginForm from "../../forms/LoginForm";
 
 function LoginPage({ history }) {
   const state = useSelector((state) => {
-    return { loginIsLoad: state.client_services.loginIsLoad };
+    return { loginIsLoad: state.clientServices.loginIsLoad };
   });
   const dispatch = useDispatch();
 

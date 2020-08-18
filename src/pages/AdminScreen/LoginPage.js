@@ -12,7 +12,7 @@ import LoginForm from "../../forms/LoginForm";
 
 function LoginPage(props) {
   const state = useSelector((state) => {
-    return { authIsLoad: state.main_adminPanel_reduser.authIsLoad };
+    return { authIsLoad: state.mainAdminPanelReduser.authIsLoad };
   });
   const dispatch = useDispatch();
 

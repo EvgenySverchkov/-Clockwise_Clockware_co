@@ -7,7 +7,7 @@ import NavItem from "./NavItem";
 
 const NavList = () => {
   const state = useSelector((state) => {
-    return { isAuth: state.client_services.isAuth };
+    return { isAuth: state.clientServices.isAuth };
   });
   return (
     <>

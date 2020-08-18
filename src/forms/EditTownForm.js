@@ -15,7 +15,7 @@ import { SERVERDOMAIN } from "../services/serverUrls";
 
 const EditTownForm = ({ match, history }) => {
   const state = useSelector((state) => {
-    return { townsArr: state.town_reduser.towns };
+    return { townsArr: state.townReduser.towns };
   });
   const dispatch = useDispatch();
 

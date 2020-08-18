@@ -15,7 +15,7 @@ import { SERVERDOMAIN } from "../services/serverUrls";
 
 const EditOrderForm = ({ match, history }) => {
   const state = useSelector((state) => {
-    return { ordersArr: state.orders_reducer.ordersArr };
+    return { ordersArr: state.ordersReducer.ordersArr };
   });
   const dispatch = useDispatch();
 

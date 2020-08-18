@@ -16,8 +16,8 @@ import sendConfirmEmail from "../../services/mailSendler";
 function MastersList(props) {
   const state = useSelector((state) => {
     return {
-      suitableMasters: state.master_reducer.suitableMasters,
-      masterListIsLoad: state.main_adminPanel_reduser.masterListIsLoad,
+      suitableMasters: state.masterReducer.suitableMasters,
+      masterListIsLoad: state.mainAdminPanelReduser.masterListIsLoad,
     };
   });
   const dispatch = useDispatch();

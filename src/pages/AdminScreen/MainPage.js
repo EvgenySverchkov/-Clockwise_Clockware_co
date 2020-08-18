@@ -30,13 +30,13 @@ import WarningModal from "../WarningModal";
 function AdminSrcreen(props) {
   const state = useSelector((state) => {
     return {
-      currItemForModal: state.main_adminPanel_reduser.currItemForModal,
-      isAuth: state.main_adminPanel_reduser.isAuth,
-      currentOrder: state.orders_reducer.currentOrder,
-      suitableMasters: state.orders_reducer.suitableMasters,
-      modalDataAdmin: state.main_adminPanel_reduser.modalDataAdmin,
+      currItemForModal: state.mainAdminPanelReduser.currItemForModal,
+      isAuth: state.mainAdminPanelReduser.isAuth,
+      currentOrder: state.ordersReducer.currentOrder,
+      suitableMasters: state.ordersReducer.suitableMasters,
+      modalDataAdmin: state.mainAdminPanelReduser.modalDataAdmin,
       modalWarningDataAdmin:
-        state.main_adminPanel_reduser.modalWarningDataAdmin,
+        state.mainAdminPanelReduser.modalWarningDataAdmin,
     };
   });
   const dispatch = useDispatch();

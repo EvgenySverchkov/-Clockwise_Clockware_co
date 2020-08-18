@@ -17,9 +17,9 @@ import OrderForm from "../../forms/OrderForm";
 function AddNewOrderPage({ history }) {
   const state = useSelector((state) => {
     return {
-      currentOrder: state.orders_reducer.currentOrder,
-      townsArr: state.town_reduser.towns,
-      orderFormIsLoad: state.main_adminPanel_reduser.orderFormIsLoad,
+      currentOrder: state.ordersReducer.currentOrder,
+      townsArr: state.townReduser.towns,
+      orderFormIsLoad: state.mainAdminPanelReduser.orderFormIsLoad,
     };
   });
   const dispatch = useDispatch();

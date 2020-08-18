@@ -20,7 +20,7 @@ import {
 function AddNewTownPage({ history }) {
   const state = useSelector((state) => {
     return {
-      newTownFormIsLoad: state.main_adminPanel_reduser.newTownFormIsLoad,
+      newTownFormIsLoad: state.mainAdminPanelReduser.newTownFormIsLoad,
     };
   });
   const dispatch = useDispatch();
