@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 import {
   initOrders,
   deleteOrderFromState,
-} from "../../../store/adminPanel/orders/actions";
+} from "../../../store/ordersManagement/actions";
 
-import { changeListIsLoad } from "../../../store/adminPanel/services/actions";
+import { changeListIsLoad } from "../../../store/adminModalWindows/actions";
 import deleteDataFromServer from "../services/deleteDataFromServer";
 
 import List from "../List";
@@ -18,7 +18,7 @@ const OrdersList = ({ history }) => {
   const state = useSelector((state) => {
     return {
       ordersArr: state.ordersReducer.ordersArr,
-      listIsLoad: state.mainAdminPanelReduser.listIsLoad,
+      listIsLoad: state.adminModalWindows.listIsLoad,
     };
   });
   const dispatch = useDispatch();

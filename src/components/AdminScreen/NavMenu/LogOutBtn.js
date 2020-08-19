@@ -1,14 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { toogleAuth } from "../../../store/adminPanel/services/actions";
+import { toogleAuthAdmin } from "../../../store/auth/actions";
 
 const LogOutBtn = () => {
   const dispatch = useDispatch();
 
   function handler() {
     sessionStorage.removeItem("token");
-    dispatch(toogleAuth(false));
+    dispatch(toogleAuthAdmin(false));
   }
   return (
     <div className="mr-1">

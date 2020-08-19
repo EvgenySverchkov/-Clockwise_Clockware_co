@@ -10,17 +10,18 @@ import Button from "../../components/FormComponents/Button";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import { addNewTown } from "../../store/adminPanel/towns/actions";
+import { addNewTown } from "../../store/townsManagement/actions";
 import {
-  changeAddMewTownFormIsLoad,
   changeSuccessModalDataAdmin,
   changeModalWarningDataAdmin,
-} from "../../store/adminPanel/services/actions";
+} from "../../store/adminModalWindows/actions";
+import { changeAddMewTownFormIsLoad } from "../../store/townsManagement/actions"
+
 
 function AddNewTownPage({ history }) {
   const state = useSelector((state) => {
     return {
-      newTownFormIsLoad: state.mainAdminPanelReduser.newTownFormIsLoad,
+      newTownFormIsLoad: state.townReduser.newTownFormIsLoad,
     };
   });
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ function AddNewTownPage({ history }) {
         <Label forId="town">Enter new town</Label>
         <TextField id={"town"} />
       </FormGroup>
-      <Button isLoad={state.newTownFormIsLoad} value={"Add town"} />
+      <Button loading={state.newTownFormIsLoad} value={"Add town"} />
     </form>
   );
 }

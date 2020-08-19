@@ -4,18 +4,18 @@ import PropTypes from "prop-types";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import { addCurrentOrderToState } from "../../store/clientSide/data/actions";
-import {
-  changeLoginIsLoad,
-  toggleAuth,
-  changeWarningModalData,
-} from "../../store/clientSide/services/actions";
+import { addCurrentOrderToState } from "../../store/orders/actions";
+import {changeWarningModalData} from "../../store/clientModalWindows/actions";
+
+import { changeClientLoginIsLoad } from "../../store/auth/actions"
+
+import { toogleAuthClient } from "../../store/auth/actions";
 
 import LoginForm from "../../forms/LoginForm";
 
 function LoginPage({ history }) {
   const state = useSelector((state) => {
-    return { loginIsLoad: state.clientServices.loginIsLoad };
+    return { loginIsLoad: state.authReducer.clientLoginIsLoad };
   });
   const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ function LoginPage({ history }) {
     let password = e.target.password.value;
     let newObj = { email: email, password: password };
 
-    dispatch(changeLoginIsLoad(true));
+    dispatch(changeClientLoginIsLoad(true));
     fetch(`${SERVERDOMAIN}/login`, {
       method: "POST",
       headers: {
@@ -35,7 +35,7 @@ function LoginPage({ history }) {
     })
       .then((data) => data.json())
       .then((data) => {
-        dispatch(changeLoginIsLoad(false));
+        dispatch(changeClientLoginIsLoad(false));
         if (!data.success) {
           dispatch(
             changeWarningModalData({
@@ -47,7 +47,7 @@ function LoginPage({ history }) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
           dispatch(addCurrentOrderToState({ email: data.user.email }));
-          dispatch(toggleAuth(true));
+          dispatch(toogleAuthClient(true));
           history.push("/client");
         }
       });

@@ -3,10 +3,10 @@ import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { toogleAuth } from "../../store/adminPanel/services/actions";
-import { townsInit } from "../../store/adminPanel/towns/actions";
-import { initMasters } from "../../store/adminPanel/masters/actions";
-import { initOrders } from "../../store/adminPanel/orders/actions";
+import { toogleAuthAdmin } from "../../store/auth/actions";
+import { townsInit } from "../../store/townsManagement/actions";
+import { initMasters } from "../../store/masterManagement/actions";
+import { initOrders } from "../../store/ordersManagement/actions";
 import NavMenu from "../../components/AdminScreen/NavMenu";
 
 import MastersList from "../../components/AdminScreen/ItemsLists/MastersList";
@@ -30,13 +30,13 @@ import WarningModal from "../WarningModal";
 function AdminSrcreen(props) {
   const state = useSelector((state) => {
     return {
-      currItemForModal: state.mainAdminPanelReduser.currItemForModal,
-      isAuth: state.mainAdminPanelReduser.isAuth,
+      currItemForModal: state.adminModalWindows.currItemForModal,
+      isAuth: state.authReducer.isAuthAdmin,
       currentOrder: state.ordersReducer.currentOrder,
       suitableMasters: state.ordersReducer.suitableMasters,
-      modalDataAdmin: state.mainAdminPanelReduser.modalDataAdmin,
+      modalDataAdmin: state.adminModalWindows.modalDataAdmin,
       modalWarningDataAdmin:
-        state.mainAdminPanelReduser.modalWarningDataAdmin,
+        state.adminModalWindows.modalWarningDataAdmin,
     };
   });
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ function AdminSrcreen(props) {
   useEffect(function () {
     document.title = "AdminPanel - Clockwise Clockware";
     if (sessionStorage.getItem("token")) {
-      dispatch(toogleAuth(true));
+      dispatch(toogleAuthAdmin(true));
     } else {
       props.history.push("/admin");
       dispatch(initMasters([]));

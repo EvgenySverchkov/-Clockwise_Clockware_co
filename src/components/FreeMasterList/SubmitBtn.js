@@ -1,18 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SubmitBtn = ({ isLoad }) => (
+const SubmitBtn = ({ loading }) => (
   <div className="form-group float-right mt-3">
     <input
       type="submit"
-      value={isLoad ? "Loading..." : "Book now"}
+      value={loading ? "Loading..." : "Book now"}
       className="btn btn-primary"
     />
   </div>
 );
 
 SubmitBtn.propTypes = {
-  isLoad: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 export default SubmitBtn;

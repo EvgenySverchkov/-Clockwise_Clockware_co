@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import FreeMastersForm from "../../forms/FreeMastersForm";
 
-import { addCurrentOrderToState } from "../../store/adminPanel/orders/actions";
+import { addCurrentOrderToState } from "../../store/ordersManagement/actions";
 import {
-  changeMasterListIsLoad,
   changeSuccessModalDataAdmin,
   changeModalWarningDataAdmin,
-} from "../../store/adminPanel/services/actions";
+} from "../../store/adminModalWindows/actions";
+
+import {changeMasterListIsLoad} from "../../store/masterManagement/actions"
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import sendConfirmEmail from "../../services/mailSendler";
@@ -17,7 +18,7 @@ function MastersList(props) {
   const state = useSelector((state) => {
     return {
       suitableMasters: state.masterReducer.suitableMasters,
-      masterListIsLoad: state.mainAdminPanelReduser.masterListIsLoad,
+      masterListIsLoad: state.masterReducer.masterListIsLoad,
     };
   });
   const dispatch = useDispatch();

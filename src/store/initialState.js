@@ -1,18 +1,23 @@
-import { initialStateOrders } from "./adminPanel/orders/initialState";
-import { initialStateMasters } from "./adminPanel/masters/initialState";
-import { initialStateTowns } from "./adminPanel/towns/initialState";
-import { initialStateServices } from "./adminPanel/services/initialState";
+import { initialStateOrders } from "./ordersManagement/initialState";
+import { initialStateMasters } from "./masterManagement/initialState";
+import { initialStateTowns } from "./townsManagement/initialState";
+import { initialStateAdminModalWindows } from "./adminModalWindows/initialState";
 
-import { initialStateClientData } from "./clientSide/data/initialState";
-import { initialStateClientServices } from "./clientSide/services/initialState";
-import { initialStateClientTowns } from "./clientSide/towns/initialState";
+import { initialStateClientOrders } from "./orders/initialState";
+import { initialClientModalsWindows } from "./clientModalWindows/initialState";
+import { initialStateClientMasters } from "./masters/initialState";
+import { initialStateClientTowns } from "./towns/initialState";
 
+import { initialStateAuth } from "./auth/initialState";
+ 
 export const initialState = {
-  mainAdminPanelReduser: initialStateServices,
+  adminModalWindows: initialStateAdminModalWindows,
   ordersReducer: initialStateOrders,
   masterReducer: initialStateMasters,
   townReduser: initialStateTowns,
+  clientModalWindows: initialClientModalsWindows,
+  clientOrderReduser: initialStateClientOrders,
+  clientMastresReduser: initialStateClientMasters,
   clientTownsReduser: initialStateClientTowns,
-  clientServices: initialStateClientServices,
-  clientOrderReduser: initialStateClientData,
+  authReducer: initialStateAuth
 };

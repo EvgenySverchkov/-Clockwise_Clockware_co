@@ -1,31 +1,65 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
 import {
-  changeSignUpIsLoad,
   changeSuccessModalData,
   changeWarningModalData,
-} from "../../store/clientSide/services/actions";
+} from "../../store/clientModalWindows/actions";
+
+import {changeSignUpIsLoad} from "../../store/auth/actions"
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import FormGroup from "../../components/FormComponents/FormGroup";
-import Label from "../../components/FormComponents/Label";
-import TextField from "../../components/FormComponents/TextField";
-import EmailField from "../../components/FormComponents/EmailField";
-import PasswordField from "../../components/FormComponents/PasswordField";
-import Button from "../../components/FormComponents/Button";
+import SignUpForm from "../../forms/SignUpForm";
 
 function RegistrationForm({ history }) {
-  const state = useSelector((state) => {
-    return { signUpIsLoad: state.clientServices.signUpIsLoad };
-  });
   const dispatch = useDispatch();
 
-  function handler(e) {
+  function submitHandler(e) {
     e.preventDefault();
     const elem = e.target;
+    if(!elem.name.value || !elem.email.value || !elem.password.value ){
+      dispatch(
+        changeWarningModalData({
+          msg: "Please, fill all fields!",
+        })
+      );
+      document.getElementById("callWarningModalBtn").click();
+      return false;
+    }
+    if(elem.email){
+      if (!elem.email.value.match(/^\w+@[a-zA-Z_0-9]+?\.[a-zA-Z]{2,}$/)) {
+        dispatch(
+          changeWarningModalData({
+            msg: "Invalid email format. Please check your email!",
+          })
+        );
+        document.getElementById("callWarningModalBtn").click();
+        return false;
+      }
+      if (elem.email.value.toLowerCase().match(/admin/)) {
+        dispatch(
+          changeWarningModalData({
+            msg: "Your email cannot contain the word 'admin'",
+          })
+        );
+        document.getElementById("callWarningModalBtn").click();
+        return false;
+      }
+    }
+    if(elem.password){
+      if (elem.password.value.length < 4 || elem.password.value.length > 16) {
+        dispatch(
+          changeWarningModalData({
+            msg: "Password must not be less than 4 characters and must not be longer than 16 characters!",
+          })
+        );
+        document.getElementById("callWarningModalBtn").click();
+        return false;
+      }
+    }
+
     let newObj = {
       name: elem.name.value,
       email: elem.email.value,
@@ -62,23 +96,7 @@ function RegistrationForm({ history }) {
         }
       });
   }
-  return (
-    <form onSubmit={handler} className="mt-4 row justify-content-center">
-      <FormGroup isRow={true}>
-        <Label forId={"name"}>Enter your name</Label>
-        <TextField id={"name"} name={"name"} />
-      </FormGroup>
-      <FormGroup isRow={true}>
-        <Label forId={"email"}>Enter your email</Label>
-        <EmailField id={"email"} />
-      </FormGroup>
-      <FormGroup isRow={true}>
-        <Label forId={"password"}>Enter your password</Label>
-        <PasswordField id={"password"} />
-      </FormGroup>
-      <Button isLoad={state.signUpIsLoad} value={"Sign Up"} />
-    </form>
-  );
+  return <SignUpForm handler={submitHandler}/>;
 }
 
 RegistrationForm.propTypes = {

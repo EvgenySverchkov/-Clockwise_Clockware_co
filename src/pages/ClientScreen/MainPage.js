@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
-import { addCurrentOrderToState } from "../../store/clientSide/data/actions";
-import { toggleAuth } from "../../store/clientSide/services/actions";
+import { addCurrentOrderToState } from "../../store/orders/actions";
+import { toogleAuthClient } from "../../store/auth/actions";
 import OrderPage from "./OrderPage";
 import FreeMastersPage from "./FreeMastersPage";
 import LoginPage from "./LoginPage";
@@ -15,8 +15,8 @@ import WarningModal from "../WarningModal";
 function ClientSrcreen({ history }) {
   const state = useSelector((state) => {
     return {
-      modalSuccesData: state.clientServices.modalSuccesData,
-      modalWarningData: state.clientServices.modalWarningData,
+      modalSuccesData: state.clientModalWindows.modalSuccesData,
+      modalWarningData: state.clientModalWindows.modalWarningData,
     };
   });
 
@@ -32,9 +32,9 @@ function ClientSrcreen({ history }) {
           email: JSON.parse(localStorage.getItem("user")).email,
         })
       );
-      dispatch(toggleAuth(true));
+      dispatch(toogleAuthClient(true));
     } else {
-      dispatch(toggleAuth(false));
+      dispatch(toogleAuthClient(false));
     }
   }, []);
 

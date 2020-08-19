@@ -14,18 +14,17 @@ import SelectTownsField from "../../components/CompleteFormFields/SelectTownsFie
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import { addNewMaster } from "../../store/adminPanel/masters/actions";
+import { addNewMaster, changeAddNewMasterFormIsLoad } from "../../store/masterManagement/actions";
 import {
-  changeAddNewMasterFormIsLoad,
   changeSuccessModalDataAdmin,
   changeModalWarningDataAdmin,
-} from "../../store/adminPanel/services/actions";
-import { townsInit } from "../../store/adminPanel/towns/actions";
+} from "../../store/adminModalWindows/actions";
+import { townsInit } from "../../store/townsManagement/actions";
 
 function AddMasterPage({ history }) {
   const state = useSelector((state) => {
     return {
-      newMasterFormIsLoad: state.mainAdminPanelReduser.newMasterFormIsLoad,
+      newMasterFormIsLoad: state.masterReducer.newMasterFormIsLoad,
       townsArr: state.townReduser.towns,
     };
   });
@@ -100,7 +99,7 @@ function AddMasterPage({ history }) {
         <NameField id={"name"} name={"name"} />
       </FormGroup>
       <SelectTownsField townsArr = {state.townsArr}/>
-      <SubscribeBtn isLoad={state.newMasterFormIsLoad} value={"Add"} />
+      <SubscribeBtn loading={state.newMasterFormIsLoad} value={"Add"} />
     </form>
   );
 }

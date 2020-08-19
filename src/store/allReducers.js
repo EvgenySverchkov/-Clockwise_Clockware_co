@@ -1,19 +1,25 @@
 import { combineReducers } from "redux";
-import masterReducer from "./adminPanel/masters/reducers";
-import ordersReducer from "./adminPanel/orders/reducers";
-import townReduser from "./adminPanel/towns/reducers";
-import mainAdminPanelReduser from "./adminPanel/services/reducers";
 
-import clientServices from "./clientSide/services/reducers";
-import clientOrderReduser from "./clientSide/data/reducers";
-import clientTownsReduser from "./clientSide/towns/reducers";
+import masterReducer from "./masterManagement/reducers";
+import ordersReducer from "./ordersManagement/reducers";
+import townReduser from "./townsManagement/reducers";
+import adminModalWindows from "./adminModalWindows/reducers";
+
+import clientModalWindows from "./clientModalWindows/reducers";
+import clientOrderReduser from "./orders/reducers";
+import clientMastresReduser from "./masters/reducers";
+import clientTownsReduser from "./towns/reducers";
+
+import authReducer from "./auth/reducers";
 
 export default combineReducers({
   masterReducer,
   ordersReducer,
   townReduser,
-  mainAdminPanelReduser,
+  adminModalWindows,
   clientOrderReduser,
-  clientServices,
+  clientModalWindows,
+  clientMastresReduser,
   clientTownsReduser,
+  authReducer
 });

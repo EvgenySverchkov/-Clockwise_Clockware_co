@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import {
-  changeAuthIsLoad,
-  toogleAuth,
   changeModalWarningDataAdmin,
-} from "../../store/adminPanel/services/actions";
+} from "../../store/adminModalWindows/actions";
+
+import { changeAdminLoginIsLoad, toogleAuthAdmin } from "../../store/auth/actions";
 
 import LoginForm from "../../forms/LoginForm";
 
 function LoginPage(props) {
   const state = useSelector((state) => {
-    return { authIsLoad: state.mainAdminPanelReduser.authIsLoad };
+    return { authIsLoad: state.authReducer.adminLoginIsLoad };
   });
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ function LoginPage(props) {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const newObj = { email, password };
-    dispatch(changeAuthIsLoad(true));
+    dispatch(changeAdminLoginIsLoad(true));
     fetch(`${SERVERDOMAIN}/adminLogin`, {
       method: "POST",
       headers: {
@@ -31,11 +31,11 @@ function LoginPage(props) {
     })
       .then((json) => json.json())
       .then((data) => {
-        dispatch(changeAuthIsLoad(false));
+        dispatch(changeAdminLoginIsLoad(false));
         if (data.success) {
           sessionStorage.setItem("token", data.token);
           props.history.push("/admin/ordersList");
-          dispatch(toogleAuth(true));
+          dispatch(toogleAuthAdmin(true));
         } else {
           dispatch(changeModalWarningDataAdmin({ msg: data.msg }));
           document.getElementById("callWarningModalBtn").click();

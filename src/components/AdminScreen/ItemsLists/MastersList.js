@@ -2,12 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { townsInit } from "../../../store/adminPanel/towns/actions";
+import { townsInit } from "../../../store/townsManagement/actions";
 import {
   initMasters,
   deleteMasterFromState,
-} from "../../../store/adminPanel/masters/actions";
-import { changeListIsLoad } from "../../../store/adminPanel/services/actions";
+} from "../../../store/masterManagement/actions";
+import { changeListIsLoad } from "../../../store/adminModalWindows/actions";
 import deleteDataFromServer from "../services/deleteDataFromServer";
 import List from "../List";
 
@@ -17,7 +17,7 @@ const MastersList = ({ history }) => {
   const state = useSelector((state) => {
     return {
       mastersArr: state.masterReducer.masters,
-      listIsLoad: state.mainAdminPanelReduser.listIsLoad,
+      listIsLoad: state.adminModalWindows.listIsLoad,
     };
   });
   const dispatch = useDispatch();

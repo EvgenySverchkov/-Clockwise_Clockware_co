@@ -70,7 +70,7 @@ function OrderForm({
           value={currentOrder.time || ""}
         />
       </FormGroup>
-      <Button isLoad={isLoadOrderForm} value={"Next step"} />
+      <Button loading={isLoadOrderForm} value={"Next step"} />
     </form>
   );
 }

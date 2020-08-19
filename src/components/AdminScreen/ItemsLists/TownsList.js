@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import {
   deleteTownFromState,
   townsInit,
-} from "../../../store/adminPanel/towns/actions";
-import { changeListIsLoad } from "../../../store/adminPanel/services/actions";
+} from "../../../store/townsManagement/actions";
+import { changeListIsLoad } from "../../../store/adminModalWindows/actions";
 import deleteDataFromServer from "../services/deleteDataFromServer";
 
 import List from "../List";
@@ -17,7 +17,7 @@ const TownsList = ({ history }) => {
   const state = useSelector((state) => {
     return {
       townsArr: state.townReduser.towns,
-      listIsLoad: state.mainAdminPanelReduser.listIsLoad,
+      listIsLoad: state.adminModalWindows.listIsLoad,
     };
   });
   const dispatch = useDispatch();

@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { townsInit } from "../../store/adminPanel/towns/actions";
-import { addSuitableMasters } from "../../store/adminPanel/masters/actions";
-import { addCurrentOrderToState } from "../../store/adminPanel/orders/actions";
+import { townsInit } from "../../store/townsManagement/actions";
+import { addSuitableMasters } from "../../store/masterManagement/actions";
+import { addCurrentOrderToState, changeAdminOrderFormIsLoad } from "../../store/ordersManagement/actions";
 import {
-  changeOrderFormIsLoad,
-  changeModalWarningDataAdmin,
-} from "../../store/adminPanel/services/actions";
+  changeModalWarningDataAdmin
+} from "../../store/adminModalWindows/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -19,7 +18,7 @@ function AddNewOrderPage({ history }) {
     return {
       currentOrder: state.ordersReducer.currentOrder,
       townsArr: state.townReduser.towns,
-      orderFormIsLoad: state.mainAdminPanelReduser.orderFormIsLoad,
+      orderFormIsLoad: state.ordersReducer.adminOrderFormIsLoad,
     };
   });
   const dispatch = useDispatch();
@@ -57,10 +56,19 @@ function AddNewOrderPage({ history }) {
       !trgElem.date.value
     ) {
       dispatch(
-        changeModalWarningDataAdmin({ msg: "Please, filling all gaps!!!" })
+        changeModalWarningDataAdmin({ msg: "Please, fill all fields!!!" })
       );
       document.getElementById("callWarningModalBtn").click();
       return false;
+    }
+
+    if(trgElem.time){
+      if(trgElem.time.value >= "18:00" || trgElem.time.value < "09:00"){
+        dispatch(
+          changeModalWarningDataAdmin({ msg: "Time should not be more than 18:00 and less than 09:00" })
+        );
+        return false;
+      }
     }
 
     let endOrderTime;
@@ -79,7 +87,7 @@ function AddNewOrderPage({ history }) {
       default:
         endOrderTime = 0;
     }
-    dispatch(changeOrderFormIsLoad(true));
+    dispatch(changeAdminOrderFormIsLoad(true));
     getFreeMastersByClientTownFromServer(
       SERVERDOMAIN,
       trgElem.town.value,
@@ -87,7 +95,7 @@ function AddNewOrderPage({ history }) {
       endOrderTime,
       state.currentOrder.date
     ).then((data) => {
-      dispatch(changeOrderFormIsLoad(false));
+      dispatch(changeAdminOrderFormIsLoad(false));
       if (data.success) {
         dispatch(addSuitableMasters(data.payload));
         history.push("/admin/freeMasters");

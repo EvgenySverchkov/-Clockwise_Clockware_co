@@ -16,7 +16,7 @@ const LoginForm = ({ submitHandler, authIsLoad }) => (
       <Label forId="password">Enter your password</Label>
       <PasswordField id={"password"} />
     </FormGroup>
-    <Button isLoad={authIsLoad} value={"Login"} />
+    <Button loading={authIsLoad} value={"Login"} />
   </form>
 );
 

@@ -1,23 +1,15 @@
 import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { createStore } from "redux";
 import { Provider } from "react-redux";
-import reducers from "./store/allReducers.js";
 
 import ClientScreen from "./pages/ClientScreen";
 import AdminScreen from "./pages/AdminScreen";
 
-import { initialState } from "./store/initialState";
+import store from "./store"
 
 import "./App.scss";
 
-const store = createStore(
-  reducers,
-  initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-function App(props) {
+function App() {
   useEffect(() => {
     document.title = "Clockwise Clockware Co.";
   }, []);

@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import { addCurrentOrderToState } from "../../store/clientSide/data/actions";
+import { addCurrentOrderToState } from "../../store/orders/actions";
+import { changeClientOrderFormIsLoad } from "../../store/orders/actions"
 import {
-  changeMasterListIsLoad,
   changeSuccessModalData,
   changeWarningModalData,
-} from "../../store/clientSide/services/actions";
+} from "../../store/clientModalWindows/actions";
 import FreeMastersForm from "../../forms/FreeMastersForm";
 import sendMail from "../../services/mailSendler";
 
@@ -14,10 +14,10 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 function MastersList() {
   const state = useSelector((state) => {
     return {
-      suitableMasters: state.clientOrderReduser.suitableMasters,
+      suitableMasters: state.clientMastresReduser.suitableMasters,
       currentOrder: state.clientOrderReduser.currentOrder,
-      masterListIsLoad: state.clientServices.masterListIsLoad,
-      isAuth: state.clientServices.isAuth,
+      orderFormIsLoad: state.clientOrderReduser.orderFormIsLoad,
+      isAuth: state.authReducer.isAuth,
     };
   });
   const dispatch = useDispatch();
@@ -55,7 +55,7 @@ function MastersList() {
       endTime: endOrderTime,
     };
 
-    dispatch(changeMasterListIsLoad(true));
+    dispatch(changeClientOrderFormIsLoad(true));
     fetch(`${SERVERDOMAIN}/orders/post`, {
       method: "POST",
       headers: {
@@ -68,7 +68,7 @@ function MastersList() {
     })
       .then((json) => json.json())
       .then((data) => {
-        dispatch(changeMasterListIsLoad(false));
+        dispatch(changeClientOrderFormIsLoad(false));
         if (data.success) {
           sendMail(`${SERVERDOMAIN}/send_message`, data.payload);
           dispatch(
@@ -98,7 +98,7 @@ function MastersList() {
         }
       })
       .catch((err) => {
-        dispatch(changeMasterListIsLoad(false));
+        dispatch(changeClientOrderFormIsLoad(false));
         alert(err);
       });
   }
@@ -106,7 +106,7 @@ function MastersList() {
     <FreeMastersForm
       submitHandler={submitHandler}
       suitableMasters={state.suitableMasters}
-      isLoad={state.masterListIsLoad}
+      isLoad={state.orderFormIsLoad}
       backTo={"/client"}
       isMakeOrder={Object.keys(state.currentOrder).length <= 1 ? true : false}
     />

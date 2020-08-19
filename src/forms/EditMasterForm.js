@@ -2,12 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { updateMasterInState } from "../store/adminPanel/masters/actions";
+import { updateMasterInState } from "../store/masterManagement/actions";
 import putDataToServer from "../components/AdminScreen/services/putDataToServer";
 import {
   changeSuccessModalDataAdmin,
   changeModalWarningDataAdmin,
-} from "../store/adminPanel/services/actions";
+} from "../store/adminModalWindows/actions";
 
 import EditForm from "./EditForm";
 

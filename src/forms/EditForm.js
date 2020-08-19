@@ -14,8 +14,8 @@ import ChooseTownsField from "../components/CompleteFormFields/ChooseTownField";
 import SelectTownsField from "../components/CompleteFormFields/SelectTownsField";
 import TextFieldWithLabel from "../components/CompleteFormFields/TextFieldWithLabel";
 
-import { townsInit } from "../store/adminPanel/towns/actions";
-import { changeTownsFromOrderFormIsLoad } from "../store/clientSide/services/actions";
+import { townsInit } from "../store/townsManagement/actions";
+import { changeTownsFromOrderFormIsLoad } from "../store/towns/actions";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 
@@ -44,7 +44,7 @@ function EditForm({ id, handler, arrFromState }) {
   const state = useSelector((state) => {
     return {
       townsArr: state.townReduser.towns,
-      townsInOrderFormIsLoad: state.clientServices.townsInOrderFormIsLoad,
+      townsInOrderFormIsLoad: state.clientTownsReduser.townsInOrderFormIsLoad,
     };
   });
 

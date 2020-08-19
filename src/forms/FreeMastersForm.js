@@ -38,14 +38,14 @@ function FreeMastersList({
         })}
       </div>
       <ComeBackBtn backTo={backTo} />
-      <SubmitBtn isLoad={isLoad} />
+      <SubmitBtn loading={isLoad} />
     </form>
   );
 }
 
 FreeMastersList.propTypes = {
   submitHandler: PropTypes.func.isRequired,
-  isLoad: PropTypes.bool,
+  loading: PropTypes.bool,
   suitableMasters: PropTypes.array,
   backTo: PropTypes.string.isRequired,
 };

@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
+import { addCurrentOrderToState } from "../../store/orders/actions";
+import { addTownsToState } from "../../store/towns/actions";
+import { addSuitableMasters } from "../../store/masters/actions";
 import {
-  addCurrentOrderToState,
-  addSuitableMasters,
-} from "../../store/clientSide/data/actions";
-import { addTownsToState } from "../../store/clientSide/towns/actions";
-import {
-  changeOrderFormIsLoad,
-  changeTownsFromOrderFormIsLoad,
   changeWarningModalData,
-} from "../../store/clientSide/services/actions";
+} from "../../store/clientModalWindows/actions";
+
+import {
+  changeClientOrderFormIsLoad
+} from "../../store/orders/actions"
+
+import {changeTownsFromOrderFormIsLoad} from "../../store/towns/actions"
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -21,9 +23,9 @@ function OrderFormClient({ history }) {
   const state = useSelector((state) => {
     return {
       currentOrder: state.clientOrderReduser.currentOrder,
-      orderFormIsLoad: state.clientServices.orderFormIsLoad,
+      orderFormIsLoad: state.clientOrderReduser.orderFormIsLoad,
       townsArr: state.clientTownsReduser.townsArr,
-      townsInOrderFormIsLoad: state.clientServices.townsInOrderFormIsLoad,
+      townsInOrderFormIsLoad: state.clientTownsReduser.townsInOrderFormIsLoad,
     };
   });
   const dispatch = useDispatch();
@@ -69,7 +71,12 @@ function OrderFormClient({ history }) {
       callWarningModal("Please, fill all fields!");
       return false;
     }
-
+    if(trgElem.time){
+      if(trgElem.time.value >= "18:00" || trgElem.time.value < "09:00"){
+        callWarningModal("Time should not be more than 18:00 and less than 09:00");
+        return false;
+      }
+    }
     if (trgElem.name.value.length <= 3) {
       callWarningModal("Name field must be at least 3 characters!");
       return false;
@@ -98,7 +105,7 @@ function OrderFormClient({ history }) {
       default:
         endOrderTime = 0;
     }
-    dispatch(changeOrderFormIsLoad(true));
+    dispatch(changeClientOrderFormIsLoad(true));
     getFreeMastersByClientTownFromServer(
       SERVERDOMAIN,
       trgElem.town.value,
@@ -106,7 +113,7 @@ function OrderFormClient({ history }) {
       endOrderTime,
       state.currentOrder.date
     ).then((data) => {
-      dispatch(changeOrderFormIsLoad(false));
+      dispatch(changeClientOrderFormIsLoad(false));
       if (data.success) {
         dispatch(addSuitableMasters(data.payload));
         history.push("/client/masters");
