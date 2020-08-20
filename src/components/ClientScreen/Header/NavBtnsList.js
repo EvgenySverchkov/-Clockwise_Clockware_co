@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import LogOutBtn from "./LogOutBtn";
 import LogInBtn from "./LogInBtn";
 import NavItem from "./NavItem";
 
@@ -24,9 +23,10 @@ const NavList = () => {
       </button>
       <div className="navbar-collapse collapse" id="navbarsExample03">
         <ul className="navbar-nav mr-auto">
-          {state.isAuth ? <LogOutBtn /> : <LogInBtn />}
-          <NavItem title={"SignUp"} link={"/client/registration"} />
+          {state.isAuth ? null : <LogInBtn />}
+          {state.isAuth ? null : <NavItem title={"SignUp"} link={"/client/registration"} />}
           <NavItem title={"To main"} link={"/client"} />
+          {state.isAuth ? <NavItem title={"Profile"} link={"/client/userProfile"} /> : null}
         </ul>
       </div>
     </>

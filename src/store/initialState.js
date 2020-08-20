@@ -7,6 +7,7 @@ import { initialStateClientOrders } from "./orders/initialState";
 import { initialClientModalsWindows } from "./clientModalWindows/initialState";
 import { initialStateClientMasters } from "./masters/initialState";
 import { initialStateClientTowns } from "./towns/initialState";
+import { initialUserProfileReducer } from "./userProfile/initialState";
 
 import { initialStateAuth } from "./auth/initialState";
  
@@ -19,5 +20,6 @@ export const initialState = {
   clientOrderReduser: initialStateClientOrders,
   clientMastresReduser: initialStateClientMasters,
   clientTownsReduser: initialStateClientTowns,
-  authReducer: initialStateAuth
+  authReducer: initialStateAuth,
+  userProfileReducer: initialUserProfileReducer
 };

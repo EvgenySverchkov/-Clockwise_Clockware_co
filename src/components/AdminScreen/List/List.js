@@ -42,7 +42,7 @@ function CreateList({
           {dataArr.map((item) => (
             <tr key={item.id}>
               <ListItem infoObj={item} mainRows={mainRows} />
-              <OptionsBtns deleteMasterById={deleteAction} itemObj={item} />
+              {deleteAction ? <OptionsBtns deleteMasterById={deleteAction} itemObj={item} /> : null}
             </tr>
           ))}
         </tbody>

@@ -1,4 +1,6 @@
 export const initialStateClientOrders = {
   currentOrder: {},
-  orderFormIsLoad: false
+  orderFormIsLoad: false,
+  userOrders: [],
+  userOrdersListIsLoad: false
 };

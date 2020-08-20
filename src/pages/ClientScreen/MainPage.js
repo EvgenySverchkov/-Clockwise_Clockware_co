@@ -8,6 +8,7 @@ import OrderPage from "./OrderPage";
 import FreeMastersPage from "./FreeMastersPage";
 import LoginPage from "./LoginPage";
 import SignUpPage from "./SignUpPage";
+import UserProfilePage from "./UserProfilePage";
 import Header from "../../components/ClientScreen/Header";
 import SuccessModal from "../SuccessModal";
 import WarningModal from "../WarningModal";
@@ -47,6 +48,7 @@ function ClientSrcreen({ history }) {
           <Route path="/client/masters" component={FreeMastersPage} />
           <Route path="/client/login" component={LoginPage} />
           <Route path="/client/registration" component={SignUpPage} />
+          <Route path="/client/userProfile" component={UserProfilePage} />
         </Switch>
         <SuccessModal history={history} data={state.modalSuccesData} />
         <WarningModal data={state.modalWarningData} />

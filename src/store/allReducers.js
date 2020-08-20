@@ -10,6 +10,8 @@ import clientOrderReduser from "./orders/reducers";
 import clientMastresReduser from "./masters/reducers";
 import clientTownsReduser from "./towns/reducers";
 
+import userProfileReducer from "./userProfile/redusers";
+
 import authReducer from "./auth/reducers";
 
 export default combineReducers({
@@ -21,5 +23,6 @@ export default combineReducers({
   clientModalWindows,
   clientMastresReduser,
   clientTownsReduser,
-  authReducer
+  authReducer,
+  userProfileReducer
 });

@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { addCurrentOrderToState } from "../../../store/orders/actions";
-import { toogleAuthClient } from "../../../store/auth/actions";
+import { addCurrentOrderToState } from "../../store/orders/actions";
+import { toogleAuthClient } from "../../store/auth/actions";
 
 function LogOutBtn() {
   const state = useSelector((state) => {
@@ -17,11 +17,9 @@ function LogOutBtn() {
     dispatch(toogleAuthClient(false));
   }
   return (
-    <li className="nav-item">
-      <Link className="nav-link" to="/" onClick={logOutHandl}>
-        Logout
-      </Link>
-    </li>
+    <Link className="btn btn-secondary" to="/" onClick={logOutHandl}>
+      Logout
+    </Link>
   );
 }
 
