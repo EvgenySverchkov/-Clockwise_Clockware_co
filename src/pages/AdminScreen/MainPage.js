@@ -35,8 +35,7 @@ function AdminSrcreen(props) {
       currentOrder: state.ordersReducer.currentOrder,
       suitableMasters: state.ordersReducer.suitableMasters,
       modalDataAdmin: state.adminModalWindows.modalDataAdmin,
-      modalWarningDataAdmin:
-        state.adminModalWindows.modalWarningDataAdmin,
+      modalWarningDataAdmin: state.adminModalWindows.modalWarningDataAdmin,
     };
   });
   const dispatch = useDispatch();

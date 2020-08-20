@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
 import { addCurrentOrderToState } from "../../store/orders/actions";
-import {changeWarningModalData} from "../../store/clientModalWindows/actions";
+import { changeWarningModalData } from "../../store/clientModalWindows/actions";
 
-import { changeClientLoginIsLoad } from "../../store/auth/actions"
+import { changeClientLoginIsLoad } from "../../store/auth/actions";
 
 import { toogleAuthClient } from "../../store/auth/actions";
 

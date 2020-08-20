@@ -17,7 +17,7 @@ function LogOutBtn() {
     dispatch(toogleAuthClient(false));
   }
   return (
-    <Link className="btn btn-secondary" to="/" onClick={logOutHandl}>
+    <Link className="btn btn-danger" to="/" onClick={logOutHandl}>
       Logout
     </Link>
   );

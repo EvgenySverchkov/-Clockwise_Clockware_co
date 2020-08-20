@@ -5,15 +5,11 @@ import PropTypes from "prop-types";
 import { addCurrentOrderToState } from "../../store/orders/actions";
 import { addTownsToState } from "../../store/towns/actions";
 import { addSuitableMasters } from "../../store/masters/actions";
-import {
-  changeWarningModalData,
-} from "../../store/clientModalWindows/actions";
+import { changeWarningModalData } from "../../store/clientModalWindows/actions";
 
-import {
-  changeClientOrderFormIsLoad
-} from "../../store/orders/actions"
+import { changeClientOrderFormIsLoad } from "../../store/orders/actions";
 
-import {changeTownsFromOrderFormIsLoad} from "../../store/towns/actions"
+import { changeTownsFromOrderFormIsLoad } from "../../store/towns/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -71,9 +67,11 @@ function OrderFormClient({ history }) {
       callWarningModal("Please, fill all fields!");
       return false;
     }
-    if(trgElem.time){
-      if(trgElem.time.value >= "18:00" || trgElem.time.value < "09:00"){
-        callWarningModal("Time should not be more than 18:00 and less than 09:00");
+    if (trgElem.time) {
+      if (trgElem.time.value >= "18:00" || trgElem.time.value < "09:00") {
+        callWarningModal(
+          "Time should not be more than 18:00 and less than 09:00"
+        );
         return false;
       }
     }

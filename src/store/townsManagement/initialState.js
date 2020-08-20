@@ -1,4 +1,4 @@
 export const initialStateTowns = {
   towns: [],
-  newTownFormIsLoad: false
+  newTownFormIsLoad: false,
 };

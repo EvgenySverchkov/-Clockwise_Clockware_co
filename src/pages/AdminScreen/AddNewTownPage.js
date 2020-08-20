@@ -15,8 +15,7 @@ import {
   changeSuccessModalDataAdmin,
   changeModalWarningDataAdmin,
 } from "../../store/adminModalWindows/actions";
-import { changeAddMewTownFormIsLoad } from "../../store/townsManagement/actions"
-
+import { changeAddMewTownFormIsLoad } from "../../store/townsManagement/actions";
 
 function AddNewTownPage({ history }) {
   const state = useSelector((state) => {

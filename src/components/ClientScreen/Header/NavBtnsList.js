@@ -24,9 +24,13 @@ const NavList = () => {
       <div className="navbar-collapse collapse" id="navbarsExample03">
         <ul className="navbar-nav mr-auto">
           {state.isAuth ? null : <LogInBtn />}
-          {state.isAuth ? null : <NavItem title={"SignUp"} link={"/client/registration"} />}
+          {state.isAuth ? null : (
+            <NavItem title={"SignUp"} link={"/client/registration"} />
+          )}
           <NavItem title={"To main"} link={"/client"} />
-          {state.isAuth ? <NavItem title={"Profile"} link={"/client/userProfile"} /> : null}
+          {state.isAuth ? (
+            <NavItem title={"Profile"} link={"/client/userProfile"} />
+          ) : null}
         </ul>
       </div>
     </>

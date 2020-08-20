@@ -1,4 +1,4 @@
 export const initialStateClientMasters = {
-    suitableMasters: [],
-    masterListIsLoad: false,
+  suitableMasters: [],
+  masterListIsLoad: false,
 };

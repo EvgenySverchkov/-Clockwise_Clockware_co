@@ -12,12 +12,14 @@ import UserProfilePage from "./UserProfilePage";
 import Header from "../../components/ClientScreen/Header";
 import SuccessModal from "../SuccessModal";
 import WarningModal from "../WarningModal";
+import FullInfoModal from "../../components/AdminScreen/FullInfoModal";
 
 function ClientSrcreen({ history }) {
   const state = useSelector((state) => {
     return {
       modalSuccesData: state.clientModalWindows.modalSuccesData,
       modalWarningData: state.clientModalWindows.modalWarningData,
+      currItemForModal: state.adminModalWindows.currItemForModal,
     };
   });
 
@@ -52,6 +54,7 @@ function ClientSrcreen({ history }) {
         </Switch>
         <SuccessModal history={history} data={state.modalSuccesData} />
         <WarningModal data={state.modalWarningData} />
+        <FullInfoModal itemObj={state.currItemForModal} />
       </div>
     </>
   );

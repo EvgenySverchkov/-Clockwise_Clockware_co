@@ -9,7 +9,7 @@ import {
 import { changeListIsLoad } from "../../../store/adminModalWindows/actions";
 import deleteDataFromServer from "../services/deleteDataFromServer";
 
-import List from "../List";
+import List from "../../List";
 
 import { SERVERDOMAIN } from "../../../services/serverUrls";
 

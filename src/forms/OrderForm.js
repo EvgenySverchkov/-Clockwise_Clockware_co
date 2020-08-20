@@ -25,8 +25,8 @@ function OrderForm({
     )}-${("0" + date.getDate()).slice(-2)}`;
   }
   function maxDate(minDate) {
-    let date = new Date(minDate)
-    date.setFullYear(date.getFullYear()+1);
+    let date = new Date(minDate);
+    date.setFullYear(date.getFullYear() + 1);
     return `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
       -2
     )}-${("0" + date.getDate()).slice(-2)}`;
@@ -36,20 +36,20 @@ function OrderForm({
   return (
     <form onSubmit={submitHandler} className="mt-4 row justify-content-center">
       <TextFieldWithLabel
-        fieldName = {"name"} 
-        changeHandler = {changeHandler} 
-        value={currentOrder.name || ""} 
+        fieldName={"name"}
+        changeHandler={changeHandler}
+        value={currentOrder.name || ""}
       />
       <TextFieldWithLabel
-        fieldName = {"email"} 
-        changeHandler = {changeHandler} 
-        value={currentOrder.email || ""} 
+        fieldName={"email"}
+        changeHandler={changeHandler}
+        value={currentOrder.email || ""}
       />
-      <ChooseClockSizeField changeHandler={changeHandler}/>
-      <ChooseTownsField 
-        changeHandler = {changeHandler} 
-        isLoad = {townsInOrderFormIsLoad} 
-        townsArr = {townsArr}
+      <ChooseClockSizeField changeHandler={changeHandler} />
+      <ChooseTownsField
+        changeHandler={changeHandler}
+        isLoad={townsInOrderFormIsLoad}
+        townsArr={townsArr}
       />
       <FormGroup isRow={false}>
         <div className="mb-2 font-weight-bold">

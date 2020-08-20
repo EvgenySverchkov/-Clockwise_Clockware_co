@@ -2,11 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-import {
-  changeModalWarningDataAdmin,
-} from "../../store/adminModalWindows/actions";
+import { changeModalWarningDataAdmin } from "../../store/adminModalWindows/actions";
 
-import { changeAdminLoginIsLoad, toogleAuthAdmin } from "../../store/auth/actions";
+import {
+  changeAdminLoginIsLoad,
+  toogleAuthAdmin,
+} from "../../store/auth/actions";
 
 import LoginForm from "../../forms/LoginForm";
 

@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import OptionsBtns from "../OptionsBtnGroup";
 import ListItem from "./ListItem";
 import ListHeader from "./ListHeader";
+import ShowFullUserOrderInfo from "../OptionsBtnGroup/ShowFullUserOrderInfo";
+
+import "./List.scss";
 
 function CreateList({
   dataArr,
@@ -20,10 +23,7 @@ function CreateList({
     [history.location]
   );
   return (
-    <div
-      className="table-responsive"
-      style={{ overflowY: "auto", height: "80vh" }}
-    >
+    <div className="table-responsive">
       <table className="table table-dark">
         <thead>
           {listIsLoad ? (
@@ -42,7 +42,11 @@ function CreateList({
           {dataArr.map((item) => (
             <tr key={item.id}>
               <ListItem infoObj={item} mainRows={mainRows} />
-              {deleteAction ? <OptionsBtns deleteMasterById={deleteAction} itemObj={item} /> : null}
+              {deleteAction ? (
+                <OptionsBtns deleteMasterById={deleteAction} itemObj={item} />
+              ) : (
+                <ShowFullUserOrderInfo itemObj={item} />
+              )}
             </tr>
           ))}
         </tbody>

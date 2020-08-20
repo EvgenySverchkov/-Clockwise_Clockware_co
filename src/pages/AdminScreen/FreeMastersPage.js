@@ -9,7 +9,7 @@ import {
   changeModalWarningDataAdmin,
 } from "../../store/adminModalWindows/actions";
 
-import {changeMasterListIsLoad} from "../../store/masterManagement/actions"
+import { changeMasterListIsLoad } from "../../store/masterManagement/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import sendConfirmEmail from "../../services/mailSendler";

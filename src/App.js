@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import ClientScreen from "./pages/ClientScreen";
 import AdminScreen from "./pages/AdminScreen";
 
-import store from "./store"
+import store from "./store";
 
 import "./App.scss";
 
@@ -22,13 +22,13 @@ function App() {
           <Redirect exact to="/client" from="/" />
         </Switch>
         <button
-          className = "callModalBtn"
+          className="callModalBtn"
           data-toggle="modal"
           data-target="#successModal"
           id="callSuccessModalBtn"
         ></button>
         <button
-          className = "callModalBtn"
+          className="callModalBtn"
           data-toggle="modal"
           data-target="#warningModal"
           id="callWarningModalBtn"

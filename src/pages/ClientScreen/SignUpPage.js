@@ -7,7 +7,7 @@ import {
   changeWarningModalData,
 } from "../../store/clientModalWindows/actions";
 
-import {changeSignUpIsLoad} from "../../store/auth/actions"
+import { changeSignUpIsLoad } from "../../store/auth/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -19,7 +19,7 @@ function RegistrationForm({ history }) {
   function submitHandler(e) {
     e.preventDefault();
     const elem = e.target;
-    if(!elem.name.value || !elem.email.value || !elem.password.value ){
+    if (!elem.name.value || !elem.email.value || !elem.password.value) {
       dispatch(
         changeWarningModalData({
           msg: "Please, fill all fields!",
@@ -28,7 +28,7 @@ function RegistrationForm({ history }) {
       document.getElementById("callWarningModalBtn").click();
       return false;
     }
-    if(elem.email){
+    if (elem.email) {
       if (!elem.email.value.match(/^\w+@[a-zA-Z_0-9]+?\.[a-zA-Z]{2,}$/)) {
         dispatch(
           changeWarningModalData({
@@ -48,11 +48,12 @@ function RegistrationForm({ history }) {
         return false;
       }
     }
-    if(elem.password){
+    if (elem.password) {
       if (elem.password.value.length < 4 || elem.password.value.length > 16) {
         dispatch(
           changeWarningModalData({
-            msg: "Password must not be less than 4 characters and must not be longer than 16 characters!",
+            msg:
+              "Password must not be less than 4 characters and must not be longer than 16 characters!",
           })
         );
         document.getElementById("callWarningModalBtn").click();
@@ -96,7 +97,7 @@ function RegistrationForm({ history }) {
         }
       });
   }
-  return <SignUpForm handler={submitHandler}/>;
+  return <SignUpForm handler={submitHandler} />;
 }
 
 RegistrationForm.propTypes = {

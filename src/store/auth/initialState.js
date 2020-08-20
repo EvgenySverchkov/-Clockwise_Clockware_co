@@ -1,8 +1,7 @@
 export const initialStateAuth = {
-    isAuthAdmin: false,
-    isAuthClient: false,
-    adminLoginIsLoad: false,
-    clientLoginIsLoad: false,
-    signUpIsLoad: false
-  };
-  
+  isAuthAdmin: false,
+  isAuthClient: false,
+  adminLoginIsLoad: false,
+  clientLoginIsLoad: false,
+  signUpIsLoad: false,
+};

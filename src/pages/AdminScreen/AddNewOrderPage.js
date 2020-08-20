@@ -4,10 +4,11 @@ import PropTypes from "prop-types";
 
 import { townsInit } from "../../store/townsManagement/actions";
 import { addSuitableMasters } from "../../store/masterManagement/actions";
-import { addCurrentOrderToState, changeAdminOrderFormIsLoad } from "../../store/ordersManagement/actions";
 import {
-  changeModalWarningDataAdmin
-} from "../../store/adminModalWindows/actions";
+  addCurrentOrderToState,
+  changeAdminOrderFormIsLoad,
+} from "../../store/ordersManagement/actions";
+import { changeModalWarningDataAdmin } from "../../store/adminModalWindows/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -62,10 +63,12 @@ function AddNewOrderPage({ history }) {
       return false;
     }
 
-    if(trgElem.time){
-      if(trgElem.time.value >= "18:00" || trgElem.time.value < "09:00"){
+    if (trgElem.time) {
+      if (trgElem.time.value >= "18:00" || trgElem.time.value < "09:00") {
         dispatch(
-          changeModalWarningDataAdmin({ msg: "Time should not be more than 18:00 and less than 09:00" })
+          changeModalWarningDataAdmin({
+            msg: "Time should not be more than 18:00 and less than 09:00",
+          })
         );
         return false;
       }

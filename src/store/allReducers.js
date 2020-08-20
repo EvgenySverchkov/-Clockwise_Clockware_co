@@ -24,5 +24,5 @@ export default combineReducers({
   clientMastresReduser,
   clientTownsReduser,
   authReducer,
-  userProfileReducer
+  userProfileReducer,
 });

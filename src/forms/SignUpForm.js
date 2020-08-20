@@ -8,7 +8,7 @@ import EmailField from "../components/FormComponents/EmailField";
 import PasswordField from "../components/FormComponents/PasswordField";
 import Button from "../components/FormComponents/Button";
 
-const SignUpForm = ({handler}) => {
+const SignUpForm = ({ handler }) => {
   return (
     <form onSubmit={handler} className="mt-4 row justify-content-center">
       <FormGroup isRow={true}>
@@ -25,7 +25,7 @@ const SignUpForm = ({handler}) => {
       </FormGroup>
       <Button loading={authSelector().signUpIsLoad} value={"Sign Up"} />
     </form>
-    );
+  );
 };
 
 export default SignUpForm;

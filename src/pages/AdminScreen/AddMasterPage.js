@@ -14,7 +14,10 @@ import SelectTownsField from "../../components/CompleteFormFields/SelectTownsFie
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-import { addNewMaster, changeAddNewMasterFormIsLoad } from "../../store/masterManagement/actions";
+import {
+  addNewMaster,
+  changeAddNewMasterFormIsLoad,
+} from "../../store/masterManagement/actions";
 import {
   changeSuccessModalDataAdmin,
   changeModalWarningDataAdmin,
@@ -98,7 +101,7 @@ function AddMasterPage({ history }) {
         <Label forId={"name"}>Enter name</Label>
         <NameField id={"name"} name={"name"} />
       </FormGroup>
-      <SelectTownsField townsArr = {state.townsArr}/>
+      <SelectTownsField townsArr={state.townsArr} />
       <SubscribeBtn loading={state.newMasterFormIsLoad} value={"Add"} />
     </form>
   );

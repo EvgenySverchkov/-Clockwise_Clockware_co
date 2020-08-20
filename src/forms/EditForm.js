@@ -122,8 +122,8 @@ function EditForm({ id, handler, arrFromState }) {
     )}-${("0" + date.getDate()).slice(-2)}`;
   }
   function maxDate(minDate) {
-    let date = new Date(minDate)
-    date.setFullYear(date.getFullYear()+1);
+    let date = new Date(minDate);
+    date.setFullYear(date.getFullYear() + 1);
     return `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
       -2
     )}-${("0" + date.getDate()).slice(-2)}`;
@@ -133,7 +133,13 @@ function EditForm({ id, handler, arrFromState }) {
   function componentSelector(item) {
     switch (item) {
       case "towns":
-        return <SelectTownsField townsArr = {state.townsArr} key = {item} changeHandler={changeValue}/>;
+        return (
+          <SelectTownsField
+            townsArr={state.townsArr}
+            key={item}
+            changeHandler={changeValue}
+          />
+        );
       case "endTime":
         return null;
       case "masterId":
@@ -169,7 +175,7 @@ function EditForm({ id, handler, arrFromState }) {
           </FormGroup>
         );
       case "size":
-        return <ChooseClockSizeField changeHandler={changeValue} key = {item}/>;
+        return <ChooseClockSizeField changeHandler={changeValue} key={item} />;
       case "date":
         return (
           <FormGroup key={item} isRow={false}>
@@ -210,20 +216,20 @@ function EditForm({ id, handler, arrFromState }) {
         );
       case "town":
         return (
-          <ChooseTownsField 
-            changeHandler = {changeValue} 
-            isLoad = {state.townsInOrderFormIsLoad} 
-            townsArr = {state.townsArr}
-            key = {item}
+          <ChooseTownsField
+            changeHandler={changeValue}
+            isLoad={state.townsInOrderFormIsLoad}
+            townsArr={state.townsArr}
+            key={item}
           />
         );
       default:
         return (
-          <TextFieldWithLabel 
-            fieldName={item} 
-            changeHandler = {changeValue} 
-            value = {stateObj[item] || ""}
-            key = {item}
+          <TextFieldWithLabel
+            fieldName={item}
+            changeHandler={changeValue}
+            value={stateObj[item] || ""}
+            key={item}
           />
         );
     }
