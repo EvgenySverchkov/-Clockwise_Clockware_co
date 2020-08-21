@@ -79,6 +79,12 @@ function OrderFormClient({ history }) {
       callWarningModal("Name field must be at least 3 characters!");
       return false;
     }
+    if (trgElem.name.value.match(/\d/) || !trgElem.name.value.match(/\b\w{3,20}\b/)) {
+      callWarningModal(
+        "String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!"
+      );
+      return false;
+    }
 
     if (!isClientDateLargeThenCurrDate(trgElem.date.value)) {
       callWarningModal(

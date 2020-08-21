@@ -83,9 +83,16 @@ function AddNewOrderPage({ history }) {
       document.getElementById("callWarningModalBtn").click();
       return false;
     }
-    console.log(isClientDateLargeThenCurrDate(trgElem.date.value))
+    if (trgElem.name.value.match(/\d/) || !trgElem.name.value.match(/\b\w{3,20}\b/)) {
+      dispatch(
+        changeModalWarningDataAdmin({
+          msg: "String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!",
+        })
+      );
+      document.getElementById("callWarningModalBtn").click();
+      return false;
+    }
     if (!isClientDateLargeThenCurrDate(trgElem.date.value)) {
-      console.log(":")
       dispatch(
         changeModalWarningDataAdmin({
           msg: "Date must not be less than or equal to the current date",
