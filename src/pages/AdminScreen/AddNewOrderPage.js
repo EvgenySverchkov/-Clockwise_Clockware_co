@@ -70,8 +70,29 @@ function AddNewOrderPage({ history }) {
             msg: "Time should not be more than 18:00 and less than 09:00",
           })
         );
+        document.getElementById("callWarningModalBtn").click();
         return false;
       }
+    }
+    if (trgElem.name.value.length <= 3) {
+      dispatch(
+        changeModalWarningDataAdmin({
+          msg: "Name field must be at least 3 characters!",
+        })
+      );
+      document.getElementById("callWarningModalBtn").click();
+      return false;
+    }
+    console.log(isClientDateLargeThenCurrDate(trgElem.date.value))
+    if (!isClientDateLargeThenCurrDate(trgElem.date.value)) {
+      console.log(":")
+      dispatch(
+        changeModalWarningDataAdmin({
+          msg: "Date must not be less than or equal to the current date",
+        })
+      );
+      document.getElementById("callWarningModalBtn").click();
+      return false;
     }
 
     let endOrderTime;
@@ -134,6 +155,16 @@ function AddNewOrderPage({ history }) {
       },
       body: JSON.stringify(obj),
     }).then((json) => json.json());
+  }
+  function isClientDateLargeThenCurrDate(clientDate) {
+    const clientDt = new Date(clientDate);
+    const currDate = new Date();
+
+    if (currDate.getTime() > clientDt.getTime()) {
+      return false;
+    } else {
+      return true;
+    }
   }
   return (
     <OrderForm

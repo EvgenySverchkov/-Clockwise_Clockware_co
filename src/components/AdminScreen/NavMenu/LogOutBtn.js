@@ -15,7 +15,7 @@ const LogOutBtn = () => {
       <Link
         to="/admin"
         onClick={handler}
-        className="btn btn-secondary"
+        className="btn btn-danger"
         aria-haspopup="true"
         aria-expanded="false"
       >
