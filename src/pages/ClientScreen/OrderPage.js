@@ -137,7 +137,7 @@ function OrderFormClient({ history }) {
         history.push("/client/masters");
       } else {
         dispatch(addSuitableMasters([]));
-        context.setWarningModalData(data.msg);
+        context.openErrorWindowWithMsg(data.msg);
         history.push("/client");
       }
     });
