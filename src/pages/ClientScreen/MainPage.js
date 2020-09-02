@@ -10,25 +10,17 @@ import LoginPage from "./LoginPage";
 import SignUpPage from "./SignUpPage";
 import UserProfilePage from "./UserProfilePage";
 import Header from "../../components/ClientScreen/Header";
-import SuccessModal from "../SuccessModal";
-import WarningModal from "../WarningModal";
 import FullInfoModal from "../../components/AdminScreen/FullInfoModal";
 
 function ClientSrcreen({ history }) {
   const state = useSelector((state) => {
     return {
-      modalSuccesData: state.clientModalWindows.modalSuccesData,
-      modalWarningData: state.clientModalWindows.modalWarningData,
       currItemForModal: state.adminModalWindows.currItemForModal,
     };
   });
 
   const dispatch = useDispatch();
   useEffect(() => {
-    let token = localStorage.getItem("token")
-      ? "Bearer " + localStorage.getItem("token")
-      : "";
-
     if (localStorage.getItem("user")) {
       dispatch(
         addCurrentOrderToState({
@@ -52,8 +44,6 @@ function ClientSrcreen({ history }) {
           <Route path="/client/registration" component={SignUpPage} />
           <Route path="/client/userProfile" component={UserProfilePage} />
         </Switch>
-        <SuccessModal history={history} data={state.modalSuccesData} />
-        <WarningModal data={state.modalWarningData} />
         <FullInfoModal itemObj={state.currItemForModal} />
       </div>
     </>

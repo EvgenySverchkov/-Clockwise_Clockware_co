@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import { addCurrentOrderToState } from "../../store/orders/actions";
 import { addTownsToState } from "../../store/towns/actions";
 import { addSuitableMasters } from "../../store/masters/actions";
-import { changeWarningModalData } from "../../store/clientModalWindows/actions";
 
 import { changeClientOrderFormIsLoad } from "../../store/orders/actions";
 
@@ -15,7 +14,10 @@ import { SERVERDOMAIN } from "../../services/serverUrls";
 
 import OrderForm from "../../forms/OrderForm";
 
+import Context from "../../ContextComponent";
+
 function OrderFormClient({ history }) {
+  const context = useContext(Context)
   const state = useSelector((state) => {
     return {
       currentOrder: state.clientOrderReduser.currentOrder,
@@ -64,32 +66,35 @@ function OrderFormClient({ history }) {
       !trgElem.time.value ||
       !trgElem.date.value
     ) {
-      callWarningModal("Please, fill all fields!");
+      context.openErrorWindowWithMsg("Please, fill all fields!");
       return false;
     }
-    if (trgElem.time) {
-      if (trgElem.time.value >= "18:00" || trgElem.time.value < "09:00") {
-        callWarningModal(
-          "Time should not be more than 18:00 and less than 09:00"
-        );
-        return false;
-      }
-    }
-    if (trgElem.name.value.length <= 3) {
-      callWarningModal("Name field must be at least 3 characters!");
+    if (!trgElem.email.value.match(/^\w+@[a-zA-Z_0-9]+?\.[a-zA-Z]{2,}$/)) {
+      context.openWarningTooltip(
+        "Invalid email format!",
+        trgElem.email.id
+      );
       return false;
     }
-    if (trgElem.name.value.match(/\d/) || !trgElem.name.value.match(/\b\w{3,20}\b/)) {
-      callWarningModal(
-        "String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!"
+    if (trgElem.time.value >= "18:00" || trgElem.time.value < "09:00") {
+      context.openWarningTooltip(
+        "Time should not be more than 18:00 and less than 09:00",
+        trgElem.time.id
       );
       return false;
     }
 
+    if (trgElem.name.value.length <= 3) {
+      context.openWarningTooltip("Name field must be at least 3 characters!", trgElem.name.id);
+      return false;
+    }
+    if (trgElem.name.value.match(/\d/) || !trgElem.name.value.match(/\b\w{3,20}\b/)) {
+      context.openWarningTooltip("String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!", trgElem.name.id);
+      return false;
+    }
+
     if (!isClientDateLargeThenCurrDate(trgElem.date.value)) {
-      callWarningModal(
-        "Date must not be less than or equal to the current date"
-      );
+      context.openWarningTooltip("Date must not be less than or equal to the current date", trgElem.date.id);
       return false;
     }
 
@@ -123,7 +128,7 @@ function OrderFormClient({ history }) {
         history.push("/client/masters");
       } else {
         dispatch(addSuitableMasters([]));
-        callWarningModal(data.msg);
+        context.setWarningModalData(data.msg);
         history.push("/client");
       }
     });
@@ -163,15 +168,6 @@ function OrderFormClient({ history }) {
     } else {
       return true;
     }
-  }
-
-  function callWarningModal(msg) {
-    dispatch(
-      changeWarningModalData({
-        msg: msg,
-      })
-    );
-    document.getElementById("callWarningModalBtn").click();
   }
 
   return (

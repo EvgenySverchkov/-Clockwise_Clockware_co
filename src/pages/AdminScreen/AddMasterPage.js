@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,19 +12,19 @@ import Label from "../../components/FormComponents/Label";
 
 import SelectTownsField from "../../components/CompleteFormFields/SelectTownsField";
 
+import Context from "../../ContextComponent";
+
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
 import {
   addNewMaster,
   changeAddNewMasterFormIsLoad,
 } from "../../store/masterManagement/actions";
-import {
-  changeSuccessModalDataAdmin,
-  changeModalWarningDataAdmin,
-} from "../../store/adminModalWindows/actions";
+
 import { townsInit } from "../../store/townsManagement/actions";
 
 function AddMasterPage({ history }) {
+  const context = useContext(Context);
   const state = useSelector((state) => {
     return {
       newMasterFormIsLoad: state.masterReducer.newMasterFormIsLoad,
@@ -48,32 +48,36 @@ function AddMasterPage({ history }) {
   }
   function handler(e) {
     e.preventDefault();
-    let name = e.target.name.value;
-    let rating = e.target.rating.value;
-    let towns = selectCheckedTowns(e.target.elements);
-    dispatch(changeAddNewMasterFormIsLoad(true));
+    const targetElem = e.target;
+    let name = targetElem.name.value;
+    let rating = targetElem.rating.value;
+    let towns = selectCheckedTowns(targetElem.elements);
+    
     let infoObj = {
       name,
       rating,
       towns: towns.join(","),
     };
+
+    if (targetElem.name.value.match(/\d/) || !targetElem.name.value.match(/\b\w{3,20}\b/)) {
+      context.openWarningTooltip("String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!", targetElem.name.id)
+      return false;
+    }
+    if (+targetElem.rating.value <= 0 || +targetElem.rating.value > 5) {
+      context.openWarningTooltip("Rating value must be from 1 to 5 inclusive", targetElem.rating.id)
+      return false;
+    }
+    
+    dispatch(changeAddNewMasterFormIsLoad(true));
     postData(`${SERVERDOMAIN}/masters/post`, infoObj)
       .then((data) => {
         dispatch(changeAddNewMasterFormIsLoad(false));
         if (data.success) {
           dispatch(addNewMaster(data.payload));
-          dispatch(
-            changeSuccessModalDataAdmin({
-              msg: data.msg,
-              backBtnTxt: "Back to masters list",
-              backTo: "/admin/mastersList",
-            })
-          );
-          history.push("/admin");
-          document.getElementById("callSuccessModalBtn").click();
+          context.openSuccessWindowWithMsg(data.msg);
+          targetElem.reset();
         } else {
-          dispatch(changeModalWarningDataAdmin({ msg: data.msg }));
-          document.getElementById("callWarningModalBtn").click();
+          context.setWarningModalData(data.msg);
         }
       })
       .catch((err) => alert(err));
@@ -92,7 +96,7 @@ function AddMasterPage({ history }) {
     }
   }
   return (
-    <form onSubmit={handler} className="mt-4 row justify-content-center">
+    <form onSubmit={handler} onBlur={()=>context.closeWrningTooltip()} className="mt-4 row justify-content-center">
       <FormGroup>
         <Label forId={"rating"}>Enter rating</Label>
         <NumField max={5} min={0} id={"rating"} />

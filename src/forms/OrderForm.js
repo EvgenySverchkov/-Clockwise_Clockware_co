@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
 import FormGroup from "../components/FormComponents/FormGroup";
@@ -10,6 +10,8 @@ import TextFieldWithLabel from "../components/CompleteFormFields/TextFieldWithLa
 import ChooseClockSizeField from "../components/CompleteFormFields/ChooseClockSizeField";
 import ChooseTownsField from "../components/CompleteFormFields/ChooseTownField";
 
+import Context from "../ContextComponent";
+
 function OrderForm({
   submitHandler,
   changeHandler,
@@ -18,6 +20,7 @@ function OrderForm({
   townsArr = [],
   townsInOrderFormIsLoad,
 }) {
+  const context = useContext(Context);
   function minDate() {
     let date = new Date();
     return `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
@@ -34,7 +37,7 @@ function OrderForm({
 
   const currDate = minDate();
   return (
-    <form onSubmit={submitHandler} className="mt-4 row justify-content-center">
+    <form onSubmit={submitHandler} onBlur={()=>context.closeWrningTooltip()} className="mt-4 row justify-content-center">
       <TextFieldWithLabel
         fieldName={"name"}
         changeHandler={changeHandler}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FreeMastersForm from "../../forms/FreeMastersForm";
@@ -11,10 +11,13 @@ import {
 
 import { changeMasterListIsLoad } from "../../store/masterManagement/actions";
 
+import Context from "../../ContextComponent";
+
 import { SERVERDOMAIN } from "../../services/serverUrls";
 import sendConfirmEmail from "../../services/mailSendler";
 
 function MastersList(props) {
+  const context = useContext(Context);
   const state = useSelector((state) => {
     return {
       suitableMasters: state.masterReducer.suitableMasters,
@@ -32,8 +35,7 @@ function MastersList(props) {
       }
     }
     if (!masterId) {
-      dispatch(changeModalWarningDataAdmin({ msg: "Please, choose one!!!" }));
-      document.getElementById("callWarningModalBtn").click();
+      context.openErrorWindowWithMsg("Please, choose one!!!");
       return false;
     }
     let endOrderTime;
@@ -73,20 +75,12 @@ function MastersList(props) {
       .then((data) => {
         dispatch(changeMasterListIsLoad(false));
         if (data.success) {
-          dispatch(
-            changeSuccessModalDataAdmin({
-              msg: data.msg,
-              backBtnTxt: "Go to the list of orders",
-              backTo: "/admin/ordersList",
-            })
-          );
-          props.history.push("/admin");
-          document.getElementById("callSuccessModalBtn").click();
+          context.openSuccessWindowWithMsg(data.msg)
+          props.history.push("/admin/addOrderForm");
           dispatch(addCurrentOrderToState({}));
           sendConfirmEmail(`${SERVERDOMAIN}/send_message`, data.payload);
         } else {
-          dispatch(changeModalWarningDataAdmin({ msg: data.msg }));
-          document.getElementById("callWarningModalBtn").click();
+          context.setWarningModalData(data.msg);
         }
       })
       .catch((err) => {

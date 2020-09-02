@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { addCurrentOrderToState } from "../../store/orders/actions";
 import { changeClientOrderFormIsLoad } from "../../store/orders/actions";
-import {
-  changeSuccessModalData,
-  changeWarningModalData,
-} from "../../store/clientModalWindows/actions";
+
 import FreeMastersForm from "../../forms/FreeMastersForm";
 import sendMail from "../../services/mailSendler";
 
+import Context from "../../ContextComponent";
+
 import { SERVERDOMAIN } from "../../services/serverUrls";
-function MastersList() {
+function MastersList({history}) {
+  const context = useContext(Context);
   const state = useSelector((state) => {
     return {
       suitableMasters: state.clientMastresReduser.suitableMasters,
@@ -80,21 +80,10 @@ function MastersList() {
                 : {}
             )
           );
-          dispatch(
-            changeSuccessModalData({
-              msg: data.msg,
-              backBtnTxt: "Back to order form",
-              backTo: "/",
-            })
-          );
-          document.getElementById("callSuccessModalBtn").click();
+          context.openSuccessWindowWithMsg(data.msg);
+          history.push("/");
         } else {
-          dispatch(
-            changeWarningModalData({
-              msg: data.msg,
-            })
-          );
-          document.getElementById("callWarningModalBtn").click();
+          context.openErrorWindowWithMsg(data.msg);
         }
       })
       .catch((err) => {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -8,13 +8,15 @@ import {
   addCurrentOrderToState,
   changeAdminOrderFormIsLoad,
 } from "../../store/ordersManagement/actions";
-import { changeModalWarningDataAdmin } from "../../store/adminModalWindows/actions";
+
+import Context from "../../ContextComponent";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
 import OrderForm from "../../forms/OrderForm";
 
 function AddNewOrderPage({ history }) {
+  const context = useContext(Context);
   const state = useSelector((state) => {
     return {
       currentOrder: state.ordersReducer.currentOrder,
@@ -56,49 +58,30 @@ function AddNewOrderPage({ history }) {
       !trgElem.time.value ||
       !trgElem.date.value
     ) {
-      dispatch(
-        changeModalWarningDataAdmin({ msg: "Please, fill all fields!!!" })
-      );
-      document.getElementById("callWarningModalBtn").click();
+      context.openErrorWindowWithMsg("Please, fill all fields!!!");
       return false;
     }
-
-    if (trgElem.time) {
-      if (trgElem.time.value >= "18:00" || trgElem.time.value < "09:00") {
-        dispatch(
-          changeModalWarningDataAdmin({
-            msg: "Time should not be more than 18:00 and less than 09:00",
-          })
-        );
-        document.getElementById("callWarningModalBtn").click();
-        return false;
-      }
-    }
     if (trgElem.name.value.length <= 3) {
-      dispatch(
-        changeModalWarningDataAdmin({
-          msg: "Name field must be at least 3 characters!",
-        })
-      );
-      document.getElementById("callWarningModalBtn").click();
+      context.openWarningTooltip("Name field must be at least 3 characters!", trgElem.name.id);
       return false;
     }
     if (trgElem.name.value.match(/\d/) || !trgElem.name.value.match(/\b\w{3,20}\b/)) {
-      dispatch(
-        changeModalWarningDataAdmin({
-          msg: "String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!",
-        })
-      );
-      document.getElementById("callWarningModalBtn").click();
+      context.openWarningTooltip("String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!", trgElem.name.id);
       return false;
     }
+
+    if (!trgElem.email.value.match(/^\w+@[a-zA-Z_0-9]+?\.[a-zA-Z]{2,}$/)) {
+      context.openWarningTooltip("Invalid email format!", trgElem.email.id);
+      return false;
+    }
+
+    if (trgElem.time.value >= "18:00" || trgElem.time.value < "09:00") {
+      context.openWarningTooltip("Time should not be more than 18:00 and less than 09:00", trgElem.time.id);
+      return false;
+    }
+
     if (!isClientDateLargeThenCurrDate(trgElem.date.value)) {
-      dispatch(
-        changeModalWarningDataAdmin({
-          msg: "Date must not be less than or equal to the current date",
-        })
-      );
-      document.getElementById("callWarningModalBtn").click();
+      context.openWarningTooltip("Date must not be less than or equal to the current date", trgElem.date.id);
       return false;
     }
 
@@ -132,9 +115,7 @@ function AddNewOrderPage({ history }) {
         history.push("/admin/freeMasters");
       } else {
         dispatch(addSuitableMasters([]));
-        dispatch(changeModalWarningDataAdmin({ msg: data.msg }));
-        document.getElementById("callWarningModalBtn").click();
-        history.push("/admin/addOrderForm");
+        context.openErrorWindowWithMsg(data.msg)
       }
     });
   }

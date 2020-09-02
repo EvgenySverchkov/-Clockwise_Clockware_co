@@ -24,8 +24,6 @@ import EditTownForm from "../../forms/EditTownForm";
 import FullInfoModal from "../../components/AdminScreen/FullInfoModal";
 import LoginPage from "./LoginPage";
 import FreeMastersPage from "./FreeMastersPage";
-import SuccessModal from "../SuccessModal";
-import WarningModal from "../WarningModal";
 
 function AdminSrcreen(props) {
   const state = useSelector((state) => {
@@ -83,8 +81,6 @@ function AdminSrcreen(props) {
           </Switch>
         </div>
         <FullInfoModal itemObj={state.currItemForModal} />
-        <SuccessModal history={props.history} data={state.modalDataAdmin} />
-        <WarningModal data={state.modalWarningDataAdmin} />
       </div>
     </div>
   );

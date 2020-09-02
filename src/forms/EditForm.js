@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -14,12 +14,15 @@ import ChooseTownsField from "../components/CompleteFormFields/ChooseTownField";
 import SelectTownsField from "../components/CompleteFormFields/SelectTownsField";
 import TextFieldWithLabel from "../components/CompleteFormFields/TextFieldWithLabel";
 
+import Context from "../ContextComponent";
+
 import { townsInit } from "../store/townsManagement/actions";
 import { changeTownsFromOrderFormIsLoad } from "../store/towns/actions";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 
 function EditForm({ id, handler, arrFromState }) {
+  const context = useContext(Context);
   useEffect(function () {
     getTownsFromServerToState();
     getMastersFromServer(SERVERDOMAIN);
@@ -238,6 +241,7 @@ function EditForm({ id, handler, arrFromState }) {
     <form
       onSubmit={(e) => handler(e, stateObj)}
       className="mt-4 row justify-content-center"
+      onBlur={()=>context.closeWrningTooltip()}
     >
       {keyArr.map((fieldName) => {
         if (fieldName === "id") {

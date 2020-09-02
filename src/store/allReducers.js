@@ -5,7 +5,6 @@ import ordersReducer from "./ordersManagement/reducers";
 import townReduser from "./townsManagement/reducers";
 import adminModalWindows from "./adminModalWindows/reducers";
 
-import clientModalWindows from "./clientModalWindows/reducers";
 import clientOrderReduser from "./orders/reducers";
 import clientMastresReduser from "./masters/reducers";
 import clientTownsReduser from "./towns/reducers";
@@ -20,7 +19,6 @@ export default combineReducers({
   townReduser,
   adminModalWindows,
   clientOrderReduser,
-  clientModalWindows,
   clientMastresReduser,
   clientTownsReduser,
   authReducer,

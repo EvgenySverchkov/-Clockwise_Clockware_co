@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FormGroup from "../FormComponents/FormGroup";
@@ -7,15 +7,14 @@ import Email from "../../components/FormComponents/EmailField";
 import Name from "../FormComponents/TextField";
 import SubmitButton from "../FormComponents/Button";
 
-import {
-  changeWarningModalData,
-  changeSuccessModalData,
-} from "../../store/clientModalWindows/actions";
+import Context from "../../ContextComponent";
+
 import { changeEditUserDataIsLoad } from "../../store/userProfile/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
 const UserSettings = () => {
+  const context = useContext(Context);
   const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
@@ -26,24 +25,17 @@ const UserSettings = () => {
   let [userNameState, setUserNameState] = useState(userInfo.name);
   function submitHandler(e) {
     e.preventDefault();
+    const tragetElem = e.target;
     let obj = {
-      email: e.target.userMail.value,
-      name: e.target.userName.value,
+      email: tragetElem.userMail.value,
+      name: tragetElem.userName.value,
     };
     if (obj.name.length < 3) {
-      dispatch(
-        changeWarningModalData({ msg: "Name must be at least 3 characters" })
-      );
-      document.getElementById("callWarningModalBtn").click();
+      context.openWarningTooltip("Name must be at least 3 characters", tragetElem.userName.id)
       return false;
     }
     if (obj.name.match(/\d/)) {
-      dispatch(
-        changeWarningModalData({
-          msg: "The string name must not contain numbers!",
-        })
-      );
-      document.getElementById("callWarningModalBtn").click();
+      context.openWarningTooltip("The string name must not contain numbers!", tragetElem.userName.id);
       return false;
     }
     dispatch(changeEditUserDataIsLoad(true));
@@ -57,24 +49,17 @@ const UserSettings = () => {
       .then((json) => json.json())
       .then((data) => {
         if (data.succes) {
-          dispatch(
-            changeSuccessModalData({
-              msg: "Congratulations! You have updated your credentials",
-              backBtnTxt: "Back to the main page",
-              backTo: "/",
-            })
-          );
-          document.getElementById("callSuccessModalBtn").click();
+          const newUserData = JSON.stringify({...userInfo, name: obj.name});
+          localStorage.setItem("user", newUserData);
+          context.openSuccessWindowWithMsg("Congratulations! You have updated your credentials");
           dispatch(changeEditUserDataIsLoad(false));
         } else {
-          dispatch(changeWarningModalData({ msg: data.msg }));
-          document.getElementById("callWarningModalBtn").click();
+          context.openErrorWindowWithMsg(data.msg);
           dispatch(changeEditUserDataIsLoad(false));
         }
       })
       .catch((err) => {
-        dispatch(changeWarningModalData({ msg: err }));
-        document.getElementById("callWarningModalBtn").click();
+        context.openErrorWindowWithMsg(err);
         dispatch(changeEditUserDataIsLoad(false));
       });
   }
@@ -82,7 +67,7 @@ const UserSettings = () => {
     setUserNameState(e.target.value);
   }
   return (
-    <form onSubmit={submitHandler} className="mt-4 row justify-content-center">
+    <form onSubmit={submitHandler} onBlur={()=>context.closeWrningTooltip()} className="mt-4 row justify-content-center">
       <FormGroup>
         <Label forId={"userMail"}>Your email</Label>
         <Email id={"userMail"} value={userInfo.email} readonly={true} />
