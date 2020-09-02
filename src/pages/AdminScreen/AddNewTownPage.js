@@ -36,22 +36,34 @@ function AddNewTownPage() {
     };
 
     if (!targetElem.town.value.match(/^[A-Z]/)) {
-      context.openWarningTooltip("The string name must start with capital letter", targetElem.town.id);
+      context.openWarningTooltip(
+        "The string name must start with capital letter",
+        targetElem.town.id
+      );
       return false;
     }
 
     if (targetElem.town.value.match(/\d/)) {
-      context.openWarningTooltip("The string name must not contain numbers!", targetElem.town.id);
+      context.openWarningTooltip(
+        "The string name must not contain numbers!",
+        targetElem.town.id
+      );
       return false;
     }
 
     if (!targetElem.town.value.match(/\b\w{3,}\b/)) {
-      context.openWarningTooltip("String name should not be shorter than 3 characters!", targetElem.town.id);
+      context.openWarningTooltip(
+        "String name should not be shorter than 3 characters!",
+        targetElem.town.id
+      );
       return false;
     }
 
     if (targetElem.town.value.match(/\W/)) {
-      context.openWarningTooltip("String name should not containt punctuation characters and space character!", targetElem.town.id);
+      context.openWarningTooltip(
+        "String name should not containt punctuation characters and space character!",
+        targetElem.town.id
+      );
       return false;
     }
 
@@ -70,7 +82,11 @@ function AddNewTownPage() {
       .catch((err) => alert(err));
   }
   return (
-    <form onSubmit={handler} onBlur={()=>context.closeWrningTooltip()} className="mt-4 row justify-content-center">
+    <form
+      onSubmit={handler}
+      onBlur={() => context.closeWrningTooltip()}
+      className="mt-4 row justify-content-center"
+    >
       <FormGroup>
         <Label forId="town">Enter new town</Label>
         <TextField id={"town"} />

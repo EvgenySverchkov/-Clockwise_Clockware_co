@@ -23,18 +23,21 @@ function LoginPage({ history }) {
 
   function handler(e) {
     e.preventDefault();
-    let trgetElem = e.target
+    let trgetElem = e.target;
     let email = trgetElem.email;
     let password = trgetElem.password;
     let newObj = { email: email.value, password: password.value };
-    
+
     if (!email.value.match(/^\w+@[a-zA-Z_0-9]+?\.[a-zA-Z]{2,}$/)) {
       context.openWarningTooltip("Invalid email format!", email.id);
       return false;
     }
     if (password) {
       if (password.value.length < 4 || password.value.length > 16) {
-        context.openWarningTooltip("Password must not be less than 4 characters and must not be longer than 16 characters!", password.id);
+        context.openWarningTooltip(
+          "Password must not be less than 4 characters and must not be longer than 16 characters!",
+          password.id
+        );
         return false;
       }
     }
@@ -46,9 +49,9 @@ function LoginPage({ history }) {
       },
       body: JSON.stringify(newObj),
     })
-    .then((data) => data.json())
-    .then((data) => {
-      dispatch(changeClientLoginIsLoad(false));
+      .then((data) => data.json())
+      .then((data) => {
+        dispatch(changeClientLoginIsLoad(false));
         if (!data.success) {
           context.openErrorWindowWithMsg(data.msg);
           // context.openWarningTooltip(data.msg, trgetElem.id);

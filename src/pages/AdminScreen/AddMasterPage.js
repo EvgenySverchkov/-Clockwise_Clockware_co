@@ -52,22 +52,31 @@ function AddMasterPage({ history }) {
     let name = targetElem.name.value;
     let rating = targetElem.rating.value;
     let towns = selectCheckedTowns(targetElem.elements);
-    
+
     let infoObj = {
       name,
       rating,
       towns: towns.join(","),
     };
 
-    if (targetElem.name.value.match(/\d/) || !targetElem.name.value.match(/\b\w{3,20}\b/)) {
-      context.openWarningTooltip("String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!", targetElem.name.id)
+    if (
+      targetElem.name.value.match(/\d/) ||
+      !targetElem.name.value.match(/\b\w{3,20}\b/)
+    ) {
+      context.openWarningTooltip(
+        "String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!",
+        targetElem.name.id
+      );
       return false;
     }
     if (+targetElem.rating.value <= 0 || +targetElem.rating.value > 5) {
-      context.openWarningTooltip("Rating value must be from 1 to 5 inclusive", targetElem.rating.id)
+      context.openWarningTooltip(
+        "Rating value must be from 1 to 5 inclusive",
+        targetElem.rating.id
+      );
       return false;
     }
-    
+
     dispatch(changeAddNewMasterFormIsLoad(true));
     postData(`${SERVERDOMAIN}/masters/post`, infoObj)
       .then((data) => {
@@ -96,7 +105,11 @@ function AddMasterPage({ history }) {
     }
   }
   return (
-    <form onSubmit={handler} onBlur={()=>context.closeWrningTooltip()} className="mt-4 row justify-content-center">
+    <form
+      onSubmit={handler}
+      onBlur={() => context.closeWrningTooltip()}
+      className="mt-4 row justify-content-center"
+    >
       <FormGroup>
         <Label forId={"rating"}>Enter rating</Label>
         <NumField max={5} min={0} id={"rating"} />

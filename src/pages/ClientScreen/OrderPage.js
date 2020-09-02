@@ -17,7 +17,7 @@ import OrderForm from "../../forms/OrderForm";
 import Context from "../../ContextComponent";
 
 function OrderFormClient({ history }) {
-  const context = useContext(Context)
+  const context = useContext(Context);
   const state = useSelector((state) => {
     return {
       currentOrder: state.clientOrderReduser.currentOrder,
@@ -70,10 +70,7 @@ function OrderFormClient({ history }) {
       return false;
     }
     if (!trgElem.email.value.match(/^\w+@[a-zA-Z_0-9]+?\.[a-zA-Z]{2,}$/)) {
-      context.openWarningTooltip(
-        "Invalid email format!",
-        trgElem.email.id
-      );
+      context.openWarningTooltip("Invalid email format!", trgElem.email.id);
       return false;
     }
     if (trgElem.time.value >= "18:00" || trgElem.time.value < "09:00") {
@@ -85,16 +82,28 @@ function OrderFormClient({ history }) {
     }
 
     if (trgElem.name.value.length <= 3) {
-      context.openWarningTooltip("Name field must be at least 3 characters!", trgElem.name.id);
+      context.openWarningTooltip(
+        "Name field must be at least 3 characters!",
+        trgElem.name.id
+      );
       return false;
     }
-    if (trgElem.name.value.match(/\d/) || !trgElem.name.value.match(/\b\w{3,20}\b/)) {
-      context.openWarningTooltip("String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!", trgElem.name.id);
+    if (
+      trgElem.name.value.match(/\d/) ||
+      !trgElem.name.value.match(/\b\w{3,20}\b/)
+    ) {
+      context.openWarningTooltip(
+        "String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!",
+        trgElem.name.id
+      );
       return false;
     }
 
     if (!isClientDateLargeThenCurrDate(trgElem.date.value)) {
-      context.openWarningTooltip("Date must not be less than or equal to the current date", trgElem.date.id);
+      context.openWarningTooltip(
+        "Date must not be less than or equal to the current date",
+        trgElem.date.id
+      );
       return false;
     }
 

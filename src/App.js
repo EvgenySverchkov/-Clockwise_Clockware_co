@@ -25,27 +25,37 @@ function App() {
     errorWindowMsg: "",
     isOpenWarningTooltip: false,
     warningTooltipMsg: "",
-    fieldIdForTooltip: ""
+    fieldIdForTooltip: "",
   });
 
   const valuesForProvider = {
-    closeSuccessWindow: ()=>setState({...state, successWindowIsOpen: false}),
-    openSuccessWindowWithMsg: (msg)=>setState({...state, successWindowIsOpen: true, successWindowMsg: msg}),
-    closeErrorWindow: ()=>setState({...state, errorWindowIsOpen: false}),
-    openErrorWindowWithMsg: (msg)=>setState({...state, errorWindowIsOpen: true, errorWindowMsg: msg}),
+    closeSuccessWindow: () =>
+      setState({ ...state, successWindowIsOpen: false }),
+    openSuccessWindowWithMsg: (msg) =>
+      setState({ ...state, successWindowIsOpen: true, successWindowMsg: msg }),
+    closeErrorWindow: () => setState({ ...state, errorWindowIsOpen: false }),
+    openErrorWindowWithMsg: (msg) =>
+      setState({ ...state, errorWindowIsOpen: true, errorWindowMsg: msg }),
     successWindowMsg: state.successWindowMsg,
     successWindowIsOpen: state.successWindowIsOpen,
     errorWindowIsOpen: state.errorWindowIsOpen,
     errorWindowMsg: state.errorWindowMsg,
     isOpenWarningTooltip: state.isOpenWarningTooltip,
-    openWarningTooltip: (msg, fieldId)=>setState({...state, isOpenWarningTooltip: true, warningTooltipMsg: msg, fieldIdForTooltip: fieldId}),
-    closeWrningTooltip: ()=>setState({...state, isOpenWarningTooltip: false}),
+    openWarningTooltip: (msg, fieldId) =>
+      setState({
+        ...state,
+        isOpenWarningTooltip: true,
+        warningTooltipMsg: msg,
+        fieldIdForTooltip: fieldId,
+      }),
+    closeWrningTooltip: () =>
+      setState({ ...state, isOpenWarningTooltip: false }),
     warningTooltipMsg: state.warningTooltipMsg,
-    idForTooltip: state.fieldIdForTooltip
-  }
+    idForTooltip: state.fieldIdForTooltip,
+  };
   return (
     <Provider store={store}>
-      <Context.Provider value = {valuesForProvider}>
+      <Context.Provider value={valuesForProvider}>
         <div className="App">
           <Switch>
             <Route path="/client" component={ClientScreen} />
@@ -59,8 +69,8 @@ function App() {
             id="callWarningModalBtn"
           ></button>
         </div>
-        <SuccessWindow/>
-        <ErrorWindow/>
+        <SuccessWindow />
+        <ErrorWindow />
       </Context.Provider>
     </Provider>
   );

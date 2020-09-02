@@ -75,7 +75,7 @@ function MastersList(props) {
       .then((data) => {
         dispatch(changeMasterListIsLoad(false));
         if (data.success) {
-          context.openSuccessWindowWithMsg(data.msg)
+          context.openSuccessWindowWithMsg(data.msg);
           props.history.push("/admin/addOrderForm");
           dispatch(addCurrentOrderToState({}));
           sendConfirmEmail(`${SERVERDOMAIN}/send_message`, data.payload);

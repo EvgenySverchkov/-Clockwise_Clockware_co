@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
 import Context from "../../ContextComponent";
@@ -7,11 +7,12 @@ import Tooltip from "../CustomTooltip";
 const TimeField = ({ name, max, min, chngHandler, value }) => {
   const context = useContext(Context);
   return (
-    <Tooltip 
-    title={context.warningTooltipMsg} 
-    open={context.isOpenWarningTooltip} 
-    fieldId = {context.idForTooltip}
-    tooltipIsOpen = {context.isOpenWarningTooltip}>
+    <Tooltip
+      title={context.warningTooltipMsg}
+      open={context.isOpenWarningTooltip}
+      fieldId={context.idForTooltip}
+      tooltipIsOpen={context.isOpenWarningTooltip}
+    >
       <input
         type="time"
         name={name}
@@ -19,12 +20,12 @@ const TimeField = ({ name, max, min, chngHandler, value }) => {
         min={min || null}
         onChange={chngHandler}
         value={value}
-        id = "time"
+        id="time"
         required
       />
     </Tooltip>
   );
-}
+};
 
 TimeField.propTypes = {
   name: PropTypes.string.isRequired,

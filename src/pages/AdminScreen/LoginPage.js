@@ -32,12 +32,14 @@ function LoginPage(props) {
     }
     if (password) {
       if (password.length < 4 || password.length > 16) {
-        context.openWarningTooltip("Password must not be less than 4 characters and must not be longer than 16 characters!", e.target.password.id);
+        context.openWarningTooltip(
+          "Password must not be less than 4 characters and must not be longer than 16 characters!",
+          e.target.password.id
+        );
         return false;
       }
     }
 
-    
     dispatch(changeAdminLoginIsLoad(true));
     fetch(`${SERVERDOMAIN}/adminLogin`, {
       method: "POST",

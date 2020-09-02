@@ -241,7 +241,7 @@ function EditForm({ id, handler, arrFromState }) {
     <form
       onSubmit={(e) => handler(e, stateObj)}
       className="mt-4 row justify-content-center"
-      onBlur={()=>context.closeWrningTooltip()}
+      onBlur={() => context.closeWrningTooltip()}
     >
       {keyArr.map((fieldName) => {
         if (fieldName === "id") {

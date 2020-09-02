@@ -37,7 +37,11 @@ function OrderForm({
 
   const currDate = minDate();
   return (
-    <form onSubmit={submitHandler} onBlur={()=>context.closeWrningTooltip()} className="mt-4 row justify-content-center">
+    <form
+      onSubmit={submitHandler}
+      onBlur={() => context.closeWrningTooltip()}
+      className="mt-4 row justify-content-center"
+    >
       <TextFieldWithLabel
         fieldName={"name"}
         changeHandler={changeHandler}

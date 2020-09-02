@@ -9,9 +9,13 @@ import Button from "../components/FormComponents/Button";
 import Context from "../ContextComponent";
 
 const LoginForm = ({ submitHandler, authIsLoad }) => {
-  const context = useContext(Context)
+  const context = useContext(Context);
   return (
-    <form onSubmit={submitHandler} onBlur={()=>context.closeWrningTooltip()} className="mt-4 row justify-content-center">
+    <form
+      onSubmit={submitHandler}
+      onBlur={() => context.closeWrningTooltip()}
+      className="mt-4 row justify-content-center"
+    >
       <FormGroup>
         <Label forId="email">Enter your email</Label>
         <EmailField id={"email"} />
@@ -23,6 +27,6 @@ const LoginForm = ({ submitHandler, authIsLoad }) => {
       <Button loading={authIsLoad} value={"Login"} />
     </form>
   );
-}
+};
 
 export default LoginForm;

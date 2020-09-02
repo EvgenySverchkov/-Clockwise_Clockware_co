@@ -10,7 +10,7 @@ import sendMail from "../../services/mailSendler";
 import Context from "../../ContextComponent";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-function MastersList({history}) {
+function MastersList({ history }) {
   const context = useContext(Context);
   const state = useSelector((state) => {
     return {

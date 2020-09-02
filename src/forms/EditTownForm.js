@@ -22,21 +22,33 @@ const EditTownForm = ({ match, history }) => {
     e.preventDefault();
     const targetElem = e.target;
     if (!targetElem.name.value.match(/^[A-Z]/)) {
-      context.openWarningTooltip("The string name must start with capital letter", targetElem.name.id);
+      context.openWarningTooltip(
+        "The string name must start with capital letter",
+        targetElem.name.id
+      );
       return false;
     }
 
     if (targetElem.name.value.match(/\d/)) {
-      context.openWarningTooltip("The string name must not contain numbers!", targetElem.name.id);
+      context.openWarningTooltip(
+        "The string name must not contain numbers!",
+        targetElem.name.id
+      );
       return false;
     }
     if (!targetElem.name.value.match(/\b\w{3,}\b/)) {
-      context.openWarningTooltip("String name should not be shorter than 3 characters!", targetElem.name.id);
+      context.openWarningTooltip(
+        "String name should not be shorter than 3 characters!",
+        targetElem.name.id
+      );
       return false;
     }
 
     if (targetElem.name.value.match(/\W/)) {
-      context.openWarningTooltip("String name should not containt punctuation characters and space character!", targetElem.name.id);
+      context.openWarningTooltip(
+        "String name should not containt punctuation characters and space character!",
+        targetElem.name.id
+      );
       return false;
     }
 
@@ -49,7 +61,7 @@ const EditTownForm = ({ match, history }) => {
           context.openErrorWindowWithMsg(data.msg);
         }
       })
-      .catch((err) =>context.openErrorWindowWithMsg(err));
+      .catch((err) => context.openErrorWindowWithMsg(err));
   }
   return (
     <EditForm

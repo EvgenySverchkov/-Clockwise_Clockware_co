@@ -42,7 +42,7 @@ function FullInfoModal({ itemObj }) {
 }
 
 FullInfoModal.propTypes = {
-  itemObj: PropTypes.object
-}
+  itemObj: PropTypes.object,
+};
 
 export default FullInfoModal;

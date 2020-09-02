@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { updateMasterInState } from "../store/masterManagement/actions";
 import putDataToServer from "../components/AdminScreen/services/putDataToServer";
 
-
 import EditForm from "./EditForm";
 
 import Context from "../ContextComponent";
@@ -22,12 +21,21 @@ const EditMasterForm = ({ match, history }) => {
   function editMasterHandler(e, newMasterObj) {
     e.preventDefault();
     const targetElem = e.target;
-    if (targetElem.name.value.match(/\d/) || !targetElem.name.value.match(/\b\w{3,20}\b/)) {
-      context.openWarningTooltip("String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!", targetElem.name.id)
+    if (
+      targetElem.name.value.match(/\d/) ||
+      !targetElem.name.value.match(/\b\w{3,20}\b/)
+    ) {
+      context.openWarningTooltip(
+        "String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!",
+        targetElem.name.id
+      );
       return false;
     }
     if (+targetElem.rating.value <= 0 || +targetElem.rating.value > 5) {
-      context.openWarningTooltip("Rating value must be from 1 to 5 inclusive", targetElem.rating.id)
+      context.openWarningTooltip(
+        "Rating value must be from 1 to 5 inclusive",
+        targetElem.rating.id
+      );
       return false;
     }
 
@@ -37,10 +45,10 @@ const EditMasterForm = ({ match, history }) => {
     )
       .then((data) => {
         if (data.success) {
-          context.openSuccessWindowWithMsg(data.msg)
+          context.openSuccessWindowWithMsg(data.msg);
           dispatch(updateMasterInState(data));
         } else {
-          context.openErrorWindowWithMsg(data.msg)
+          context.openErrorWindowWithMsg(data.msg);
         }
       })
       .catch((err) => context.openErrorWindowWithMsg(err));

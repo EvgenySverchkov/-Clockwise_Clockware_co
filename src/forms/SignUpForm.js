@@ -11,9 +11,13 @@ import Button from "../components/FormComponents/Button";
 import Context from "../ContextComponent";
 
 const SignUpForm = ({ handler }) => {
-  const context = useContext(Context)
+  const context = useContext(Context);
   return (
-    <form onSubmit={handler} onBlur={()=>context.closeWrningTooltip()} className="mt-4 row justify-content-center">
+    <form
+      onSubmit={handler}
+      onBlur={() => context.closeWrningTooltip()}
+      className="mt-4 row justify-content-center"
+    >
       <FormGroup isRow={true}>
         <Label forId={"name"}>Enter your name</Label>
         <TextField id={"name"} name={"name"} />

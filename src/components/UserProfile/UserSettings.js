@@ -31,11 +31,17 @@ const UserSettings = () => {
       name: tragetElem.userName.value,
     };
     if (obj.name.length < 3) {
-      context.openWarningTooltip("Name must be at least 3 characters", tragetElem.userName.id)
+      context.openWarningTooltip(
+        "Name must be at least 3 characters",
+        tragetElem.userName.id
+      );
       return false;
     }
     if (obj.name.match(/\d/)) {
-      context.openWarningTooltip("The string name must not contain numbers!", tragetElem.userName.id);
+      context.openWarningTooltip(
+        "The string name must not contain numbers!",
+        tragetElem.userName.id
+      );
       return false;
     }
     dispatch(changeEditUserDataIsLoad(true));
@@ -49,9 +55,11 @@ const UserSettings = () => {
       .then((json) => json.json())
       .then((data) => {
         if (data.succes) {
-          const newUserData = JSON.stringify({...userInfo, name: obj.name});
+          const newUserData = JSON.stringify({ ...userInfo, name: obj.name });
           localStorage.setItem("user", newUserData);
-          context.openSuccessWindowWithMsg("Congratulations! You have updated your credentials");
+          context.openSuccessWindowWithMsg(
+            "Congratulations! You have updated your credentials"
+          );
           dispatch(changeEditUserDataIsLoad(false));
         } else {
           context.openErrorWindowWithMsg(data.msg);
@@ -67,7 +75,11 @@ const UserSettings = () => {
     setUserNameState(e.target.value);
   }
   return (
-    <form onSubmit={submitHandler} onBlur={()=>context.closeWrningTooltip()} className="mt-4 row justify-content-center">
+    <form
+      onSubmit={submitHandler}
+      onBlur={() => context.closeWrningTooltip()}
+      className="mt-4 row justify-content-center"
+    >
       <FormGroup>
         <Label forId={"userMail"}>Your email</Label>
         <Email id={"userMail"} value={userInfo.email} readonly={true} />

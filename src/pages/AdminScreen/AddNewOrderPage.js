@@ -62,11 +62,20 @@ function AddNewOrderPage({ history }) {
       return false;
     }
     if (trgElem.name.value.length <= 3) {
-      context.openWarningTooltip("Name field must be at least 3 characters!", trgElem.name.id);
+      context.openWarningTooltip(
+        "Name field must be at least 3 characters!",
+        trgElem.name.id
+      );
       return false;
     }
-    if (trgElem.name.value.match(/\d/) || !trgElem.name.value.match(/\b\w{3,20}\b/)) {
-      context.openWarningTooltip("String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!", trgElem.name.id);
+    if (
+      trgElem.name.value.match(/\d/) ||
+      !trgElem.name.value.match(/\b\w{3,20}\b/)
+    ) {
+      context.openWarningTooltip(
+        "String name should:\n1. Not contain numbers\n2. Not be shorter than 3 characters\n3. Not longer than 20 characters\n4. Do not contain Cyrillic characters!",
+        trgElem.name.id
+      );
       return false;
     }
 
@@ -76,12 +85,18 @@ function AddNewOrderPage({ history }) {
     }
 
     if (trgElem.time.value >= "18:00" || trgElem.time.value < "09:00") {
-      context.openWarningTooltip("Time should not be more than 18:00 and less than 09:00", trgElem.time.id);
+      context.openWarningTooltip(
+        "Time should not be more than 18:00 and less than 09:00",
+        trgElem.time.id
+      );
       return false;
     }
 
     if (!isClientDateLargeThenCurrDate(trgElem.date.value)) {
-      context.openWarningTooltip("Date must not be less than or equal to the current date", trgElem.date.id);
+      context.openWarningTooltip(
+        "Date must not be less than or equal to the current date",
+        trgElem.date.id
+      );
       return false;
     }
 
@@ -115,7 +130,7 @@ function AddNewOrderPage({ history }) {
         history.push("/admin/freeMasters");
       } else {
         dispatch(addSuitableMasters([]));
-        context.openErrorWindowWithMsg(data.msg)
+        context.openErrorWindowWithMsg(data.msg);
       }
     });
   }

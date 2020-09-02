@@ -8,11 +8,12 @@ const EmailField = ({ id, chngHandler, value, readonly = false }) => {
   const context = useContext(Context);
   return (
     <div className="col-sm-8 col-md-8">
-      <Tooltip 
-        title={context.warningTooltipMsg} 
-        open={context.isOpenWarningTooltip} 
-        fieldId = {context.idForTooltip}
-        tooltipIsOpen = {context.isOpenWarningTooltip}>
+      <Tooltip
+        title={context.warningTooltipMsg}
+        open={context.isOpenWarningTooltip}
+        fieldId={context.idForTooltip}
+        tooltipIsOpen={context.isOpenWarningTooltip}
+      >
         <input
           id={id}
           type="email"
@@ -26,7 +27,7 @@ const EmailField = ({ id, chngHandler, value, readonly = false }) => {
       </Tooltip>
     </div>
   );
-}
+};
 
 EmailField.propTypes = {
   id: PropTypes.string,
