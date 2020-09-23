@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NumField /> test which is used in forms 1`] = `
+<div
+  className="col-sm-3"
+>
+  <input
+    aria-describedby={null}
+    className="form-control"
+    id="1"
+    max={5}
+    min={1}
+    name="Name"
+    onBlur={[Function]}
+    onChange={[MockFunction]}
+    onFocus={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    title="Message"
+    type="number"
+    value={5}
+  />
+</div>
+`;

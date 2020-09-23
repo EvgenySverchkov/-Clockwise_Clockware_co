@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextFieldWithLabel /> test which is used in forms 1`] = `
+<div
+  className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+>
+  <label
+    className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+    htmlFor="FieldName"
+  >
+    Enter 
+    FieldName
+  </label>
+  <div
+    className="col-sm-8 col-md-8"
+  >
+    <input
+      aria-describedby={null}
+      className="form-control"
+      id="FieldName"
+      name="FieldName"
+      onBlur={[Function]}
+      onChange={[MockFunction]}
+      onFocus={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      required={true}
+      title="Message"
+      type="text"
+      value="Value"
+    />
+  </div>
+</div>
+`;

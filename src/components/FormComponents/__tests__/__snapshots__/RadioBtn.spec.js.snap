@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RadioBtn /> test which is used in forms 1`] = `
+<div
+  className="form-check form-check-inline"
+>
+  <input
+    className="form-check-input"
+    id="1"
+    name="Name"
+    onChange={[MockFunction]}
+    type="radio"
+    value="Value"
+  />
+  <div>
+    Some element
+  </div>
+</div>
+`;

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CheckBtn /> test which is used in forms 1`] = `
+<div
+  className="form-check-inline"
+>
+  <label
+    className="form-check-label"
+    htmlFor="Name"
+  >
+    <input
+      className="form-check-input towns"
+      id="Name"
+      name="Nm"
+      onChange={[MockFunction]}
+      type="checkbox"
+      value="Name"
+    />
+    Name
+  </label>
+</div>
+`;

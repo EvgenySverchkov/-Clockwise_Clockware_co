@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TimeField /> test which is used in forms 1`] = `
+<input
+  aria-describedby={null}
+  className=""
+  id="time"
+  max="18:00"
+  min="09:00"
+  name="Name"
+  onBlur={[Function]}
+  onChange={[MockFunction]}
+  onFocus={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+  required={true}
+  title="Message"
+  type="time"
+  value="Value"
+/>
+`;

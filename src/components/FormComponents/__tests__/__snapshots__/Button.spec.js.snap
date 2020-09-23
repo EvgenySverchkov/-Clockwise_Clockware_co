@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> test which is used in forms 1`] = `
+<div
+  className="row justify-content-sm-center col-12"
+>
+  <input
+    className="btn btn-primary col-12 col-sm-4 mt-3"
+    type="submit"
+    value="Click"
+  />
+</div>
+`;

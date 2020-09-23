@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DateField /> test which is used in forms 1`] = `
+<input
+  aria-describedby={null}
+  className="mr-1"
+  id="date"
+  max="2021-09-23"
+  min="2020-09-23"
+  name="Name"
+  onBlur={[Function]}
+  onChange={[MockFunction]}
+  onFocus={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+  required={true}
+  title="Message"
+  type="date"
+  value="2020-09-23"
+/>
+`;

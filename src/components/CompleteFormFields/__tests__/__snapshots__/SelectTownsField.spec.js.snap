@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SelectTownsField /> test which is used in forms 1`] = `
+<div
+  className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+>
+  <div
+    className="mb-2 font-weight-bold"
+  >
+    Choose towns
+  </div>
+  <div>
+    <div
+      className="form-check-inline"
+    >
+      <label
+        className="form-check-label"
+        htmlFor="SomeTown"
+      >
+        <input
+          className="form-check-input towns"
+          id="SomeTown"
+          name="towns"
+          onChange={[MockFunction]}
+          type="checkbox"
+          value="SomeTown"
+        />
+        SomeTown
+      </label>
+    </div>
+    <div
+      className="form-check-inline"
+    >
+      <label
+        className="form-check-label"
+        htmlFor="SomeTown2"
+      >
+        <input
+          className="form-check-input towns"
+          id="SomeTown2"
+          name="towns"
+          onChange={[MockFunction]}
+          type="checkbox"
+          value="SomeTown2"
+        />
+        SomeTown2
+      </label>
+    </div>
+  </div>
+</div>
+`;

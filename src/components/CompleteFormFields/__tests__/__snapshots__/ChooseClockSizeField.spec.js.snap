@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChooseClockSizeField /> test which is used in forms 1`] = `
+<div
+  className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+>
+  <div
+    className="mb-2 font-weight-bold"
+  >
+    Choose size of clock
+  </div>
+  <div
+    className="form-check form-check-inline"
+  >
+    <input
+      className="form-check-input"
+      id="smallSize"
+      name="size"
+      onChange={[MockFunction]}
+      type="radio"
+      value="small"
+    />
+    <label
+      className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+      htmlFor="smallSize"
+    >
+      Small
+    </label>
+  </div>
+  <div
+    className="form-check form-check-inline"
+  >
+    <input
+      className="form-check-input"
+      id="middleSize"
+      name="size"
+      onChange={[MockFunction]}
+      type="radio"
+      value="middle"
+    />
+    <label
+      className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+      htmlFor="middleSize"
+    >
+      Middle
+    </label>
+  </div>
+  <div
+    className="form-check form-check-inline"
+  >
+    <input
+      className="form-check-input"
+      id="largeSize"
+      name="size"
+      onChange={[MockFunction]}
+      type="radio"
+      value="large"
+    />
+    <label
+      className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+      htmlFor="largeSize"
+    >
+      Large
+    </label>
+  </div>
+</div>
+`;
