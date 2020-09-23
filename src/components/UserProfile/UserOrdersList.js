@@ -39,7 +39,7 @@ const UserOrdersList = ({ history }) => {
   }
   return (
     <List
-      dataArr={state.userOrders}
+      dataArr={state.userOrders||[]}
       mainRows={["name", "time", "date", "town"]}
       getData={getUserOrdersFromServerToState}
       history={history}

@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-import { changeModalWarningDataAdmin } from "../../store/adminModalWindows/actions";
 
 import {
   changeAdminLoginIsLoad,

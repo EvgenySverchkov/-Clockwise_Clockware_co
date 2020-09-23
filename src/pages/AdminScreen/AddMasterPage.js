@@ -23,7 +23,7 @@ import {
 
 import { townsInit } from "../../store/townsManagement/actions";
 
-function AddMasterPage({ history }) {
+function AddMasterPage() {
   const context = useContext(Context);
   const state = useSelector((state) => {
     return {

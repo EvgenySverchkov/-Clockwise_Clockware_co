@@ -31,7 +31,6 @@ function FreeMastersList({
               id={item.id}
               name={item.name}
               rating={item.rating}
-              towns={item.towns}
               key={item.id}
             />
           );

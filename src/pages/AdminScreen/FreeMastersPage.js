@@ -4,10 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import FreeMastersForm from "../../forms/FreeMastersForm";
 
 import { addCurrentOrderToState } from "../../store/ordersManagement/actions";
-import {
-  changeSuccessModalDataAdmin,
-  changeModalWarningDataAdmin,
-} from "../../store/adminModalWindows/actions";
 
 import { changeMasterListIsLoad } from "../../store/masterManagement/actions";
 

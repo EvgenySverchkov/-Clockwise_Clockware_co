@@ -24,12 +24,12 @@ const WarningTooltip = ({
     <MyTooltip
       arrow
       open={
-        tooltipIsOpen ? (fieldId == children.props.id ? true : false) : false
+        tooltipIsOpen ? (fieldId === children.props.id ? true : false) : false
       }
       className={
         withBorder
           ? tooltipIsOpen
-            ? fieldId == children.props.id
+            ? fieldId === children.props.id
               ? "border border-danger"
               : ""
             : ""

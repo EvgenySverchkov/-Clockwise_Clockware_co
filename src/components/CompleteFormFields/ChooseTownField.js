@@ -7,9 +7,13 @@ import FormGroup from "../FormComponents/FormGroup";
 const ChooseTownsField = ({ changeHandler, isLoad, townsArr }) => (
   <FormGroup isRow={false}>
     <div className="mb-2 font-weight-bold">Choose town</div>
-    {isLoad
-      ? "Loading..."
-      : townsArr.map((item) => (
+    {
+      townsArr.length === 0 ? (
+      <div>-- List is empty --</div>
+      ) : (
+        isLoad
+        ? "Loading..."
+        : townsArr.map((item) => (
           <div key={item.id + 1} className="form-check-inline">
             <RadioBtn
               id={item.name}
@@ -22,7 +26,9 @@ const ChooseTownsField = ({ changeHandler, isLoad, townsArr }) => (
               </Label>
             </RadioBtn>
           </div>
-        ))}
+        ))
+      )
+    }
   </FormGroup>
 );
 
