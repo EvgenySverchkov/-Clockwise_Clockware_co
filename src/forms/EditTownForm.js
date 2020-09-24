@@ -11,7 +11,7 @@ import Context from "../ContextComponent";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 
-const EditTownForm = ({ match, history }) => {
+const EditTownForm = ({ match }) => {
   const context = useContext(Context);
   const state = useSelector((state) => {
     return { townsArr: state.townReduser.towns };

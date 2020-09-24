@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <MasterCard /> for <FreeMasterList/> 1`] = `
+<div
+  className="col-sm-4 mb-2 col-sm-6 col-lg-4"
+>
+  <div
+    className="card"
+  >
+    <div
+      className="card-body"
+    >
+      <h5
+        className="card-title"
+      >
+        Name
+      </h5>
+      <p
+        className="card-text"
+      >
+        Rating: 
+        5
+      </p>
+      <div
+        className="form-check form-check-inline"
+      >
+        <input
+          className="form-check-input"
+          id={1}
+          name="chooseMaster"
+          onChange={null}
+          type="radio"
+          value={1}
+        />
+        <label
+          className="form-check-label"
+          htmlFor={1}
+        >
+          Choose
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;

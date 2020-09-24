@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <EditMasterForm/> with mock props 1`] = `
+<form
+  className="mt-4 row justify-content-center"
+  onBlur={[Function]}
+  onSubmit={[Function]}
+>
+  <div
+    className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+  >
+    <label
+      className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+      htmlFor="rating"
+    >
+      Enter 
+      rating
+    </label>
+    <div
+      className="col-sm-3"
+    >
+      <input
+        aria-describedby={null}
+        className="form-control"
+        id="rating"
+        max={5}
+        min={0}
+        name="rating"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        title="Message"
+        type="number"
+        value={5}
+      />
+    </div>
+  </div>
+  <div
+    className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+  >
+    <label
+      className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+      htmlFor="name"
+    >
+      Enter 
+      name
+    </label>
+    <div
+      className="col-sm-8 col-md-8"
+    >
+      <input
+        aria-describedby={null}
+        className="form-control"
+        id="name"
+        name="name"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        required={true}
+        title="Message"
+        type="text"
+        value="Name"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+  >
+    <div
+      className="mb-2 font-weight-bold"
+    >
+      Choose towns
+    </div>
+    <div>
+      <div>
+        -- List is empty --
+      </div>
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center col-12"
+  >
+    <input
+      className="btn btn-primary col-12 col-sm-4 mt-3"
+      type="submit"
+      value="Edit"
+    />
+  </div>
+</form>
+`;

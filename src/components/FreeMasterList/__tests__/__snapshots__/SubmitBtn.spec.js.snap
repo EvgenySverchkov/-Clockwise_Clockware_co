@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <SubmitBtn/> for <FreeMasterList/> 1`] = `
+<div
+  className="form-group float-right mt-3"
+>
+  <input
+    className="btn btn-primary"
+    type="submit"
+    value="Book now"
+  />
+</div>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <EmptyList/> for <FreeMasterList/> 1`] = `
+<div
+  className="text-left display-4"
+>
+  <div>
+    Mock element
+  </div>
+</div>
+`;

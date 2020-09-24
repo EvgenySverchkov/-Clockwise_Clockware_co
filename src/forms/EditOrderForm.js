@@ -11,7 +11,7 @@ import Context from "../ContextComponent";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 
-const EditOrderForm = ({ match, history }) => {
+const EditOrderForm = ({ match }) => {
   const context = useContext(Context);
   const state = useSelector((state) => {
     return { ordersArr: state.ordersReducer.ordersArr };

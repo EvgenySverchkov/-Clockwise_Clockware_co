@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <FreeMastersForm /> with mock props 1`] = `
+<form
+  onSubmit={[MockFunction]}
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm-4 mb-2 col-sm-6 col-lg-4"
+    >
+      <div
+        className="card"
+      >
+        <div
+          className="card-body"
+        >
+          <h5
+            className="card-title"
+          >
+            Name
+          </h5>
+          <p
+            className="card-text"
+          >
+            Rating: 
+            5
+          </p>
+          <div
+            className="form-check form-check-inline"
+          >
+            <input
+              className="form-check-input"
+              id={1}
+              name="chooseMaster"
+              onChange={null}
+              type="radio"
+              value={1}
+            />
+            <label
+              className="form-check-label"
+              htmlFor={1}
+            >
+              Choose
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="form-group float-left mt-3"
+  >
+    <a
+      className="btn btn-primary"
+      href="/"
+      onClick={[Function]}
+    >
+      Сome back
+    </a>
+  </div>
+  <div
+    className="form-group float-right mt-3"
+  >
+    <input
+      className="btn btn-primary"
+      type="submit"
+      value="Book now"
+    />
+  </div>
+</form>
+`;

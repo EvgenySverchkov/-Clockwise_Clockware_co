@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <ComeBackBtn/> for <FreeMasterList/> 1`] = `
+<div
+  className="form-group float-left mt-3"
+>
+  <a
+    className="btn btn-primary"
+    href="/"
+    onClick={[Function]}
+  >
+    Сome back
+  </a>
+</div>
+`;

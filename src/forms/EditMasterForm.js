@@ -11,7 +11,7 @@ import Context from "../ContextComponent";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 
-const EditMasterForm = ({ match, history }) => {
+const EditMasterForm = ({ match }) => {
   const context = useContext(Context);
   const state = useSelector((state) => {
     return { mastersArr: state.masterReducer.masters };

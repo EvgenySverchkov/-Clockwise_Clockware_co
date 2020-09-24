@@ -4,28 +4,28 @@ import {create, act} from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 
-import EditForm from "../EditForm";
+import EditTownForm from "../EditTownForm";
 import ContextComponent from "../../ContextComponent";
 
 const mockStore = configureStore();
 
-it("Test of <EditForm/> with mock props", async ()=>{
+it("Test of <EditTownForm/> with mock props", async()=>{
     global.fetch = jest.fn(()=>Promise.resolve({json: ()=>Promise.resolve()}))
-    const initialMockStore = mockStore({
+    const townId = 1;
+    const store = mockStore({
         townReduser: {
-            towns: [{id: 1, name: "Town"}]
+            towns: [{id: townId, name: "Name"}]
         },
         clientTownsReduser: {
             townsInOrderFormIsLoad: false
         }
-    })
+    });
     const mockProps = {
-        id: 2, 
-        handler: jest.fn(), 
-        arrFromState: [
-            {id: 2, name: "Petrovich", rating: "5", towns: ""}, 
-            {id: 3, name: "John Doe", rating: "4", towns: ""}
-        ]
+        match: {
+            params: {
+                id: townId
+            }
+        }
     }
     const mockContextValue = {
         closeWrningTooltip: jest.fn(),
@@ -33,16 +33,14 @@ it("Test of <EditForm/> with mock props", async ()=>{
         isOpenWarningTooltip: false,
         idForTooltip: 1
     }
-    let component;
-    await act(async ()=>{
+    let component 
+    await act(async()=>{
         component = await create(
-            <Provider store={initialMockStore}>
+            <Provider store = {store}>
                 <ContextComponent.Provider value={mockContextValue}>
-                    <EditForm {...mockProps}/>
-                </ContextComponent.Provider>  
-            </Provider>
-        );
+                    <EditTownForm {...mockProps}/>
+                </ContextComponent.Provider>
+            </Provider>)
     });
-
     expect(component.toJSON()).toMatchSnapshot();
 });
