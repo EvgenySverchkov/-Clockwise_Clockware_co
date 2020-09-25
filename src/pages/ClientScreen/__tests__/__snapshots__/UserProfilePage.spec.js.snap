@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <UserProfilePage /> When path doesn't logged (field 'token' in localStorage is false) 1`] = `
+<div
+  className="text-center display-4"
+>
+  Please, log into your account!
+</div>
+`;
+
+exports[`Test of <UserProfilePage /> When path is '/client/userProfile/userOrders' and user logged (field 'token' in localStorage is true) 1`] = `
+Array [
+  <div
+    className="btn-group col-12 p-0 mb-2"
+    role="group"
+  >
+    <a
+      className="btn btn-secondary"
+      href="/client/userProfile/userOrders"
+      onClick={[Function]}
+      type="button"
+    >
+      Orders
+    </a>
+    <a
+      className="btn btn-secondary"
+      href="/client/userProfile/userSettings"
+      onClick={[Function]}
+      type="button"
+    >
+      Settings
+    </a>
+    <a
+      className="btn btn-danger"
+      href="/"
+      onClick={[Function]}
+    >
+      Logout
+    </a>
+  </div>,
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="userMail"
+      >
+        Your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="userMail"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={true}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="userName"
+      >
+        Your name
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="userName"
+          name={null}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Edit profile"
+      />
+    </div>
+  </form>,
+]
+`;
+
+exports[`Test of <UserProfilePage /> When path is '/client/userProfile/userSettings' and user logged (field 'token' in localStorage is true) 1`] = `
+Array [
+  <div
+    className="btn-group col-12 p-0 mb-2"
+    role="group"
+  >
+    <a
+      className="btn btn-secondary"
+      href="/client/userProfile/userOrders"
+      onClick={[Function]}
+      type="button"
+    >
+      Orders
+    </a>
+    <a
+      className="btn btn-secondary"
+      href="/client/userProfile/userSettings"
+      onClick={[Function]}
+      type="button"
+    >
+      Settings
+    </a>
+    <a
+      className="btn btn-danger"
+      href="/"
+      onClick={[Function]}
+    >
+      Logout
+    </a>
+  </div>,
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="userMail"
+      >
+        Your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="userMail"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={true}
+          required={true}
+          title="Warning"
+          type="email"
+          value="test@mail.com"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="userName"
+      >
+        Your name
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="userName"
+          name={null}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="text"
+          value="Name"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Edit profile"
+      />
+    </div>
+  </form>,
+]
+`;

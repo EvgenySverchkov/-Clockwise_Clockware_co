@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { useDispatch } from "react-redux";
-import PropTypes from "prop-types";
 
 import { changeSignUpIsLoad } from "../../store/auth/actions";
 
@@ -10,7 +9,7 @@ import Context from "../../ContextComponent";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
-function RegistrationForm({ history }) {
+function RegistrationForm() {
   const context = useContext(Context);
 
   const dispatch = useDispatch();
@@ -82,9 +81,5 @@ function RegistrationForm({ history }) {
   }
   return <SignUpForm handler={submitHandler} />;
 }
-
-RegistrationForm.propTypes = {
-  history: PropTypes.object.isRequired,
-};
 
 export default RegistrationForm;
