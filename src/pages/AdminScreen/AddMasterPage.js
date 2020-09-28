@@ -86,7 +86,7 @@ function AddMasterPage() {
           context.openSuccessWindowWithMsg(data.msg);
           targetElem.reset();
         } else {
-          context.setWarningModalData(data.msg);
+          context.openErrorWindowWithMsg(data.msg);
         }
       })
       .catch((err) => alert(err));
