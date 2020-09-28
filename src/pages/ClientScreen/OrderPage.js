@@ -13,7 +13,6 @@ import { changeTownsFromOrderFormIsLoad } from "../../store/towns/actions";
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
 import OrderForm from "../../forms/OrderForm";
-
 import Context from "../../ContextComponent";
 
 function OrderFormClient({ history }) {

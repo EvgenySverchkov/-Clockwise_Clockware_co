@@ -1,0 +1,2947 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <MainPage/> (client side) When user doesn't logged When path is '/client' 1`] = `
+Array [
+  <header
+    className="masthead mb-auto"
+  >
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-dark"
+    >
+      <a
+        className="navbar-brand"
+        href="/client"
+        onClick={[Function]}
+      >
+        Clockwise Co.
+      </a>
+      <button
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        data-target="#navbarsExample03"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="navbar-collapse collapse"
+        id="navbarsExample03"
+      >
+        <ul
+          className="navbar-nav mr-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/login"
+              onClick={[Function]}
+            >
+              Login
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/registration"
+              onClick={[Function]}
+            >
+              SignUp
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client"
+              onClick={[Function]}
+            >
+              To main
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>,
+  <div
+    className="col-md-8 mt-4 container"
+  >
+    <div
+      className="text-center mb-1"
+    >
+      You are welcomed by 
+      <h1
+        className="font-italic"
+      >
+        Clockwise company
+      </h1>
+    </div>
+    <br />
+    <div
+      className="text-center"
+    >
+      Fill out this form to order a master
+    </div>
+    <form
+      className="mt-4 row justify-content-center"
+      onBlur={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="name"
+        >
+          Enter 
+          name
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            className="form-control"
+            id="name"
+            name="name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="email"
+        >
+          Enter 
+          email
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            className="form-control"
+            id="email"
+            name="email"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <div
+          className="mb-2 font-weight-bold"
+        >
+          Choose size of clock
+        </div>
+        <div
+          className="form-check form-check-inline"
+        >
+          <input
+            className="form-check-input"
+            id="smallSize"
+            name="size"
+            onChange={[Function]}
+            type="radio"
+            value="small"
+          />
+          <label
+            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+            htmlFor="smallSize"
+          >
+            Small
+          </label>
+        </div>
+        <div
+          className="form-check form-check-inline"
+        >
+          <input
+            className="form-check-input"
+            id="middleSize"
+            name="size"
+            onChange={[Function]}
+            type="radio"
+            value="middle"
+          />
+          <label
+            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+            htmlFor="middleSize"
+          >
+            Middle
+          </label>
+        </div>
+        <div
+          className="form-check form-check-inline"
+        >
+          <input
+            className="form-check-input"
+            id="largeSize"
+            name="size"
+            onChange={[Function]}
+            type="radio"
+            value="large"
+          />
+          <label
+            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+            htmlFor="largeSize"
+          >
+            Large
+          </label>
+        </div>
+      </div>
+      <div
+        className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <div
+          className="mb-2 font-weight-bold"
+        >
+          Choose town
+        </div>
+        <div
+          className="form-check-inline"
+        >
+          <div
+            className="form-check form-check-inline"
+          >
+            <input
+              className="form-check-input"
+              id="Town1"
+              name="town"
+              onChange={[Function]}
+              type="radio"
+              value="Town1"
+            />
+            <label
+              className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+              htmlFor="Town1"
+            >
+              Town1
+            </label>
+          </div>
+        </div>
+        <div
+          className="form-check-inline"
+        >
+          <div
+            className="form-check form-check-inline"
+          >
+            <input
+              className="form-check-input"
+              id="Town2"
+              name="town"
+              onChange={[Function]}
+              type="radio"
+              value="Town2"
+            />
+            <label
+              className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+              htmlFor="Town2"
+            >
+              Town2
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <div
+          className="mb-2 font-weight-bold"
+        >
+          Choose date and time
+          <br />
+          <sub>
+            *time from 8 to 18
+          </sub>
+        </div>
+        <input
+          aria-describedby={null}
+          className="mr-1"
+          id="date"
+          max="2021-09-28"
+          min="2020-09-28"
+          name="date"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="date"
+          value=""
+        />
+        <input
+          aria-describedby={null}
+          className=""
+          id="time"
+          max={null}
+          min={null}
+          name="time"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="time"
+          value=""
+        />
+      </div>
+      <div
+        className="row justify-content-sm-center col-12"
+      >
+        <input
+          className="btn btn-primary col-12 col-sm-4 mt-3"
+          type="submit"
+          value="Next step"
+        />
+      </div>
+    </form>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          >
+            <div>
+              id
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              name
+              : 
+              <span>
+                Name
+              </span>
+            </div>
+            <div>
+              email
+              : 
+              <span>
+                email@test.com
+              </span>
+            </div>
+            <div>
+              size
+              : 
+              <span>
+                large
+              </span>
+            </div>
+            <div>
+              town
+              : 
+              <span>
+                Town
+              </span>
+            </div>
+            <div>
+              date
+              : 
+              <span>
+                2021-01-01
+              </span>
+            </div>
+            <div>
+              time
+              : 
+              <span>
+                11:00
+              </span>
+            </div>
+            <div>
+              masterId
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              endTime
+              : 
+              <span>
+                14:00
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Test of <MainPage/> (client side) When user doesn't logged When path is '/client/login' 1`] = `
+Array [
+  <header
+    className="masthead mb-auto"
+  >
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-dark"
+    >
+      <a
+        className="navbar-brand"
+        href="/client"
+        onClick={[Function]}
+      >
+        Clockwise Co.
+      </a>
+      <button
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        data-target="#navbarsExample03"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="navbar-collapse collapse"
+        id="navbarsExample03"
+      >
+        <ul
+          className="navbar-nav mr-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/login"
+              onClick={[Function]}
+            >
+              Login
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/registration"
+              onClick={[Function]}
+            >
+              SignUp
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client"
+              onClick={[Function]}
+            >
+              To main
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>,
+  <div
+    className="col-md-8 mt-4 container"
+  >
+    <form
+      className="mt-4 row justify-content-center"
+      onBlur={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="email"
+        >
+          Enter your email
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            className="form-control"
+            id="email"
+            name="email"
+            onBlur={[Function]}
+            onChange={null}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            readOnly={false}
+            required={true}
+            title="Warning"
+            type="email"
+          />
+        </div>
+      </div>
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="password"
+        >
+          Enter your password
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            autoComplete="username"
+            className="form-control"
+            id="password"
+            name="password"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="password"
+          />
+        </div>
+      </div>
+      <div
+        className="row justify-content-sm-center col-12"
+      >
+        <input
+          className="btn btn-primary col-12 col-sm-4 mt-3"
+          type="submit"
+          value="Login"
+        />
+      </div>
+    </form>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          >
+            <div>
+              id
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              name
+              : 
+              <span>
+                Name
+              </span>
+            </div>
+            <div>
+              email
+              : 
+              <span>
+                email@test.com
+              </span>
+            </div>
+            <div>
+              size
+              : 
+              <span>
+                large
+              </span>
+            </div>
+            <div>
+              town
+              : 
+              <span>
+                Town
+              </span>
+            </div>
+            <div>
+              date
+              : 
+              <span>
+                2021-01-01
+              </span>
+            </div>
+            <div>
+              time
+              : 
+              <span>
+                11:00
+              </span>
+            </div>
+            <div>
+              masterId
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              endTime
+              : 
+              <span>
+                14:00
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Test of <MainPage/> (client side) When user doesn't logged When path is '/client/masters' and when a few suitable masters 1`] = `
+Array [
+  <header
+    className="masthead mb-auto"
+  >
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-dark"
+    >
+      <a
+        className="navbar-brand"
+        href="/client"
+        onClick={[Function]}
+      >
+        Clockwise Co.
+      </a>
+      <button
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        data-target="#navbarsExample03"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="navbar-collapse collapse"
+        id="navbarsExample03"
+      >
+        <ul
+          className="navbar-nav mr-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/login"
+              onClick={[Function]}
+            >
+              Login
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/registration"
+              onClick={[Function]}
+            >
+              SignUp
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client"
+              onClick={[Function]}
+            >
+              To main
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>,
+  <div
+    className="col-md-8 mt-4 container"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-4 mb-2 col-sm-6 col-lg-4"
+        >
+          <div
+            className="card"
+          >
+            <div
+              className="card-body"
+            >
+              <h5
+                className="card-title"
+              >
+                Name
+              </h5>
+              <p
+                className="card-text"
+              >
+                Rating: 
+                5
+              </p>
+              <div
+                className="form-check form-check-inline"
+              >
+                <input
+                  className="form-check-input"
+                  id={1}
+                  name="chooseMaster"
+                  onChange={null}
+                  type="radio"
+                  value={1}
+                />
+                <label
+                  className="form-check-label"
+                  htmlFor={1}
+                >
+                  Choose
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-sm-4 mb-2 col-sm-6 col-lg-4"
+        >
+          <div
+            className="card"
+          >
+            <div
+              className="card-body"
+            >
+              <h5
+                className="card-title"
+              >
+                Name2
+              </h5>
+              <p
+                className="card-text"
+              >
+                Rating: 
+                5
+              </p>
+              <div
+                className="form-check form-check-inline"
+              >
+                <input
+                  className="form-check-input"
+                  id={2}
+                  name="chooseMaster"
+                  onChange={null}
+                  type="radio"
+                  value={2}
+                />
+                <label
+                  className="form-check-label"
+                  htmlFor={2}
+                >
+                  Choose
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="form-group float-left mt-3"
+      >
+        <a
+          className="btn btn-primary"
+          href="/client"
+          onClick={[Function]}
+        >
+          Сome back
+        </a>
+      </div>
+      <div
+        className="form-group float-right mt-3"
+      >
+        <input
+          className="btn btn-primary"
+          type="submit"
+          value="Book now"
+        />
+      </div>
+    </form>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          >
+            <div>
+              id
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              name
+              : 
+              <span>
+                Name
+              </span>
+            </div>
+            <div>
+              email
+              : 
+              <span>
+                email@test.com
+              </span>
+            </div>
+            <div>
+              size
+              : 
+              <span>
+                large
+              </span>
+            </div>
+            <div>
+              town
+              : 
+              <span>
+                Town
+              </span>
+            </div>
+            <div>
+              date
+              : 
+              <span>
+                2021-01-01
+              </span>
+            </div>
+            <div>
+              time
+              : 
+              <span>
+                11:00
+              </span>
+            </div>
+            <div>
+              masterId
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              endTime
+              : 
+              <span>
+                14:00
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Test of <MainPage/> (client side) When user doesn't logged When path is '/client/registration' 1`] = `
+Array [
+  <header
+    className="masthead mb-auto"
+  >
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-dark"
+    >
+      <a
+        className="navbar-brand"
+        href="/client"
+        onClick={[Function]}
+      >
+        Clockwise Co.
+      </a>
+      <button
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        data-target="#navbarsExample03"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="navbar-collapse collapse"
+        id="navbarsExample03"
+      >
+        <ul
+          className="navbar-nav mr-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/login"
+              onClick={[Function]}
+            >
+              Login
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/registration"
+              onClick={[Function]}
+            >
+              SignUp
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client"
+              onClick={[Function]}
+            >
+              To main
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>,
+  <div
+    className="col-md-8 mt-4 container"
+  >
+    <form
+      className="mt-4 row justify-content-center"
+      onBlur={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="name"
+        >
+          Enter your name
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            className="form-control"
+            id="name"
+            name="name"
+            onBlur={[Function]}
+            onChange={null}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="email"
+        >
+          Enter your email
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            className="form-control"
+            id="email"
+            name="email"
+            onBlur={[Function]}
+            onChange={null}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            readOnly={false}
+            required={true}
+            title="Warning"
+            type="email"
+          />
+        </div>
+      </div>
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="password"
+        >
+          Enter your password
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            autoComplete="username"
+            className="form-control"
+            id="password"
+            name="password"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="password"
+          />
+        </div>
+      </div>
+      <div
+        className="row justify-content-sm-center col-12"
+      >
+        <input
+          className="btn btn-primary col-12 col-sm-4 mt-3"
+          type="submit"
+          value="Sign Up"
+        />
+      </div>
+    </form>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          >
+            <div>
+              id
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              name
+              : 
+              <span>
+                Name
+              </span>
+            </div>
+            <div>
+              email
+              : 
+              <span>
+                email@test.com
+              </span>
+            </div>
+            <div>
+              size
+              : 
+              <span>
+                large
+              </span>
+            </div>
+            <div>
+              town
+              : 
+              <span>
+                Town
+              </span>
+            </div>
+            <div>
+              date
+              : 
+              <span>
+                2021-01-01
+              </span>
+            </div>
+            <div>
+              time
+              : 
+              <span>
+                11:00
+              </span>
+            </div>
+            <div>
+              masterId
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              endTime
+              : 
+              <span>
+                14:00
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Test of <MainPage/> (client side) When user doesn't logged When path is '/client/userProfile' 1`] = `
+Array [
+  <header
+    className="masthead mb-auto"
+  >
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-dark"
+    >
+      <a
+        className="navbar-brand"
+        href="/client"
+        onClick={[Function]}
+      >
+        Clockwise Co.
+      </a>
+      <button
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        data-target="#navbarsExample03"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="navbar-collapse collapse"
+        id="navbarsExample03"
+      >
+        <ul
+          className="navbar-nav mr-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/login"
+              onClick={[Function]}
+            >
+              Login
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/registration"
+              onClick={[Function]}
+            >
+              SignUp
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client"
+              onClick={[Function]}
+            >
+              To main
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>,
+  <div
+    className="col-md-8 mt-4 container"
+  >
+    <div
+      className="text-center display-4"
+    >
+      Please, log into your account!
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          >
+            <div>
+              id
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              name
+              : 
+              <span>
+                Name
+              </span>
+            </div>
+            <div>
+              email
+              : 
+              <span>
+                email@test.com
+              </span>
+            </div>
+            <div>
+              size
+              : 
+              <span>
+                large
+              </span>
+            </div>
+            <div>
+              town
+              : 
+              <span>
+                Town
+              </span>
+            </div>
+            <div>
+              date
+              : 
+              <span>
+                2021-01-01
+              </span>
+            </div>
+            <div>
+              time
+              : 
+              <span>
+                11:00
+              </span>
+            </div>
+            <div>
+              masterId
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              endTime
+              : 
+              <span>
+                14:00
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Test of <MainPage/> (client side) When user logged When path is '/client' 1`] = `
+Array [
+  <header
+    className="masthead mb-auto"
+  >
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-dark"
+    >
+      <a
+        className="navbar-brand"
+        href="/client"
+        onClick={[Function]}
+      >
+        Clockwise Co.
+      </a>
+      <button
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        data-target="#navbarsExample03"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="navbar-collapse collapse"
+        id="navbarsExample03"
+      >
+        <ul
+          className="navbar-nav mr-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client"
+              onClick={[Function]}
+            >
+              To main
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/userProfile"
+              onClick={[Function]}
+            >
+              Profile
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>,
+  <div
+    className="col-md-8 mt-4 container"
+  >
+    <div
+      className="text-center mb-1"
+    >
+      You are welcomed by 
+      <h1
+        className="font-italic"
+      >
+        Clockwise company
+      </h1>
+    </div>
+    <br />
+    <div
+      className="text-center"
+    >
+      Fill out this form to order a master
+    </div>
+    <form
+      className="mt-4 row justify-content-center"
+      onBlur={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="name"
+        >
+          Enter 
+          name
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            className="form-control"
+            id="name"
+            name="name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="email"
+        >
+          Enter 
+          email
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            className="form-control"
+            id="email"
+            name="email"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="text"
+            value="email@test.com"
+          />
+        </div>
+      </div>
+      <div
+        className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <div
+          className="mb-2 font-weight-bold"
+        >
+          Choose size of clock
+        </div>
+        <div
+          className="form-check form-check-inline"
+        >
+          <input
+            className="form-check-input"
+            id="smallSize"
+            name="size"
+            onChange={[Function]}
+            type="radio"
+            value="small"
+          />
+          <label
+            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+            htmlFor="smallSize"
+          >
+            Small
+          </label>
+        </div>
+        <div
+          className="form-check form-check-inline"
+        >
+          <input
+            className="form-check-input"
+            id="middleSize"
+            name="size"
+            onChange={[Function]}
+            type="radio"
+            value="middle"
+          />
+          <label
+            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+            htmlFor="middleSize"
+          >
+            Middle
+          </label>
+        </div>
+        <div
+          className="form-check form-check-inline"
+        >
+          <input
+            className="form-check-input"
+            id="largeSize"
+            name="size"
+            onChange={[Function]}
+            type="radio"
+            value="large"
+          />
+          <label
+            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+            htmlFor="largeSize"
+          >
+            Large
+          </label>
+        </div>
+      </div>
+      <div
+        className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <div
+          className="mb-2 font-weight-bold"
+        >
+          Choose town
+        </div>
+        <div
+          className="form-check-inline"
+        >
+          <div
+            className="form-check form-check-inline"
+          >
+            <input
+              className="form-check-input"
+              id="Town1"
+              name="town"
+              onChange={[Function]}
+              type="radio"
+              value="Town1"
+            />
+            <label
+              className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+              htmlFor="Town1"
+            >
+              Town1
+            </label>
+          </div>
+        </div>
+        <div
+          className="form-check-inline"
+        >
+          <div
+            className="form-check form-check-inline"
+          >
+            <input
+              className="form-check-input"
+              id="Town2"
+              name="town"
+              onChange={[Function]}
+              type="radio"
+              value="Town2"
+            />
+            <label
+              className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+              htmlFor="Town2"
+            >
+              Town2
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <div
+          className="mb-2 font-weight-bold"
+        >
+          Choose date and time
+          <br />
+          <sub>
+            *time from 8 to 18
+          </sub>
+        </div>
+        <input
+          aria-describedby={null}
+          className="mr-1"
+          id="date"
+          max="2021-09-28"
+          min="2020-09-28"
+          name="date"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="date"
+          value=""
+        />
+        <input
+          aria-describedby={null}
+          className=""
+          id="time"
+          max={null}
+          min={null}
+          name="time"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="time"
+          value=""
+        />
+      </div>
+      <div
+        className="row justify-content-sm-center col-12"
+      >
+        <input
+          className="btn btn-primary col-12 col-sm-4 mt-3"
+          type="submit"
+          value="Next step"
+        />
+      </div>
+    </form>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          >
+            <div>
+              id
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              name
+              : 
+              <span>
+                Name
+              </span>
+            </div>
+            <div>
+              email
+              : 
+              <span>
+                email@test.com
+              </span>
+            </div>
+            <div>
+              size
+              : 
+              <span>
+                large
+              </span>
+            </div>
+            <div>
+              town
+              : 
+              <span>
+                Town
+              </span>
+            </div>
+            <div>
+              date
+              : 
+              <span>
+                2021-01-01
+              </span>
+            </div>
+            <div>
+              time
+              : 
+              <span>
+                11:00
+              </span>
+            </div>
+            <div>
+              masterId
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              endTime
+              : 
+              <span>
+                14:00
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Test of <MainPage/> (client side) When user logged When path is '/client/login' 1`] = `
+Array [
+  <header
+    className="masthead mb-auto"
+  >
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-dark"
+    >
+      <a
+        className="navbar-brand"
+        href="/client"
+        onClick={[Function]}
+      >
+        Clockwise Co.
+      </a>
+      <button
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        data-target="#navbarsExample03"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="navbar-collapse collapse"
+        id="navbarsExample03"
+      >
+        <ul
+          className="navbar-nav mr-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client"
+              onClick={[Function]}
+            >
+              To main
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/userProfile"
+              onClick={[Function]}
+            >
+              Profile
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>,
+  <div
+    className="col-md-8 mt-4 container"
+  >
+    <form
+      className="mt-4 row justify-content-center"
+      onBlur={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="email"
+        >
+          Enter your email
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            className="form-control"
+            id="email"
+            name="email"
+            onBlur={[Function]}
+            onChange={null}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            readOnly={false}
+            required={true}
+            title="Warning"
+            type="email"
+          />
+        </div>
+      </div>
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="password"
+        >
+          Enter your password
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            autoComplete="username"
+            className="form-control"
+            id="password"
+            name="password"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="password"
+          />
+        </div>
+      </div>
+      <div
+        className="row justify-content-sm-center col-12"
+      >
+        <input
+          className="btn btn-primary col-12 col-sm-4 mt-3"
+          type="submit"
+          value="Login"
+        />
+      </div>
+    </form>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          >
+            <div>
+              id
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              name
+              : 
+              <span>
+                Name
+              </span>
+            </div>
+            <div>
+              email
+              : 
+              <span>
+                email@test.com
+              </span>
+            </div>
+            <div>
+              size
+              : 
+              <span>
+                large
+              </span>
+            </div>
+            <div>
+              town
+              : 
+              <span>
+                Town
+              </span>
+            </div>
+            <div>
+              date
+              : 
+              <span>
+                2021-01-01
+              </span>
+            </div>
+            <div>
+              time
+              : 
+              <span>
+                11:00
+              </span>
+            </div>
+            <div>
+              masterId
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              endTime
+              : 
+              <span>
+                14:00
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Test of <MainPage/> (client side) When user logged When path is '/client/masters' and when a few suitable masters 1`] = `
+Array [
+  <header
+    className="masthead mb-auto"
+  >
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-dark"
+    >
+      <a
+        className="navbar-brand"
+        href="/client"
+        onClick={[Function]}
+      >
+        Clockwise Co.
+      </a>
+      <button
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        data-target="#navbarsExample03"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="navbar-collapse collapse"
+        id="navbarsExample03"
+      >
+        <ul
+          className="navbar-nav mr-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client"
+              onClick={[Function]}
+            >
+              To main
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/userProfile"
+              onClick={[Function]}
+            >
+              Profile
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>,
+  <div
+    className="col-md-8 mt-4 container"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-4 mb-2 col-sm-6 col-lg-4"
+        >
+          <div
+            className="card"
+          >
+            <div
+              className="card-body"
+            >
+              <h5
+                className="card-title"
+              >
+                Name
+              </h5>
+              <p
+                className="card-text"
+              >
+                Rating: 
+                5
+              </p>
+              <div
+                className="form-check form-check-inline"
+              >
+                <input
+                  className="form-check-input"
+                  id={1}
+                  name="chooseMaster"
+                  onChange={null}
+                  type="radio"
+                  value={1}
+                />
+                <label
+                  className="form-check-label"
+                  htmlFor={1}
+                >
+                  Choose
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-sm-4 mb-2 col-sm-6 col-lg-4"
+        >
+          <div
+            className="card"
+          >
+            <div
+              className="card-body"
+            >
+              <h5
+                className="card-title"
+              >
+                Name2
+              </h5>
+              <p
+                className="card-text"
+              >
+                Rating: 
+                5
+              </p>
+              <div
+                className="form-check form-check-inline"
+              >
+                <input
+                  className="form-check-input"
+                  id={2}
+                  name="chooseMaster"
+                  onChange={null}
+                  type="radio"
+                  value={2}
+                />
+                <label
+                  className="form-check-label"
+                  htmlFor={2}
+                >
+                  Choose
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="form-group float-left mt-3"
+      >
+        <a
+          className="btn btn-primary"
+          href="/client"
+          onClick={[Function]}
+        >
+          Сome back
+        </a>
+      </div>
+      <div
+        className="form-group float-right mt-3"
+      >
+        <input
+          className="btn btn-primary"
+          type="submit"
+          value="Book now"
+        />
+      </div>
+    </form>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          >
+            <div>
+              id
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              name
+              : 
+              <span>
+                Name
+              </span>
+            </div>
+            <div>
+              email
+              : 
+              <span>
+                email@test.com
+              </span>
+            </div>
+            <div>
+              size
+              : 
+              <span>
+                large
+              </span>
+            </div>
+            <div>
+              town
+              : 
+              <span>
+                Town
+              </span>
+            </div>
+            <div>
+              date
+              : 
+              <span>
+                2021-01-01
+              </span>
+            </div>
+            <div>
+              time
+              : 
+              <span>
+                11:00
+              </span>
+            </div>
+            <div>
+              masterId
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              endTime
+              : 
+              <span>
+                14:00
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Test of <MainPage/> (client side) When user logged When path is '/client/registration' 1`] = `
+Array [
+  <header
+    className="masthead mb-auto"
+  >
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-dark"
+    >
+      <a
+        className="navbar-brand"
+        href="/client"
+        onClick={[Function]}
+      >
+        Clockwise Co.
+      </a>
+      <button
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        data-target="#navbarsExample03"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="navbar-collapse collapse"
+        id="navbarsExample03"
+      >
+        <ul
+          className="navbar-nav mr-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client"
+              onClick={[Function]}
+            >
+              To main
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/userProfile"
+              onClick={[Function]}
+            >
+              Profile
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>,
+  <div
+    className="col-md-8 mt-4 container"
+  >
+    <form
+      className="mt-4 row justify-content-center"
+      onBlur={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="name"
+        >
+          Enter your name
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            className="form-control"
+            id="name"
+            name="name"
+            onBlur={[Function]}
+            onChange={null}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="email"
+        >
+          Enter your email
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            className="form-control"
+            id="email"
+            name="email"
+            onBlur={[Function]}
+            onChange={null}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            readOnly={false}
+            required={true}
+            title="Warning"
+            type="email"
+          />
+        </div>
+      </div>
+      <div
+        className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+      >
+        <label
+          className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+          htmlFor="password"
+        >
+          Enter your password
+        </label>
+        <div
+          className="col-sm-8 col-md-8"
+        >
+          <input
+            aria-describedby={null}
+            autoComplete="username"
+            className="form-control"
+            id="password"
+            name="password"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="password"
+          />
+        </div>
+      </div>
+      <div
+        className="row justify-content-sm-center col-12"
+      >
+        <input
+          className="btn btn-primary col-12 col-sm-4 mt-3"
+          type="submit"
+          value="Sign Up"
+        />
+      </div>
+    </form>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          >
+            <div>
+              id
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              name
+              : 
+              <span>
+                Name
+              </span>
+            </div>
+            <div>
+              email
+              : 
+              <span>
+                email@test.com
+              </span>
+            </div>
+            <div>
+              size
+              : 
+              <span>
+                large
+              </span>
+            </div>
+            <div>
+              town
+              : 
+              <span>
+                Town
+              </span>
+            </div>
+            <div>
+              date
+              : 
+              <span>
+                2021-01-01
+              </span>
+            </div>
+            <div>
+              time
+              : 
+              <span>
+                11:00
+              </span>
+            </div>
+            <div>
+              masterId
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              endTime
+              : 
+              <span>
+                14:00
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Test of <MainPage/> (client side) When user logged When path is '/client/userProfile' 1`] = `
+Array [
+  <header
+    className="masthead mb-auto"
+  >
+    <nav
+      className="navbar navbar-expand-sm navbar-dark bg-dark"
+    >
+      <a
+        className="navbar-brand"
+        href="/client"
+        onClick={[Function]}
+      >
+        Clockwise Co.
+      </a>
+      <button
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        data-target="#navbarsExample03"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="navbar-collapse collapse"
+        id="navbarsExample03"
+      >
+        <ul
+          className="navbar-nav mr-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client"
+              onClick={[Function]}
+            >
+              To main
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/client/userProfile"
+              onClick={[Function]}
+            >
+              Profile
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>,
+  <div
+    className="col-md-8 mt-4 container"
+  >
+    <div
+      className="btn-group col-12 p-0 mb-2"
+      role="group"
+    >
+      <a
+        className="btn btn-secondary"
+        href="/client/userProfile/userOrders"
+        onClick={[Function]}
+        type="button"
+      >
+        Orders
+      </a>
+      <a
+        className="btn btn-secondary"
+        href="/client/userProfile/userSettings"
+        onClick={[Function]}
+        type="button"
+      >
+        Settings
+      </a>
+      <a
+        className="btn btn-danger"
+        href="/"
+        onClick={[Function]}
+      >
+        Logout
+      </a>
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          >
+            <div>
+              id
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              name
+              : 
+              <span>
+                Name
+              </span>
+            </div>
+            <div>
+              email
+              : 
+              <span>
+                email@test.com
+              </span>
+            </div>
+            <div>
+              size
+              : 
+              <span>
+                large
+              </span>
+            </div>
+            <div>
+              town
+              : 
+              <span>
+                Town
+              </span>
+            </div>
+            <div>
+              date
+              : 
+              <span>
+                2021-01-01
+              </span>
+            </div>
+            <div>
+              time
+              : 
+              <span>
+                11:00
+              </span>
+            </div>
+            <div>
+              masterId
+              : 
+              <span>
+                1
+              </span>
+            </div>
+            <div>
+              endTime
+              : 
+              <span>
+                14:00
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;

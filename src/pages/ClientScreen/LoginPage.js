@@ -2,17 +2,14 @@ import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { SERVERDOMAIN } from "../../services/serverUrls";
-
 import { addCurrentOrderToState } from "../../store/orders/actions";
-
 import { changeClientLoginIsLoad } from "../../store/auth/actions";
-
 import { toogleAuthClient } from "../../store/auth/actions";
 
 import LoginForm from "../../forms/LoginForm";
-
 import Context from "../../ContextComponent";
+
+import { SERVERDOMAIN } from "../../services/serverUrls";
 
 function LoginPage({ history }) {
   const context = useContext(Context);
@@ -54,8 +51,6 @@ function LoginPage({ history }) {
         dispatch(changeClientLoginIsLoad(false));
         if (!data.success) {
           context.openErrorWindowWithMsg(data.msg);
-          // context.openWarningTooltip(data.msg, trgetElem.id);
-          // context.setWarningModalData(data.msg);
         } else {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));

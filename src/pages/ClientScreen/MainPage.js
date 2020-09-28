@@ -12,7 +12,7 @@ import UserProfilePage from "./UserProfilePage";
 import Header from "../../components/ClientScreen/Header";
 import FullInfoModal from "../../components/AdminScreen/FullInfoModal";
 
-function ClientSrcreen({ history }) {
+function ClientSrcreen() {
   const state = useSelector((state) => {
     return {
       currItemForModal: state.adminModalWindows.currItemForModal,
