@@ -35,12 +35,12 @@ const MastersList = ({ history }) => {
     })
       .then((data) => data.json())
       .then((data) => {
-        dispatch(initMasters(data));
         dispatch(changeListIsLoad(false));
+        dispatch(initMasters(data));
       })
       .catch((err) => {
-        dispatch(initMasters([]));
         dispatch(changeListIsLoad(false));
+        dispatch(initMasters([]));
       });
     getTownsFromServerToState();
   }

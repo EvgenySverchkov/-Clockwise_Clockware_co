@@ -9,7 +9,6 @@ import LoginPage from "../LoginPage";
 const mockStore = configMockStore();
 
 describe("Test of <LoginPage />", ()=>{
-    global.fetch = Promise.resolve(jest.fn(()=>Promise.resolve({json: jest.fn()})));
     let store = mockStore({
         authReducer: {
             clientLoginIsLoad: false

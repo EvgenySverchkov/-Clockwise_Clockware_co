@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <OrdersList /> When list is already loaded 1`] = `
+<div
+  className="table-responsive"
+>
+  <table
+    className="table table-dark"
+  >
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Time
+        </th>
+        <th>
+          Date
+        </th>
+        <th>
+          Town
+        </th>
+        <th />
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          style={
+            Object {
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Name
+        </td>
+        <td
+          style={
+            Object {
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          12:00
+        </td>
+        <td
+          style={
+            Object {
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          2021-02-10
+        </td>
+        <td
+          style={
+            Object {
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Town
+        </td>
+        <td
+          className="text-center"
+        >
+          <div
+            className="dropdown"
+          >
+            <button
+              aria-expanded="false"
+              aria-haspopup="true"
+              className="btn btn-secondary dropdown-toggle"
+              data-toggle="dropdown"
+              id="dropdownMenuButton"
+              type="button"
+            >
+              Options
+            </button>
+            <div
+              aria-labelledby="dropdownMenuLink"
+              className="dropdown-menu"
+            >
+              <button
+                className="dropdown-item"
+                onClick={[Function]}
+              >
+                Delete
+              </button>
+              <a
+                className="dropdown-item"
+                href="/1"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <button
+                className="dropdown-item"
+                data-target="#fullInfoModal"
+                data-toggle="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                Show full info
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Test of <OrdersList /> When list is loading 1`] = `
+<div
+  className="table-responsive"
+>
+  <table
+    className="table table-dark"
+  >
+    <thead>
+      <tr>
+        <th>
+          Loading...
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</div>
+`;

@@ -9,11 +9,10 @@ import {
   changeAdminOrderFormIsLoad,
 } from "../../store/ordersManagement/actions";
 
+import OrderForm from "../../forms/OrderForm";
 import Context from "../../ContextComponent";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
-
-import OrderForm from "../../forms/OrderForm";
 
 function AddNewOrderPage({ history }) {
   const context = useContext(Context);
@@ -171,7 +170,7 @@ function AddNewOrderPage({ history }) {
   }
   return (
     <OrderForm
-      currentOrder={state.currentOrder || []}
+      currentOrder={state.currentOrder || {}}
       changeHandler={changeHandler}
       townsArr={state.townsArr}
       submitHandler={submitHandler}
