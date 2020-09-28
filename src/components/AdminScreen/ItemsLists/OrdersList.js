@@ -36,7 +36,7 @@ const OrdersList = ({ history }) => {
         dispatch(changeListIsLoad(false));
       })
       .catch((err) => {
-        alert(err);
+        console.error(err);
         dispatch(changeListIsLoad(false));
       });
   }
@@ -45,11 +45,9 @@ const OrdersList = ({ history }) => {
       .then((data) => {
         if (data.success) {
           dispatch(deleteOrderFromState(data.payload));
-        } else {
-          alert(data.msg);
         }
       })
-      .catch((err) => alert(err));
+      .catch((err) => console.errot(err));
   }
   return (
     <List

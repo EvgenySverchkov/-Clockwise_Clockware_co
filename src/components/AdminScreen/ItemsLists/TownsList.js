@@ -36,7 +36,7 @@ const TownsList = ({ history }) => {
       })
       .catch((err) => {
         dispatch(changeListIsLoad(false));
-        alert(err);
+        console.error(err);
       });
   }
   function deleteTownById(townId) {
@@ -44,11 +44,9 @@ const TownsList = ({ history }) => {
       .then((data) => {
         if (data.success) {
           dispatch(deleteTownFromState(data.payload));
-        } else {
-          alert(data.msg);
         }
       })
-      .catch((err) => alert(err));
+      .catch((err) => console.error(err));
   }
   return (
     <List

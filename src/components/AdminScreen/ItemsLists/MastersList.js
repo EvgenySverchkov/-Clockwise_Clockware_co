@@ -39,7 +39,6 @@ const MastersList = ({ history }) => {
         dispatch(changeListIsLoad(false));
       })
       .catch((err) => {
-        alert("Please, authorise");
         dispatch(initMasters([]));
         dispatch(changeListIsLoad(false));
       });
@@ -60,10 +59,10 @@ const MastersList = ({ history }) => {
         if (data.success) {
           dispatch(deleteMasterFromState(data.payload));
         } else {
-          alert(data.msg);
+          console.error(data.msg);
         }
       })
-      .catch((err) => alert(err));
+      .catch((err) => console.error(err));
   }
   return (
     <List
