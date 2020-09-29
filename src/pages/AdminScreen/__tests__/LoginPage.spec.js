@@ -8,10 +8,10 @@ import LoginPage from "../LoginPage";
 
 const mockStore = configMockStore();
 
-describe("Test of <LoginPage /> (client side)", ()=>{
+describe("Test of <LoginPage /> (admin side)", ()=>{
     let initialState = {
         authReducer: {
-            clientLoginIsLoad: false
+            adminLoginIsLoad: false
         }
     }
     const mockContextValue = {
@@ -35,8 +35,9 @@ describe("Test of <LoginPage /> (client side)", ()=>{
         )
         expect(component.toJSON()).toMatchSnapshot();
     });
+
     it("When the component has loading state (waiting request from server)", ()=>{
-        const store = mockStore({...initialState, authReducer: {clientLoginIsLoad: true}});
+        const store = mockStore({...initialState, authReducer: {adminLoginIsLoad: true}});
         const component = create(
             <Provider store={store}>
                 <Context.Provider value={mockContextValue}>

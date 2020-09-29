@@ -76,7 +76,7 @@ function MastersList(props) {
           dispatch(addCurrentOrderToState({}));
           sendConfirmEmail(`${SERVERDOMAIN}/send_message`, data.payload);
         } else {
-          context.setWarningModalData(data.msg);
+          context.openErrorWindowWithMsg(data.msg);
         }
       })
       .catch((err) => {

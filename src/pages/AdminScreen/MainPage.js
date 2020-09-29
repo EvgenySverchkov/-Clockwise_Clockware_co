@@ -32,8 +32,6 @@ function AdminSrcreen(props) {
       isAuth: state.authReducer.isAuthAdmin,
       currentOrder: state.ordersReducer.currentOrder,
       suitableMasters: state.ordersReducer.suitableMasters,
-      modalDataAdmin: state.adminModalWindows.modalDataAdmin,
-      modalWarningDataAdmin: state.adminModalWindows.modalWarningDataAdmin,
     };
   });
   const dispatch = useDispatch();
@@ -51,8 +49,10 @@ function AdminSrcreen(props) {
   }, []);
   return (
     <div className="container pt-3">
-      {state.isAuth ? <NavMenu /> : <LoginPage {...props} />}
-      <div className="row justify-content-sm-center">
+      {state.isAuth ? (
+        <>
+        <NavMenu />
+        <div className="row justify-content-sm-center">
         <div className="col-md-8">
           <Switch>
             <Route path="/admin/ordersList" component={OrdersList} />
@@ -82,6 +82,8 @@ function AdminSrcreen(props) {
         </div>
         <FullInfoModal itemObj={state.currItemForModal} />
       </div>
+        </>
+      ) : <LoginPage {...props} />}
     </div>
   );
 }

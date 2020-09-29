@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test of <LoginPage /> (client side) When the component has a default state (no error and no load state) 1`] = `
+exports[`Test of <LoginPage /> (admin side) When the component has a default state (no error and no load state) 1`] = `
 <form
   className="mt-4 row justify-content-center"
   onBlur={[Function]}
@@ -79,7 +79,7 @@ exports[`Test of <LoginPage /> (client side) When the component has a default st
 </form>
 `;
 
-exports[`Test of <LoginPage /> (client side) When the component has loading state (waiting request from server) 1`] = `
+exports[`Test of <LoginPage /> (admin side) When the component has loading state (waiting request from server) 1`] = `
 <form
   className="mt-4 row justify-content-center"
   onBlur={[Function]}

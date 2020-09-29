@@ -1,0 +1,3395 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <MainPage /> (admin side) When user doesn't logged (token in sessionStorage is false) When path is '/admin' 1`] = `
+<div
+  className="container pt-3"
+>
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="email"
+      >
+        Enter your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={false}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="password"
+      >
+        Enter your password
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          autoComplete="username"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user doesn't logged (token in sessionStorage is false) When path is '/admin/addMasterForm' 1`] = `
+<div
+  className="container pt-3"
+>
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="email"
+      >
+        Enter your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={false}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="password"
+      >
+        Enter your password
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          autoComplete="username"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user doesn't logged (token in sessionStorage is false) When path is '/admin/addOrderForm' 1`] = `
+<div
+  className="container pt-3"
+>
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="email"
+      >
+        Enter your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={false}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="password"
+      >
+        Enter your password
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          autoComplete="username"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user doesn't logged (token in sessionStorage is false) When path is '/admin/addTownForms' 1`] = `
+<div
+  className="container pt-3"
+>
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="email"
+      >
+        Enter your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={false}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="password"
+      >
+        Enter your password
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          autoComplete="username"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user doesn't logged (token in sessionStorage is false) When path is '/admin/editMaster/1' 1`] = `
+<div
+  className="container pt-3"
+>
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="email"
+      >
+        Enter your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={false}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="password"
+      >
+        Enter your password
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          autoComplete="username"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user doesn't logged (token in sessionStorage is false) When path is '/admin/editOrder/1' 1`] = `
+<div
+  className="container pt-3"
+>
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="email"
+      >
+        Enter your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={false}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="password"
+      >
+        Enter your password
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          autoComplete="username"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user doesn't logged (token in sessionStorage is false) When path is '/admin/editTown/1' 1`] = `
+<div
+  className="container pt-3"
+>
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="email"
+      >
+        Enter your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={false}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="password"
+      >
+        Enter your password
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          autoComplete="username"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user doesn't logged (token in sessionStorage is false) When path is '/admin/freeMasters' 1`] = `
+<div
+  className="container pt-3"
+>
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="email"
+      >
+        Enter your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={false}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="password"
+      >
+        Enter your password
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          autoComplete="username"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user doesn't logged (token in sessionStorage is false) When path is '/admin/mastersList' 1`] = `
+<div
+  className="container pt-3"
+>
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="email"
+      >
+        Enter your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={false}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="password"
+      >
+        Enter your password
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          autoComplete="username"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user doesn't logged (token in sessionStorage is false) When path is '/admin/ordersList' 1`] = `
+<div
+  className="container pt-3"
+>
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="email"
+      >
+        Enter your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={false}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="password"
+      >
+        Enter your password
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          autoComplete="username"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user doesn't logged (token in sessionStorage is false) When path is '/admin/townsList' 1`] = `
+<div
+  className="container pt-3"
+>
+  <form
+    className="mt-4 row justify-content-center"
+    onBlur={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="email"
+      >
+        Enter your email
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={null}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          readOnly={false}
+          required={true}
+          title="Warning"
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+    >
+      <label
+        className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+        htmlFor="password"
+      >
+        Enter your password
+      </label>
+      <div
+        className="col-sm-8 col-md-8"
+      >
+        <input
+          aria-describedby={null}
+          autoComplete="username"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          required={true}
+          title="Warning"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      className="row justify-content-sm-center col-12"
+    >
+      <input
+        className="btn btn-primary col-12 col-sm-4 mt-3"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user logged (token in sessionStorage is true) When path is '/admin' 1`] = `
+<div
+  className="container pt-3"
+>
+  <div
+    className="nav-menu-wrapp mb-3 mb-sm-5"
+  >
+    <div
+      className="btn-group nav-menu"
+    >
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Orders
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/ordersList"
+            onClick={[Function]}
+          >
+            Show orders
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addOrderForm"
+            onClick={[Function]}
+          >
+            Add order
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Masters
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/mastersList"
+            onClick={[Function]}
+          >
+            Show masters
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addMasterForm"
+            onClick={[Function]}
+          >
+            Add master
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Towns
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/townsList"
+            onClick={[Function]}
+          >
+            Show towns
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addTownForms"
+            onClick={[Function]}
+          >
+            Add town
+          </a>
+        </div>
+      </div>
+      <div
+        className="mr-1"
+      >
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-danger"
+          href="/admin"
+          onClick={[Function]}
+        >
+          LogOut
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center"
+  >
+    <div
+      className="col-md-8"
+    />
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user logged (token in sessionStorage is true) When path is '/admin/addMasterForm' 1`] = `
+<div
+  className="container pt-3"
+>
+  <div
+    className="nav-menu-wrapp mb-3 mb-sm-5"
+  >
+    <div
+      className="btn-group nav-menu"
+    >
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Orders
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/ordersList"
+            onClick={[Function]}
+          >
+            Show orders
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addOrderForm"
+            onClick={[Function]}
+          >
+            Add order
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Masters
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/mastersList"
+            onClick={[Function]}
+          >
+            Show masters
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addMasterForm"
+            onClick={[Function]}
+          >
+            Add master
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Towns
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/townsList"
+            onClick={[Function]}
+          >
+            Show towns
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addTownForms"
+            onClick={[Function]}
+          >
+            Add town
+          </a>
+        </div>
+      </div>
+      <div
+        className="mr-1"
+      >
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-danger"
+          href="/admin"
+          onClick={[Function]}
+        >
+          LogOut
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center"
+  >
+    <div
+      className="col-md-8"
+    >
+      <form
+        className="mt-4 row justify-content-center"
+        onBlur={[Function]}
+        onSubmit={[Function]}
+      >
+        <div
+          className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+        >
+          <label
+            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+            htmlFor="rating"
+          >
+            Enter rating
+          </label>
+          <div
+            className="col-sm-3"
+          >
+            <input
+              aria-describedby={null}
+              className="form-control"
+              id="rating"
+              max={5}
+              min={0}
+              onBlur={[Function]}
+              onChange={null}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              onTouchEnd={[Function]}
+              onTouchStart={[Function]}
+              title="Warning"
+              type="number"
+            />
+          </div>
+        </div>
+        <div
+          className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+        >
+          <label
+            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+            htmlFor="name"
+          >
+            Enter name
+          </label>
+          <div
+            className="col-sm-8 col-md-8"
+          >
+            <input
+              aria-describedby={null}
+              className="form-control"
+              id="name"
+              name="name"
+              onBlur={[Function]}
+              onChange={null}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              onTouchEnd={[Function]}
+              onTouchStart={[Function]}
+              required={true}
+              title="Warning"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+        >
+          <div
+            className="mb-2 font-weight-bold"
+          >
+            Choose towns
+          </div>
+          <div>
+            <div
+              className="form-check-inline"
+            >
+              <label
+                className="form-check-label"
+                htmlFor="Name1"
+              >
+                <input
+                  className="form-check-input towns"
+                  id="Name1"
+                  name="towns"
+                  type="checkbox"
+                  value="Name1"
+                />
+                Name1
+              </label>
+            </div>
+          </div>
+        </div>
+        <div
+          className="row justify-content-sm-center col-12"
+        >
+          <input
+            className="btn btn-primary col-12 col-sm-4 mt-3"
+            type="submit"
+            value="Add"
+          />
+        </div>
+      </form>
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user logged (token in sessionStorage is true) When path is '/admin/addOrderForm' 1`] = `
+<div
+  className="container pt-3"
+>
+  <div
+    className="nav-menu-wrapp mb-3 mb-sm-5"
+  >
+    <div
+      className="btn-group nav-menu"
+    >
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Orders
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/ordersList"
+            onClick={[Function]}
+          >
+            Show orders
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addOrderForm"
+            onClick={[Function]}
+          >
+            Add order
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Masters
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/mastersList"
+            onClick={[Function]}
+          >
+            Show masters
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addMasterForm"
+            onClick={[Function]}
+          >
+            Add master
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Towns
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/townsList"
+            onClick={[Function]}
+          >
+            Show towns
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addTownForms"
+            onClick={[Function]}
+          >
+            Add town
+          </a>
+        </div>
+      </div>
+      <div
+        className="mr-1"
+      >
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-danger"
+          href="/admin"
+          onClick={[Function]}
+        >
+          LogOut
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center"
+  >
+    <div
+      className="col-md-8"
+    >
+      <form
+        className="mt-4 row justify-content-center"
+        onBlur={[Function]}
+        onSubmit={[Function]}
+      >
+        <div
+          className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+        >
+          <label
+            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+            htmlFor="name"
+          >
+            Enter 
+            name
+          </label>
+          <div
+            className="col-sm-8 col-md-8"
+          >
+            <input
+              aria-describedby={null}
+              className="form-control"
+              id="name"
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              onTouchEnd={[Function]}
+              onTouchStart={[Function]}
+              required={true}
+              title="Warning"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+        >
+          <label
+            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+            htmlFor="email"
+          >
+            Enter 
+            email
+          </label>
+          <div
+            className="col-sm-8 col-md-8"
+          >
+            <input
+              aria-describedby={null}
+              className="form-control"
+              id="email"
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              onTouchEnd={[Function]}
+              onTouchStart={[Function]}
+              required={true}
+              title="Warning"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+        >
+          <div
+            className="mb-2 font-weight-bold"
+          >
+            Choose size of clock
+          </div>
+          <div
+            className="form-check form-check-inline"
+          >
+            <input
+              className="form-check-input"
+              id="smallSize"
+              name="size"
+              onChange={[Function]}
+              type="radio"
+              value="small"
+            />
+            <label
+              className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+              htmlFor="smallSize"
+            >
+              Small
+            </label>
+          </div>
+          <div
+            className="form-check form-check-inline"
+          >
+            <input
+              className="form-check-input"
+              id="middleSize"
+              name="size"
+              onChange={[Function]}
+              type="radio"
+              value="middle"
+            />
+            <label
+              className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+              htmlFor="middleSize"
+            >
+              Middle
+            </label>
+          </div>
+          <div
+            className="form-check form-check-inline"
+          >
+            <input
+              className="form-check-input"
+              id="largeSize"
+              name="size"
+              onChange={[Function]}
+              type="radio"
+              value="large"
+            />
+            <label
+              className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+              htmlFor="largeSize"
+            >
+              Large
+            </label>
+          </div>
+        </div>
+        <div
+          className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+        >
+          <div
+            className="mb-2 font-weight-bold"
+          >
+            Choose town
+          </div>
+          <div
+            className="form-check-inline"
+          >
+            <div
+              className="form-check form-check-inline"
+            >
+              <input
+                className="form-check-input"
+                id="Name1"
+                name="town"
+                onChange={[Function]}
+                type="radio"
+                value="Name1"
+              />
+              <label
+                className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label "
+                htmlFor="Name1"
+              >
+                Name1
+              </label>
+            </div>
+          </div>
+        </div>
+        <div
+          className="form-group  text-center text-sm-left col-12 col-md-10 col-lg-8"
+        >
+          <div
+            className="mb-2 font-weight-bold"
+          >
+            Choose date and time
+            <br />
+            <sub>
+              *time from 8 to 18
+            </sub>
+          </div>
+          <input
+            aria-describedby={null}
+            className="mr-1"
+            id="date"
+            max="2021-09-29"
+            min="2020-09-29"
+            name="date"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="date"
+            value=""
+          />
+          <input
+            aria-describedby={null}
+            className=""
+            id="time"
+            max={null}
+            min={null}
+            name="time"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            required={true}
+            title="Warning"
+            type="time"
+            value=""
+          />
+        </div>
+        <div
+          className="row justify-content-sm-center col-12"
+        >
+          <input
+            className="btn btn-primary col-12 col-sm-4 mt-3"
+            type="submit"
+            value="Next step"
+          />
+        </div>
+      </form>
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user logged (token in sessionStorage is true) When path is '/admin/addTownForms' 1`] = `
+<div
+  className="container pt-3"
+>
+  <div
+    className="nav-menu-wrapp mb-3 mb-sm-5"
+  >
+    <div
+      className="btn-group nav-menu"
+    >
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Orders
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/ordersList"
+            onClick={[Function]}
+          >
+            Show orders
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addOrderForm"
+            onClick={[Function]}
+          >
+            Add order
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Masters
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/mastersList"
+            onClick={[Function]}
+          >
+            Show masters
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addMasterForm"
+            onClick={[Function]}
+          >
+            Add master
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Towns
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/townsList"
+            onClick={[Function]}
+          >
+            Show towns
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addTownForms"
+            onClick={[Function]}
+          >
+            Add town
+          </a>
+        </div>
+      </div>
+      <div
+        className="mr-1"
+      >
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-danger"
+          href="/admin"
+          onClick={[Function]}
+        >
+          LogOut
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center"
+  >
+    <div
+      className="col-md-8"
+    >
+      <form
+        className="mt-4 row justify-content-center"
+        onBlur={[Function]}
+        onSubmit={[Function]}
+      >
+        <div
+          className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+        >
+          <label
+            className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+            htmlFor="town"
+          >
+            Enter new town
+          </label>
+          <div
+            className="col-sm-8 col-md-8"
+          >
+            <input
+              aria-describedby={null}
+              className="form-control"
+              id="town"
+              name={null}
+              onBlur={[Function]}
+              onChange={null}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              onTouchEnd={[Function]}
+              onTouchStart={[Function]}
+              required={true}
+              title="Warning"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          className="row justify-content-sm-center col-12"
+        >
+          <input
+            className="btn btn-primary col-12 col-sm-4 mt-3"
+            type="submit"
+            value="Add town"
+          />
+        </div>
+      </form>
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user logged (token in sessionStorage is true) When path is '/admin/mastersList' and in masters list 1 item 1`] = `
+<div
+  className="container pt-3"
+>
+  <div
+    className="nav-menu-wrapp mb-3 mb-sm-5"
+  >
+    <div
+      className="btn-group nav-menu"
+    >
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Orders
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/ordersList"
+            onClick={[Function]}
+          >
+            Show orders
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addOrderForm"
+            onClick={[Function]}
+          >
+            Add order
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Masters
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/mastersList"
+            onClick={[Function]}
+          >
+            Show masters
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addMasterForm"
+            onClick={[Function]}
+          >
+            Add master
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Towns
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/townsList"
+            onClick={[Function]}
+          >
+            Show towns
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addTownForms"
+            onClick={[Function]}
+          >
+            Add town
+          </a>
+        </div>
+      </div>
+      <div
+        className="mr-1"
+      >
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-danger"
+          href="/admin"
+          onClick={[Function]}
+        >
+          LogOut
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center"
+  >
+    <div
+      className="col-md-8"
+    >
+      <div
+        className="table-responsive"
+      >
+        <table
+          className="table table-dark"
+        >
+          <thead>
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Rating
+              </th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                style={
+                  Object {
+                    "wordWrap": "break-word",
+                  }
+                }
+              >
+                Petrovich
+              </td>
+              <td
+                style={
+                  Object {
+                    "wordWrap": "break-word",
+                  }
+                }
+              >
+                5
+              </td>
+              <td
+                className="text-center"
+              >
+                <div
+                  className="dropdown"
+                >
+                  <button
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    className="btn btn-secondary dropdown-toggle"
+                    data-toggle="dropdown"
+                    id="dropdownMenuButton"
+                    type="button"
+                  >
+                    Options
+                  </button>
+                  <div
+                    aria-labelledby="dropdownMenuLink"
+                    className="dropdown-menu"
+                  >
+                    <button
+                      className="dropdown-item"
+                      onClick={[Function]}
+                    >
+                      Delete
+                    </button>
+                    <a
+                      className="dropdown-item"
+                      href="/admin/editMaster/1"
+                      onClick={[Function]}
+                    >
+                      Edit
+                    </a>
+                    <button
+                      className="dropdown-item"
+                      data-target="#fullInfoModal"
+                      data-toggle="modal"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      Show full info
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user logged (token in sessionStorage is true) When path is '/admin/mastersList' and masters list is empty 1`] = `
+<div
+  className="container pt-3"
+>
+  <div
+    className="nav-menu-wrapp mb-3 mb-sm-5"
+  >
+    <div
+      className="btn-group nav-menu"
+    >
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Orders
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/ordersList"
+            onClick={[Function]}
+          >
+            Show orders
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addOrderForm"
+            onClick={[Function]}
+          >
+            Add order
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Masters
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/mastersList"
+            onClick={[Function]}
+          >
+            Show masters
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addMasterForm"
+            onClick={[Function]}
+          >
+            Add master
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Towns
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/townsList"
+            onClick={[Function]}
+          >
+            Show towns
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addTownForms"
+            onClick={[Function]}
+          >
+            Add town
+          </a>
+        </div>
+      </div>
+      <div
+        className="mr-1"
+      >
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-danger"
+          href="/admin"
+          onClick={[Function]}
+        >
+          LogOut
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center"
+  >
+    <div
+      className="col-md-8"
+    >
+      <div
+        className="table-responsive"
+      >
+        <table
+          className="table table-dark"
+        >
+          <thead>
+            <tr>
+              <th>
+                List is empty
+              </th>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user logged (token in sessionStorage is true) When path is '/admin/ordersList' and in order list 1 item 1`] = `
+<div
+  className="container pt-3"
+>
+  <div
+    className="nav-menu-wrapp mb-3 mb-sm-5"
+  >
+    <div
+      className="btn-group nav-menu"
+    >
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Orders
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/ordersList"
+            onClick={[Function]}
+          >
+            Show orders
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addOrderForm"
+            onClick={[Function]}
+          >
+            Add order
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Masters
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/mastersList"
+            onClick={[Function]}
+          >
+            Show masters
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addMasterForm"
+            onClick={[Function]}
+          >
+            Add master
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Towns
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/townsList"
+            onClick={[Function]}
+          >
+            Show towns
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addTownForms"
+            onClick={[Function]}
+          >
+            Add town
+          </a>
+        </div>
+      </div>
+      <div
+        className="mr-1"
+      >
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-danger"
+          href="/admin"
+          onClick={[Function]}
+        >
+          LogOut
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center"
+  >
+    <div
+      className="col-md-8"
+    >
+      <div
+        className="table-responsive"
+      >
+        <table
+          className="table table-dark"
+        >
+          <thead>
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Time
+              </th>
+              <th>
+                Date
+              </th>
+              <th>
+                Town
+              </th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                style={
+                  Object {
+                    "wordWrap": "break-word",
+                  }
+                }
+              >
+                Alex
+              </td>
+              <td
+                style={
+                  Object {
+                    "wordWrap": "break-word",
+                  }
+                }
+              >
+                12:00
+              </td>
+              <td
+                style={
+                  Object {
+                    "wordWrap": "break-word",
+                  }
+                }
+              >
+                2021-02-10
+              </td>
+              <td
+                style={
+                  Object {
+                    "wordWrap": "break-word",
+                  }
+                }
+              >
+                Dnipro
+              </td>
+              <td
+                className="text-center"
+              >
+                <div
+                  className="dropdown"
+                >
+                  <button
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    className="btn btn-secondary dropdown-toggle"
+                    data-toggle="dropdown"
+                    id="dropdownMenuButton"
+                    type="button"
+                  >
+                    Options
+                  </button>
+                  <div
+                    aria-labelledby="dropdownMenuLink"
+                    className="dropdown-menu"
+                  >
+                    <button
+                      className="dropdown-item"
+                      onClick={[Function]}
+                    >
+                      Delete
+                    </button>
+                    <a
+                      className="dropdown-item"
+                      href="/admin/editOrder/1"
+                      onClick={[Function]}
+                    >
+                      Edit
+                    </a>
+                    <button
+                      className="dropdown-item"
+                      data-target="#fullInfoModal"
+                      data-toggle="modal"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      Show full info
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user logged (token in sessionStorage is true) When path is '/admin/ordersList' and order list is empty 1`] = `
+<div
+  className="container pt-3"
+>
+  <div
+    className="nav-menu-wrapp mb-3 mb-sm-5"
+  >
+    <div
+      className="btn-group nav-menu"
+    >
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Orders
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/ordersList"
+            onClick={[Function]}
+          >
+            Show orders
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addOrderForm"
+            onClick={[Function]}
+          >
+            Add order
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Masters
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/mastersList"
+            onClick={[Function]}
+          >
+            Show masters
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addMasterForm"
+            onClick={[Function]}
+          >
+            Add master
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Towns
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/townsList"
+            onClick={[Function]}
+          >
+            Show towns
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addTownForms"
+            onClick={[Function]}
+          >
+            Add town
+          </a>
+        </div>
+      </div>
+      <div
+        className="mr-1"
+      >
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-danger"
+          href="/admin"
+          onClick={[Function]}
+        >
+          LogOut
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center"
+  >
+    <div
+      className="col-md-8"
+    >
+      <div
+        className="table-responsive"
+      >
+        <table
+          className="table table-dark"
+        >
+          <thead>
+            <tr>
+              <th>
+                List is empty
+              </th>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user logged (token in sessionStorage is true) When path is '/admin/townsList' and in towns list 1 item 1`] = `
+<div
+  className="container pt-3"
+>
+  <div
+    className="nav-menu-wrapp mb-3 mb-sm-5"
+  >
+    <div
+      className="btn-group nav-menu"
+    >
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Orders
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/ordersList"
+            onClick={[Function]}
+          >
+            Show orders
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addOrderForm"
+            onClick={[Function]}
+          >
+            Add order
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Masters
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/mastersList"
+            onClick={[Function]}
+          >
+            Show masters
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addMasterForm"
+            onClick={[Function]}
+          >
+            Add master
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Towns
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/townsList"
+            onClick={[Function]}
+          >
+            Show towns
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addTownForms"
+            onClick={[Function]}
+          >
+            Add town
+          </a>
+        </div>
+      </div>
+      <div
+        className="mr-1"
+      >
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-danger"
+          href="/admin"
+          onClick={[Function]}
+        >
+          LogOut
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center"
+  >
+    <div
+      className="col-md-8"
+    >
+      <div
+        className="table-responsive"
+      >
+        <table
+          className="table table-dark"
+        >
+          <thead>
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Id
+              </th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                style={
+                  Object {
+                    "wordWrap": "break-word",
+                  }
+                }
+              >
+                Dnipro
+              </td>
+              <td
+                style={
+                  Object {
+                    "wordWrap": "break-word",
+                  }
+                }
+              >
+                1
+              </td>
+              <td
+                className="text-center"
+              >
+                <div
+                  className="dropdown"
+                >
+                  <button
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    className="btn btn-secondary dropdown-toggle"
+                    data-toggle="dropdown"
+                    id="dropdownMenuButton"
+                    type="button"
+                  >
+                    Options
+                  </button>
+                  <div
+                    aria-labelledby="dropdownMenuLink"
+                    className="dropdown-menu"
+                  >
+                    <button
+                      className="dropdown-item"
+                      onClick={[Function]}
+                    >
+                      Delete
+                    </button>
+                    <a
+                      className="dropdown-item"
+                      href="/admin/editTown/1"
+                      onClick={[Function]}
+                    >
+                      Edit
+                    </a>
+                    <button
+                      className="dropdown-item"
+                      data-target="#fullInfoModal"
+                      data-toggle="modal"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      Show full info
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test of <MainPage /> (admin side) When user logged (token in sessionStorage is true) When path is '/admin/townsList' and towns list is empty 1`] = `
+<div
+  className="container pt-3"
+>
+  <div
+    className="nav-menu-wrapp mb-3 mb-sm-5"
+  >
+    <div
+      className="btn-group nav-menu"
+    >
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Orders
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/ordersList"
+            onClick={[Function]}
+          >
+            Show orders
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addOrderForm"
+            onClick={[Function]}
+          >
+            Add order
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Masters
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/mastersList"
+            onClick={[Function]}
+          >
+            Show masters
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addMasterForm"
+            onClick={[Function]}
+          >
+            Add master
+          </a>
+        </div>
+      </div>
+      <div
+        className="dropdown mr-1"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dropdownMenuLink"
+        >
+          Towns
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu"
+        >
+          <a
+            className="dropdown-item"
+            href="/admin/townsList"
+            onClick={[Function]}
+          >
+            Show towns
+          </a>
+          <a
+            className="dropdown-item"
+            href="/admin/addTownForms"
+            onClick={[Function]}
+          >
+            Add town
+          </a>
+        </div>
+      </div>
+      <div
+        className="mr-1"
+      >
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="btn btn-danger"
+          href="/admin"
+          onClick={[Function]}
+        >
+          LogOut
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center"
+  >
+    <div
+      className="col-md-8"
+    >
+      <div
+        className="table-responsive"
+      >
+        <table
+          className="table table-dark"
+        >
+          <thead>
+            <tr>
+              <th>
+                List is empty
+              </th>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="exampleModalLongTitle"
+      className="modal fade"
+      id="fullInfoModal"
+      role="dialog"
+      tabIndex="-1"
+    >
+      <div
+        className="modal-dialog"
+        role="document"
+      >
+        <div
+          className="modal-content"
+        >
+          <div
+            className="modal-header"
+          >
+            <h5
+              className="modal-title"
+              id="exampleModalLongTitle"
+            >
+              Full info
+            </h5>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ×
+              </span>
+            </button>
+          </div>
+          <div
+            className="modal-body"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
