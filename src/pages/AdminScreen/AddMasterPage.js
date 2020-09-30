@@ -21,7 +21,7 @@ import {
   changeAddNewMasterFormIsLoad,
 } from "../../store/masterManagement/actions";
 
-import { townsInit } from "../../store/townsManagement/actions";
+import { townsInit, changeTownsFromOrderFormIsLoad } from "../../store/townsManagement/actions";
 
 function AddMasterPage() {
   const context = useContext(Context);
@@ -29,6 +29,7 @@ function AddMasterPage() {
     return {
       newMasterFormIsLoad: state.masterReducer.newMasterFormIsLoad,
       townsArr: state.townReduser.towns,
+      townsInOrderFormIsLoad: state.townReduser.townsInOrderFormIsLoad,
     };
   });
   const dispatch = useDispatch();
@@ -42,9 +43,13 @@ function AddMasterPage() {
       Authorization: "Bearer " + sessionStorage.getItem("token") || "",
       "Content-Type": "application/json",
     };
+    dispatch(changeTownsFromOrderFormIsLoad(true));
     fetch(`${SERVERDOMAIN}/towns`, { headers })
       .then((json) => json.json())
-      .then((data) => dispatch(townsInit(data)));
+      .then((data) => {
+        dispatch(townsInit(data));
+        dispatch(changeTownsFromOrderFormIsLoad(false));
+      });
   }
   function handler(e) {
     e.preventDefault();
@@ -118,7 +123,7 @@ function AddMasterPage() {
         <Label forId={"name"}>Enter name</Label>
         <NameField id={"name"} name={"name"} />
       </FormGroup>
-      <SelectTownsField townsArr={state.townsArr} />
+      <SelectTownsField isLoad = {state.townsInOrderFormIsLoad} townsArr={state.townsArr} />
       <SubscribeBtn loading={state.newMasterFormIsLoad} value={"Add"} />
     </form>
   );

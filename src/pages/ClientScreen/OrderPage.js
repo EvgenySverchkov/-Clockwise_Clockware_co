@@ -2,13 +2,9 @@ import React, { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { addCurrentOrderToState } from "../../store/orders/actions";
-import { addTownsToState } from "../../store/towns/actions";
-import { addSuitableMasters } from "../../store/masters/actions";
-
-import { changeClientOrderFormIsLoad } from "../../store/orders/actions";
-
-import { changeTownsFromOrderFormIsLoad } from "../../store/towns/actions";
+import { addCurrentOrderToState, changeClientOrderFormIsLoad } from "../../store/ordersManagement/actions";
+import { changeTownsFromOrderFormIsLoad, addTownsToState } from "../../store/townsManagement/actions";
+import { addSuitableMasters } from "../../store/masterManagement/actions";
 
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
@@ -19,10 +15,10 @@ function OrderFormClient({ history }) {
   const context = useContext(Context);
   const state = useSelector((state) => {
     return {
-      currentOrder: state.clientOrderReduser.currentOrder,
-      orderFormIsLoad: state.clientOrderReduser.orderFormIsLoad,
-      townsArr: state.clientTownsReduser.townsArr,
-      townsInOrderFormIsLoad: state.clientTownsReduser.townsInOrderFormIsLoad,
+      currentOrder: state.ordersReducer.currentOrder,
+      orderFormIsLoad: state.ordersReducer.orderFormIsLoad,
+      townsArr: state.townReduser.townsArr,
+      townsInOrderFormIsLoad: state.townReduser.townsInOrderFormIsLoad,
     };
   });
   const dispatch = useDispatch();

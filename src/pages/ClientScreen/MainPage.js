@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
-import { addCurrentOrderToState } from "../../store/orders/actions";
+import { addCurrentOrderToState } from "../../store/ordersManagement/actions";
 import { toogleAuthClient } from "../../store/auth/actions";
 import OrderPage from "./OrderPage";
 import FreeMastersPage from "./FreeMastersPage";

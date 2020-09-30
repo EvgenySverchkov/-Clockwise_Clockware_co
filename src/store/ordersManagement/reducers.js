@@ -31,6 +31,21 @@ export default function orders_reducer(state = {}, action) {
         ...state,
         adminOrderFormIsLoad: action.payload,
       };
+    case actionType.INIT_USER_ORDERS:
+      return {
+        ...state,
+        userOrders: action.payload,
+      };
+    case actionType.CHANGE_USER_ORDERS_LIST_IS_LOAD:
+      return {
+        ...state,
+        userOrdersListIsLoad: action.payload,
+      };
+    case actionType.CHANGE_CLIENT_ORDER_FORM_IS_LOAD:
+      return {
+        ...state,
+        orderFormIsLoad: action.payload,
+      };
     default:
       return state;
   }

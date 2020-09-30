@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import { addCurrentOrderToState } from "../../store/orders/actions";
-import { changeClientOrderFormIsLoad } from "../../store/orders/actions";
+import { addCurrentOrderToState, changeClientOrderFormIsLoad } from "../../store/ordersManagement/actions";
 
 import FreeMastersForm from "../../forms/FreeMastersForm";
 import sendMail from "../../services/mailSendler";
@@ -14,9 +13,9 @@ function MastersList({ history }) {
   const context = useContext(Context);
   const state = useSelector((state) => {
     return {
-      suitableMasters: state.clientMastresReduser.suitableMasters,
-      currentOrder: state.clientOrderReduser.currentOrder,
-      orderFormIsLoad: state.clientOrderReduser.orderFormIsLoad,
+      suitableMasters: state.masterReducer.suitableMasters,
+      currentOrder: state.ordersReducer.currentOrder,
+      orderFormIsLoad: state.ordersReducer.orderFormIsLoad,
       isAuth: state.authReducer.isAuth,
     };
   });

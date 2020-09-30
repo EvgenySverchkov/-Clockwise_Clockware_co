@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { addCurrentOrderToState } from "../../store/orders/actions";
+import { addCurrentOrderToState } from "../../store/ordersManagement/actions";
 import { changeClientLoginIsLoad } from "../../store/auth/actions";
 import { toogleAuthClient } from "../../store/auth/actions";
 

@@ -2,18 +2,15 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import List from "../List";
-import {
-  initUserOrders,
-  changeUserOrdersListIsLoad,
-} from "../../store/orders/actions";
+import {initUserOrders, changeUserOrdersListIsLoad} from "../../store/ordersManagement/actions"
 import { SERVERDOMAIN } from "../../services/serverUrls";
 
 const UserOrdersList = ({ history }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
-      userOrders: state.clientOrderReduser.userOrders,
-      userOrdersListIsLoad: state.clientOrderReduser.userOrdersListIsLoad,
+      userOrders: state.ordersReducer.userOrders,
+      userOrdersListIsLoad: state.ordersReducer.userOrdersListIsLoad,
     };
   });
   function getUserOrdersFromServerToState() {

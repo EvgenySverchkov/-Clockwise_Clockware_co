@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { townsInit } from "../../store/townsManagement/actions";
+import { townsInit, changeTownsFromOrderFormIsLoad } from "../../store/townsManagement/actions";
 import { addSuitableMasters } from "../../store/masterManagement/actions";
 import {
   addCurrentOrderToState,
@@ -21,6 +21,7 @@ function AddNewOrderPage({ history }) {
       currentOrder: state.ordersReducer.currentOrder,
       townsArr: state.townReduser.towns,
       orderFormIsLoad: state.ordersReducer.adminOrderFormIsLoad,
+      townsInOrderFormIsLoad: state.townReduser.townsInOrderFormIsLoad,
     };
   });
   const dispatch = useDispatch();
@@ -42,9 +43,13 @@ function AddNewOrderPage({ history }) {
       Authorization: "Bearer " + sessionStorage.getItem("token") || "",
       "Content-Type": "application/json",
     };
+    dispatch(changeTownsFromOrderFormIsLoad(true));
     fetch(`${SERVERDOMAIN}/towns`, { headers })
       .then((json) => json.json())
-      .then((data) => dispatch(townsInit(data)));
+      .then((data) => {
+        dispatch(townsInit(data));
+        dispatch(changeTownsFromOrderFormIsLoad(false));
+      });
   }
   function submitHandler(e) {
     e.preventDefault();
@@ -175,6 +180,7 @@ function AddNewOrderPage({ history }) {
       townsArr={state.townsArr}
       submitHandler={submitHandler}
       isLoadOrderForm={state.orderFormIsLoad}
+      townsInOrderFormIsLoad={state.townsInOrderFormIsLoad}
     />
   );
 }

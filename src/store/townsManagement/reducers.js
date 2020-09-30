@@ -31,6 +31,16 @@ export default function town_reduser(state = {}, action) {
         ...state,
         newTownFormIsLoad: action.payload,
       };
+    case actionType.ADD_TOWNS_TO_STATE:
+      return {
+        ...state,
+        townsArr: action.payload,
+      };
+    case actionType.CHANGE_TOWNS_FROM_ORDER_FORM_IS_LOAD:
+      return {
+        ...state,
+        townsInOrderFormIsLoad: action.payload,
+      };
     default:
       return state;
   }

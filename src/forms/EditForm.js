@@ -16,8 +16,7 @@ import TextFieldWithLabel from "../components/CompleteFormFields/TextFieldWithLa
 
 import Context from "../ContextComponent";
 
-import { townsInit } from "../store/townsManagement/actions";
-import { changeTownsFromOrderFormIsLoad } from "../store/towns/actions";
+import { townsInit, changeTownsFromOrderFormIsLoad } from "../store/townsManagement/actions";
 
 import { SERVERDOMAIN } from "../services/serverUrls";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { addCurrentOrderToState } from "../../store/orders/actions";
+import { addCurrentOrderToState } from "../../store/ordersManagement/actions";
 import { toogleAuthClient } from "../../store/auth/actions";
 
 function LogOutBtn() {
