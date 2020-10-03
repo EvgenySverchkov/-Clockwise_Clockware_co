@@ -23,9 +23,11 @@ function OrderForm({
   const context = useContext(Context);
   function minDate() {
     let date = new Date();
+    let buffDate = new Date();
+    buffDate.setDate(buffDate.getDate()-1);
     return `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
       -2
-    )}-${("0" + date.getDate()).slice(-2)}`;
+    )}-${("0" + buffDate.getDate()).slice(-2)}`;
   }
   function maxDate(minDate) {
     let date = new Date(minDate);
