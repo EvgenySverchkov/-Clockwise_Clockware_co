@@ -98,7 +98,7 @@ function AddNewOrderPage({ history }) {
 
     if (!isClientDateLargeThenCurrDate(trgElem.date.value)) {
       context.openWarningTooltip(
-        "Date must not be less than or equal to the current date",
+        "Date must not be less than current date",
         trgElem.date.id
       );
       return false;
