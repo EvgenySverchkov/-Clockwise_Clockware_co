@@ -25,16 +25,20 @@ function OrderForm({
     let date = new Date();
     let buffDate = new Date();
     buffDate.setDate(buffDate.getDate()-1);
-    return `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
+    const customDate = `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
       -2
     )}-${("0" + buffDate.getDate()).slice(-2)}`;
+    buffDate.setDate(buffDate.getDate()+1);
+    return customDate;
   }
   function maxDate(minDate) {
     let date = new Date(minDate);
     date.setFullYear(date.getFullYear() + 1);
-    return `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
+    const customDate = `${date.getFullYear()}-${("0" + (+date.getMonth() + 1)).slice(
       -2
     )}-${("0" + date.getDate()).slice(-2)}`;
+    date.setFullYear(date.getFullYear() - 1);
+    return customDate;
   }
 
   const currDate = minDate();
