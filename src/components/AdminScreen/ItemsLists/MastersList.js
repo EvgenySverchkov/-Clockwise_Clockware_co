@@ -38,7 +38,7 @@ const MastersList = ({ history }) => {
         dispatch(changeListIsLoad(false));
         dispatch(initMasters(data));
       })
-      .catch((err) => {
+      .catch(() => {
         dispatch(changeListIsLoad(false));
         dispatch(initMasters([]));
       });

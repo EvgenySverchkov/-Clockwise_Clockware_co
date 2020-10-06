@@ -11,10 +11,10 @@ const mockStore = configMockStore();
 
 it("Test of <FreeMastersPage />", ()=>{
     const store = mockStore({
-        clientMastresReduser: {
+        masterReducer: {
             suitableMasters: [{id: 1, rating: 5, name: "Name"}]
         },
-        clientOrderReduser: {
+        ordersReducer: {
             currentOrder: {name:"Alex", email:"199816a@mail.ru"},
             orderFormIsLoad: false,
         },

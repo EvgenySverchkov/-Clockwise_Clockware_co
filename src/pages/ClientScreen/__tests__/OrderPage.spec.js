@@ -11,11 +11,11 @@ const mockSrore = configMockStore();
 it("Test of <OrderPage/>", async ()=>{
     global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve())}));
     const store = mockSrore({
-        clientOrderReduser: {
+        ordersReducer: {
             currentOrder: {},
             orderFormIsLoad: false
         },
-        clientTownsReduser: {
+        townReduser: {
             townsArr: [{id: 1, name: "Town1"}, {id: 2, name: "Town2"}],
             townsInOrderFormIsLoad: false
         }

@@ -7,9 +7,8 @@ import {MemoryRouter} from "react-router-dom";
 import MastersList from "../MastersList";
 
 const mockStore = mockStoreConfig();
-
+global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve())}));
 describe("Test of <MastersList />", ()=>{
-    global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve())}));
     const initialState = {
         masterReducer: {
             masters: [{
@@ -27,32 +26,54 @@ describe("Test of <MastersList />", ()=>{
             location: "/"
         }
     }
-    it("When list is already loaded", async()=>{
-        const store = mockStore(initialState);
-        let component;
-        await act(async ()=>{
-            component = await create(
-                <Provider store={store}>
-                    <MemoryRouter initialEntries={["/"]}>
-                        <MastersList {...mockProps}/>
-                    </MemoryRouter>
-                </Provider>
-            );
-        })
-        expect(component.toJSON()).toMatchSnapshot();
+    
+    describe("", ()=>{
+        it("When list is already loaded", async()=>{
+            const store = mockStore(initialState);
+            let component;
+            await act(async ()=>{
+                component = await create(
+                    <Provider store={store}>
+                        <MemoryRouter initialEntries={["/"]}>
+                            <MastersList {...mockProps}/>
+                        </MemoryRouter>
+                    </Provider>
+                );
+            })
+            expect(component.toJSON()).toMatchSnapshot();
+        });
+        it("When list is loading", async()=>{
+            const store = mockStore({masterReducer:{masters: []}, adminModalWindows: {listIsLoad: true}});
+            let component;
+            await act(async ()=>{
+                component = await create(
+                    <Provider store={store}>
+                        <MemoryRouter initialEntries={["/"]}>
+                            <MastersList {...mockProps}/>
+                        </MemoryRouter>
+                    </Provider>
+                );
+            })
+            expect(component.toJSON()).toMatchSnapshot();
+        });
+        
     });
-    it("When list is loading", async()=>{
-        const store = mockStore({masterReducer:{masters: []}, adminModalWindows: {listIsLoad: true}});
-        let component;
-        await act(async ()=>{
-            component = await create(
-                <Provider store={store}>
-                    <MemoryRouter initialEntries={["/"]}>
-                        <MastersList {...mockProps}/>
-                    </MemoryRouter>
-                </Provider>
-            );
-        })
-        expect(component.toJSON()).toMatchSnapshot();
+    describe("", ()=>{
+        it("When returned error from server (list is empty)", async()=>{
+            console.log(fetch)
+            fetch.mockImplementation(() => Promise.reject());
+            const store = mockStore(initialState);
+            let component;
+            await act(async ()=>{
+                component = await create(
+                    <Provider store={store}>
+                        <MemoryRouter initialEntries={["/"]}>
+                            <MastersList {...mockProps}/>
+                        </MemoryRouter>
+                    </Provider>
+                );
+            })
+            expect(component.toJSON()).toMatchSnapshot();
+        });
     });
 });

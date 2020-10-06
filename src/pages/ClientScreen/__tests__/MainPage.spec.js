@@ -35,11 +35,11 @@ describe("Test of <MainPage/> (client side)", ()=>{
                 adminModalWindows: {
                     currItemForModal: currItemForModal
                 },
-                clientOrderReduser: {
+                ordersReducer: {
                     currentOrder: {},
                     orderFormIsLoad: false
                 },
-                clientTownsReduser: {
+                townReduser: {
                     townsArr: [{id:1, name:"Town1"}, {id:2, name:"Town2"}],
                     townsInOrderFormIsLoad: false
                 },
@@ -65,14 +65,14 @@ describe("Test of <MainPage/> (client side)", ()=>{
                 adminModalWindows: {
                     currItemForModal: currItemForModal
                 },
-                clientOrderReduser: {
+                ordersReducer: {
                     currentOrder: {email: "email@mail.com", name: "Name"},
                     orderFormIsLoad: false
                 },
                 authReducer: {
                     isAuthClient: false
                 },
-                clientMastresReduser: {
+                masterReducer: {
                     suitableMasters: [{id: 1, name: "Name", rating: 5}, {id: 2, name: "Name2", rating: 5}]
                 }
             })
@@ -170,11 +170,11 @@ describe("Test of <MainPage/> (client side)", ()=>{
                 adminModalWindows: {
                     currItemForModal: currItemForModal
                 },
-                clientOrderReduser: {
+                ordersReducer: {
                     currentOrder: {email: "email@test.com"},
                     orderFormIsLoad: false
                 },
-                clientTownsReduser: {
+                townReduser: {
                     townsArr: [{id:1, name:"Town1"}, {id:2, name:"Town2"}],
                     townsInOrderFormIsLoad: false
                 },
@@ -200,14 +200,14 @@ describe("Test of <MainPage/> (client side)", ()=>{
                 adminModalWindows: {
                     currItemForModal: currItemForModal
                 },
-                clientOrderReduser: {
+                ordersReducer: {
                     currentOrder: {email: "email@mail.com", name: "Name"},
                     orderFormIsLoad: false
                 },
                 authReducer: {
                     isAuthClient: true
                 },
-                clientMastresReduser: {
+                masterReducer: {
                     suitableMasters: [{id: 1, name: "Name", rating: 5}, {id: 2, name: "Name2", rating: 5}]
                 }
             })

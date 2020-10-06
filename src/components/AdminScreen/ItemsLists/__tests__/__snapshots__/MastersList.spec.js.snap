@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test of <MastersList /> When list is already loaded 1`] = `
+exports[`Test of <MastersList />  When list is already loaded 1`] = `
 <div
   className="table-responsive"
 >
@@ -89,7 +89,7 @@ exports[`Test of <MastersList /> When list is already loaded 1`] = `
 </div>
 `;
 
-exports[`Test of <MastersList /> When list is loading 1`] = `
+exports[`Test of <MastersList />  When list is loading 1`] = `
 <div
   className="table-responsive"
 >
@@ -104,6 +104,95 @@ exports[`Test of <MastersList /> When list is loading 1`] = `
       </tr>
     </thead>
     <tbody />
+  </table>
+</div>
+`;
+
+exports[`Test of <MastersList />  When returned error from server (list is empty) 1`] = `
+<div
+  className="table-responsive"
+>
+  <table
+    className="table table-dark"
+  >
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Rating
+        </th>
+        <th />
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          style={
+            Object {
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Name
+        </td>
+        <td
+          style={
+            Object {
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          5
+        </td>
+        <td
+          className="text-center"
+        >
+          <div
+            className="dropdown"
+          >
+            <button
+              aria-expanded="false"
+              aria-haspopup="true"
+              className="btn btn-secondary dropdown-toggle"
+              data-toggle="dropdown"
+              id="dropdownMenuButton"
+              type="button"
+            >
+              Options
+            </button>
+            <div
+              aria-labelledby="dropdownMenuLink"
+              className="dropdown-menu"
+            >
+              <button
+                className="dropdown-item"
+                onClick={[Function]}
+              >
+                Delete
+              </button>
+              <a
+                className="dropdown-item"
+                href="/1"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <button
+                className="dropdown-item"
+                data-target="#fullInfoModal"
+                data-toggle="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                Show full info
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>
 `;

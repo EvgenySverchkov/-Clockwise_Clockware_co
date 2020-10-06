@@ -1680,8 +1680,8 @@ exports[`Test of <MainPage /> (admin side) When user logged (token in sessionSto
             aria-describedby={null}
             className="mr-1"
             id="date"
-            max="2021-09-29"
-            min="2020-09-29"
+            max="2021-09-30"
+            min="2020-09-30"
             name="date"
             onBlur={[Function]}
             onChange={[Function]}

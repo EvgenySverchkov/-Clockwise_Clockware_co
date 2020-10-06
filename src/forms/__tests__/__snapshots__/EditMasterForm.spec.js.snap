@@ -80,9 +80,7 @@ exports[`Test of <EditMasterForm/> with mock props 1`] = `
       Choose towns
     </div>
     <div>
-      <div>
-        -- List is empty --
-      </div>
+      -- List is empty --
     </div>
   </div>
   <div

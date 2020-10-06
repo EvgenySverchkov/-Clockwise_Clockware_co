@@ -321,9 +321,7 @@ exports[`Test of <AddMasterPage /> The view when towns array is empty 1`] = `
       Choose towns
     </div>
     <div>
-      <div>
-        -- List is empty --
-      </div>
+      -- List is empty --
     </div>
   </div>
   <div

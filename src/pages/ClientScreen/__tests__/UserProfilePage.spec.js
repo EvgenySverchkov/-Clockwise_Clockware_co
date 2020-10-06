@@ -14,7 +14,7 @@ describe("Test of <UserProfilePage />", ()=>{
         ordersReducer:{
             currentOrder: {}
         },
-        clientOrderReduser: {
+        ordersReducer: {
             userOrders: [{
                 id: 1,
                 name: "Name",

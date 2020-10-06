@@ -10,7 +10,7 @@ const mockStore = configMockStore();
 it("Test of <UserOrdersList/>", async()=>{
     global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve())}));
     const store = mockStore({
-        clientOrderReduser:{
+        ordersReducer:{
             userOrders: [{
                 id: 1,
                 name: "Name",
