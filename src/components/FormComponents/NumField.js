@@ -18,8 +18,6 @@ const NumField = ({ max, min, id, value, chngHandler, name }) => {
           id={id}
           className="form-control"
           type="number"
-          min={min}
-          max={max}
           onChange={chngHandler || null}
           value={value}
           name={name}

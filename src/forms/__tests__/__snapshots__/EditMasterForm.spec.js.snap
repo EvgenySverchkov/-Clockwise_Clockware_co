@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test of <EditMasterForm/> with mock props 1`] = `
+exports[`Test of <EditMasterForm/> Default view with mock props 1`] = `
 <form
   className="mt-4 row justify-content-center"
   onBlur={[Function]}
@@ -23,8 +23,6 @@ exports[`Test of <EditMasterForm/> with mock props 1`] = `
         aria-describedby={null}
         className="form-control"
         id="rating"
-        max={5}
-        min={0}
         name="rating"
         onBlur={[Function]}
         onChange={[Function]}
