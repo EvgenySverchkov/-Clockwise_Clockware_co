@@ -46,7 +46,7 @@ function EditForm({ id, handler, arrFromState }) {
   const state = useSelector((state) => {
     return {
       townsArr: state.townReduser.towns,
-      townsInOrderFormIsLoad: state.clientTownsReduser.townsInOrderFormIsLoad,
+      townsInOrderFormIsLoad: state.townReduser.townsInOrderFormIsLoad,
     };
   });
 
