@@ -8,6 +8,14 @@ import AddNewOrderPage from "../AddNewOrderPage";
 
 const mockStore = configMockStore();
 
+const constantDate = new Date('2020-06-13')
+
+Date = class extends Date {
+  constructor() {
+    return constantDate
+  }
+}
+
 describe("Test of <AddNewOrderPage />", ()=>{
     global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve())}));
     const initialStore = {

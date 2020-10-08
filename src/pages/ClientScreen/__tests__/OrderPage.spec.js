@@ -8,7 +8,16 @@ import Context from "../../../ContextComponent";
 
 const mockSrore = configMockStore();
 
+const constantDate = new Date('2017-06-13')
+
+Date = class extends Date {
+  constructor() {
+    return constantDate
+  }
+}
+
 it("Test of <OrderPage/>", async ()=>{
+    
     global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve())}));
     const store = mockSrore({
         ordersReducer: {

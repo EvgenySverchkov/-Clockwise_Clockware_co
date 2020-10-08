@@ -1241,8 +1241,6 @@ exports[`Test of <MainPage /> (admin side) When user logged (token in sessionSto
               aria-describedby={null}
               className="form-control"
               id="rating"
-              max={5}
-              min={0}
               onBlur={[Function]}
               onChange={null}
               onFocus={[Function]}
@@ -1680,8 +1678,8 @@ exports[`Test of <MainPage /> (admin side) When user logged (token in sessionSto
             aria-describedby={null}
             className="mr-1"
             id="date"
-            max="2021-09-30"
-            min="2020-09-30"
+            max="2021-06-13"
+            min="2020-06-12"
             name="date"
             onBlur={[Function]}
             onChange={[Function]}
@@ -2184,7 +2182,7 @@ exports[`Test of <MainPage /> (admin side) When user logged (token in sessionSto
                     className="dropdown-menu"
                   >
                     <button
-                      className="dropdown-item"
+                      className="dropdown-item deleteItemBtn"
                       onClick={[Function]}
                     >
                       Delete
@@ -2666,7 +2664,7 @@ exports[`Test of <MainPage /> (admin side) When user logged (token in sessionSto
                     className="dropdown-menu"
                   >
                     <button
-                      className="dropdown-item"
+                      className="dropdown-item deleteItemBtn"
                       onClick={[Function]}
                     >
                       Delete
@@ -3124,7 +3122,7 @@ exports[`Test of <MainPage /> (admin side) When user logged (token in sessionSto
                     className="dropdown-menu"
                   >
                     <button
-                      className="dropdown-item"
+                      className="dropdown-item deleteItemBtn"
                       onClick={[Function]}
                     >
                       Delete

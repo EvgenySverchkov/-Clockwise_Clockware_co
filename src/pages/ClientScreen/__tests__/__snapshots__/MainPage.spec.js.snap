@@ -292,8 +292,8 @@ Array [
           aria-describedby={null}
           className="mr-1"
           id="date"
-          max="2021-09-28"
-          min="2020-09-28"
+          max="2021-06-13"
+          min="2020-06-12"
           name="date"
           onBlur={[Function]}
           onChange={[Function]}
@@ -1770,8 +1770,8 @@ Array [
           aria-describedby={null}
           className="mr-1"
           id="date"
-          max="2021-09-28"
-          min="2020-09-28"
+          max="2021-06-13"
+          min="2020-06-12"
           name="date"
           onBlur={[Function]}
           onChange={[Function]}

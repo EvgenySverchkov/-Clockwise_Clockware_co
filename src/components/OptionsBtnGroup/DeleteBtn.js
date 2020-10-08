@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function DeleteBtn({ deleteMasterById, id }) {
   return (
-    <button onClick={() => deleteMasterById(id)} className="dropdown-item">
+    <button onClick={() => deleteMasterById(id)} className="dropdown-item deleteItemBtn">
       Delete
     </button>
   );

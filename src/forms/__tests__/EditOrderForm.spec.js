@@ -9,6 +9,14 @@ import ContextComponent from "../../ContextComponent";
 
 const mockStore = configureStore();
 
+const constantDate = new Date('2020-06-13')
+
+Date = class extends Date {
+  constructor() {
+    return constantDate
+  }
+}
+
 it("Test of <EditOrderForm/> with mock props", async()=>{
     global.fetch = jest.fn(()=>Promise.resolve({json: ()=>Promise.resolve()}))
     const orderId = 1;

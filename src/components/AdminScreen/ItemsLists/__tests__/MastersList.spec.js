@@ -7,7 +7,6 @@ import {MemoryRouter} from "react-router-dom";
 import MastersList from "../MastersList";
 
 const mockStore = mockStoreConfig();
-global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve())}));
 describe("Test of <MastersList />", ()=>{
     const initialState = {
         masterReducer: {
@@ -27,7 +26,8 @@ describe("Test of <MastersList />", ()=>{
         }
     }
     
-    describe("", ()=>{
+    describe.only("", ()=>{
+        beforeEach(()=>global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve())})))
         it("When list is already loaded", async()=>{
             const store = mockStore(initialState);
             let component;
@@ -56,12 +56,26 @@ describe("Test of <MastersList />", ()=>{
             })
             expect(component.toJSON()).toMatchSnapshot();
         });
-        
+        // it("When click on delete item", async()=>{
+        //     const store = mockStore(initialState);
+        //     let component;
+        //     await act(async ()=>{
+        //         component = await create(
+        //             <Provider store={store}>
+        //                 <MemoryRouter initialEntries={["/"]}>
+        //                     <MastersList {...mockProps}/>
+        //                 </MemoryRouter>
+        //             </Provider>
+        //         );
+        //     })
+        //     component.root.findByProps({className: "dropdown-item deleteItemBtn"}).props.onClick();
+        //     expect(component.toJSON()).toMatchSnapshot();
+        // });
     });
+    
     describe("", ()=>{
+        beforeEach(()=>global.fetch = jest.fn(()=> Promise.reject()));
         it("When returned error from server (list is empty)", async()=>{
-            console.log(fetch)
-            fetch.mockImplementation(() => Promise.reject());
             const store = mockStore(initialState);
             let component;
             await act(async ()=>{

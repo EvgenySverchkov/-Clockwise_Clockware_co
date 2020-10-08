@@ -83,7 +83,7 @@ exports[`Test of <OrdersList /> When list is already loaded 1`] = `
               className="dropdown-menu"
             >
               <button
-                className="dropdown-item"
+                className="dropdown-item deleteItemBtn"
                 onClick={[Function]}
               >
                 Delete
