@@ -26,7 +26,7 @@ describe("Test of <MastersList />", ()=>{
         }
     }
     
-    describe.only("", ()=>{
+    describe("", ()=>{
         beforeEach(()=>global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve())})))
         it("When list is already loaded", async()=>{
             const store = mockStore(initialState);
@@ -56,21 +56,6 @@ describe("Test of <MastersList />", ()=>{
             })
             expect(component.toJSON()).toMatchSnapshot();
         });
-        // it("When click on delete item", async()=>{
-        //     const store = mockStore(initialState);
-        //     let component;
-        //     await act(async ()=>{
-        //         component = await create(
-        //             <Provider store={store}>
-        //                 <MemoryRouter initialEntries={["/"]}>
-        //                     <MastersList {...mockProps}/>
-        //                 </MemoryRouter>
-        //             </Provider>
-        //         );
-        //     })
-        //     component.root.findByProps({className: "dropdown-item deleteItemBtn"}).props.onClick();
-        //     expect(component.toJSON()).toMatchSnapshot();
-        // });
     });
     
     describe("", ()=>{
