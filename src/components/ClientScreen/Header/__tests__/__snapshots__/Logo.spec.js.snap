@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <Logo /> on client side 1`] = `
+<a
+  className="navbar-brand"
+  href="/client"
+  onClick={[Function]}
+>
+  I'm LOGO
+</a>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <LogInBtn /> 1`] = `
+<li
+  className="nav-item"
+>
+  <a
+    className="nav-link"
+    href="/client/login"
+    onClick={[Function]}
+  >
+    Login
+  </a>
+</li>
+`;

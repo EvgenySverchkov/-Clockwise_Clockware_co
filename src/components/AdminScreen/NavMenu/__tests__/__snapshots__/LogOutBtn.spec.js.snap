@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <LogOutBtn /> on admin side 1`] = `
+<div
+  className="mr-1"
+>
+  <a
+    aria-expanded="false"
+    aria-haspopup="true"
+    className="btn btn-danger"
+    href="/admin"
+    onClick={[Function]}
+  >
+    LogOut
+  </a>
+</div>
+`;

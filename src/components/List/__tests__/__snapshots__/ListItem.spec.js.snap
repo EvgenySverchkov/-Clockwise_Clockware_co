@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <ListHeader /> 1`] = `
+Array [
+  <td
+    style={
+      Object {
+        "wordWrap": "break-word",
+      }
+    }
+  >
+    Petrovich
+  </td>,
+  <td
+    style={
+      Object {
+        "wordWrap": "break-word",
+      }
+    }
+  >
+    5
+  </td>,
+]
+`;

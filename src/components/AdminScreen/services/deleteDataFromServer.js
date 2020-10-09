@@ -9,8 +9,6 @@ export default (url) =>
     },
   })
     .then((data) => data.json())
-    .catch((err) => {
-      alert("Internal Server Error! Try again");
-      console.log(err);
-      throw err;
+    .catch(() => {
+      return null;
     });

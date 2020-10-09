@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <OptionsBtnsGroup /> 1`] = `
+<td
+  className="text-center"
+>
+  <div
+    className="dropdown"
+  >
+    <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      className="btn btn-secondary dropdown-toggle"
+      data-toggle="dropdown"
+      id="dropdownMenuButton"
+      type="button"
+    >
+      Options
+    </button>
+    <div
+      aria-labelledby="dropdownMenuLink"
+      className="dropdown-menu"
+    >
+      <button
+        className="dropdown-item deleteItemBtn"
+        onClick={[Function]}
+      >
+        Delete
+      </button>
+      <a
+        className="dropdown-item"
+        href="/undefined"
+        onClick={[Function]}
+      >
+        Edit
+      </a>
+      <button
+        className="dropdown-item"
+        data-target="#fullInfoModal"
+        data-toggle="modal"
+        onClick={[Function]}
+        type="button"
+      >
+        Show full info
+      </button>
+    </div>
+  </div>
+</td>
+`;

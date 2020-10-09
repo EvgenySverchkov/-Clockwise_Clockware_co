@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <DeleteBtn /> Default view 1`] = `
+<button
+  className="dropdown-item deleteItemBtn"
+  onClick={[Function]}
+>
+  Delete
+</button>
+`;

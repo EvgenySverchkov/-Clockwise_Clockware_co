@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <NavMenu /> on admin side 1`] = `
+<div
+  className="nav-menu-wrapp mb-3 mb-sm-5"
+>
+  <div
+    className="btn-group nav-menu"
+  >
+    <div
+      className="dropdown mr-1"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="true"
+        className="btn btn-secondary dropdown-toggle"
+        data-toggle="dropdown"
+        href="#"
+        id="dropdownMenuLink"
+      >
+        Orders
+      </button>
+      <div
+        aria-labelledby="dropdownMenuLink"
+        className="dropdown-menu"
+      >
+        <a
+          className="dropdown-item"
+          href="/admin/ordersList"
+          onClick={[Function]}
+        >
+          Show orders
+        </a>
+        <a
+          className="dropdown-item"
+          href="/admin/addOrderForm"
+          onClick={[Function]}
+        >
+          Add order
+        </a>
+      </div>
+    </div>
+    <div
+      className="dropdown mr-1"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="true"
+        className="btn btn-secondary dropdown-toggle"
+        data-toggle="dropdown"
+        href="#"
+        id="dropdownMenuLink"
+      >
+        Masters
+      </button>
+      <div
+        aria-labelledby="dropdownMenuLink"
+        className="dropdown-menu"
+      >
+        <a
+          className="dropdown-item"
+          href="/admin/mastersList"
+          onClick={[Function]}
+        >
+          Show masters
+        </a>
+        <a
+          className="dropdown-item"
+          href="/admin/addMasterForm"
+          onClick={[Function]}
+        >
+          Add master
+        </a>
+      </div>
+    </div>
+    <div
+      className="dropdown mr-1"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="true"
+        className="btn btn-secondary dropdown-toggle"
+        data-toggle="dropdown"
+        href="#"
+        id="dropdownMenuLink"
+      >
+        Towns
+      </button>
+      <div
+        aria-labelledby="dropdownMenuLink"
+        className="dropdown-menu"
+      >
+        <a
+          className="dropdown-item"
+          href="/admin/townsList"
+          onClick={[Function]}
+        >
+          Show towns
+        </a>
+        <a
+          className="dropdown-item"
+          href="/admin/addTownForms"
+          onClick={[Function]}
+        >
+          Add town
+        </a>
+      </div>
+    </div>
+    <div
+      className="mr-1"
+    >
+      <a
+        aria-expanded="false"
+        aria-haspopup="true"
+        className="btn btn-danger"
+        href="/admin"
+        onClick={[Function]}
+      >
+        LogOut
+      </a>
+    </div>
+  </div>
+</div>
+`;

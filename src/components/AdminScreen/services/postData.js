@@ -10,8 +10,7 @@ export default (url, newObj) => {
     body: JSON.stringify(newObj),
   })
     .then((json) => json.json())
-    .catch((err) => {
-      alert("Internal Server Error! Try again");
-      throw err;
+    .catch(() => {
+      return null;
     });
 };

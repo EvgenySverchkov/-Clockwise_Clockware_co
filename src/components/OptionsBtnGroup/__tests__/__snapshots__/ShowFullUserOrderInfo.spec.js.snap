@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <ShowFullUserOrderInfo /> 1`] = `
+<td
+  className="text-center"
+>
+  <button
+    className="btn btn-secondary"
+    data-target="#fullInfoModal"
+    data-toggle="modal"
+    onClick={[Function]}
+    type="button"
+  >
+    Show full info
+  </button>
+</td>
+`;

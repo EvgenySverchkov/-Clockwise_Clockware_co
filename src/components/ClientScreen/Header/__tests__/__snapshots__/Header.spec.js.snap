@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <Header /> on client side If client is logged 1`] = `
+<header
+  className="masthead mb-auto"
+>
+  <nav
+    className="navbar navbar-expand-sm navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="/client"
+      onClick={[Function]}
+    >
+      Clockwise Co.
+    </a>
+    <button
+      aria-controls="navbarsExample03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      data-target="#navbarsExample03"
+      data-toggle="collapse"
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      className="navbar-collapse collapse"
+      id="navbarsExample03"
+    >
+      <ul
+        className="navbar-nav mr-auto"
+      >
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            href="/client"
+            onClick={[Function]}
+          >
+            To main
+          </a>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            href="/client/userProfile"
+            onClick={[Function]}
+          >
+            Profile
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+`;
+
+exports[`Test of <Header /> on client side If client is unlogged 1`] = `
+<header
+  className="masthead mb-auto"
+>
+  <nav
+    className="navbar navbar-expand-sm navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="/client"
+      onClick={[Function]}
+    >
+      Clockwise Co.
+    </a>
+    <button
+      aria-controls="navbarsExample03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      data-target="#navbarsExample03"
+      data-toggle="collapse"
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      className="navbar-collapse collapse"
+      id="navbarsExample03"
+    >
+      <ul
+        className="navbar-nav mr-auto"
+      >
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            href="/client/login"
+            onClick={[Function]}
+          >
+            Login
+          </a>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            href="/client/registration"
+            onClick={[Function]}
+          >
+            SignUp
+          </a>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            href="/client"
+            onClick={[Function]}
+          >
+            To main
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+`;

@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <FullInfoModal /> 1`] = `
+<div
+  aria-hidden="true"
+  aria-labelledby="exampleModalLongTitle"
+  className="modal fade"
+  id="fullInfoModal"
+  role="dialog"
+  tabIndex="-1"
+>
+  <div
+    className="modal-dialog"
+    role="document"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header"
+      >
+        <h5
+          className="modal-title"
+          id="exampleModalLongTitle"
+        >
+          Full info
+        </h5>
+        <button
+          aria-label="Close"
+          className="close"
+          data-dismiss="modal"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </button>
+      </div>
+      <div
+        className="modal-body"
+      >
+        <div>
+          id
+          : 
+          <span>
+            1
+          </span>
+        </div>
+        <div>
+          rating
+          : 
+          <span>
+            5
+          </span>
+        </div>
+        <div>
+          name
+          : 
+          <span>
+            Petrovich
+          </span>
+        </div>
+        <div>
+          towns
+          : 
+          <span>
+            
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

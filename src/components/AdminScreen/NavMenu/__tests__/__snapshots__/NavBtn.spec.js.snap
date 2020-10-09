@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <NavBtn /> on admin side 1`] = `
+<div
+  className="dropdown mr-1"
+>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    className="btn btn-secondary dropdown-toggle"
+    data-toggle="dropdown"
+    href="#"
+    id="dropdownMenuLink"
+  >
+    Title
+  </button>
+  <div
+    aria-labelledby="dropdownMenuLink"
+    className="dropdown-menu"
+  >
+    <button>
+      Some text1
+    </button>
+    <button>
+      Some text2
+    </button>
+  </div>
+</div>
+`;

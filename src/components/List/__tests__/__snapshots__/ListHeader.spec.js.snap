@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <ListHeader /> 1`] = `
+<tr>
+  <th>
+    Name
+  </th>
+  <th>
+    Rating
+  </th>
+  <th />
+</tr>
+`;

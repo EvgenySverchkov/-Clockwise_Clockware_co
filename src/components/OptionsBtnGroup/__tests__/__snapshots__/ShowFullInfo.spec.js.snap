@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <ShowFullInfo /> 1`] = `
+<button
+  className="dropdown-item"
+  data-target="#fullInfoModal"
+  data-toggle="modal"
+  onClick={[Function]}
+  type="button"
+>
+  Show full info
+</button>
+`;

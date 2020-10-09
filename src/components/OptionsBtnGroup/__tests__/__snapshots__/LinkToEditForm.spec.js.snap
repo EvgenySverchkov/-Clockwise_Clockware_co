@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <LinkToEditForm /> View when current path is 'admin/clientsList' 1`] = `
+<a
+  className="dropdown-item"
+  href="/admin/editClient/1"
+  onClick={[Function]}
+>
+  Edit
+</a>
+`;
+
+exports[`Test of <LinkToEditForm /> View when current path is 'admin/mastersList' 1`] = `
+<a
+  className="dropdown-item"
+  href="/admin/editMaster/1"
+  onClick={[Function]}
+>
+  Edit
+</a>
+`;
+
+exports[`Test of <LinkToEditForm /> View when current path is 'admin/ordersList' 1`] = `
+<a
+  className="dropdown-item"
+  href="/admin/editOrder/1"
+  onClick={[Function]}
+>
+  Edit
+</a>
+`;
+
+exports[`Test of <LinkToEditForm /> View when current path is 'admin/townsList' 1`] = `
+<a
+  className="dropdown-item"
+  href="/admin/editTown/1"
+  onClick={[Function]}
+>
+  Edit
+</a>
+`;
