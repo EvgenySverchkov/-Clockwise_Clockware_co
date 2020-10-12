@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <NavBtnGroup /> 1`] = `
+<div
+  className="btn-group col-12 p-0 mb-2"
+  role="group"
+>
+  <a
+    className="btn btn-secondary"
+    href="/client/userProfile/userOrders"
+    onClick={[Function]}
+    type="button"
+  >
+    Orders
+  </a>
+  <a
+    className="btn btn-secondary"
+    href="/client/userProfile/userSettings"
+    onClick={[Function]}
+    type="button"
+  >
+    Settings
+  </a>
+  <a
+    className="btn btn-danger"
+    href="/"
+    onClick={[Function]}
+  >
+    Logout
+  </a>
+</div>
+`;

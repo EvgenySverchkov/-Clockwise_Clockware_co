@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <CustomTooltip /> 1`] = `
+<input
+  aria-describedby={null}
+  className=""
+  id="ID"
+  name="mockInput"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+  title="Message for tooltip"
+/>
+`;

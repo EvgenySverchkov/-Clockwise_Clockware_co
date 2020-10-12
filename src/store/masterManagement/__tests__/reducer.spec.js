@@ -17,12 +17,15 @@ describe("Test of 'master_reducer' reducer", ()=>{
         expect(reducer(initialState, actions.initMasters(payload))).toEqual(expectedState);
     });
     it("handle ADD_NEW_MASTER (return state where sorted masters array by id)", ()=>{
-        payload = [{id: 2, name: "Name2", rating: 5}, {id: 1, name: "Name1", rating: 5}]
+        initialState = {
+            ...initialState,
+            masters: [{id: 2, name: "Name2", rating: 2}, {id: 1, name: "Name1", rating: 5}]
+        }
         const expectedState = {
             ...initialState,
-            masters: payload.sort((a, b) => a.id - b.id)
-        };
-        expect(reducer(initialState, actions.initMasters(payload))).toEqual(expectedState);
+            masters: initialState.masters.sort((a, b) => a.id - b.id)
+        }; 
+        expect(reducer(initialState, actions.addNewMaster(initialState.masters))).toEqual(expectedState);
     });
     it("handle UPDATE_MASTER (return state where masters array with updated master object)", ()=>{
         initialState = {

@@ -87,7 +87,7 @@ function MastersList({ history }) {
       })
       .catch((err) => {
         dispatch(changeClientOrderFormIsLoad(false));
-        alert(err);
+        console.error(err);
       });
   }
   return (

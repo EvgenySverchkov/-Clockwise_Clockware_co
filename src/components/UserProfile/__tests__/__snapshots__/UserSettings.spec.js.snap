@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of <UserSettings /> Default view 1`] = `
+<form
+  className="mt-4 row justify-content-center"
+  onBlur={[Function]}
+  onSubmit={[Function]}
+>
+  <div
+    className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+  >
+    <label
+      className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+      htmlFor="userMail"
+    >
+      Your email
+    </label>
+    <div
+      className="col-sm-8 col-md-8"
+    >
+      <input
+        aria-describedby={null}
+        className="form-control"
+        id="userMail"
+        name="email"
+        onBlur={[Function]}
+        onChange={null}
+        onFocus={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        readOnly={true}
+        required={true}
+        title="Message"
+        type="email"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group row text-center text-sm-left col-12 col-md-10 col-lg-8"
+  >
+    <label
+      className="pl-0 pr-0 col-sm-4 col-md-4 col-form-label font-weight-bold"
+      htmlFor="userName"
+    >
+      Your name
+    </label>
+    <div
+      className="col-sm-8 col-md-8"
+    >
+      <input
+        aria-describedby={null}
+        className="form-control"
+        id="userName"
+        name={null}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        required={true}
+        title="Message"
+        type="text"
+        value="name"
+      />
+    </div>
+  </div>
+  <div
+    className="row justify-content-sm-center col-12"
+  >
+    <input
+      className="btn btn-primary col-12 col-sm-4 mt-3"
+      type="submit"
+      value="Edit profile"
+    />
+  </div>
+</form>
+`;
