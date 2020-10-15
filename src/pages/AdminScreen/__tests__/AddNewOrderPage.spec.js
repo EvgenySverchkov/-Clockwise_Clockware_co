@@ -18,27 +18,27 @@ Date = class extends Date {
 
 describe("Test of <AddNewOrderPage />", ()=>{
     global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve())}));
-    const initialStore = {
-        ordersReducer: {
-            currentOrder: {},
-            adminOrderFormIsLoad: false,
-        },
-        townReduser: {
-            towns: [{id: 1, name: "Name"}]
-        }
-    };
-    
-    const mockContextValue = {
-        openErrorWindowWithMsg: jest.fn(),
-        openWarningTooltip: jest.fn(),
-        warningTooltipMsg: "Message"
-    };
-    const mockProps = {
-        history: {
-            push: jest.fn()
-        }
-    };
     it("Default view", async()=>{
+        const initialStore = {
+            ordersReducer: {
+                currentOrder: {},
+                adminOrderFormIsLoad: false,
+            },
+            townReduser: {
+                towns: [{id: 1, name: "Name"}]
+            }
+        };
+        
+        const mockContextValue = {
+            openErrorWindowWithMsg: jest.fn(),
+            openWarningTooltip: jest.fn(),
+            warningTooltipMsg: "Message"
+        };
+        const mockProps = {
+            history: {
+                push: jest.fn()
+            }
+        };
         const store = mockStore(initialStore);
         let component;
         await act(async ()=>{
@@ -52,9 +52,28 @@ describe("Test of <AddNewOrderPage />", ()=>{
         });
         expect(component.toJSON()).toMatchSnapshot();
     });
-    
     it("The view after click on submit button and waiting response from server", async()=>{
-        const store = mockStore({...initialStore, ordersReducer: {adminOrderFormIsLoad: true}});
+        const initialStore = {
+            ordersReducer: {
+                currentOrder: {},
+                adminOrderFormIsLoad: true,
+            },
+            townReduser: {
+                towns: [{id: 1, name: "Name"}]
+            }
+        };
+        
+        const mockContextValue = {
+            openErrorWindowWithMsg: jest.fn(),
+            openWarningTooltip: jest.fn(),
+            warningTooltipMsg: "Message"
+        };
+        const mockProps = {
+            history: {
+                push: jest.fn()
+            }
+        };
+        const store = mockStore(initialStore);
         let component;
         await act(async ()=>{
             component = await create(
@@ -67,9 +86,28 @@ describe("Test of <AddNewOrderPage />", ()=>{
         });
         expect(component.toJSON()).toMatchSnapshot();
     });
-
     it("The view when towns array is empty", async()=>{
-        const store = mockStore({...initialStore, townReduser: {towns: []}});
+        const initialStore = {
+            ordersReducer: {
+                currentOrder: {},
+                adminOrderFormIsLoad: false,
+            },
+            townReduser: {
+                towns: []
+            }
+        };
+        
+        const mockContextValue = {
+            openErrorWindowWithMsg: jest.fn(),
+            openWarningTooltip: jest.fn(),
+            warningTooltipMsg: "Message"
+        };
+        const mockProps = {
+            history: {
+                push: jest.fn()
+            }
+        };
+        const store = mockStore(initialStore);
         let component;
         await act(async ()=>{
             component = await create(

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test of <OrderPage/> 1`] = `
+exports[`Test of <OrderPage/> Default view 1`] = `
 Array [
   <div
     className="text-center mb-1"
@@ -219,8 +219,8 @@ Array [
         aria-describedby={null}
         className="mr-1"
         id="date"
-        max="2018-06-13"
-        min="2017-06-12"
+        max="2021-10-12"
+        min="2020-10-12"
         name="date"
         onBlur={[Function]}
         onChange={[Function]}

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test of <SignUpPage/> 1`] = `
+exports[`Test of <SignUpPage/> Default view 1`] = `
 <form
   className="mt-4 row justify-content-center"
   onBlur={[Function]}

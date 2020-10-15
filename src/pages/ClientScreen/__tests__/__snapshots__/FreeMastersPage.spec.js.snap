@@ -1,5 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test of <FreeMastersPage /> Call submit event when master was choosed and current object has one field 1`] = `
+Array [
+  <div
+    className="text-left display-4"
+  >
+    List is empty...
+  </div>,
+  <div
+    className="form-group float-left mt-3"
+  >
+    <a
+      className="btn btn-primary"
+      href="/client"
+      onClick={[Function]}
+    >
+      Сome back
+    </a>
+  </div>,
+]
+`;
+
 exports[`Test of <FreeMastersPage /> Default view 1`] = `
 <form
   onSubmit={[Function]}
@@ -70,4 +91,25 @@ exports[`Test of <FreeMastersPage /> Default view 1`] = `
     />
   </div>
 </form>
+`;
+
+exports[`Test of <FreeMastersPage /> View of component when current object has one field 1`] = `
+Array [
+  <div
+    className="text-left display-4"
+  >
+    List is empty...
+  </div>,
+  <div
+    className="form-group float-left mt-3"
+  >
+    <a
+      className="btn btn-primary"
+      href="/client"
+      onClick={[Function]}
+    >
+      Сome back
+    </a>
+  </div>,
+]
 `;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test of <FreeMastersPage /> 1`] = `
+exports[`Test of <FreeMastersPage /> Default view 1`] = `
 <form
   onSubmit={[Function]}
 >

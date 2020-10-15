@@ -52,6 +52,7 @@ function OrderFormClient({ history }) {
   }
   function submitHandler(e) {
     e.preventDefault();
+    console.log(e);
     let trgElem = e.target;
     if (
       !trgElem.town.value ||
@@ -75,14 +76,6 @@ function OrderFormClient({ history }) {
       );
       return false;
     }
-
-    if (trgElem.name.value.length <= 3) {
-      context.openWarningTooltip(
-        "Name field must be at least 3 characters!",
-        trgElem.name.id
-      );
-      return false;
-    }
     if (
       trgElem.name.value.match(/\d/) ||
       !trgElem.name.value.match(/\b\w{3,20}\b/)
@@ -93,7 +86,6 @@ function OrderFormClient({ history }) {
       );
       return false;
     }
-
     if (!isClientDateLargeThenCurrDate(trgElem.date.value)) {
       context.openWarningTooltip(
         "Date must not be less than current date",

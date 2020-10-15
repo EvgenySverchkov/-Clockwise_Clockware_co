@@ -147,4 +147,192 @@ describe("Test of <FreeMastersPage />", ()=>{
         });
         expect(mockContextValue.openErrorWindowWithMsg.mock.calls.length).toBe(1);
     });
+    it("View of component when current object has one field", async ()=>{
+        global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve())}));
+        const store = mockStore({
+            masterReducer: {
+                suitableMasters: [{id: 1, rating: 5, name: "Name"}]
+            },
+            ordersReducer: {
+                currentOrder: {name:"Alex"},
+                orderFormIsLoad: false,
+            },
+            authReducer: {
+                isAuth: false
+            }
+        });
+        const mockProps = {
+            history: {
+                push: jest.fn()
+            }
+        }
+        const mockContextValue = {
+            openSuccessWindowWithMsg: jest.fn(),
+            openErrorWindowWithMsg: jest.fn(),
+            openWarningTooltip: jest.fn(),
+            warningTooltipMsg: "Warning"
+        }
+        const component = create(
+            <Provider store={store}>
+                <Context.Provider value = {mockContextValue}>
+                    <MemoryRouter initialEntries={['/']}>
+                        <Route path="/">
+                            <FreeMastersPage {...mockProps}/>
+                        </Route>
+                    </MemoryRouter>
+                </Context.Provider>
+            </Provider>
+        );
+        expect(component.toJSON()).toMatchSnapshot();
+    });
+    it("Call submit event when master was choosed and user choose small clock and server return object with success field with true value", async ()=>{
+        global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve({success: true}))}));
+        const store = mockStore({
+            masterReducer: {
+                suitableMasters: [{id: 1, rating: 5, name: "Name"}]
+            },
+            ordersReducer: {
+                currentOrder: {name:"Alex", email:"199816a@mail.ru", time: "15:00", size: "small"},
+                orderFormIsLoad: false,
+            },
+            authReducer: {
+                isAuth: false
+            }
+        });
+        const mockProps = {
+            history: {
+                push: jest.fn()
+            }
+        }
+        const mockContextValue = {
+            openSuccessWindowWithMsg: jest.fn(),
+            openErrorWindowWithMsg: jest.fn(),
+            openWarningTooltip: jest.fn(),
+            warningTooltipMsg: "Warning"
+        }
+        const eventObject = {
+            preventDefault: jest.fn(),
+            target: {
+                chooseMaster: {
+                    value: 1
+                }
+            }
+        }
+        let component = create(
+            <Provider store={store}>
+                <Context.Provider value = {mockContextValue}>
+                    <MemoryRouter initialEntries={['/']}>
+                        <Route path="/">
+                            <FreeMastersPage {...mockProps}/>
+                        </Route>
+                    </MemoryRouter>
+                </Context.Provider>
+            </Provider>
+        );
+        await act(async ()=>{
+            await component.root.findByType("form").props.onSubmit(eventObject)
+        });
+        expect(mockContextValue.openSuccessWindowWithMsg.mock.calls.length).toBe(1);
+        expect(mockProps.history.push.mock.calls.length).toBe(1);
+    });
+    it("Call submit event when master was choosed and user choose middle clock and server return object with success field with true value", async ()=>{
+        global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve({success: true}))}));
+        const store = mockStore({
+            masterReducer: {
+                suitableMasters: [{id: 1, rating: 5, name: "Name"}]
+            },
+            ordersReducer: {
+                currentOrder: {name:"Alex", email:"199816a@mail.ru", time: "15:00", size: "middle"},
+                orderFormIsLoad: false,
+            },
+            authReducer: {
+                isAuth: false
+            }
+        });
+        const mockProps = {
+            history: {
+                push: jest.fn()
+            }
+        }
+        const mockContextValue = {
+            openSuccessWindowWithMsg: jest.fn(),
+            openErrorWindowWithMsg: jest.fn(),
+            openWarningTooltip: jest.fn(),
+            warningTooltipMsg: "Warning"
+        }
+        const eventObject = {
+            preventDefault: jest.fn(),
+            target: {
+                chooseMaster: {
+                    value: 1
+                }
+            }
+        }
+        let component = create(
+            <Provider store={store}>
+                <Context.Provider value = {mockContextValue}>
+                    <MemoryRouter initialEntries={['/']}>
+                        <Route path="/">
+                            <FreeMastersPage {...mockProps}/>
+                        </Route>
+                    </MemoryRouter>
+                </Context.Provider>
+            </Provider>
+        );
+        await act(async ()=>{
+            await component.root.findByType("form").props.onSubmit(eventObject)
+        });
+        expect(mockContextValue.openSuccessWindowWithMsg.mock.calls.length).toBe(1);
+        expect(mockProps.history.push.mock.calls.length).toBe(1);
+    });
+    it("Call submit event when master was choosed and user choose large clock and server return object with success field with true value", async ()=>{
+        global.fetch = jest.fn(()=>Promise.resolve({json: jest.fn(()=>Promise.resolve({success: true}))}));
+        const store = mockStore({
+            masterReducer: {
+                suitableMasters: [{id: 1, rating: 5, name: "Name"}]
+            },
+            ordersReducer: {
+                currentOrder: {name:"Alex", email:"199816a@mail.ru", time: "15:00", size: "large"},
+                orderFormIsLoad: false,
+            },
+            authReducer: {
+                isAuth: false
+            }
+        });
+        const mockProps = {
+            history: {
+                push: jest.fn()
+            }
+        }
+        const mockContextValue = {
+            openSuccessWindowWithMsg: jest.fn(),
+            openErrorWindowWithMsg: jest.fn(),
+            openWarningTooltip: jest.fn(),
+            warningTooltipMsg: "Warning"
+        }
+        const eventObject = {
+            preventDefault: jest.fn(),
+            target: {
+                chooseMaster: {
+                    value: 1
+                }
+            }
+        }
+        let component = create(
+            <Provider store={store}>
+                <Context.Provider value = {mockContextValue}>
+                    <MemoryRouter initialEntries={['/']}>
+                        <Route path="/">
+                            <FreeMastersPage {...mockProps}/>
+                        </Route>
+                    </MemoryRouter>
+                </Context.Provider>
+            </Provider>
+        );
+        await act(async ()=>{
+            await component.root.findByType("form").props.onSubmit(eventObject)
+        });
+        expect(mockContextValue.openSuccessWindowWithMsg.mock.calls.length).toBe(1);
+        expect(mockProps.history.push.mock.calls.length).toBe(1);
+    });
 });
